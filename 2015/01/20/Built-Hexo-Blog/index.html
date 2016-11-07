@@ -1,0 +1,824 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="hexo,git,github,bolg," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Hexo+github可以随心所欲的部署属于自己的博客。
+Hexo 博客搭建步骤搭建博客，首先需要安装 node 环境；
+测试安装成功与否：打开终端，输入 node -v, 有输出版本结果则安装成功。
+安装node环境的时候，已经自动安装了 npm 命令行工具，不需要单独安装。
+可以通过 npm -v 测试npm是否可用
+
+npm 是一个用来安装和管理 Node 包和前端包的一个工具。
+npm 的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客搭建">
+<meta property="og:url" content="http://yoursite.com/2015/01/20/Built-Hexo-Blog/index.html">
+<meta property="og:site_name" content="HongqinMa' Blog">
+<meta property="og:description" content="Hexo+github可以随心所欲的部署属于自己的博客。
+Hexo 博客搭建步骤搭建博客，首先需要安装 node 环境；
+测试安装成功与否：打开终端，输入 node -v, 有输出版本结果则安装成功。
+安装node环境的时候，已经自动安装了 npm 命令行工具，不需要单独安装。
+可以通过 npm -v 测试npm是否可用
+
+npm 是一个用来安装和管理 Node 包和前端包的一个工具。
+npm 的">
+<meta property="og:updated_time" content="2016-11-01T15:21:19.898Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo博客搭建">
+<meta name="twitter:description" content="Hexo+github可以随心所欲的部署属于自己的博客。
+Hexo 博客搭建步骤搭建博客，首先需要安装 node 环境；
+测试安装成功与否：打开终端，输入 node -v, 有输出版本结果则安装成功。
+安装node环境的时候，已经自动安装了 npm 命令行工具，不需要单独安装。
+可以通过 npm -v 测试npm是否可用
+
+npm 是一个用来安装和管理 Node 包和前端包的一个工具。
+npm 的">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6347850919329138000',
+      author: 'Hiraku'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/01/20/Built-Hexo-Blog/"/>
+
+
+  <title> Hexo博客搭建 | HongqinMa' Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?10010323";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="http://ofy7k3v4s.bkt.clouddn.com/photo.jpg"
+             alt="HongqinMa' Blog"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">HongqinMa' Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Spell at all costs， to rush you in the future。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hexo博客搭建
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-01-20T14:37:57+08:00" content="2015-01-20">
+              2015-01-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/01/20/Built-Hexo-Blog/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/20/Built-Hexo-Blog/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Hexo+github可以随心所欲的部署属于自己的博客。</p>
+<h2 id="Hexo-博客搭建步骤"><a href="#Hexo-博客搭建步骤" class="headerlink" title="Hexo 博客搭建步骤"></a>Hexo 博客搭建步骤</h2><h2 id="搭建博客，首先需要安装-node-环境；"><a href="#搭建博客，首先需要安装-node-环境；" class="headerlink" title="搭建博客，首先需要安装 node 环境；"></a>搭建博客，首先需要安装 <code>node</code> 环境；</h2><ul>
+<li>测试安装成功与否：打开终端，输入 <code>node -v</code>, 有输出版本结果则安装成功。</li>
+<li>安装node环境的时候，已经自动安装了 npm 命令行工具，不需要单独安装。</li>
+<li>可以通过 <code>npm -v</code> 测试npm是否可用</li>
+</ul>
+<p>npm 是一个用来安装和管理 Node 包和前端包的一个工具。</p>
+<h3 id="npm-的两层含义"><a href="#npm-的两层含义" class="headerlink" title="npm 的两层含义"></a>npm 的两层含义</h3><ul>
+<li>npm网站：<a href="https://www.npmjs.com/" target="_blank" rel="external">https://www.npmjs.com/</a><ul>
+<li>一个提供了一个用来共享或者检索的一个平台</li>
+<li>二是托管 node 环境或者浏览器环境用到的一些第三方包</li>
+</ul>
+</li>
+<li>是一个命令行工具，可以用来下载 npm 网站上托管的包<ul>
+<li>CLI：Command Line Interface 命令行接口</li>
+<li>GUI：图形化接口</li>
+</ul>
+</li>
+</ul>
+<h3 id="npm-基本使用"><a href="#npm-基本使用" class="headerlink" title="npm 基本使用"></a>npm 基本使用</h3><h4 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install [--save] 包名</div></pre></td></tr></table></figure>
+<p>一般是在项目中，安装项目使用的依赖包,<br>就可以在终端中，切换到项目的根目录，然后执行 <code>npm install 包名</code>，<br>npm 工具会自动将这个包下载下来然后放到 <code>node_modules</code> 目录中。<br>node_modules 目录如果不存在会新建，如果已存在，则直接将下载的包放到该目录中。</p>
+<h4 id="包说明文件：package-json"><a href="#包说明文件：package-json" class="headerlink" title="包说明文件：package.json"></a>包说明文件：package.json</h4><p>包说明文件其实就是一个产品的说明书：<code>package.json</code> 文件。<br>该文件一般只存在于项目的根路径下，可以通过 <code>npm init</code> 命令使用向导的形式创建该文件。</p>
+<p>该文件中描述了项目的一些元数据，例如 <code>name、version、author</code> 等信息。</p>
+<p>其中有一个非常重要的属性，叫做：<code>dependencies</code>，该属性是一个对象，<br>里面保存了当前项目的依赖项，该字段一般不要手动修改，<br>它需要结合 <code>npm install --save 包名</code> 来使用，<br>只要在安装的时候加上 <code>--save</code> 参数就会自动将包依赖项添加到该属性中，很方便。</p>
+<p>甚至还可以完全把 <code>node_modules</code> 目录删除掉，只要 <code>package.json</code> 文件还在，<br>就可以执行 <code>npm install</code> 安装包说明文件中的所有的依赖项。<br>执行 <code>npm install</code> 命令的时候，它会自动查询当前目录下的 <code>package.json</code> 文件，<br>然后找到里面的 <code>dependencies</code> 属性，依次下载到 <code>node_modules</code> 目录下。</p>
+<p>建议使用 npm 的时候，都先初始化一个 <code>package.json</code> 文件，<br>然后安装包的时候最好都加上 <code>--save</code> 参数，将依赖项添加到包说明文件中。</p>
+<h4 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h4><p>全局安装：一般用于安装一些命令行工具（这些工具也是基于Node开发的。）</p>
+<p>全局安装使用 <code>npm install --global 包名（工具名）</code>，<br>在任意目录执行该命令都可以。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -g hexo-cli</div></pre></td></tr></table></figure>
+<p>可以通过 <code>npm root -g</code> 查看全局包安装目录。</p>
+<h2 id="安装-git-环境；"><a href="#安装-git-环境；" class="headerlink" title="安装 git 环境；"></a>安装 <code>git</code> 环境；</h2><p><a href="https://git-for-windows.github.io/" target="_blank" rel="external">下载地址：</a></p>
+<h3 id="初始设置"><a href="#初始设置" class="headerlink" title="初始设置"></a>初始设置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name <span class="string">"yourname"</span></div><div class="line">$ git config --global user.email <span class="string">"your_email@example.com"</span></div></pre></td></tr></table></figure>
+<h2 id="全局安装-hexo-cli"><a href="#全局安装-hexo-cli" class="headerlink" title="全局安装 hexo-cli"></a>全局安装 <code>hexo-cli</code></h2><p>在终端的任意目录输入 <code>npm install -g hexo-cli</code> 然后回车执行等待全局安装成功</p>
+<p>通过输入 <code>hexo --version</code> 如果看到输入一大堆的版本号就说明安装成功了，<br>Hexo 是一个命令行应用程序</p>
+<h2 id="初始化一个博客存储目录"><a href="#初始化一个博客存储目录" class="headerlink" title="初始化一个博客存储目录"></a>初始化一个博客存储目录</h2><p>通过输入 <code>hexp init 博客项目存储目录</code></p>
+<p>Hexo 会在执行该命令的目录下生成一个博客项目，初始化博客项目的过程需要联网</p>
+<p>通过终端进入刚才创建的博客项目目录，然后在该目录下输入 <code>npm install</code> 回车等待执行结束</p>
+<h2 id="启动本地服务器，查看博客内容"><a href="#启动本地服务器，查看博客内容" class="headerlink" title="启动本地服务器，查看博客内容"></a>启动本地服务器，查看博客内容</h2><p>输入 <code>hexo server</code> 回车执行，这一执行会在本地启动一个服务器，然后通过 <code>http://localhost:4000</code> 就可以访问创建的博客项目</p>
+<h2 id="创建博文"><a href="#创建博文" class="headerlink" title="创建博文"></a>创建博文</h2><p>进入博客项目，输入 <code>hexo new 文章名称</code> 创建博客</p>
+<p>这个命令会自动在 source/_posts/ 目录下生成一个 文章名称.md 文件</p>
+<h2 id="生成静态文件：hexo-generate"><a href="#生成静态文件：hexo-generate" class="headerlink" title="生成静态文件：hexo generate"></a>生成静态文件：<code>hexo generate</code></h2><p>该命令会自动在项目的根目录下的 public 目录下降静态文件放进去</p>
+<h2 id="配置主题页"><a href="#配置主题页" class="headerlink" title="配置主题页"></a>配置主题页</h2><p>根据我个人所选的主题介绍。进入博客根目录，打开_config开始配置，<br>注意：在配置主题页的时候需要图片的url，需要在<a href="https://portal.qiniu.com" target="_blank" rel="external">七头云CDN</a>注册；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"># Site</div><div class="line">title: HongqinMa  # 配置博客标题</div><div class="line">subtitle: &quot;博客标签&quot;</div><div class="line">description: &quot;马红琴在 Github 上的个人博客&quot;</div><div class="line">author: Hongqin Ma</div><div class="line"></div><div class="line">header-img: //ofy7k3v4s.bkt.clouddn.com/mbanner.png  #</div><div class="line">email: hongqin_ma@126.com  # 邮箱地址</div><div class="line">keyword: Hiraku, HongqinMa, javascript, html, css, nodejs  #SEO搜索引擎查找关键词</div><div class="line">favicon: //ofy7k3v4s.bkt.clouddn.com/mylogo.png  # 博客网站图标</div><div class="line"></div><div class="line"># RSS:</div><div class="line">weibo_username: Hiraku_Ma #微博账户名</div><div class="line">zhihu_username: HirakuMa #知乎账户名</div><div class="line">github_username: HongqinMa #github账户名</div><div class="line">twitter_username: HongqinMa #Twitter账户名</div><div class="line">facebook_username: Hiraku #Facebook账户名</div><div class="line"></div><div class="line">sidebar-about-description: 拼着一切代价，奔你的前程。 # 侧边栏签名</div><div class="line">sidebar-avatar: http://ofy7k3v4s.bkt.clouddn.com/photo.jpg # 侧边栏头像</div><div class="line"></div><div class="line">cdn-url: &quot;https://ofy7k3v4s.bkt.clouddn.com/&quot; # 我写的是七头云的域名地址</div><div class="line"></div><div class="line">theme: hexo-theme-Anisina  # 主题名称</div><div class="line"></div><div class="line">friends: [</div><div class="line">  &#123;</div><div class="line">    title: &quot;掘金&quot;,</div><div class="line">    href: &quot;http://gold.xitu.io/&quot;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    title: &quot;segmentfault&quot;,</div><div class="line">    href: &quot;https://segmentfault.com/&quot;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    title: &quot;简书&quot;,</div><div class="line">    href: &quot;http://www.jianshu.com/users/1cbb94e5ed4d/latest_articles&quot;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    title: &quot;七牛云&quot;,</div><div class="line">    href: &quot;https://portal.qiniu.com/&quot;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    title: &quot;博客园&quot;,</div><div class="line">    href: &quot;https://home.cnblogs.com/&quot;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    title: &quot;Awesomes&quot;,</div><div class="line">    href: &quot;https://www.awesomes.cn/&quot;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">]</div><div class="line"></div><div class="line">duoshuo_username: Hiraku #这里需要注册多说或者主题作者：haojen Ma 文档中的另外一种，作用都一样 ，用来评论的；</div><div class="line"></div><div class="line">deploy: </div><div class="line">  type: git # 快速部署</div><div class="line">  repo: https://github用户名:github密码@github.com/HongqinMa/HongqinMa.github.io.git</div></pre></td></tr></table></figure>
+<h2 id="快速部署"><a href="#快速部署" class="headerlink" title="快速部署"></a>快速部署</h2><ol>
+<li>修改配置文件</li>
+<li>在项目根路径下执行 <code>npm install hexo-deployer-git --save</code> 该命令</li>
+<li>接下来就可以直接输入 <code>hexo deploy --generate</code> 自动发布到 github 上</li>
+</ol>
+<h2 id="更详细介绍如下："><a href="#更详细介绍如下：" class="headerlink" title="更详细介绍如下："></a>更详细介绍如下：</h2><p><a href="http://haojen.github.io/2016/08/06/Anisina-%E4%B8%AD%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_blank" rel="external">配置主题页说明</a></p>
+<p>OK，现在可以直接通过HongqinMa.github.io.git访问博客了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将是我最大的鼓励！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ofy7k3v4s.bkt.clouddn.com/wcpayCode.jpg" alt="Hongqin Ma WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ofy7k3v4s.bkt.clouddn.com/apayCode.jpg" alt="Hongqin Ma Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
+          
+            <a href="/tags/git/" rel="tag">#git</a>
+          
+            <a href="/tags/github/" rel="tag">#github</a>
+          
+            <a href="/tags/bolg/" rel="tag">#bolg</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/02/01/git学习笔记/" rel="next" title="git学习笔记">
+                <i class="fa fa-chevron-left"></i> git学习笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/02/Anisina-博客主题使用心得/" rel="prev" title="Anisina 博客主题使用心得">
+                Anisina 博客主题使用心得 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/01/20/Built-Hexo-Blog/"
+     data-title="Hexo博客搭建"
+     data-content=""
+     data-url="http://yoursite.com/2015/01/20/Built-Hexo-Blog/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/01/20/Built-Hexo-Blog/"
+           data-title="Hexo博客搭建" data-url="http://yoursite.com/2015/01/20/Built-Hexo-Blog/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/photo.jpg"
+               alt="Hongqin Ma" />
+          <p class="site-author-name" itemprop="name">Hongqin Ma</p>
+          <p class="site-description motion-element" itemprop="description">Spell at all costs， to rush you in the future。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HongqinMa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/HongqinMa" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100006581058735" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/HirakuMa" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-share-alt"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美" target="_blank">司徒正美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/sanshi/" title="三生石上" target="_blank">三生石上</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/TomXu/" title="汤姆大叔" target="_blank">汤姆大叔</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gold.xitu.io/" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/users/1cbb94e5ed4d/latest_articles" title="简书" target="_blank">简书</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.cnblogs.com/" title="博客园" target="_blank">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.awesomes.cn/" title="Awesomes" target="_blank">Awesomes</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-博客搭建步骤"><span class="nav-number">1.</span> <span class="nav-text">Hexo 博客搭建步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建博客，首先需要安装-node-环境；"><span class="nav-number">2.</span> <span class="nav-text">搭建博客，首先需要安装 node 环境；</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#npm-的两层含义"><span class="nav-number">2.1.</span> <span class="nav-text">npm 的两层含义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npm-基本使用"><span class="nav-number">2.2.</span> <span class="nav-text">npm 基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地安装"><span class="nav-number">2.2.1.</span> <span class="nav-text">本地安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#包说明文件：package-json"><span class="nav-number">2.2.2.</span> <span class="nav-text">包说明文件：package.json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全局安装"><span class="nav-number">2.2.3.</span> <span class="nav-text">全局安装</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-git-环境；"><span class="nav-number">3.</span> <span class="nav-text">安装 git 环境；</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始设置"><span class="nav-number">3.1.</span> <span class="nav-text">初始设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局安装-hexo-cli"><span class="nav-number">4.</span> <span class="nav-text">全局安装 hexo-cli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化一个博客存储目录"><span class="nav-number">5.</span> <span class="nav-text">初始化一个博客存储目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动本地服务器，查看博客内容"><span class="nav-number">6.</span> <span class="nav-text">启动本地服务器，查看博客内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建博文"><span class="nav-number">7.</span> <span class="nav-text">创建博文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成静态文件：hexo-generate"><span class="nav-number">8.</span> <span class="nav-text">生成静态文件：hexo generate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置主题页"><span class="nav-number">9.</span> <span class="nav-text">配置主题页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速部署"><span class="nav-number">10.</span> <span class="nav-text">快速部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更详细介绍如下："><span class="nav-number">11.</span> <span class="nav-text">更详细介绍如下：</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hongqin Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Hiraku"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
