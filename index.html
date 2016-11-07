@@ -90,15 +90,15 @@
 
 
 
-<meta name="description" content="Spell at all costs， to rush you in the future。">
+<meta name="description" content="Spell at all costs， to rush you in the future.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="HongqinMa' Blog">
 <meta property="og:url" content="https://hongqinma.github.io/index.html">
 <meta property="og:site_name" content="HongqinMa' Blog">
-<meta property="og:description" content="Spell at all costs， to rush you in the future。">
+<meta property="og:description" content="Spell at all costs， to rush you in the future.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HongqinMa' Blog">
-<meta name="twitter:description" content="Spell at all costs， to rush you in the future。">
+<meta name="twitter:description" content="Spell at all costs， to rush you in the future.">
 
 
 
@@ -464,6 +464,151 @@ npm &#x662F;&#x4E00;&#x4E2A;&#x7528;&#x6765;&#x5B89;&#x88C5;&#x548C;&#x7BA1;&#x7
 
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/01/20/Built-Hexo-Blog/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/05/15/js-String对象/" itemprop="url">
+                  js String对象
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2014-05-15T22:19:03+08:00" content="2014-05-15">
+              2014-05-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/05/15/js-String对象/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/05/15/js-String对象/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2014/05/15/js-String对象/" class="leancloud_visitors" data-flag-title="js String对象">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          String &#x7C7B;&#x578B;String &#x7C7B;&#x578B;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5BF9;&#x8C61;&#x5305;&#x88C5;&#x7C7B;&#x578B;&#x3002;&#x521B;&#x5EFA;&#x65B9;&#x5F0F;&#x6709;&#x4E24;&#x79CD;&#xFF1A;
+
+var strObject = new String(&#x201C;abc&#x201D;);
+var strValue = &#x201C;abc&#x201D;;
+
+&#x5176;&#x4E2D;&#xFF0C;&#x7EE7;&#x627F;&#x7684; valueOf()&#xFF0C;toLocaleString()&#xFF0C;toString() &#x65B9;&#x6CD5;&#xFF0C;&#x90FD;&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x6240;&#x8868;&#x793A;&#x7684;&#x57FA;&#x672C;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#x3002;
+String &#x7C7B;&#x578B;&#x7684;&#x5B9E;&#x4F8B;&#x90FD;&#x6709;&#x4E00;&#x4E2A; length &#x5C5E;&#x6027;&#xFF0C;&#x8868;&#x793A;&#x5305;&#x542B;&#x591A;&#x5C11;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x83B7;&#x53D6;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;&#x3002;
+
+&#x5B57;&#x7B26;&#x65B9;&#x6CD5;:charAt() &#x548C; charCodeAt()
+charAt(&#x4E0B;&#x6807;);&#x83B7;&#x53D6;&#x8BE5;&#x4E0B;&#x6807;&#x4F4D;&#x7F6E;&#x7684;&#
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/05/15/js-String对象/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -911,145 +1056,6 @@ toTimeSt
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/04/06/js语句/" itemprop="url">
-                  js语句
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2014-04-06T15:29:25+08:00" content="2014-04-06">
-              2014-04-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/04/06/js语句/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/06/js语句/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2014/04/06/js语句/" class="leancloud_visitors" data-flag-title="js语句">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">visitors </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          ECMAScript &#x8BED;&#x6CD5;&#x5B9A;&#x4E49;&#x7684;&#x8BED;&#x53E5;&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5173;&#x952E;&#x5B57;&#x6765;&#x5B8C;&#x6210;&#x7ED9;&#x5B9A;&#x7684;&#x4EFB;&#x52A1;&#x3002;
-1. &#x6761;&#x4EF6;&#x5224;&#x65AD;&#x7ED3;&#x6784; if/ if&#x2026;else/ if&#x2026;else &#x5D4C;&#x5957;12345if(&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;){  // &#x5982;&#x679C;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x4E3A;true&#xFF0C;&#x6267;&#x884C;&#x8BE5;&#x5904;&#x4EE3;&#x7801;}else{  // &#x5982;&#x679C;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x4E3A;false,&#x6267;&#x884C;&#x8BE5;&#x5904;&#x4EE3;&#x7801;}
-&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x7684;&#x5D4C;&#x5957;
-123456789if(&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#xFF09;{  //&#x5982;&#x679C;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#x5F0F;&#x7ED3;&#x679C;&#x4E3A;true,&#x6267;&#x884C;&#x8BE5;&#x8BED;&#x53E5;&#xFF0C;&#x4E0B;&#x8FB9;&#x8BED;&#x53E5;&#x4E0D;&#x6267;&#x884C;&#x3002;}else if(&#x6761;&#x4EF6;&#x8868
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/04/06/js语句/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1090,12 +1096,12 @@ toTimeSt
                src="/images/photo.jpg"
                alt="Hongqin Ma" />
           <p class="site-author-name" itemprop="name">Hongqin Ma</p>
-          <p class="site-description motion-element" itemprop="description">Spell at all costs， to rush you in the future。</p>
+          <p class="site-description motion-element" itemprop="description">Spell at all costs， to rush you in the future. </p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
