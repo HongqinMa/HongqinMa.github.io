@@ -1,0 +1,1075 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="tools,命令行," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://ofy7k3v4s.bkt.clouddn.com/mylogo.png?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x5B66;&amp;#x4E60;&amp;#x547D;&amp;#x4EE4;&amp;#x884C;&amp;#x6700;&amp;#x597D;&amp;#x7684;&amp;#x65B9;&amp;#x5F0F;&amp;#x662F;&amp;#x5B66;&amp;#x4E60; Linux &amp;#x4E0A;&amp;#x7684; shell&amp;#x3001;bash
+1.1 GUI(&amp;#x7528;&amp;#x6237;&amp;#x754C;&amp;#x9762;) VS CLI(&amp;#x54">
+<meta property="og:type" content="article">
+<meta property="og:title" content="t2-命令行">
+<meta property="og:url" content="https://hongqinma.github.io/2016/07/08/t2-命令行/index.html">
+<meta property="og:site_name" content="HongqinMa' Blog">
+<meta property="og:description" content="&amp;#x5B66;&amp;#x4E60;&amp;#x547D;&amp;#x4EE4;&amp;#x884C;&amp;#x6700;&amp;#x597D;&amp;#x7684;&amp;#x65B9;&amp;#x5F0F;&amp;#x662F;&amp;#x5B66;&amp;#x4E60; Linux &amp;#x4E0A;&amp;#x7684; shell&amp;#x3001;bash
+1.1 GUI(&amp;#x7528;&amp;#x6237;&amp;#x754C;&amp;#x9762;) VS CLI(&amp;#x54">
+<meta property="og:image" content="https://hongqinma.github.io/2016/07/08/t2-命令行/img/shell.jpg">
+<meta property="og:updated_time" content="2016-11-07T14:31:57.001Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="t2-命令行">
+<meta name="twitter:description" content="&amp;#x5B66;&amp;#x4E60;&amp;#x547D;&amp;#x4EE4;&amp;#x884C;&amp;#x6700;&amp;#x597D;&amp;#x7684;&amp;#x65B9;&amp;#x5F0F;&amp;#x662F;&amp;#x5B66;&amp;#x4E60; Linux &amp;#x4E0A;&amp;#x7684; shell&amp;#x3001;bash
+1.1 GUI(&amp;#x7528;&amp;#x6237;&amp;#x754C;&amp;#x9762;) VS CLI(&amp;#x54">
+<meta name="twitter:image" content="https://hongqinma.github.io/2016/07/08/t2-命令行/img/shell.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6347850919329138000',
+      author: 'Hiraku'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://hongqinma.github.io/2016/07/08/t2-命令行/"/>
+
+
+  <title> t2-命令行 | HongqinMa' Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?10010323";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="http://ofy7k3v4s.bkt.clouddn.com/photo.jpg"
+             alt="HongqinMa' Blog"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">HongqinMa' Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Spell at all costs， to rush you in the future。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                t2-命令行
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-07-08T22:16:38+08:00" content="2016-07-08">
+              2016-07-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Web-Development-Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Web Development Tools</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/08/t2-命令行/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/08/t2-命令行/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/08/t2-命令行/" class="leancloud_visitors" data-flag-title="t2-命令行">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+
+          
+          <span id="busuanzi_container_page_pv">  <span id="busuanzi_value_page_pv"></span> Views</span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x5B66;&#x4E60;&#x547D;&#x4EE4;&#x884C;&#x6700;&#x597D;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x5B66;&#x4E60; Linux &#x4E0A;&#x7684; shell&#x3001;bash</p>
+<h3 id="1-1-GUI-&#x7528;&#x6237;&#x754C;&#x9762;-VS-CLI-&#x547D;&#x4EE4;&#x884C;&#x754C;&#x9762;"><a href="#1-1-GUI-&#x7528;&#x6237;&#x754C;&#x9762;-VS-CLI-&#x547D;&#x4EE4;&#x884C;&#x754C;&#x9762;" class="headerlink" title="1.1 GUI(&#x7528;&#x6237;&#x754C;&#x9762;) VS CLI(&#x547D;&#x4EE4;&#x884C;&#x754C;&#x9762;)"></a>1.1 GUI(&#x7528;&#x6237;&#x754C;&#x9762;) VS CLI(&#x547D;&#x4EE4;&#x884C;&#x754C;&#x9762;)</h3><p>&#x5927;&#x591A;&#x6570;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x7528;&#x6237;&#x53EA;&#x662F;&#x719F;&#x6089;&#x56FE;&#x5F62;&#x7528;&#x6237;&#x754C;&#x9762;&#xFF08;GUI&#xFF09;&#xFF0C;<br>&#x5E76;&#x4E14;&#x4EA7;&#x54C1;&#x4F9B;&#x5E94;&#x5546;&#x548C;&#x6B64;&#x9886;&#x57DF;&#x7684;&#x5B66;&#x8005;&#x4F1A;&#x704C;&#x8F93;&#x7ED9;&#x7528;&#x6237;&#x8FD9;&#x6837;&#x7684;&#x601D;&#x60F3;&#xFF0C;<br>&#x547D;&#x4EE4;&#x884C;&#x754C;&#x9762;&#xFF08;CLI&#xFF09;&#x662F;&#x8FC7;&#x53BB;&#x4F7F;&#x7528;&#x7684;&#x4E00;&#x79CD;&#x5F88;&#x6050;&#x6016;&#x7684;&#x4E1C;&#x897F;&#x3002;<br>&#x8FD9;&#x5C31;&#x5F88;&#x4E0D;&#x5E78;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x4E2A;&#x597D;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x754C;&#x9762;&#xFF0C;<br>&#x662F;&#x7528;&#x6765;&#x548C;&#x8BA1;&#x7B97;&#x673A;&#x8FDB;&#x884C;&#x4EA4;&#x6D41;&#x6C9F;&#x901A;&#x7684;&#x975E;&#x5E38;&#x6709;&#x6548;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x6B63;&#x50CF;&#x4EBA;&#x7C7B;&#x793E;&#x4F1A;&#x4F7F;&#x7528;&#x6587;&#x5B57;&#x4E92;&#x901A;&#x4FE1;&#x606F;&#x4E00;&#x6837;&#x3002;<br>&#x4EBA;&#x4EEC;&#x8BF4;&#xFF0C;<strong>&#x56FE;&#x5F62;&#x7528;&#x6237;&#x754C;&#x9762;&#x8BA9;&#x7B80;&#x5355;&#x7684;&#x4EFB;&#x52A1;&#x66F4;&#x5BB9;&#x6613;&#x5B8C;&#x6210;&#xFF0C;&#x800C;&#x547D;&#x4EE4;&#x884C;&#x754C;&#x9762;&#x4F7F;&#x5B8C;&#x6210;&#x590D;&#x6742;&#x7684;&#x4EFB;&#x52A1;&#x6210;&#x4E3A;&#x53EF;&#x80FD;</strong> &#xFF0C;<br>&#x5230;&#x73B0;&#x5728;&#x8FD9;&#x53E5;&#x8BDD;&#x4ECD;&#x7136;&#x5F88;&#x6B63;&#x786E;&#x3002;</p>
+<h3 id="1-2-shell"><a href="#1-2-shell" class="headerlink" title="1.2 shell"></a>1.2 shell</h3><p>&#x4E00;&#x8BF4;&#x5230;&#x547D;&#x4EE4;&#x884C;&#xFF0C;&#x5176;&#x5B9E;&#x771F;&#x6B63;&#x6307;&#x7684;&#x662F; <code>shell</code>&#x3002;</p>
+<p><strong>shell &#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#xFF0C;&#x5B83;&#x63A5;&#x53D7;&#x4ECE;&#x952E;&#x76D8;&#x8F93;&#x5165;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x547D;&#x4EE4;&#x4F20;&#x9012;&#x7ED9;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x53BB;&#x6267;&#x884C;&#x3002;</strong></p>
+<p>&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x7684; Linux &#x53D1;&#x884C;&#x7248;&#x90FD;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; <code>bash</code> &#x7684; shell &#x7A0B;&#x5E8F;&#x3002;<br>bash &#x662F; <code>Bourne Again SHell</code> &#x7684;&#x9996;&#x5B57;&#x6BCD;&#x7F29;&#x5199;&#xFF0C;&#x6240;&#x6307;&#x7684;&#x662F;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x4E8B;&#x5B9E;&#x3002;</p>
+<p><img src="/2016/07/08/t2-&#x547D;&#x4EE4;&#x884C;/img/shell.jpg" alt="shell"></p>
+<h3 id="1-3-&#x7EC8;&#x7AEF;&#x4EFF;&#x771F;&#x5668;"><a href="#1-3-&#x7EC8;&#x7AEF;&#x4EFF;&#x771F;&#x5668;" class="headerlink" title="1.3 &#x7EC8;&#x7AEF;&#x4EFF;&#x771F;&#x5668;"></a>1.3 &#x7EC8;&#x7AEF;&#x4EFF;&#x771F;&#x5668;</h3><p>&#x5F53;&#x4F7F;&#x7528;&#x56FE;&#x5F62;&#x7528;&#x6237;&#x754C;&#x9762;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x53E6;&#x4E00;&#x4E2A;&#x548C; shell &#x4EA4;&#x4E92;&#x7684;&#x53EB;&#x505A;&#x7EC8;&#x7AEF;&#x4EFF;&#x771F;&#x5668;&#x7684;&#x7A0B;&#x5E8F;&#x3002;<br>&#x5728; Windows &#x4E0A;&#xFF0C;&#x4E00;&#x822C;&#x4F7F;&#x7528;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x81EA;&#x5E26;&#x7684; <code>cmd</code> &#x6216;&#x8005; <code>powershell</code>&#x3002;<br>&#x5728; Linux &#x4E0A;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x56FE;&#x5F62;&#x7528;&#x6237;&#x754C;&#x9762;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>terminal</code> &#x6216;&#x8005; <code>konsole</code>&#x3001;<br><code>gnome-terminal</code> &#x4E4B;&#x7C7B;&#x7684;&#x7EC8;&#x7AEF;&#x4EFF;&#x771F;&#x5668;&#xFF0C;&#x4F46;&#x57FA;&#x672C;&#x4E0A;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x5B8C;&#x6210;&#x540C;&#x6837;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;<br>&#x8BA9;&#x6211;&#x4EEC;&#x80FD;&#x8BBF;&#x95EE; shell&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x56E0;&#x4E3A;&#x9644;&#x52A0;&#x7684;&#x4E00;&#x4E9B;&#x82B1;&#x4FCF;&#x529F;&#x80FD;&#x800C;&#x559C;&#x6B22;&#x4E0A;&#x67D0;&#x4E2A;&#x7EC8;&#x7AEF;&#x3002;</p>
+<p>&#x5173;&#x4E8E;&#x540D;&#x5B57;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x4EBA;&#x63D0;&#x5230;&#xFF1A;&#x63A7;&#x5236;&#x53F0;&#x3001;&#x7EC8;&#x7AEF;&#x3001;bash&#x3001;shell&#x3001;terminal &#x7B49;&#xFF0C;<br>&#x4E00;&#x822C;&#x90FD;&#x662F;&#x6307;&#x4E0A;&#x9762;&#x8FD9;&#x4E9B;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x5728; Linux &#x4E0A;&#xFF0C;&#x90FD;&#x4F1A;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A; bash &#x6216;&#x8005; terminal &#x4E4B;&#x7C7B;&#x7684;&#x5DE5;&#x5177;&#xFF0C;<br>&#x8BA9;&#x4F60;&#x6765;&#x4F7F;&#x7528; shell&#x3002;</p>
+<h3 id="1-4-&#x5B89;&#x88C5;-Git-for-Windows-&#x5BA2;&#x6237;&#x7AEF;&#x4F53;&#x9A8C;-shell"><a href="#1-4-&#x5B89;&#x88C5;-Git-for-Windows-&#x5BA2;&#x6237;&#x7AEF;&#x4F53;&#x9A8C;-shell" class="headerlink" title="1.4 &#x5B89;&#x88C5; Git for Windows &#x5BA2;&#x6237;&#x7AEF;&#x4F53;&#x9A8C; shell"></a>1.4 &#x5B89;&#x88C5; Git for Windows &#x5BA2;&#x6237;&#x7AEF;&#x4F53;&#x9A8C; shell</h3><p>Git for Windows &#x5BA2;&#x6237;&#x7AEF;&#x81EA;&#x5E26;&#x4E86;&#x4E00;&#x4E2A;&#x7EC8;&#x7AEF;&#x4EFF;&#x771F;&#x5668;&#xFF1A;<code>git bash</code></p>
+<p><a href="https://git-for-windows.github.io/" target="_blank" rel="external">Git &#x4E0B;&#x8F7D;&#x5730;&#x5740;&#xFF1A;</a></p>
+<p><a href="https://github.com/git-for-windows/git" target="_blank" rel="external">git for Windows - github &#x6258;&#x7BA1;&#x5730;&#x5740;</a><br>&#xFF0C;&#x7136;&#x540E;&#x627E;&#x5230; Realease &#x6A21;&#x5757;&#xFF0C;&#x627E;&#x5230;&#x4E0B;&#x8F7D;&#x7684;&#x5BF9;&#x5E94;&#x7248;&#x672C;&#x5373;&#x53EF;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x867D;&#x7136;&#x5728; Windows &#x4E0A;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; cmd &#x6216; powershell &#x4F53;&#x9A8C;&#x7EC8;&#x7AEF;&#x7684;&#x4F7F;&#x7528;&#xFF0C;<br>&#x4F46;&#x662F;&#x5B66;&#x4E60;&#x7EC8;&#x7AEF;&#x6700;&#x6B63;&#x786E;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x5B66;&#x4E60; Linux &#x4E0A;&#x7684;&#x547D;&#x4EE4;&#x884C;&#xFF0C;&#x8981;&#x66F4;&#x7EAF;&#x6B63;&#xFF0C;&#x66F4;&#x5F3A;&#x5927;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x4F7F;&#x7528; Git for Windows &#x5BA2;&#x6237;&#x7AEF;&#xFF08;&#x81EA;&#x5E26;&#x4E86;&#x4E00;&#x4E2A; bash&#xFF09;&#x6765;&#x5B66;&#x4E60; shell&#x3002;</p>
+<h3 id="1-5-&#x6253;&#x5F00;&#x548C;&#x9000;&#x51FA;&#x7EC8;&#x7AEF;"><a href="#1-5-&#x6253;&#x5F00;&#x548C;&#x9000;&#x51FA;&#x7EC8;&#x7AEF;" class="headerlink" title="1.5 &#x6253;&#x5F00;&#x548C;&#x9000;&#x51FA;&#x7EC8;&#x7AEF;"></a>1.5 &#x6253;&#x5F00;&#x548C;&#x9000;&#x51FA;&#x7EC8;&#x7AEF;</h3><ul>
+<li>&#x5F00;&#x59CB;&#x83DC;&#x5355;&#x6253;&#x5F00;</li>
+<li>&#x53F3;&#x952E;&#x6253;&#x5F00;</li>
+<li>&#x901A;&#x8FC7;&#x5F00;&#x59CB;-&#x8FD0;&#x884C;&#xFF1A;&#x8F93;&#x5165; git-bash &#x6253;&#x5F00;&#xFF08;&#x9700;&#x8981;PATH&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF09;</li>
+</ul>
+<h4 id="1-5-1-&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;"><a href="#1-5-1-&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;" class="headerlink" title="1.5.1 &#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;"></a>1.5.1 &#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;</h4><p>git bash &#x4E2D;&#x4F7F;&#x7528; <code>~</code> &#x6765;&#x8868;&#x793A;&#x7528;&#x6237;&#x76EE;&#x5F55;</p>
+<h4 id="1-5-2-&#x4F7F;&#x7528;&#x7EC8;&#x7AEF;&#x64CD;&#x4F5C;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;"><a href="#1-5-2-&#x4F7F;&#x7528;&#x7EC8;&#x7AEF;&#x64CD;&#x4F5C;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;" class="headerlink" title="1.5.2 &#x4F7F;&#x7528;&#x7EC8;&#x7AEF;&#x64CD;&#x4F5C;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;"></a>1.5.2 &#x4F7F;&#x7528;&#x7EC8;&#x7AEF;&#x64CD;&#x4F5C;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</h4><ul>
+<li>&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x548C;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;</li>
+<li>pwd&#xFF08;print working directory&#xFF09;</li>
+<li>cd&#xFF08;change directory&#xFF09;<ul>
+<li>&#x5207;&#x6362;&#x5230;&#x6307;&#x5B9A;&#x8DEF;&#x5F84;&#xFF08;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x6216;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#xFF09;</li>
+</ul>
+</li>
+<li>ls&#xFF08;list files&#xFF09;<ul>
+<li><code>ls</code> &#x5217;&#x51FA;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x6587;&#x4EF6;</li>
+<li><code>ls &#x76EE;&#x5F55;&#x8DEF;&#x5F84;</code> &#x5217;&#x51FA;&#x6307;&#x5B9A;&#x8DEF;&#x5F84;&#x6587;&#x4EF6;</li>
+<li><code>ls -a</code> &#x5217;&#x51FA;&#x6587;&#x4EF6;&#x5E76;&#x663E;&#x793A;&#x9690;&#x85CF;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;</li>
+</ul>
+</li>
+<li>cp&#xFF08;copy&#xFF09;<ul>
+<li><code>cp &#x6E90;&#x8DEF;&#x5F84; &#x76EE;&#x6807;&#x8DEF;&#x5F84;</code></li>
+<li>cp &#x5728;&#x590D;&#x5236;&#x76EE;&#x5F55;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x4F1A;&#x590D;&#x5236;&#x91CC;&#x9762;&#x7684;&#x5B50;&#x6587;&#x4EF6;&#x6216;&#x5B50;&#x76EE;&#x5F55;</li>
+<li>-r &#xFF08;recursive&#xFF09;&#x9012;&#x5F52;&#x590D;&#x5236;</li>
+</ul>
+</li>
+<li><code>mv</code>&#xFF08;move&#xFF09;&#xFF1A;&#x79FB;&#x52A8;&#x6587;&#x4EF6;&#x6216;&#x8005;&#x76EE;&#x5F55;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x91CD;&#x547D;&#x540D;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;</li>
+<li><code>mkdir</code>&#xFF08;make directory&#xFF09;&#xFF1A;&#x521B;&#x5EFA;&#x76EE;&#x5F55;</li>
+<li><code>rm</code>&#xFF08;remove&#xFF09;&#xFF1A;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;<ul>
+<li>-rf &#x9012;&#x5F52;&#x5220;&#x9664;&#xFF1A;&#x76F4;&#x63A5;&#x5C06;&#x6574;&#x4E2A;&#x76EE;&#x5F55;&#x5305;&#x62EC;&#x91CC;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x90FD;&#x5220;&#x6389;</li>
+</ul>
+</li>
+<li><code>rmdir</code> &#x76EE;&#x5F55;&#x540D;&#x79F0;<ul>
+<li>&#x53EA;&#x80FD;&#x5220;&#x9664;&#x7A7A;&#x76EE;&#x5F55;</li>
+</ul>
+</li>
+<li><code>clear</code>&#xFF1A;&#x6E05;&#x5C4F;</li>
+<li><code>touch &#x6587;&#x4EF6;&#x540D;</code><ul>
+<li>&#x6839;&#x636E;&#x6587;&#x4EF6;&#x540D;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x6587;&#x4EF6;</li>
+</ul>
+</li>
+<li><code>cat &#x6587;&#x4EF6;&#x540D;</code><ul>
+<li>&#x67E5;&#x770B;&#x6307;&#x5B9A;&#x7684;&#x6587;&#x672C;&#x6587;&#x4EF6;</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-6-&#x4F7F;&#x7528;-less-&#x547D;&#x4EE4;&#x6D4F;&#x89C8;&#x6587;&#x4EF6;&#x5185;&#x5BB9;"><a href="#1-6-&#x4F7F;&#x7528;-less-&#x547D;&#x4EE4;&#x6D4F;&#x89C8;&#x6587;&#x4EF6;&#x5185;&#x5BB9;" class="headerlink" title="1.6 &#x4F7F;&#x7528; less &#x547D;&#x4EE4;&#x6D4F;&#x89C8;&#x6587;&#x4EF6;&#x5185;&#x5BB9;"></a>1.6 &#x4F7F;&#x7528; less &#x547D;&#x4EE4;&#x6D4F;&#x89C8;&#x6587;&#x4EF6;&#x5185;&#x5BB9;</h3><p>less &#x547D;&#x4EE4;&#x662F;&#x4E00;&#x4E2A;&#x7528;&#x6765;&#x6D4F;&#x89C8;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x7684;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p>less &#x547D;&#x4EE4;&#x662F;&#x8FD9;&#x6837;&#x4F7F;&#x7528;&#x7684;&#xFF1A;<code>less &#x6587;&#x672C;&#x6587;&#x4EF6;&#x540D;</code></p>
+<p>&#x4E00;&#x65E6; less &#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8D77;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x80FD;&#x6D4F;&#x89C8;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x4E86;&#x3002;<br>&#x5982;&#x679C;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x591A;&#x4E8E;&#x4E00;&#x9875;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4E0A;&#x4E0B;&#x6EDA;&#x52A8;&#x6587;&#x4EF6;&#x3002;<br>&#x6309;&#x4E0B; <code>q</code> &#x952E;&#xFF0C;&#x9000;&#x51FA; less &#x7A0B;&#x5E8F;&#x3002;</p>
+<p>&#x4E0B;&#x8868;&#x5217;&#x51FA;&#x4E86; less &#x7A0B;&#x5E8F;&#x6700;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x952E;&#x76D8;&#x547D;&#x4EE4;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#x547D;&#x4EE4;               &#x884C;&#x4E3A;</div><div class="line">h                  &#x663E;&#x793A;&#x5E2E;&#x52A9;&#x5C4F;&#x5E55;</div><div class="line">Page UP or b       &#x5411;&#x4E0A;&#x7FFB;&#x6EDA;&#x4E00;&#x9875;</div><div class="line">Page Down or space &#x5411;&#x4E0B;&#x7FFB;&#x6EDA;&#x4E00;&#x9875;</div><div class="line">UP Arrow           &#x5411;&#x4E0A;&#x7FFB;&#x6EDA;&#x4E00;&#x884C;</div><div class="line">Down Arrow         &#x5411;&#x4E0B;&#x7FFB;&#x6EDA;&#x4E00;&#x884C;</div><div class="line">G                  &#x79FB;&#x52A8;&#x5230;&#x6700;&#x540E;&#x4E00;&#x884C;</div><div class="line">g                  &#x79FB;&#x52A8;&#x5230;&#x5F00;&#x5934;&#x4E00;&#x884C;</div><div class="line">/charaters         &#x5411;&#x524D;&#x67E5;&#x627E;&#x6307;&#x5B9A;&#x7684;&#x5B57;&#x7B26;&#x4E32;</div><div class="line">n                  &#x5411;&#x524D;&#x67E5;&#x627E;&#x4E0B;&#x4E00;&#x4E2A;&#x51FA;&#x73B0;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x4E4B;&#x524D;&#x6240;&#x6307;&#x5B9A;&#x67E5;&#x627E;&#x7684;</div><div class="line">q                  &#x9000;&#x51FA; less &#x7A0B;&#x5E8F;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将是我最大的鼓励！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ofy7k3v4s.bkt.clouddn.com/wcpayCode.jpg" alt="Hongqin Ma WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ofy7k3v4s.bkt.clouddn.com/apayCode.jpg" alt="Hongqin Ma Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tools/" rel="tag">#tools</a>
+          
+            <a href="/tags/命令行/" rel="tag">#命令行</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/03/t1-markdown/" rel="next" title="t1-markdown">
+                <i class="fa fa-chevron-left"></i> t1-markdown
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/12/t3-版本控制、git、github/" rel="prev" title="t3-版本控制、git、github、博客搭建">
+                t3-版本控制、git、github、博客搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/07/08/t2-命令行/"
+     data-title="t2-命令行"
+     data-content=""
+     data-url="https://hongqinma.github.io/2016/07/08/t2-命令行/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/08/t2-命令行/"
+           data-title="t2-命令行" data-url="https://hongqinma.github.io/2016/07/08/t2-命令行/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/photo.jpg"
+               alt="Hongqin Ma" />
+          <p class="site-author-name" itemprop="name">Hongqin Ma</p>
+          <p class="site-description motion-element" itemprop="description">Spell at all costs， to rush you in the future. </p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HongqinMa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/HongqinMa" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100006581058735" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/HirakuMa" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-share-alt"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美" target="_blank">司徒正美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/sanshi/" title="三生石上" target="_blank">三生石上</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/TomXu/" title="汤姆大叔" target="_blank">汤姆大叔</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gold.xitu.io/" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/users/1cbb94e5ed4d/latest_articles" title="简书" target="_blank">简书</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.cnblogs.com/" title="博客园" target="_blank">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.awesomes.cn/" title="Awesomes" target="_blank">Awesomes</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-GUI-用户界面-VS-CLI-命令行界面"><span class="nav-number">1.</span> <span class="nav-text">1.1 GUI(用户界面) VS CLI(命令行界面)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-shell"><span class="nav-number">2.</span> <span class="nav-text">1.2 shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-终端仿真器"><span class="nav-number">3.</span> <span class="nav-text">1.3 终端仿真器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-安装-Git-for-Windows-客户端体验-shell"><span class="nav-number">4.</span> <span class="nav-text">1.4 安装 Git for Windows 客户端体验 shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-打开和退出终端"><span class="nav-number">5.</span> <span class="nav-text">1.5 打开和退出终端</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-1-命令提示符"><span class="nav-number">5.1.</span> <span class="nav-text">1.5.1 命令提示符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-2-使用终端操作文件系统"><span class="nav-number">5.2.</span> <span class="nav-text">1.5.2 使用终端操作文件系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-使用-less-命令浏览文件内容"><span class="nav-number">6.</span> <span class="nav-text">1.6 使用 less 命令浏览文件内容</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hongqin Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Page Views: <span id="busuanzi_value_site_pv"></span> 
+</span>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Hiraku"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = '0 ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+
+  
+</body>
+</html>
