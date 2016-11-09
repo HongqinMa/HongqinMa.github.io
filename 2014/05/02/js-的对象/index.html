@@ -96,7 +96,7 @@
 <meta property="og:url" content="https://hongqinma.github.io/2014/05/02/js-的对象/index.html">
 <meta property="og:site_name" content="HongqinMa' Blog">
 <meta property="og:description" content="&amp;#x9664;&amp;#x4E86;&amp;#x5B57;&amp;#x7B26;&amp;#x4E32;&amp;#x3001;&amp;#x6570;&amp;#x5B57;&amp;#x3001;true&amp;#x3001;false&amp;#x3001;null &amp;#x548C; undefined &amp;#x4E4B;&amp;#x5916;&amp;#xFF0C;JavaScript &amp;#x4E2D;&amp;#x7684;&amp;#x503C;&amp;#x90FD;&amp;#x662F;&amp;#x5">
-<meta property="og:updated_time" content="2016-11-07T15:00:33.390Z">
+<meta property="og:updated_time" content="2016-11-09T11:31:34.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js 的对象">
 <meta name="twitter:description" content="&amp;#x9664;&amp;#x4E86;&amp;#x5B57;&amp;#x7B26;&amp;#x4E32;&amp;#x3001;&amp;#x6570;&amp;#x5B57;&amp;#x3001;true&amp;#x3001;false&amp;#x3001;null &amp;#x548C; undefined &amp;#x4E4B;&amp;#x5916;&amp;#xFF0C;JavaScript &amp;#x4E2D;&amp;#x7684;&amp;#x503C;&amp;#x90FD;&amp;#x662F;&amp;#x5">
@@ -464,6 +464,10 @@
 <p>ECMAScript 5 &#x63D0;&#x4F9B;&#x4E86;&#x5185;&#x7F6E;&#x51FD;&#x6570; JSON.stringify() &#x548C; JSON.parse() &#x7528;&#x6765;&#x5E8F;&#x5217;&#x5316;&#x548C;&#x8FD8;&#x539F;JavaScript&#x5BF9;&#x8C61;&#x3002;<br>&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x4F7F;&#x7528; JSON &#x6570;&#x636E;&#x683C;&#x5F0F;&#x3002;</p>
 <p>JSON, &#x5373; <code>JavaScript Object Notation</code>&#xFF08; JavaScript &#x5BF9;&#x8C61;&#x8868;&#x793A;&#x6CD5;&#xFF09;<br>&#x662F;&#x4EFF;&#x7167;JS&#x4E2D;&#x5BF9;&#x8C61;&#x5B57;&#x9762;&#x91CF;&#x7684;&#x683C;&#x5F0F;&#x53BB;&#x4E66;&#x5199;&#x7684;&#x4E00;&#x4E32;&#x7528;&#x6765;&#x8BB0;&#x5F55;&#x5BF9;&#x8C61;&#x6570;&#x636E;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;<br>&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x3002; &#x5373; JSON</p>
 <p>&#x6CE8;&#x610F;&#xFF1A;&#x51FD;&#x6570;&#x3001;RegExp&#x3001;Error &#x5BF9;&#x8C61;&#x548C; undefined &#x503C;&#x4E0D;&#x80FD;&#x5E8F;&#x5217;&#x5316;&#x548C;&#x8FD8;&#x539F;</p>
+<ul>
+<li>JSON &#x8F6C;&#x5B57;&#x7B26;&#x4E32; &#x5E8F;&#x5217;&#x5316; JSON.stringfy();</li>
+<li>&#x5B57;&#x7B26;&#x4E32;&#x8F6C; JSON &#x53CD;&#x5E8F;&#x5217;&#x5316; JSON.parse();</li>
+</ul>
 <h3 id="&#x904D;&#x5386;&#x7684;-JSON-&#x4E24;&#x79CD;&#x65B9;&#x5F0F;"><a href="#&#x904D;&#x5386;&#x7684;-JSON-&#x4E24;&#x79CD;&#x65B9;&#x5F0F;" class="headerlink" title="&#x904D;&#x5386;&#x7684; JSON &#x4E24;&#x79CD;&#x65B9;&#x5F0F;"></a>&#x904D;&#x5386;&#x7684; JSON &#x4E24;&#x79CD;&#x65B9;&#x5F0F;</h3><p>&#x901A;&#x8FC7;for&#x53EF;&#x4EE5;&#x5BF9;&#x96C6;&#x5408;&#x8FDB;&#x884C;&#x6709;&#x5E8F;&#x7684;&#x904D;&#x5386;<br><code>for(var k in json) { &#x8BED;&#x53E5; };</code><br>k&#x53D8;&#x91CF;&#x4EE3;&#x8868;&#x7684;&#x662F;json&#x4E2D;&#x7684;&#x5404;&#x4E2A;&#x5C5E;&#x6027;&#xFF08;key&#xFF09;&#x548C; var i = 0&#x4E2D;&#x7684;i&#x662F;&#x4E00;&#x4E2A;&#x610F;&#x601D;,&#x540D;&#x5B57;&#x4E0D;&#x540C;&#x800C;&#x5DF2;</p>
 <h2 id="&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;"><a href="#&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;"></a>&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;</h2><ul>
 <li>toString() &#x65B9;&#x6CD5; </li>
@@ -523,7 +527,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/04/06/js-Date、Math、包装对象、RegExp/" rel="next" title="js Date、Math、包装对象、RegExp">
+              <a href="/2014/04/06/06-js-Date、Math、包装对象、RegExp/" rel="next" title="js Date、Math、包装对象、RegExp">
                 <i class="fa fa-chevron-left"></i> js Date、Math、包装对象、RegExp
               </a>
             
@@ -531,8 +535,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/05/11/js-的数组/" rel="prev" title="js 的数组">
-                js 的数组 <i class="fa fa-chevron-right"></i>
+              <a href="/2014/05/02/07-js-的对象/" rel="prev" title="js 的对象">
+                js 的对象 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -624,7 +628,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
