@@ -1,0 +1,1069 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="nodejs,net," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://ofy7k3v4s.bkt.clouddn.com/mylogo.png?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x7F51;&amp;#x7EDC;&amp;#x7F16;&amp;#x7A0B;
+&amp;#x5E94;&amp;#x7528;&amp;#x5C42;
+http &amp;#x534F;&amp;#x8BAE;
+&amp;#x5728;&amp;#x6D4F;&amp;#x89C8;&amp;#x5668;&amp;#x8F93;&amp;#x5165;&amp;#x4E00;&amp;#x4E2A;&amp;#x5730;&amp;#x5740;&amp;#xFF0C;&amp;#x6D4F;&amp;#x89C8;&amp;#x5668;&amp;#x6309;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="s006.node-网络编程-终端聊天室">
+<meta property="og:url" content="https://hongqinma.github.io/2016/10/02/s006-node-网络编程-终端聊天室/index.html">
+<meta property="og:site_name" content="HongqinMa' Blog">
+<meta property="og:description" content="&amp;#x7F51;&amp;#x7EDC;&amp;#x7F16;&amp;#x7A0B;
+&amp;#x5E94;&amp;#x7528;&amp;#x5C42;
+http &amp;#x534F;&amp;#x8BAE;
+&amp;#x5728;&amp;#x6D4F;&amp;#x89C8;&amp;#x5668;&amp;#x8F93;&amp;#x5165;&amp;#x4E00;&amp;#x4E2A;&amp;#x5730;&amp;#x5740;&amp;#xFF0C;&amp;#x6D4F;&amp;#x89C8;&amp;#x5668;&amp;#x6309;">
+<meta property="og:updated_time" content="2016-11-10T08:59:59.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="s006.node-网络编程-终端聊天室">
+<meta name="twitter:description" content="&amp;#x7F51;&amp;#x7EDC;&amp;#x7F16;&amp;#x7A0B;
+&amp;#x5E94;&amp;#x7528;&amp;#x5C42;
+http &amp;#x534F;&amp;#x8BAE;
+&amp;#x5728;&amp;#x6D4F;&amp;#x89C8;&amp;#x5668;&amp;#x8F93;&amp;#x5165;&amp;#x4E00;&amp;#x4E2A;&amp;#x5730;&amp;#x5740;&amp;#xFF0C;&amp;#x6D4F;&amp;#x89C8;&amp;#x5668;&amp;#x6309;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6347850919329138000',
+      author: 'Hiraku'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://hongqinma.github.io/2016/10/02/s006-node-网络编程-终端聊天室/"/>
+
+
+  <title> s006.node-网络编程-终端聊天室 | HongqinMa' Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?10010323";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="http://ofy7k3v4s.bkt.clouddn.com/photo.jpg"
+             alt="HongqinMa' Blog"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">HongqinMa' Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Spell at all costs， to rush you in the future。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                s006.node-网络编程-终端聊天室
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-10-02T22:12:05+08:00" content="2016-10-02">
+              2016-10-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Node.js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/02/s006-node-网络编程-终端聊天室/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/02/s006-node-网络编程-终端聊天室/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/10/02/s006-node-网络编程-终端聊天室/" class="leancloud_visitors" data-flag-title="s006.node-网络编程-终端聊天室">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+
+          
+          <span id="busuanzi_container_page_pv">  <span id="busuanzi_value_page_pv"></span> Views</span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;"><a href="#&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;" class="headerlink" title="&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;"></a>&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;</h2><ul>
+<li>&#x5E94;&#x7528;&#x5C42;<ul>
+<li>http &#x534F;&#x8BAE;</li>
+<li>&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x8F93;&#x5165;&#x4E00;&#x4E2A;&#x5730;&#x5740;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x6309;&#x7167; http &#x534F;&#x8BAE;&#x5C06;&#x8F93;&#x5165;&#x7684;&#x5730;&#x5740;&#x5305;&#x88C5;&#x6210; http &#x62A5;&#x6587;</li>
+<li>&#x548C;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5173;&#x7CFB;</li>
+<li>&#x53EA;&#x8D1F;&#x8D23;&#x6570;&#x636E;&#x5305;&#x88C5;</li>
+<li>&#x5305;&#x88C5;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x4E3A;&#x4E86;&#x533A;&#x5206;&#x4E0D;&#x540C;&#x7684;&#x884C;&#x4E3A;</li>
+</ul>
+</li>
+<li>&#x4F20;&#x8F93;&#x5C42;<ul>
+<li>&#x5C06;&#x5E94;&#x7528;&#x5C42;&#x5305;&#x88C5;&#x597D;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x901A;&#x8FC7;&#x4F20;&#x8F93;&#x5C42;&#x8FDB;&#x884C;&#x4F20;&#x8F93;</li>
+<li>TCP: &#x7535;&#x8BDD;&#x673A; <ul>
+<li>&#x7AEF;&#x5230;&#x7AEF;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#xFF0C;&#x5FC5;&#x987B;&#x77E5;&#x9053;&#x5BF9;&#x65B9;&#x7684; ip &#x5730;&#x5740;&#x548C;&#x7AEF;&#x53E3;&#x53F7;</li>
+<li>TCP/IP &#x5BF9;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x5B8C;&#x6574;&#x6027;&#x7684;&#x4FDD;&#x969C;<ul>
+<li>&#x4E00;&#x65E6;&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;&#x53D1;&#x751F;&#x6570;&#x636E;&#x7684;&#x5B8C;&#x6574;&#x6027;&#x4E22;&#x5931;&#xFF0C;&#x5219;&#x5168;&#x90E8;&#x4E22;&#x6389;&#x91CD;&#x4F20;</li>
+</ul>
+</li>
+<li>&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x8FDE;&#x63A5;<ul>
+<li>&#x53CC;&#x65B9;&#x901A;&#x4FE1;&#x5FC5;&#x987B;&#x5148;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</li>
+<li>&#x786E;&#x4FDD;&#x53CC;&#x65B9;&#x90FD;&#x80FD;&#x6536;&#x5230;&#x5BF9;&#x65B9;&#x7684;&#x6D88;&#x606F;</li>
+<li>&#x9996;&#x5148;&#x5462;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#x6982;&#x5FF5;<ul>
+<li>&#x5BA2;&#x6237;&#x7AEF; &#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42; &#x2013;&gt; &#x518D;&#x56DE;&#x4E00;&#x4E2A;  &#x8FD9;&#x5C31;&#x662F;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x8FDE;&#x63A5;</li>
+<li>&#x670D;&#x52A1;&#x5668; &#x56DE;&#x9001;&#x4E00;&#x4E2A;&#x6D88;&#x606F;</li>
+</ul>
+</li>
+<li>&#x5EFA;&#x7ACB;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x8FDE;&#x63A5;&#x4E4B;&#x540E;&#x53CC;&#x65B9;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x6709;&#x4FDD;&#x8BC1;&#x7684;&#x6570;&#x636E;&#x901A;&#x4FE1;&#x4E86;</li>
+</ul>
+</li>
+<li>&#x7528;&#x4E8E; web &#x670D;&#x52A1;&#x5668; &#x548C; &#x5BA2;&#x6237;&#x7AEF;&#x6D4F;&#x89C8;&#x5668; &#x4F20;&#x8F93;&#x6570;&#x636E;</li>
+<li>&#x6570;&#x636E;&#x5B89;&#x5168;&#x6027;&#xFF0C;&#x5BF9;&#x6570;&#x636E;&#x5B8C;&#x6574;&#x6027;&#x6709;&#x8981;&#x6C42;&#x7684;&#x4F7F;&#x7528; TCP/IP &#x534F;&#x8BAE;</li>
+</ul>
+</li>
+<li>UDP: &#x6536;&#x97F3;&#x673A; &#x5E7F;&#x64AD;<ul>
+<li>&#x53D1;&#x9001;&#x4E00;&#x6761;&#x6570;&#x636E;&#xFF0C;&#x8C01;&#x6536;&#x5230;&#x6211;&#x4E0D;&#x5173;&#x5FC3;</li>
+<li>&#x4F8B;&#x5982;&#x6E38;&#x620F;&#x3001;&#x5728;&#x7EBF;&#x542C;&#x6B4C;&#x3001;&#x770B;&#x7535;&#x5F71; &#x90FD;&#x662F;&#x4F7F;&#x7528; UDP &#x534F;&#x8BAE;</li>
+<li>&#x5BF9;&#x4E8E;&#x6570;&#x636E;&#x7684;&#x5B8C;&#x6574;&#x6027;&#x6CA1;&#x6709;&#x4FDD;&#x8BC1;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>&#x7F51;&#x7EDC;&#x5C42;<ul>
+<li>&#x8DEF;&#x7531;&#x5B9A;&#x4F4D;</li>
+<li>IP &#x5BFB;&#x5740; &#x548C; &#x8DEF;&#x7531;&#x5B9A;&#x4F4D;</li>
+</ul>
+</li>
+<li>&#x94FE;&#x8DEF;&#x5C42;<ul>
+<li>&#x201C;&#x94FE;&#x63A5;&#x5C42;&#x201D;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5B83;&#x5728; &#x201C;&#x5B9E;&#x4F53;&#x5C42;&#x201D; &#x7684;&#x4E0A;&#x65B9;&#xFF0C;&#x786E;&#x5B9A;&#x4E86; 0 &#x548C; 1 &#x7684;&#x5206;&#x7EC4;&#x65B9;&#x5F0F;</li>
+<li>&#x5BF9;&#x8981;&#x4F20;&#x8F93;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x628A; 0 &#x548C; 1 &#x8FDB;&#x884C;&#x5206;&#x7EC4;&#xFF0C;&#x5206;&#x6210;&#x591A;&#x4E2A;&#x6570;&#x636E;&#x5757;&#x8FDB;&#x884C;&#x4F20;&#x8F93;</li>
+</ul>
+</li>
+<li>&#x5B9E;&#x4F53;&#x5C42;<ul>
+<li>&#x5149;&#x7F06;&#x3001;&#x7535;&#x7F06;&#x3001;&#x53CC;&#x7EDE;&#x7EBF;&#x3001;&#x65E0;&#x7EBF;&#x7535;&#x6DB2;</li>
+<li>&#x9AD8;&#x7535;&#x9891;&#x3001;&#x4F4E;&#x7535;&#x9891;</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x5728;&#x7EC8;&#x7AEF;&#x6A21;&#x62DF;&#x804A;&#x5929;&#x5BA4;"><a href="#&#x5728;&#x7EC8;&#x7AEF;&#x6A21;&#x62DF;&#x804A;&#x5929;&#x5BA4;" class="headerlink" title="&#x5728;&#x7EC8;&#x7AEF;&#x6A21;&#x62DF;&#x804A;&#x5929;&#x5BA4;"></a>&#x5728;&#x7EC8;&#x7AEF;&#x6A21;&#x62DF;&#x804A;&#x5929;&#x5BA4;</h2><h3 id="&#x670D;&#x52A1;&#x7AEF;&#x6A21;&#x62DF;"><a href="#&#x670D;&#x52A1;&#x7AEF;&#x6A21;&#x62DF;" class="headerlink" title="&#x670D;&#x52A1;&#x7AEF;&#x6A21;&#x62DF;"></a>&#x670D;&#x52A1;&#x7AEF;&#x6A21;&#x62DF;</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">&apos;net&apos;</span>);</div><div class="line"><span class="keyword">const</span> server = net.createServer();</div><div class="line"><span class="comment">// &#x7528;&#x6237;&#x6635;&#x79F0;: socket&#x5BF9;&#x8C61;</span></div><div class="line"><span class="comment">// &#x7528;&#x6237;&#x6635;&#x79F0;: socket&#x5BF9;&#x8C61;</span></div><div class="line"><span class="comment">// ......</span></div><div class="line"><span class="keyword">const</span> users = {};</div><div class="line">server.on(<span class="string">&apos;connection&apos;</span>, socket =&gt; {</div><div class="line">  <span class="comment">// &#x5F53;&#x6536;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x6CE8;&#x518C;&#x6D88;&#x606F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5904;&#x7406;&#x6CE8;&#x518C;&#x8BF7;&#x6C42;</span></div><div class="line">  <span class="comment">// &#x53EF;&#x80FD;&#x6635;&#x79F0;&#x88AB;&#x5360;&#x7528;&#x4E86;&#xFF0C;&#x4F60;&#x5C31;&#x8981;&#x544A;&#x8BC9;&#x7528;&#x6237;&#x88AB;&#x5360;&#x7528;&#x4E86;</span></div><div class="line">  <span class="comment">// &#x5982;&#x679C;&#x6CA1;&#x6709;&#x88AB;&#x5360;&#x7528;&#xFF0C;&#x5219;&#x5C06;&#x6635;&#x79F0;&#x4FDD;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x544A;&#x8BC9;&#x7528;&#x6237;&#x767B;&#x9646;&#x804A;&#x5929;&#x5BA4;&#x6210;&#x529F;</span></div><div class="line">  <span class="comment">// &#x53F6;&#x826F;&#x8FB0;</span></div><div class="line">  <span class="comment">// \list</span></div><div class="line">  <span class="comment">// &#x6211;&#x6709;&#x4E00;&#x767E;&#x79CD;&#x65B9;&#x6CD5;&#x8BA9;&#x4F60;&#x5F85;&#x4E0D;&#x4E0B;&#x53BB;</span></div><div class="line">  <span class="comment">// &#x8D75;&#x65E5;&#x5929;: &#x4F60;&#x7B49;&#x7740;</span></div><div class="line"></div><div class="line">  socket.json = <span class="function"><span class="params">obj</span> =&gt;</span> {</div><div class="line">    socket.write(<span class="built_in">JSON</span>.stringify(obj));</div><div class="line">  }</div><div class="line"></div><div class="line">  socket.on(<span class="string">&apos;data&apos;</span>, data =&gt; {</div><div class="line">    data = data.toString().trim();</div><div class="line">    <span class="keyword">try</span> {</div><div class="line">      data = <span class="built_in">JSON</span>.parse(data);</div><div class="line">      <span class="keyword">switch</span> (data.type) {</div><div class="line">        <span class="keyword">case</span> <span class="string">&apos;signup&apos;</span>:</div><div class="line">          <span class="comment">// &#x5982;&#x679C;&#x6635;&#x79F0;&#x5DF2;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x544A;&#x8BC9;&#x7528;&#x6237;&#x6635;&#x79F0;&#x5DF2;&#x5B58;&#x5728;</span></div><div class="line">          <span class="keyword">if</span> (users[data.message]) {</div><div class="line">            <span class="keyword">return</span> socket.write(<span class="built_in">JSON</span>.stringify({</div><div class="line">              <span class="attr">type</span>: <span class="string">&apos;singup&apos;</span>,</div><div class="line">              <span class="attr">code</span>: <span class="number">1001</span>,</div><div class="line">              <span class="attr">message</span>: <span class="string">&apos;nickname already exists&apos;</span></div><div class="line">            }));</div><div class="line">          }</div><div class="line">          <span class="comment">// &#x5C06;&#x6635;&#x79F0;&#x4FDD;&#x5B58;&#x5230;&#x6570;&#x636E;&#x5BF9;&#x8C61;&#x4E2D;</span></div><div class="line">          users[data.message] = socket;</div><div class="line">          <span class="comment">// &#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x54CD;&#x5E94;&#x6D88;&#x606F;&#xFF0C;&#x544A;&#x8BC9;&#x5BA2;&#x6237;&#x7AEF;&#x767B;&#x9646;&#x6210;&#x529F;</span></div><div class="line">          socket.write(<span class="built_in">JSON</span>.stringify({</div><div class="line">            <span class="attr">type</span>: <span class="string">&apos;singup&apos;</span>,</div><div class="line">            <span class="attr">code</span>: <span class="number">1000</span>,</div><div class="line">            <span class="attr">nickname</span>: data.message,</div><div class="line">            <span class="attr">message</span>: <span class="string">&apos;success&apos;</span>,</div><div class="line">          }));</div><div class="line">          <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">&apos;broadcast&apos;</span>:</div><div class="line">          <span class="keyword">for</span> (<span class="keyword">let</span> nickname <span class="keyword">in</span> users) {</div><div class="line">            users[nickname].json({</div><div class="line">              <span class="attr">type</span>: <span class="string">&apos;broadcast&apos;</span>,</div><div class="line">              <span class="attr">from</span>: data.from,</div><div class="line">              <span class="attr">message</span>: data.message</div><div class="line">            })</div><div class="line">          }</div><div class="line">          <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">          <span class="keyword">break</span>;</div><div class="line">      }</div><div class="line">    } <span class="keyword">catch</span> (e) {</div><div class="line">    }</div><div class="line">  })</div><div class="line">})</div><div class="line">server.listen(<span class="number">10000</span>, <span class="string">&apos;192.168.32.96&apos;</span>, () =&gt; {</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">&apos;server is running at port 3000&apos;</span>)</div><div class="line">})</div></pre></td></tr></table></figure>
+<h3 id="&#x5BA2;&#x6237;&#x7AEF;&#x6A21;&#x62DF;"><a href="#&#x5BA2;&#x6237;&#x7AEF;&#x6A21;&#x62DF;" class="headerlink" title="&#x5BA2;&#x6237;&#x7AEF;&#x6A21;&#x62DF;"></a>&#x5BA2;&#x6237;&#x7AEF;&#x6A21;&#x62DF;</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">&apos;net&apos;</span>);</div><div class="line"><span class="keyword">const</span> socket = net.createConnection(<span class="number">3000</span>, <span class="string">&apos;192.168.32.96&apos;</span>);</div><div class="line">socket.json = <span class="function"><span class="params">obj</span> =&gt;</span> {</div><div class="line">  socket.write(<span class="built_in">JSON</span>.stringify(obj));</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// &#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x7528;&#x6237;&#x7684;&#x6635;&#x79F0;&#x540C;&#x65F6;&#x4E5F;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x6807;&#x8BB0;</span></div><div class="line"><span class="keyword">let</span> nickname;</div><div class="line">socket.on(<span class="string">&apos;connect&apos;</span>, () =&gt; {</div><div class="line">  process.stdout.write(<span class="string">&apos;&#x8BF7;&#x8F93;&#x5165;&#x4F60;&#x7684;&#x6635;&#x79F0;&#xFF1A;&apos;</span>);</div><div class="line">  process.stdin.on(<span class="string">&apos;data&apos;</span>, data =&gt; {</div><div class="line">    data = data.toString().trim();</div><div class="line">    <span class="keyword">if</span> (!nickname) {</div><div class="line">      <span class="keyword">const</span> send = {</div><div class="line">          <span class="attr">type</span>: <span class="string">&apos;signup&apos;</span>,</div><div class="line">          <span class="attr">message</span>: data,</div><div class="line">        }</div><div class="line">        <span class="comment">// &#x5C06; json &#x5BF9;&#x8C61;&#x8F6C;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x5C31;&#x53EB;&#x505A;&#x5E8F;&#x5217;&#x5316;</span></div><div class="line">        <span class="comment">// &#x5C06; json &#x683C;&#x5F0F;&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x4E3A;&#x5BF9;&#x8C61;&#x53EB;&#x505A;&#x53CD;&#x5E8F;&#x5217;&#x5316;</span></div><div class="line">      <span class="keyword">return</span> socket.write(<span class="built_in">JSON</span>.stringify(send));</div><div class="line">    }</div><div class="line">    <span class="comment">// &#x628A;&#x6240;&#x6709;&#x8FD9;&#x79CD;&#x6307;&#x4EE4;&#x578B;&#x7684;&#x90FD;&#x52A0;&#x4E0A;&#x4E00;&#x4E2A; \ &#x7528;&#x6765;&#x533A;&#x5206;</span></div><div class="line">    <span class="comment">// \help</span></div><div class="line">    <span class="keyword">if</span> (data === <span class="string">&apos;\\list&apos;</span>) {</div><div class="line">      <span class="keyword">return</span> socket.json({</div><div class="line">        <span class="attr">type</span>: <span class="string">&apos;list&apos;</span>;</div><div class="line">      });</div><div class="line">    }</div><div class="line">    <span class="comment">// &#x5982;&#x679C;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684; xxx:dsadsadsa</span></div><div class="line">    <span class="comment">// &#x5C31;&#x5305;&#x88C5;&#x6210;&#x70B9;&#x5BF9;&#x70B9;&#x804A;&#x5929;&#x6570;&#x636E;&#x683C;&#x5F0F;</span></div><div class="line">    <span class="keyword">const</span> matches = <span class="regexp">/^(.+):(.+)$/</span>.exec(data)</div><div class="line">    <span class="keyword">if</span> (matches) {</div><div class="line">      <span class="keyword">return</span> socket.json({</div><div class="line">        <span class="attr">type</span>: <span class="string">&apos;p2p&apos;</span>,</div><div class="line">        <span class="attr">from</span>: nickname,</div><div class="line">        <span class="attr">to</span>: matches[<span class="number">1</span>],</div><div class="line">        <span class="attr">message</span>: matches[<span class="number">2</span>]</div><div class="line">      });</div><div class="line">    }</div><div class="line">    socket.json({</div><div class="line">      <span class="attr">type</span>: <span class="string">&apos;broadcast&apos;</span>,</div><div class="line">      <span class="attr">from</span>: nickname,</div><div class="line">      <span class="attr">message</span>: data</div><div class="line">    });</div><div class="line">  });</div><div class="line">});</div><div class="line">socket.on(<span class="string">&apos;data&apos;</span>, data =&gt; {</div><div class="line">  <span class="comment">// &#x5BA2;&#x6237;&#x7AEF;&#x4E5F;&#x8981;&#x6839;&#x636E;&#x670D;&#x52A1;&#x5668;&#x54CD;&#x5E94;&#x7684;&#x6D88;&#x606F;&#x505A;&#x4E00;&#x4E2A;&#x5904;&#x7406;</span></div><div class="line">  <span class="comment">// &#x4F8B;&#x5982;&#xFF0C;&#x5F53;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x4E86;&#x4E00;&#x4E2A;&#x88AB;&#x5360;&#x7528;&#x7684;&#x6D88;&#x606F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x5C31;&#x63D0;&#x793A;&#x7528;&#x6237;&#x8BF7;&#x91CD;&#x65B0;&#x8F93;&#x5165;</span></div><div class="line">  <span class="comment">// &#x5F53;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x767B;&#x9646;&#x6210;&#x529F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4E5F;&#x63D0;&#x793A;&#x7528;&#x6237;</span></div><div class="line">  data = data.toString().trim();</div><div class="line">  <span class="keyword">try</span> {</div><div class="line">    data = <span class="built_in">JSON</span>.parse(data);</div><div class="line">    <span class="keyword">switch</span> (data.type) {</div><div class="line">      <span class="keyword">case</span> <span class="string">&apos;singup&apos;</span>:</div><div class="line">        <span class="keyword">switch</span> (data.code) {</div><div class="line">          <span class="keyword">case</span> <span class="number">1000</span>:</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">&apos;&#x606D;&#x559C;&#xFF0C;&#x767B;&#x9646;&#x804A;&#x5929;&#x5BA4;&#x6210;&#x529F;&apos;</span>);</div><div class="line">            nickname = data.nickname;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">          <span class="keyword">case</span> <span class="number">1001</span>:</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">&apos;&#x6635;&#x79F0;&#x5DF2;&#x88AB;&#x5360;&#x7528;&#xFF0C;&#x5927;&#x4FA0;&#x8BF7;&#x91CD;&#x65B0;&#x6765;&#x8FC7;&apos;</span>);</div><div class="line">            process.stdout.write(<span class="string">&apos;&#x8BF7;&#x8F93;&#x5165;&#x4F60;&#x7684;&#x6635;&#x79F0;&#xFF1A;&apos;</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">          <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        }</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      <span class="keyword">case</span> <span class="string">&apos;broadcast&apos;</span>:</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">${data.<span class="keyword">from</span>}</span>&#x8BF4;&#xFF1A;<span class="subst">${data.message}</span>`</span>);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      <span class="keyword">case</span> <span class="string">&apos;list&apos;</span>:</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;&apos;</span>);</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;================ &#x7528;&#x6237;&#x5217;&#x8868; ================&apos;</span>);</div><div class="line">        data.message.forEach(<span class="function"><span class="params">n</span> =&gt;</span> <span class="built_in">console</span>.log(n));</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;==========================================&apos;</span>);</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;&apos;</span>);</div><div class="line">        <span class="keyword">break</span></div><div class="line">      <span class="keyword">case</span> <span class="string">&apos;p2p&apos;</span>:</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">${data.<span class="keyword">from</span>}</span>&#x5BF9;&#x4F60;&#x8BF4;&#xFF1A;<span class="subst">${data.message}</span>`</span>);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      <span class="keyword">default</span>:</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    }</div><div class="line">  } <span class="keyword">catch</span> (e) {</div><div class="line"></div><div class="line">  }</div><div class="line">});</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将是我最大的鼓励！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ofy7k3v4s.bkt.clouddn.com/wcpayCode.jpg" alt="Hongqin Ma WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ofy7k3v4s.bkt.clouddn.com/apayCode.jpg" alt="Hongqin Ma Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+            <a href="/tags/net/" rel="tag">#net</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/02/Anisina-博客主题使用心得/" rel="next" title="Anisina 博客主题使用心得">
+                <i class="fa fa-chevron-left"></i> Anisina 博客主题使用心得
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/10/02/s006-node-网络编程-终端聊天室/"
+     data-title="s006.node-网络编程-终端聊天室"
+     data-content=""
+     data-url="https://hongqinma.github.io/2016/10/02/s006-node-网络编程-终端聊天室/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/02/s006-node-网络编程-终端聊天室/"
+           data-title="s006.node-网络编程-终端聊天室" data-url="https://hongqinma.github.io/2016/10/02/s006-node-网络编程-终端聊天室/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/photo.jpg"
+               alt="Hongqin Ma" />
+          <p class="site-author-name" itemprop="name">Hongqin Ma</p>
+          <p class="site-description motion-element" itemprop="description">Spell at all costs， to rush you in the future. </p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HongqinMa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/HongqinMa" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100006581058735" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/HirakuMa" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-share-alt"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美" target="_blank">司徒正美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/sanshi/" title="三生石上" target="_blank">三生石上</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/TomXu/" title="汤姆大叔" target="_blank">汤姆大叔</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gold.xitu.io/" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/users/1cbb94e5ed4d/latest_articles" title="简书" target="_blank">简书</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.cnblogs.com/" title="博客园" target="_blank">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.awesomes.cn/" title="Awesomes" target="_blank">Awesomes</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络编程"><span class="nav-number">1.</span> <span class="nav-text">网络编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在终端模拟聊天室"><span class="nav-number">2.</span> <span class="nav-text">在终端模拟聊天室</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端模拟"><span class="nav-number">2.1.</span> <span class="nav-text">服务端模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端模拟"><span class="nav-number">2.2.</span> <span class="nav-text">客户端模拟</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hongqin Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Page Views: <span id="busuanzi_value_site_pv"></span> 
+</span>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Hiraku"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = '0 ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+
+  
+</body>
+</html>

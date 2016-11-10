@@ -1,0 +1,1053 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="nodejs," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://ofy7k3v4s.bkt.clouddn.com/mylogo.png?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x76D1;&amp;#x89C6;&amp;#x6587;&amp;#x4EF6;&amp;#x76D1;&amp;#x89C6; API fs.watchFile()
+
+&amp;#x56DE;&amp;#x8C03;&amp;#x51FD;&amp;#x6570;&amp;#x4E2D;&amp;#x9700;&amp;#x8981;&amp;#x63A5;&amp;#x6536;&amp;#x4E24;&amp;#x4E2A;&amp;#x53C2;&amp;#x6570;
+&amp;#x7B2C;&amp;#x4E00;&amp;#x4E2A;&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node-文件操作（下）- 文件监视、markdown转换器">
+<meta property="og:url" content="https://hongqinma.github.io/2016/09/27/s005-node-文件操作（下）-文件监视、markdown转换器/index.html">
+<meta property="og:site_name" content="HongqinMa' Blog">
+<meta property="og:description" content="&amp;#x76D1;&amp;#x89C6;&amp;#x6587;&amp;#x4EF6;&amp;#x76D1;&amp;#x89C6; API fs.watchFile()
+
+&amp;#x56DE;&amp;#x8C03;&amp;#x51FD;&amp;#x6570;&amp;#x4E2D;&amp;#x9700;&amp;#x8981;&amp;#x63A5;&amp;#x6536;&amp;#x4E24;&amp;#x4E2A;&amp;#x53C2;&amp;#x6570;
+&amp;#x7B2C;&amp;#x4E00;&amp;#x4E2A;&amp;#">
+<meta property="og:updated_time" content="2016-11-10T08:59:10.675Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node-文件操作（下）- 文件监视、markdown转换器">
+<meta name="twitter:description" content="&amp;#x76D1;&amp;#x89C6;&amp;#x6587;&amp;#x4EF6;&amp;#x76D1;&amp;#x89C6; API fs.watchFile()
+
+&amp;#x56DE;&amp;#x8C03;&amp;#x51FD;&amp;#x6570;&amp;#x4E2D;&amp;#x9700;&amp;#x8981;&amp;#x63A5;&amp;#x6536;&amp;#x4E24;&amp;#x4E2A;&amp;#x53C2;&amp;#x6570;
+&amp;#x7B2C;&amp;#x4E00;&amp;#x4E2A;&amp;#">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6347850919329138000',
+      author: 'Hiraku'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://hongqinma.github.io/2016/09/27/s005-node-文件操作（下）-文件监视、markdown转换器/"/>
+
+
+  <title> node-文件操作（下）- 文件监视、markdown转换器 | HongqinMa' Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?10010323";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="http://ofy7k3v4s.bkt.clouddn.com/photo.jpg"
+             alt="HongqinMa' Blog"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">HongqinMa' Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Spell at all costs， to rush you in the future。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                node-文件操作（下）- 文件监视、markdown转换器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-09-27T15:41:42+08:00" content="2016-09-27">
+              2016-09-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Node.js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/27/s005-node-文件操作（下）-文件监视、markdown转换器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/27/s005-node-文件操作（下）-文件监视、markdown转换器/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/27/s005-node-文件操作（下）-文件监视、markdown转换器/" class="leancloud_visitors" data-flag-title="node-文件操作（下）- 文件监视、markdown转换器">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+
+          
+          <span id="busuanzi_container_page_pv">  <span id="busuanzi_value_page_pv"></span> Views</span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="&#x76D1;&#x89C6;"><a href="#&#x76D1;&#x89C6;" class="headerlink" title="&#x76D1;&#x89C6;"></a>&#x76D1;&#x89C6;</h2><p>&#x6587;&#x4EF6;&#x76D1;&#x89C6; API fs.watchFile()</p>
+<ul>
+<li>&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E2D;&#x9700;&#x8981;&#x63A5;&#x6536;&#x4E24;&#x4E2A;&#x53C2;&#x6570;</li>
+<li>&#x7B2C;&#x4E00;&#x4E2A;&#x662F;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x7684;&#x6700;&#x65B0;&#x72B6;&#x6001; stat&#xFF0C;</li>
+<li>&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;&#x53D8;&#x5316;&#x4E4B;&#x524D;&#x7684; stat</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&apos;fs&apos;</span>);</div><div class="line"><span class="comment">// &#x76D1;&#x89C6;&#x6587;&#x4EF6;&#x7684;&#x4FEE;&#x6539;&#x65F6;&#x95F4;</span></div><div class="line">fs.watchFile(<span class="string">&apos;./node.md&apos;</span>, (curr, prev) =&gt; {</div><div class="line">  <span class="built_in">console</span>.log(curr.mtime.getHours() + <span class="string">&apos;:&apos;</span> + curr.mtime.getMinutes() + <span class="string">&apos;:&apos;</span> +curr.mtime.getSeconds());</div><div class="line">  <span class="built_in">console</span>.log(prev.mtime.getHours() + <span class="string">&apos;:&apos;</span> + prev.mtime.getMinutes() + <span class="string">&apos;:&apos;</span> +prev.mtime.getSeconds());</div><div class="line">});</div></pre></td></tr></table></figure>
+<p>&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x65F6;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x5730;&#x65B9;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> template = <span class="built_in">require</span>(<span class="string">&apos;art-template&apos;</span>)</div><div class="line"><span class="comment">// 1. &#x8C03;&#x7528; template.compile &#x65B9;&#x6CD5;&#xFF0C;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x6A21;&#x677F;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x6E32;&#x67D3;&#x51FD;&#x6570;</span></div><div class="line"><span class="comment">// # &#x8868;&#x793A;&#x4E0D;&#x7F16;&#x7801;&#x8F93;&#x51FA;</span></div><div class="line"><span class="keyword">const</span> render = template.compile(<span class="string">`</span></div><div class="line">&lt;h1&gt;{{# title }}&lt;/h1&gt;</div><div class="line">`)</div><div class="line"><span class="comment">// &#x9632;&#x6B62;&#x7528;&#x6237;&#x6076;&#x610F;&#x6CE8;&#x5165; JavaScript &#x4EE3;&#x7801;</span></div><div class="line"><span class="keyword">const</span> result = render({</div><div class="line">  <span class="attr">title</span>: <span class="string">&apos;&lt;span&gt;hello&lt;/span&gt;&apos;</span></div><div class="line">})</div><div class="line"><span class="built_in">console</span>.log(result)</div></pre></td></tr></table></figure>
+<p>&#x5728; node &#x4E2D;&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x5F15;&#x64CE;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> template = <span class="built_in">require</span>(<span class="string">&apos;art-template&apos;</span>);</div><div class="line"></div><div class="line"><span class="comment">// &#x8FD9;&#x662F; art-template &#x7684;&#x7B80;&#x6D01;&#x8BED;&#x6CD5;</span></div><div class="line"><span class="keyword">const</span> render = template.compile(<span class="string">`</span></div><div class="line">  &lt;h1&gt;{{title}}&lt;/h1&gt;</div><div class="line">  &lt;ul&gt;</div><div class="line">    {{each list as value i}}</div><div class="line">      &lt;li&gt;&#x7D22;&#x5F15;{{i}}:{{value}}&lt;/li&gt;</div><div class="line">    {{/each}}</div><div class="line">  &lt;/ul&gt;</div><div class="line">`)</div><div class="line"><span class="keyword">const</span> result = render({</div><div class="line">  <span class="attr">title</span>: <span class="string">&apos;node &#x4E2D;&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x5F15;&#x64CE;&apos;</span>,</div><div class="line">  <span class="attr">list</span>: [</div><div class="line">    <span class="string">&apos;a&apos;</span>, <span class="string">&apos;b&apos;</span>, <span class="string">&apos;c&apos;</span></div><div class="line">  ]</div><div class="line">});</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(result);</div></pre></td></tr></table></figure>
+<p>&#x4EE5;&#x4E0A;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x7684;&#x6A21;&#x677F;&#x662F;&#x624B;&#x5199;&#x5230;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6587;&#x4EF6;&#x8BFB;&#x53D6;&#x7684;&#x65B9;&#x5F0F;&#x83B7;&#x5F97;&#x6A21;&#x677F;</p>
+<p>&#x6B63;&#x771F;&#x60F3;&#x7528;&#x539F;&#x751F;&#x8BED;&#x6CD5;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x52A0;&#x8F7D;&#x53E6;&#x4E00;&#x4E2A;native &#x6587;&#x4EF6;&#xFF0C;&#x4FEE;&#x6539;&#x7684;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#xFF1A;  art-tempalte &#x6587;&#x4EF6;&#x4E0B;&#x7684;package.json, main:&#x201D;./node/template-native.js&#x201D;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> template = <span class="built_in">require</span>(<span class="string">&apos;art-template&apos;</span>);</div><div class="line"></div><div class="line"><span class="comment">// &#x8FD9;&#x662F; art-template &#x7684;&#x7B80;&#x6D01;&#x8BED;&#x6CD5;</span></div><div class="line"><span class="keyword">const</span> render = template.compile(<span class="string">`</span></div><div class="line">  &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;</div><div class="line">  &lt;ul&gt;</div><div class="line">  &lt;/ul&gt;</div><div class="line">`)</div><div class="line"><span class="keyword">const</span> result = render({</div><div class="line">  <span class="attr">title</span>: <span class="string">&apos;node &#x4E2D;&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x5F15;&#x64CE;&apos;</span>,</div><div class="line">  <span class="attr">list</span>: [</div><div class="line">    <span class="string">&apos;a&apos;</span>, <span class="string">&apos;b&apos;</span>, <span class="string">&apos;c&apos;</span></div><div class="line">  ]</div><div class="line">});</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(result);</div></pre></td></tr></table></figure>
+<p>&#x6A21;&#x677F;&#x5B57;&#x7B26;&#x4E32;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>{{ title }}<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">article</span> <span class="attr">class</span>=<span class="string">&quot;markdown-body&quot;</span>&gt;</span></div><div class="line">    {{# body }}</div><div class="line">  <span class="tag">&lt;/<span class="name">article</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="markdown-&#x6587;&#x4EF6;&#x81EA;&#x52A8;&#x751F;&#x6210;-HTML"><a href="#markdown-&#x6587;&#x4EF6;&#x81EA;&#x52A8;&#x751F;&#x6210;-HTML" class="headerlink" title="markdown &#x6587;&#x4EF6;&#x81EA;&#x52A8;&#x751F;&#x6210; HTML"></a>markdown &#x6587;&#x4EF6;&#x81EA;&#x52A8;&#x751F;&#x6210; HTML</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&apos;fs&apos;</span>);</div><div class="line"><span class="keyword">const</span> marked = <span class="built_in">require</span>(<span class="string">&apos;marked&apos;</span>);</div><div class="line"><span class="keyword">const</span> template = <span class="built_in">require</span>(<span class="string">&apos;art-template&apos;</span>);</div><div class="line"></div><div class="line"><span class="comment">// { persistent: true, interval: 500 } &#x4FEE;&#x6539;&#x95F4;&#x9694;&#x65F6;&#x95F4;</span></div><div class="line">fs.watchFile(<span class="string">&apos;./node.md&apos;</span>, { <span class="attr">persistent</span>: <span class="literal">true</span>, <span class="attr">interval</span>: <span class="number">1000</span> }, (curr, prev) =&gt; {</div><div class="line">  fs.readFile(<span class="string">&apos;./node.md&apos;</span>, (err, md) =&gt; {</div><div class="line">    <span class="keyword">if</span> (err) {</div><div class="line">      <span class="keyword">throw</span> err;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="comment">// &#x62FF;&#x5230;&#x6587;&#x4EF6;&#x6570;&#x636E;&#xFF0C;&#x5C06; Markdown &#x683C;&#x5F0F;&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x6362;&#x4E3A; HTML &#x683C;&#x5F0F;&#x5B57;&#x7B26;&#x4E32;</span></div><div class="line">    <span class="keyword">const</span> htmlStr = marked(md.toString());</div><div class="line">    fs.readFile(<span class="string">&apos;./template.html&apos;</span>, <span class="string">&apos;utf8&apos;</span>, (err, tmp) =&gt; {</div><div class="line">      <span class="keyword">if</span> (err) {</div><div class="line">        <span class="keyword">throw</span> err;</div><div class="line">      }</div><div class="line">      <span class="comment">// &#x4F7F;&#x7528; art-template &#x6A21;&#x677F;&#x5F15;&#x64CE;&#x7F16;&#x8BD1;&#x89E3;&#x6790;</span></div><div class="line">      <span class="keyword">const</span> result = template.compile(tmp)({</div><div class="line">        <span class="attr">textTitle</span>: <span class="string">&apos;node &#x5B66;&#x4E60;&apos;</span>,</div><div class="line">        <span class="attr">title</span>: <span class="string">&apos;node &#x5B66;&#x4E60;&apos;</span>,</div><div class="line">        <span class="attr">body</span>: htmlStr,</div><div class="line">      })</div><div class="line"></div><div class="line">      <span class="comment">// &#x5199;&#x5165;&#x8981;&#x751F;&#x6210;&#x7684;&#x6587;&#x4EF6;&#x4E2D;</span></div><div class="line">      fs.writeFile(<span class="string">&apos;./node.html&apos;</span>, result, err =&gt; {</div><div class="line">        <span class="keyword">if</span> (err) {</div><div class="line">          <span class="keyword">throw</span> err;</div><div class="line">        }</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;translate success&apos;</span>);</div><div class="line">      });</div><div class="line">    });</div><div class="line">  });</div><div class="line">});</div></pre></td></tr></table></figure>
+<p>&#x6700;&#x540E;&#xFF0C; art-template &#x6A21;&#x677F;&#x65E2;&#x53EF;&#x4EE5;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x4F7F;&#x7528;&#x8FD8;&#x53EF;&#x4EE5;&#x5728; node &#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x6CE8;&#x610F;&#xFF1A;</p>
+<ul>
+<li>node &#x4E2D;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x770B; node-modules &#x6587;&#x4EF6;&#x4E0B; art-template &#x6587;&#x4EF6;&#x4E0B;&#x7684; package.json &#x6587;&#x4EF6;&#xFF0C;&#x8BE5;&#x6587;&#x4EF6;&#x4E2D;&#x7684; main &#x5C5E;&#x6027;&#x5C31;&#x662F; node &#x4F7F;&#x7528; art-template &#x6A21;&#x677F;&#x6240;&#x4F7F;&#x7528;&#x5305;&#x7684;&#x8DEF;&#x5F84;&#x3002;</li>
+<li>&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x5F15;&#x5165;&#x7684; art-template &#x5305;&#x662F; dist &#x76EE;&#x5F55;&#x4E0B;&#x7684; art-template.js &#x6587;&#x4EF6;&#x3002;</li>
+</ul>
+<h2 id="&#x8BFB;-execl-&#x6587;&#x4EF6;"><a href="#&#x8BFB;-execl-&#x6587;&#x4EF6;" class="headerlink" title="&#x8BFB; execl &#x6587;&#x4EF6;"></a>&#x8BFB; execl &#x6587;&#x4EF6;</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> parseXlsx = <span class="built_in">require</span>(<span class="string">&apos;excel&apos;</span>);</div><div class="line"><span class="keyword">const</span> moment = <span class="built_in">require</span>(<span class="string">&apos;moment&apos;</span>);</div><div class="line"></div><div class="line">parseXlsx(<span class="string">&apos;./data/&#x8BFE;&#x8868;.xlsx&apos;</span>, (err, data) =&gt; {</div><div class="line">  <span class="keyword">if</span> (err) {</div><div class="line">    <span class="keyword">throw</span> err;</div><div class="line">  }</div><div class="line">  <span class="comment">// &#x89E3;&#x6790; excel &#x8868;&#x683C;&#x65E5;&#x671F;</span></div><div class="line">  <span class="comment">// var date = new Date((42628 - (25567 + 1)) * 86400 * 1000)</span></div><div class="line">  <span class="comment">// // &#x5728;&#x539F;&#x6709;&#x65E5;&#x671F; - 1 &#x5929;</span></div><div class="line">  <span class="comment">// date = moment(date).add(-1, &apos;days&apos;).format(&apos;YYYY-MM-DD&apos;))</span></div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> day <span class="keyword">of</span> data) {</div><div class="line">    <span class="keyword">if</span> (day[<span class="number">1</span>].trim().length &gt; <span class="number">0</span>) {</div><div class="line">      <span class="keyword">if</span> (day[<span class="number">1</span>].includes(<span class="string">&apos;&#x5468;&#x6DD1;&#x521A;&apos;</span>)) {</div><div class="line">        <span class="built_in">console</span>.log(moment(<span class="keyword">new</span> <span class="built_in">Date</span>((<span class="built_in">parseInt</span>(day[<span class="number">0</span>]) - (<span class="number">25567</span> + <span class="number">1</span>)) * <span class="number">86400</span> * <span class="number">1000</span>)).add(<span class="number">-1</span>, <span class="string">&apos;days&apos;</span>).format(<span class="string">&apos;YYYY-MM-DD&apos;</span>), day[<span class="number">1</span>])</div><div class="line">      }</div><div class="line">    }</div><div class="line">  }</div><div class="line">})</div></pre></td></tr></table></figure>
+<h3 id="&#x6587;&#x4EF6;&#x6D41;"><a href="#&#x6587;&#x4EF6;&#x6D41;" class="headerlink" title="&#x6587;&#x4EF6;&#x6D41;"></a>&#x6587;&#x4EF6;&#x6D41;</h3><p>&#x8BFB;&#x53D6;&#x5927;&#x6587;&#x4EF6;&#xFF0C;&#x4F7F;&#x7528;&#x6D41;&#x7684;&#x65B9;&#x5F0F;</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">const fs= require(&apos;fs&apos;);</div><div class="line">const src = &apos;&apos;;</div><div class="line">const des = &apos;&apos;;</div><div class="line"></div><div class="line">// &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x53EF;&#x8BFB;&#x6D41;</div><div class="line">// 2. &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x53EF;&#x5199;&#x6D41;</div><div class="line">// 3. &#x66F4;&#x65B0;&#x53EF;&#x6BD2;&#x7624;&#x5BF9;&#x8C61;&#x7684; data &#x4E8B;&#x4EF6;</div><div class="line">//    &#x53EA;&#x8981;&#x6D41;&#x5BF9;&#x8C61;&#x5DF2;&#x7ECF;&#x8FC7;&#x521B;&#x5EFA;&#x6210;&#x529F;&#xFF0C;&#x5148;&#x4E00;&#x74E2;&#x4E00;&#x74E2;&#x7684;&#x8BFB;&#x53D6;&#x6570;&#x636E;</div><div class="line">//    &#x5F53;&#x8BFB;&#x53D6;&#x5230;&#x4E00;&#x5B9A;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x89E6;&#x53D1; data &#x4E8B;&#x4EF6;&#xFF0C; &#x540C;&#x65F6;&#x5C06;&#x6570;&#x636E;&#x4F20;&#x9012;&#x7ED9;&#x56DE;&#x8C03;&#x51FD;&#x6570;</div><div class="line">//    &#x53EA;&#x8981;&#x5EA6;&#x53BB;&#x6389;&#x4E00;&#x4E2A;&#x70B9;&#x6570;&#x636E;&#xFF0C;&#x5C31;&#x8C03;&#x7528;&#x53EF;&#x5199;&#x6D41;&#x5BF9;&#x8C61;&#x7684; write &#x65B9;&#x6CD5;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x5199;&#x5165;&#x5230;&#x53EF;&#x5199;&#x6D41;&#x4E2D;</div><div class="line">// 4. &#x76D1;&#x542C;&#x53EF;&#x8BFB;&#x6D41;&#x5BF9;&#x8C61;&#x7684; end &#x4E8B;&#x4EF6;</div><div class="line">//    &#x5F53;&#x4EE5;&#x6D41;&#x7684;&#x5F62;&#x5F0F;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;&#x53EF;&#x8BFB;&#x6D41;&#x5BF9;&#x8C61;&#x7684; end &#x4E8B;&#x4EF6;</div><div class="line">//    &#x4F7F;&#x7528;&#x53EF;&#x5199;&#x6D41;&#x7684; end &#x65B9;&#x6CD5;&#x5C06;&#x53EF;&#x5199;&#x6D41;&#x5173;&#x95ED;</div><div class="line">// </div><div class="line">const readStream = fs.createReadStream(src);</div><div class="line">const writeStream = fs.createWriteStream(des);</div><div class="line">// &#x83B7;&#x53D6;&#x8981;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x7684;&#x603B;&#x5B57;&#x8282;&#x5927;&#x5C0F;</div><div class="line">const totalSize = fs.statSync(src).size;</div><div class="line">// &#x7528;&#x6765;&#x7EDF;&#x8BA1;&#x6700;&#x65B0;&#x8BFB;&#x53D6;&#x5230;&#x7684;&#x6570;&#x636E;&#x5B57;&#x8282;&#x6570;</div><div class="line">const currentSize = 0;</div><div class="line">readStream.on(&apos;data&apos;, data =&gt; {</div><div class="line">  console.log(`${((currentSize += data.length) / totalSize * 100).toFixed(2)}%10`);</div><div class="line">  writeStream.write(data);</div><div class="line">});</div><div class="line">readStream.on(&apos;end&apos;, () =&gt; {</div><div class="line">  console.log(&apos;&#x590D;&#x5236;&#x6587;&#x7ED3;&#x675F;&apos;);</div><div class="line">  writeStream.end();</div><div class="line">});</div></pre></td></tr></table></figure>
+<p>&#x4F7F;&#x7528;&#x7BA1;&#x9053;&#x65B9;&#x6CD5;&#x8BFB;&#x5199;&#x5927;&#x6587;&#x4EF6;&#xFF1B;</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">const readStream = fs.createReadStrean(src);</div><div class="line">const writeStream = fs.createWriteStream(des);</div><div class="line">const fs= require(&apos;fs&apos;);</div><div class="line">const src = &apos;&apos;;</div><div class="line">const des = &apos;&apos;;</div><div class="line">// &#x83B7;&#x53D6;&#x8981;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x7684;&#x603B;&#x5B57;&#x8282;&#x5927;&#x5C0F;</div><div class="line">const totalSize = fs.statSync(src).size;</div><div class="line">// &#x7528;&#x6765;&#x7EDF;&#x8BA1;&#x6700;&#x65B0;&#x8BFB;&#x53D6;&#x5230;&#x7684;&#x6570;&#x636E;&#x5B57;&#x8282;&#x6570;</div><div class="line">const currentSize = 0;</div><div class="line">readStream.on(&apos;data&apos;, data =&gt; {</div><div class="line">  console.log(`${((currentSize += data.length) / totalSize * 100).toFixed(2)}%10`);</div><div class="line">  writeStream.write(data);</div><div class="line">});</div><div class="line">// &#x5C06;&#x53EF;&#x8BFB;&#x6D41;&#x901A;&#x8FC7; pipe &#x65B9;&#x6CD5;&#xFF0C;&#x6570;&#x636E;&#x81EA;&#x52A8;&#x6D41;&#x5165;&#x6307;&#x5B9A;&#x7684;&#x53EF;&#x5199;&#x6D41;&#x4E2D;</div><div class="line">readStream.pipe(writeStream);</div></pre></td></tr></table></figure>
+<h2 id="&#x6D89;&#x53CA;&#x7684;&#x5305;"><a href="#&#x6D89;&#x53CA;&#x7684;&#x5305;" class="headerlink" title="&#x6D89;&#x53CA;&#x7684;&#x5305;"></a>&#x6D89;&#x53CA;&#x7684;&#x5305;</h2><ul>
+<li>moment&#xFF1A;&#x65F6;&#x95F4;&#x5904;&#x7406;</li>
+<li>fs-extra&#xFF1A;&#x6269;&#x5C55;&#x4E86;&#x539F;&#x751F; fs &#x6A21;&#x5757;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F8B;&#x5982;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x975E;&#x7A7A;&#x76EE;&#x5F55;&#xFF0C;&#x9012;&#x5F52;&#x904D;&#x5386;&#x65E0;&#x6781;&#x76EE;&#x5F55;&#x7B49;</li>
+<li>marked&#xFF1A;Markdown&#x8F6C;&#x6362;</li>
+<li>art-template&#xFF1A;&#x6A21;&#x677F;&#x5F15;&#x64CE;</li>
+<li>excel&#xFF1A;&#x8BFB;&#x53D6;excel&#x8868;&#x683C;&#x6587;&#x4EF6;&#x6570;&#x636E;</li>
+<li>nodemon: &#x76D1;&#x542C;&#x6587;&#x4EF6;&#x53D8;&#x5316;&#xFF0C;&#x81EA;&#x52A8;&#x91CD;&#x542F;<ul>
+<li><code>npm install -g nodemon</code></li>
+<li><code>nodemon server.js</code></li>
+<li>&#x8BE5;&#x5DE5;&#x5177;&#x4F1A;&#x76D1;&#x542C;&#x6587;&#x4EF6;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x4F7F;&#x7528; node &#x91CD;&#x65B0;&#x6267;&#x884C;&#x5BF9;&#x5E94;&#x7684;&#x811A;&#x672C;&#x6587;&#x4EF6;</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将是我最大的鼓励！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ofy7k3v4s.bkt.clouddn.com/wcpayCode.jpg" alt="Hongqin Ma WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ofy7k3v4s.bkt.clouddn.com/apayCode.jpg" alt="Hongqin Ma Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/24/s004-node-文件操作（中）-文件状态、promise版本封装/" rel="next" title="node-文件操作（中）- 文件状态、promise版本封装">
+                <i class="fa fa-chevron-left"></i> node-文件操作（中）- 文件状态、promise版本封装
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/02/Anisina-博客主题使用心得/" rel="prev" title="Anisina 博客主题使用心得">
+                Anisina 博客主题使用心得 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/09/27/s005-node-文件操作（下）-文件监视、markdown转换器/"
+     data-title="node-文件操作（下）- 文件监视、markdown转换器"
+     data-content=""
+     data-url="https://hongqinma.github.io/2016/09/27/s005-node-文件操作（下）-文件监视、markdown转换器/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/27/s005-node-文件操作（下）-文件监视、markdown转换器/"
+           data-title="node-文件操作（下）- 文件监视、markdown转换器" data-url="https://hongqinma.github.io/2016/09/27/s005-node-文件操作（下）-文件监视、markdown转换器/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/photo.jpg"
+               alt="Hongqin Ma" />
+          <p class="site-author-name" itemprop="name">Hongqin Ma</p>
+          <p class="site-description motion-element" itemprop="description">Spell at all costs， to rush you in the future. </p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HongqinMa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/HongqinMa" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100006581058735" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/HirakuMa" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-share-alt"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美" target="_blank">司徒正美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/sanshi/" title="三生石上" target="_blank">三生石上</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/TomXu/" title="汤姆大叔" target="_blank">汤姆大叔</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gold.xitu.io/" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/users/1cbb94e5ed4d/latest_articles" title="简书" target="_blank">简书</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.cnblogs.com/" title="博客园" target="_blank">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.awesomes.cn/" title="Awesomes" target="_blank">Awesomes</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#监视"><span class="nav-number">1.</span> <span class="nav-text">监视</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#markdown-文件自动生成-HTML"><span class="nav-number">2.</span> <span class="nav-text">markdown 文件自动生成 HTML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读-execl-文件"><span class="nav-number">3.</span> <span class="nav-text">读 execl 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件流"><span class="nav-number">3.1.</span> <span class="nav-text">文件流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#涉及的包"><span class="nav-number">4.</span> <span class="nav-text">涉及的包</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hongqin Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Page Views: <span id="busuanzi_value_site_pv"></span> 
+</span>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Hiraku"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = '0 ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+
+  
+</body>
+</html>
