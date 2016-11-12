@@ -96,7 +96,7 @@
 <meta property="og:url" content="https://hongqinma.github.io/2014/05/15/09-js-String对象/index.html">
 <meta property="og:site_name" content="HongqinMa' Blog">
 <meta property="og:description" content="String &amp;#x7C7B;&amp;#x578B;String &amp;#x7C7B;&amp;#x578B;&amp;#x662F;&amp;#x5B57;&amp;#x7B26;&amp;#x4E32;&amp;#x7684;&amp;#x5BF9;&amp;#x8C61;&amp;#x5305;&amp;#x88C5;&amp;#x7C7B;&amp;#x578B;&amp;#x3002;&amp;#x521B;&amp;#x5EFA;&amp;#x65B9;&amp;#x5F0F;&amp;#x6709;&amp;#x4E24;&amp;#x79CD;&amp;#">
-<meta property="og:updated_time" content="2016-11-07T14:20:24.410Z">
+<meta property="og:updated_time" content="2016-11-12T06:40:11.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js String对象">
 <meta name="twitter:description" content="String &amp;#x7C7B;&amp;#x578B;String &amp;#x7C7B;&amp;#x578B;&amp;#x662F;&amp;#x5B57;&amp;#x7B26;&amp;#x4E32;&amp;#x7684;&amp;#x5BF9;&amp;#x8C61;&amp;#x5305;&amp;#x88C5;&amp;#x7C7B;&amp;#x578B;&amp;#x3002;&amp;#x521B;&amp;#x5EFA;&amp;#x65B9;&amp;#x5F0F;&amp;#x6709;&amp;#x4E24;&amp;#x79CD;&amp;#">
@@ -435,7 +435,7 @@
 <li>match() &#x76F4;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x8981;&#x4E48;&#x662F;&#x4E00;&#x4E2A;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x8981;&#x4E48;&#x662F;&#x4E00;&#x4E2A; RegExp &#x5BF9;&#x8C61;</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">&quot;cat, bat, sat, fat&quot;</span>;</div><div class="line"><span class="keyword">var</span> pattern = <span class="regexp">/.at/</span>;</div><div class="line"><span class="comment">// &#x4E0E; pattern.exec() &#x65B9;&#x6CD5;&#x76F8;&#x540C;</span></div><div class="line"><span class="keyword">var</span> matches = str.match(pattern);</div><div class="line"><span class="built_in">console</span>.log(matches.index);  <span class="comment">// 0</span></div><div class="line"><span class="built_in">console</span>.log(matches[<span class="number">0</span>]);  <span class="comment">// &quot;cat&quot;</span></div><div class="line"><span class="built_in">console</span>.log(matches);  <span class="comment">// [&quot;cat&quot;, index: 0, input: &quot;cat, bat, sat, fat&quot;]</span></div><div class="line"><span class="built_in">console</span>.log(pattern.lastIndex);  <span class="comment">// 0</span></div></pre></td></tr></table></figure>
-<p>&#x4EE5;&#x4E0A;&#x7684;&#x5B9E;&#x4F8B;&#x4E2D; match &#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x4E86;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF1B; &#x5982;&#x679C;&#x662F;&#x8C03;&#x7528; RegExp &#x5BF9;&#x8C61;&#x7684; exec() &#x65B9;&#x6CD5;&#x5E76;<br>&#x4F20;&#x9012;&#x672C;&#x4F8B;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x4E5F;&#x4F1A;&#x5F97;&#x5230;&#x4E0E;&#x6B64;&#x76F8;&#x540C;&#x7684;&#x6570;&#x7EC4;&#xFF1A;<br>&#x6570;&#x7EC4;&#x7684;&#x7B2C;&#x4E00;&#x9879;&#x662F;&#x4E0E;&#x6574;&#x4E2A;&#x6A21;&#x5F0F;&#x5339;&#x914D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4E4B;&#x540E;&#x7684;&#x6BCF;&#x4E00;&#x9879;&#xFF08;&#x5982;&#x679C;&#x6709;&#xFF09;&#x4FDD;&#x5B58;&#x7740;&#x4E0E;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x7684;&#x6355;&#x83B7;&#x7EC4;&#x5339;&#x914D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF1B;</p>
+<p>&#x4EE5;&#x4E0A;&#x7684;&#x5B9E;&#x4F8B;&#x4E2D; match &#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x4E86;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF1B; &#x5982;&#x679C;&#x662F;&#x8C03;&#x7528; RegExp &#x5BF9;&#x8C61;&#x7684; exec() &#x65B9;&#x6CD5;&#x5E76;,&#x4F20;&#x9012;&#x672C;&#x4F8B;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x4E5F;&#x4F1A;&#x5F97;&#x5230;&#x4E0E;&#x6B64;&#x76F8;&#x540C;&#x7684;&#x6570;&#x7EC4;&#xFF1A;&#x6570;&#x7EC4;&#x7684;&#x7B2C;&#x4E00;&#x9879;&#x662F;&#x4E0E;&#x6574;&#x4E2A;&#x6A21;&#x5F0F;&#x5339;&#x914D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4E4B;&#x540E;&#x7684;&#x6BCF;&#x4E00;&#x9879;&#xFF08;&#x5982;&#x679C;&#x6709;&#xFF09;&#x4FDD;&#x5B58;&#x7740;&#x4E0E;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x7684;&#x6355;&#x83B7;&#x7EC4;&#x5339;&#x914D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF1B;</p>
 <ul>
 <li>search() &#x65B9;&#x6CD5;<ul>
 <li>&#x552F;&#x4E00;&#x53C2;&#x6570;&#x4E0E; match() &#x65B9;&#x6CD5;&#x7684;&#x76F8;&#x540C;&#xFF1A;</li>
@@ -563,8 +563,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/05/24/10-js-的函数/" rel="prev" title="10-js-的函数">
-                10-js-的函数 <i class="fa fa-chevron-right"></i>
+              <a href="/2014/05/24/10-js-的函数/" rel="prev" title="js 的函数">
+                js 的函数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -656,7 +656,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -673,7 +673,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

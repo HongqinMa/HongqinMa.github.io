@@ -1,0 +1,1046 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="js,面向对象," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://ofy7k3v4s.bkt.clouddn.com/mylogo.png?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x6269;&amp;#x5C55;&amp;#x539F;&amp;#x578B;&amp;#x5BF9;&amp;#x8C61;&amp;#x5B9E;&amp;#x73B0;&amp;#x7EE7;&amp;#x627F;
+&amp;#x63CF;&amp;#x8FF0;&amp;#xFF1A;&amp;#x76F4;&amp;#x63A5;&amp;#x5728;&amp;#x6784;&amp;#x9020;&amp;#x51FD;&amp;#x6570;&amp;#x7684;prototype&amp;#x5C5E;&amp;#x6027;&amp;#x4E0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实现继承的几种方式">
+<meta property="og:url" content="https://hongqinma.github.io/2014/07/03/13-实现继承的几种方式/index.html">
+<meta property="og:site_name" content="HongqinMa' Blog">
+<meta property="og:description" content="&amp;#x6269;&amp;#x5C55;&amp;#x539F;&amp;#x578B;&amp;#x5BF9;&amp;#x8C61;&amp;#x5B9E;&amp;#x73B0;&amp;#x7EE7;&amp;#x627F;
+&amp;#x63CF;&amp;#x8FF0;&amp;#xFF1A;&amp;#x76F4;&amp;#x63A5;&amp;#x5728;&amp;#x6784;&amp;#x9020;&amp;#x51FD;&amp;#x6570;&amp;#x7684;prototype&amp;#x5C5E;&amp;#x6027;&amp;#x4E0">
+<meta property="og:updated_time" content="2016-11-12T06:21:03.232Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="实现继承的几种方式">
+<meta name="twitter:description" content="&amp;#x6269;&amp;#x5C55;&amp;#x539F;&amp;#x578B;&amp;#x5BF9;&amp;#x8C61;&amp;#x5B9E;&amp;#x73B0;&amp;#x7EE7;&amp;#x627F;
+&amp;#x63CF;&amp;#x8FF0;&amp;#xFF1A;&amp;#x76F4;&amp;#x63A5;&amp;#x5728;&amp;#x6784;&amp;#x9020;&amp;#x51FD;&amp;#x6570;&amp;#x7684;prototype&amp;#x5C5E;&amp;#x6027;&amp;#x4E0">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6347850919329138000',
+      author: 'Hiraku'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://hongqinma.github.io/2014/07/03/13-实现继承的几种方式/"/>
+
+
+  <title> 实现继承的几种方式 | HongqinMa' Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?10010323";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="http://ofy7k3v4s.bkt.clouddn.com/photo.jpg"
+             alt="HongqinMa' Blog"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">HongqinMa' Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Spell at all costs， to rush you in the future。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                实现继承的几种方式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2014-07-03T15:21:32+08:00" content="2014-07-03">
+              2014-07-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/07/03/13-实现继承的几种方式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/07/03/13-实现继承的几种方式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2014/07/03/13-实现继承的几种方式/" class="leancloud_visitors" data-flag-title="实现继承的几种方式">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+
+          
+          <span id="busuanzi_container_page_pv">  <span id="busuanzi_value_page_pv"></span> Views</span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="&#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;"><a href="#&#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;" class="headerlink" title="&#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;"></a>&#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;</h2><ul>
+<li>&#x63CF;&#x8FF0;&#xFF1A;&#x76F4;&#x63A5;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;prototype&#x5C5E;&#x6027;&#x4E0A;&#x6DFB;&#x52A0;&#x65B9;&#x6CD5;</li>
+<li>&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#xFF1A;&#x89E3;&#x51B3;&#x4E86;&#x76F4;&#x63A5;&#x5C06;&#x65B9;&#x6CD5;&#x8BBE;&#x7F6E;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E0A;&#x65F6;&#xFF0C;&#x5B9E;&#x4F8B;&#x5316;&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x5F00;&#x8F9F;&#x65B0;&#x7A7A;&#x95F4;&#xFF0C;&#x9020;&#x6210;&#x5185;&#x5B58;&#x4E25;&#x91CD;&#x6D6A;&#x8D39;&#x7684;&#x95EE;&#x9898;</li>
+<li>&#x7F3A;&#x70B9;&#xFF1A;&#x5982;&#x679C;&#x5C06;&#x6240;&#x6709;&#x7684;&#x65B9;&#x6CD5;&#x90FD;&#x76F4;&#x63A5;&#x8BBE;&#x7F6E;&#x5230;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E0A;&#xFF0C;&#x4EE3;&#x7801;&#x5197;&#x4F59;</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* &#x4E00;&#x3001; &#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F; */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>{</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">}</div><div class="line">Person.prototype.personFn = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;personFn is run...&quot;</span>);</div><div class="line">};</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">&quot;z3&quot;</span>, <span class="number">13</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">&quot;============== &#x4E00;&#x3001; &#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F; ==================&quot;</span>);</div><div class="line">p1.personFn();</div></pre></td></tr></table></figure>
+<h2 id="&#x66FF;&#x6362;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;"><a href="#&#x66FF;&#x6362;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;" class="headerlink" title="&#x66FF;&#x6362;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;"></a>&#x66FF;&#x6362;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;</h2><ul>
+<li>&#x63CF;&#x8FF0;&#xFF1A;&#x5C06;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x7528;&#x65B0;&#x5BF9;&#x8C61;&#x66FF;&#x6362;&#xFF0C;&#x518D;&#x5F80;&#x65B0;&#x7684;&#x5BF9;&#x8C61;&#x4E2D;&#x6DFB;&#x52A0;&#x65B0;&#x65B9;&#x6CD5;</li>
+<li>&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#xFF1A;&#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4F7F;&#x5F97;&#x4EE3;&#x7801;&#x5197;&#x4F59;</li>
+<li>&#x7F3A;&#x70B9;&#xFF1A;&#x6240;&#x6709;&#x7684;&#x65B9;&#x6CD5;&#x548C;&#x5C5E;&#x6027;&#x90FD;&#x88AB;&#x5B9E;&#x4F8B;&#x5171;&#x4EAB;</li>
+<li>&#x6CE8;&#x610F;&#xFF1A;&#x8FD8;&#x539F;&#x6784;&#x9020;&#x5668;</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* &#x4E8C;&#x3001; &#x66FF;&#x6362;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F; */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">color, type</span>) </span>{</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">    <span class="keyword">this</span>.type = type;</div><div class="line">}</div><div class="line">Animal.prototype = {</div><div class="line">    <span class="attr">constructor</span>: Animal,</div><div class="line">    <span class="attr">animalFn</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;animalFn is run...&quot;</span>);</div><div class="line">    }</div><div class="line">};</div><div class="line"><span class="keyword">var</span> animal = <span class="keyword">new</span> Animal(<span class="string">&quot;white&quot;</span>, <span class="string">&quot;cat&quot;</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">&quot;======================== &#x4E8C;&#x3001; &#x66FF;&#x6362;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F; =========================&quot;</span>);</div><div class="line">animal.animalFn();</div></pre></td></tr></table></figure>
+<h2 id="&#x53E6;&#x4E00;&#x79CD;&#x539F;&#x578B;&#x7EE7;&#x627F;&#xFF08;&#x52A8;&#x6001;&#x539F;&#x578B;&#x6A21;&#x5F0F;&#xFF09;-&#x7279;&#x70B9;&#xFF1A;&#x8BA9;&#x4EE3;&#x7801;&#x5C01;&#x88C5;&#x5230;&#x4E00;&#x8D77;"><a href="#&#x53E6;&#x4E00;&#x79CD;&#x539F;&#x578B;&#x7EE7;&#x627F;&#xFF08;&#x52A8;&#x6001;&#x539F;&#x578B;&#x6A21;&#x5F0F;&#xFF09;-&#x7279;&#x70B9;&#xFF1A;&#x8BA9;&#x4EE3;&#x7801;&#x5C01;&#x88C5;&#x5230;&#x4E00;&#x8D77;" class="headerlink" title="&#x53E6;&#x4E00;&#x79CD;&#x539F;&#x578B;&#x7EE7;&#x627F;&#xFF08;&#x52A8;&#x6001;&#x539F;&#x578B;&#x6A21;&#x5F0F;&#xFF09; &#x7279;&#x70B9;&#xFF1A;&#x8BA9;&#x4EE3;&#x7801;&#x5C01;&#x88C5;&#x5230;&#x4E00;&#x8D77;"></a>&#x53E6;&#x4E00;&#x79CD;&#x539F;&#x578B;&#x7EE7;&#x627F;&#xFF08;&#x52A8;&#x6001;&#x539F;&#x578B;&#x6A21;&#x5F0F;&#xFF09; &#x7279;&#x70B9;&#xFF1A;&#x8BA9;&#x4EE3;&#x7801;&#x5C01;&#x88C5;&#x5230;&#x4E00;&#x8D77;</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* &#x4E8C;&#x3001; &#x53E6;&#x4E00;&#x79CD;&#x539F;&#x578B;&#x7EE7;&#x627F;&#xFF08;&#x52A8;&#x6001;&#x539F;&#x578B;&#x6A21;&#x5F0F;&#xFF09; &#x7279;&#x70B9;&#xFF1A;&#x8BA9;&#x4EE3;&#x7801;&#x5C01;&#x88C5;&#x5230;&#x4E00;&#x8D77; */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Paper</span>(<span class="params">color, size</span>)</span>{</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">    <span class="keyword">this</span>.size = size;</div><div class="line">    <span class="comment">// &#x52A8;&#x6001;&#x539F;&#x578B;&#x65B9;&#x6CD5;</span></div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="keyword">this</span>.write !== <span class="string">&quot;function&quot;</span>){</div><div class="line">        Paper.prototype.write = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;color: &quot;</span> + <span class="keyword">this</span>.color + <span class="string">&quot;, size: &quot;</span> + <span class="keyword">this</span>.size);</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div><div class="line"><span class="keyword">var</span> paper = <span class="keyword">new</span> Paper(<span class="string">&quot;orange&quot;</span>, <span class="string">&quot;16k&quot;</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">&quot;================= &#x4E8C;&#x3001;&#x53E6;&#x4E00;&#x79CD;&#x539F;&#x578B;&#x7EE7;&#x627F;&#xFF08;&#x52A8;&#x6001;&#x539F;&#x578B;&#x6A21;&#x5F0F;&#xFF09;====================&quot;</span>);</div><div class="line">paper.write();</div></pre></td></tr></table></figure>
+<h2 id="&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#xFF1A;-&#x5DF2;&#x77E5;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7EE7;&#x627F;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x529F;&#x80FD;&#xFF0C;for-in"><a href="#&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#xFF1A;-&#x5DF2;&#x77E5;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7EE7;&#x627F;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x529F;&#x80FD;&#xFF0C;for-in" class="headerlink" title="&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#xFF1A; &#x5DF2;&#x77E5;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7EE7;&#x627F;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x529F;&#x80FD;&#xFF0C;for..in"></a>&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#xFF1A; &#x5DF2;&#x77E5;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7EE7;&#x627F;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x529F;&#x80FD;&#xFF0C;for..in</h2><ul>
+<li>&#x63CF;&#x8FF0;&#xFF1A; jQuery&#x7684;extend()&#x65B9;&#x6CD5;&#x539F;&#x7406;&#x662F;&#x6DF7;&#x5165;&#x7EE7;&#x627F;</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* &#x4E09;&#x3001; &#x6DF7;&#x5165;&#x7EE7;&#x627F;&#xFF1A; &#x5DF2;&#x77E5;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7EE7;&#x627F;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x529F;&#x80FD;&#xFF0C;for..in */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mixin</span>(<span class="params">target, source</span>) </span>{</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> source) {</div><div class="line">        target[key] = source[key];</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> target;</div><div class="line">}</div><div class="line"><span class="keyword">var</span> obj1 = {</div><div class="line">    <span class="attr">name</span>: <span class="string">&quot;Amiy&quot;</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">18</span>,</div><div class="line">    <span class="attr">pray</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;name: &quot;</span> + <span class="keyword">this</span>.name + <span class="string">&quot;, age: &quot;</span> + <span class="keyword">this</span>.age + <span class="string">&quot;, sex: &quot;</span> + <span class="keyword">this</span>.sex + <span class="string">&quot;; obj2.pray is run...&quot;</span>);</div><div class="line">    }</div><div class="line">};</div><div class="line"><span class="keyword">var</span> obj2 = {</div><div class="line">    <span class="attr">sex</span>: <span class="literal">false</span></div><div class="line">};</div><div class="line">mixin(obj2, obj1);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">&quot;=================== &#x4E09;&#x3001; &#x6DF7;&#x5165;&#x7EE7;&#x627F;&#xFF1A; &#x5DF2;&#x77E5;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7EE7;&#x627F;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x529F;&#x80FD;&#xFF0C;for..in ===================&quot;</span>);</div><div class="line">obj2.pray();</div></pre></td></tr></table></figure>
+<h2 id="&#x539F;&#x578B;-&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#xFF1A;&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#x7684;&#x5E94;&#x7528;"><a href="#&#x539F;&#x578B;-&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#xFF1A;&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#x7684;&#x5E94;&#x7528;" class="headerlink" title="&#x539F;&#x578B;+&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#xFF1A;&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#x7684;&#x5E94;&#x7528;"></a>&#x539F;&#x578B;+&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#xFF1A;&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#x7684;&#x5E94;&#x7528;</h2><ul>
+<li>&#x63CF;&#x8FF0;&#xFF1A;&#x5728;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E0A;&#x6269;&#x5C55;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;</li>
+<li>jQuery.fn.extend() &#x5229;&#x7528;&#x7684;&#x539F;&#x7406;&#x662F;&#x539F;&#x578B;+&#x6DF7;&#x5165;&#x7EE7;&#x627F;</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* &#x56DB;&#x3001; &#x539F;&#x578B;+&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#xFF1A;&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#x7684;&#x5E94;&#x7528; */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params"></span>) </span>{</div><div class="line">}</div><div class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</div><div class="line"><span class="keyword">var</span> o2 = {</div><div class="line">    <span class="attr">o2Attr1</span>: <span class="string">&quot;o2Attr1&quot;</span>,</div><div class="line">    <span class="attr">o2Attr2</span>: <span class="string">&quot;o2Attr2&quot;</span>,</div><div class="line">    <span class="attr">o2Method1</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;o2Method1 is run...&quot;</span>);</div><div class="line">    }</div><div class="line">};</div><div class="line">mixin(Cat.prototype, o2);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">&quot;======== &#x56DB;&#x3001; &#x539F;&#x578B;+&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#xFF1A;&#x6DF7;&#x5165;&#x7EE7;&#x627F;&#x7684;&#x5E94;&#x7528; =========&quot;</span>);</div><div class="line">cat.o2Method1();</div></pre></td></tr></table></figure>
+<h2 id="&#x7ECF;&#x5178;&#x7EE7;&#x627F;&#xFF1A;&#x5DF2;&#x77E5;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;knownObj&#xFF0C;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;&#x7EE7;&#x627F;&#x81EA;&#x5DF2;&#x77E5;&#x7684;&#x5BF9;&#x8C61;knownObj"><a href="#&#x7ECF;&#x5178;&#x7EE7;&#x627F;&#xFF1A;&#x5DF2;&#x77E5;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;knownObj&#xFF0C;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;&#x7EE7;&#x627F;&#x81EA;&#x5DF2;&#x77E5;&#x7684;&#x5BF9;&#x8C61;knownObj" class="headerlink" title="&#x7ECF;&#x5178;&#x7EE7;&#x627F;&#xFF1A;&#x5DF2;&#x77E5;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;knownObj&#xFF0C;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;&#x7EE7;&#x627F;&#x81EA;&#x5DF2;&#x77E5;&#x7684;&#x5BF9;&#x8C61;knownObj"></a>&#x7ECF;&#x5178;&#x7EE7;&#x627F;&#xFF1A;&#x5DF2;&#x77E5;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;knownObj&#xFF0C;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;&#x7EE7;&#x627F;&#x81EA;&#x5DF2;&#x77E5;&#x7684;&#x5BF9;&#x8C61;knownObj</h2><ul>
+<li>&#x6CE8;&#x610F;&#xFF1A; ES5 Object.create()&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x5C31;&#x662F;&#x7ECF;&#x5178;&#x7EE7;&#x627F;</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* &#x4E94;&#x3001; &#x7ECF;&#x5178;&#x7EE7;&#x627F;&#xFF1A;&#x5DF2;&#x77E5;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;knownObj&#xFF0C;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;&#x7EE7;&#x627F;&#x81EA;&#x5DF2;&#x77E5;&#x7684;&#x5BF9;&#x8C61;knownObj */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myCreate</span>(<span class="params">knownObj</span>) </span>{</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>{</div><div class="line">    }</div><div class="line"></div><div class="line">    F.prototype = knownObj;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</div><div class="line">}</div><div class="line"><span class="keyword">var</span> knownObj = {</div><div class="line">    <span class="attr">knownObjAttr1</span>: <span class="string">&quot;knownObjAttr1&quot;</span>,</div><div class="line">    <span class="attr">knownObjMethod1</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;knownObjMethod1 is run...&quot;</span>);</div><div class="line">    }</div><div class="line">};</div><div class="line"><span class="keyword">var</span> o = myCreate(knownObj);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">&quot;=============== &#x4E94;&#x3001; &#x7ECF;&#x5178;&#x7EE7;&#x627F;&#xFF1A;&#x5DF2;&#x77E5;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;knownObj&#xFF0C;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;&#x7EE7;&#x627F;&#x81EA;&#x5DF2;&#x77E5;&#x7684;&#x5BF9;&#x8C61;knownObj ==================&quot;</span>);</div><div class="line">o.knownObjMethod1();</div><div class="line"><span class="comment">/* &#x5728;&#x65E7;&#x6D4F;&#x89C8;&#x5668;&#x4E0B;&#x5B9E;&#x73B0;&#x7EE7;&#x627F; */</span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Object</span>.create !== <span class="string">&quot;function&quot;</span>) {</div><div class="line">    <span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>{</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>{</div><div class="line">        }</div><div class="line">        F.prototype = obj;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> F();</div><div class="line">    };</div><div class="line">}</div></pre></td></tr></table></figure>
+<h2 id="&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;"><a href="#&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;" class="headerlink" title="&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;"></a>&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;</h2><ul>
+<li>&#x7279;&#x70B9;&#xFF1A; &#x4E0D;&#x4F1A;&#x7EE7;&#x627F;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E0A;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x56E0;&#x4E3A;this&#x7684;&#x6307;&#x5411;&#x53D8;&#x4E86;&#xFF0C;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E0A;&#x7684;&#x65B9;&#x6CD5;&#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x4F8B;&#x6765;&#x8BBF;&#x95EE;</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* &#x516D;&#xFF1A; &#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x7EE7;&#x627F; */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Computer</span>(<span class="params">color, type</span>) </span>{</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">    <span class="keyword">this</span>.type = type;</div><div class="line">    <span class="keyword">this</span>.run = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;run method is run... &quot;</span>);</div><div class="line">    }</div><div class="line">}</div><div class="line">Computer.prototype.start = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Computer.prototype.start is run...&quot;</span>);</div><div class="line">};</div><div class="line"><span class="comment">/**</span></div><div class="line"> * &#x4E0B;&#x9762;&#x7684;&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;&#x5C31;&#x662F;&#x5BF9;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x7684;&#x4F18;&#x5316;</div><div class="line"> * function LenovoNoteBook(color, type, interfaceCount) {</div><div class="line"> *     this.color = color;</div><div class="line"> *     this.type = type;</div><div class="line"> *     this.interfaceCount = interfaceCount;</div><div class="line"> * }</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">LenovoNoteBook</span>(<span class="params">color, type, interfaceCount</span>) </span>{</div><div class="line">    Computer.call(<span class="keyword">this</span>, color, type);</div><div class="line">    <span class="keyword">this</span>.interfaceCount = interfaceCount;</div><div class="line">}</div><div class="line"><span class="keyword">var</span> lenovo = <span class="keyword">new</span> LenovoNoteBook(<span class="string">&quot;write&quot;</span>, <span class="string">&quot;Y470&quot;</span>, <span class="number">8</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">&quot;========= &#x516D;&#xFF1A; &#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x7EE7;&#x627F; ========&quot;</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">&quot;color: &quot;</span> + lenovo.color + <span class="string">&quot;, type: &quot;</span> + lenovo.type + <span class="string">&quot;, interfaceCount: &quot;</span> + lenovo.interfaceCount);</div><div class="line">lenovo.run();</div><div class="line"><span class="comment">// lenovo.start();</span></div></pre></td></tr></table></figure>
+<h2 id="&#x6DF7;&#x5408;&#x7EE7;&#x627F;&#xFF08;&#x7ECF;&#x5178;&#x7EE7;&#x627F;-&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF09;"><a href="#&#x6DF7;&#x5408;&#x7EE7;&#x627F;&#xFF08;&#x7ECF;&#x5178;&#x7EE7;&#x627F;-&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF09;" class="headerlink" title="&#x6DF7;&#x5408;&#x7EE7;&#x627F;&#xFF08;&#x7ECF;&#x5178;&#x7EE7;&#x627F;+&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF09;"></a>&#x6DF7;&#x5408;&#x7EE7;&#x627F;&#xFF08;&#x7ECF;&#x5178;&#x7EE7;&#x627F;+&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF09;</h2><ul>
+<li>&#x7279;&#x70B9;&#xFF1A;&#x89E3;&#x51B3;&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7EE7;&#x627F;&#x4E0D;&#x80FD;&#x591F;&#x7EE7;&#x627F;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E0A;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x95EE;&#x9898;</li>
+<li>&#x7F3A;&#x70B9;&#xFF1A;&#x7EE7;&#x627F;&#x4E86;&#x4E24;&#x6B21;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF08;&#x6A21;&#x677F;&#xFF09;</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* &#x4E03;&#x3001; &#x6DF7;&#x5408;&#x7EE7;&#x627F;&#xFF08;&#x7ECF;&#x5178;&#x7EE7;&#x627F;+&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF09;*/</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">BaseCar</span>(<span class="params">type, modelNumber, color</span>) </span>{</div><div class="line">    <span class="keyword">this</span>.type = type;</div><div class="line">    <span class="keyword">this</span>.modelNumber = modelNumber;</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">}</div><div class="line"><span class="comment">// &#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E0A;&#x7684;&#x65B9;&#x6CD5;</span></div><div class="line">BaseCar.prototype = {</div><div class="line">    <span class="attr">constructor</span>: BaseCar,</div><div class="line">    <span class="attr">canSell</span>: <span class="function"><span class="keyword">function</span> (<span class="params">price</span>) </span>{</div><div class="line">        <span class="keyword">var</span> leastPrice = <span class="number">2500000</span>;</div><div class="line">        <span class="keyword">if</span> (leastPrice &lt;= price) {</div><div class="line">            <span class="keyword">return</span> <span class="string">&quot;&#x606D;&#x559C;&#x606D;&#x559C;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x5356;&#x8F66;&quot;</span>;</div><div class="line">        } <span class="keyword">else</span> {</div><div class="line">            <span class="keyword">return</span> <span class="string">&quot;&#x60A8;&#x8FD8;&#x5DEE;:&quot;</span> + (leastPrice - price) + <span class="string">&quot;&#x5143;&#x5C31;&#x53EF;&#x4EE5;&#x4E70;&#x8F66;&#x4E86;&quot;</span>;</div><div class="line">        }</div><div class="line">    }</div><div class="line">};</div><div class="line"><span class="comment">/**</span></div><div class="line"> * Car &#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x8C03;&#x7528;call()&#x5B9E;&#x73B0;&#x7EE7;&#x627F;BaseCar&#x4E2D;&#x7684;&#x65B9;&#x6CD5;</div><div class="line"> * @param type</div><div class="line"> * @param modelNumber</div><div class="line"> * @param color</div><div class="line"> * @constructor</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Car</span>(<span class="params">type, modelNumber, color</span>) </span>{</div><div class="line">    BaseCar.call(<span class="keyword">this</span>, type, modelNumber);</div><div class="line">    <span class="keyword">this</span>.color = color;</div><div class="line">    <span class="keyword">this</span>.bmwStart = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;Bmv car is starting...&quot;</span>);</div><div class="line">    }</div><div class="line">}</div><div class="line"><span class="comment">// &#x7ECF;&#x5178;&#x7EE7;&#x627F;</span></div><div class="line">Car.prototype = <span class="keyword">new</span> BaseCar();</div><div class="line"><span class="keyword">var</span> bmwCar = <span class="keyword">new</span> Car(<span class="string">&quot;Bmw&quot;</span>, <span class="string">&quot;B34212&quot;</span>, <span class="string">&quot;write&quot;</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">&quot;=================== &#x4E03;&#x3001; &#x6DF7;&#x5408;&#x7EE7;&#x627F;&#xFF08;&#x7ECF;&#x5178;&#x7EE7;&#x627F;+&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF09; &#x767D;&#x8D3A;&#x7FD4;&#x89C6;&#x9891; =====================&quot;</span>);</div><div class="line"><span class="built_in">console</span>.log(bmwCar.canSell(<span class="number">2400000</span>));</div></pre></td></tr></table></figure>
+<h2 id="&#x89E3;&#x51B3;&#x6DF7;&#x5408;&#x7EE7;&#x627F;&#x7684;&#x7F3A;&#x70B9;"><a href="#&#x89E3;&#x51B3;&#x6DF7;&#x5408;&#x7EE7;&#x627F;&#x7684;&#x7F3A;&#x70B9;" class="headerlink" title="&#x89E3;&#x51B3;&#x6DF7;&#x5408;&#x7EE7;&#x627F;&#x7684;&#x7F3A;&#x70B9;"></a>&#x89E3;&#x51B3;&#x6DF7;&#x5408;&#x7EE7;&#x627F;&#x7684;&#x7F3A;&#x70B9;</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* &#x516B;&#x3001; &#x89E3;&#x51B3;&#x6DF7;&#x5408;&#x7EE7;&#x627F;&#x7684;&#x7F3A;&#x70B9; */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age, sex</span>) </span>{</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">    <span class="keyword">this</span>.sex = sex;</div><div class="line">    <span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;&#x7236;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E0A;&#x7684;&#x9759;&#x6001;sayHello&#x65B9;&#x6CD5; &#x8FD0;&#x884C;&quot;</span>);</div><div class="line">    };</div><div class="line">}</div><div class="line">People.prototype = {</div><div class="line">    <span class="attr">constructor</span>: People,</div><div class="line">    <span class="attr">sayHello</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;&#x7236;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;sayHello&#x65B9;&#x6CD5;&#xFF1A;name: &quot;</span> + <span class="keyword">this</span>.name + <span class="string">&quot;, age: &quot;</span> + <span class="keyword">this</span>.age + <span class="string">&quot;, sex: &quot;</span> + <span class="keyword">this</span>.sex + <span class="string">&quot;, HelloWorld !!!&quot;</span>);</div><div class="line">    }</div><div class="line">};</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Boy</span>(<span class="params">name, age, sex, studyNumber</span>) </span>{</div><div class="line">    <span class="comment">// &#x5B50;&#x7C7B;&#x4E2D;&#x4FDD;&#x5B58;&#x4E86;&#x7236;&#x7C7B;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;</span></div><div class="line">    <span class="comment">// &#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;</span></div><div class="line">    Boy.superClass.constructor.call(<span class="keyword">this</span>, name, age, sex);</div><div class="line">    <span class="keyword">this</span>.studyNumber = studyNumber;</div><div class="line">}</div><div class="line">myExtend(Boy, People);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myExtend</span>(<span class="params">subConstructor, supConstructor</span>) </span>{</div><div class="line">    <span class="comment">// 1. &#x7528;&#x4E00;&#x4E2A;&#x7A7A;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x4E2D;&#x8F6C;</span></div><div class="line">    <span class="keyword">var</span> F = <span class="keyword">new</span> <span class="built_in">Function</span>();</div><div class="line">    <span class="comment">// 2. &#x4FDD;&#x5B58;&#x7236;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;</span></div><div class="line">    F.prototype = supConstructor.prototype;</div><div class="line">    <span class="comment">// 3. &#x5B9E;&#x73B0;&#x7ECF;&#x5178;&#x7EE7;&#x627F;</span></div><div class="line">    subConstructor.prototype = <span class="keyword">new</span> F();</div><div class="line">    <span class="comment">// 4. &#x8FD8;&#x539F;&#x5B50;&#x6784;&#x9020;&#x51FD;&#x6570;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x6784;&#x9020;&#x5668;</span></div><div class="line">    subConstructor.prototype.constructor = subConstructor;</div><div class="line">    <span class="comment">// 5. &#x4FDD;&#x5B58;&#x7236;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#xFF0C;&#x4E00;&#x65B9;&#x9762;&#x65B9;&#x4FBF;&#x89E3;&#x8026;&#xFF0C;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#x53EF;&#x4EE5;&#x8F7B;&#x677E;&#x83B7;&#x5F97;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#xFF08;&#x6DFB;&#x52A0;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#xFF09;</span></div><div class="line">    subConstructor.superClass = supConstructor.prototype;</div><div class="line">    <span class="comment">// 6. &#x5224;&#x65AD;&#x7236;&#x7C7B;&#x578B;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x6784;&#x9020;&#x5668;&#xFF0C;&#x52A0;&#x4FDD;&#x9669;</span></div><div class="line">    <span class="keyword">if</span> (supConstructor.prototype.constructor !== supConstructor) {</div><div class="line">        supConstructor.prototype.constructor = supConstructor;</div><div class="line">    }</div><div class="line">}</div><div class="line"><span class="comment">// 7. &#x5229;&#x7528;&#x4FDD;&#x5B58;&#x7684;&#x7236;&#x7C7B;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7236;&#x7C7B;&#x5B50;&#x7C7B;&#x6709;&#x91CD;&#x8F7D;&#x7684;&#x65B9;&#x6CD5;</span></div><div class="line">Boy.prototype = {</div><div class="line">    <span class="attr">constructor</span>: Boy,</div><div class="line">    <span class="attr">sayHello</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;&#x5B50;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;sayHello&#x65B9;&#x6CD5;&quot;</span>);</div><div class="line">    }</div><div class="line">};</div><div class="line"><span class="comment">// &#x6CE8;&#x610F;&#xFF1A; &#x5B50;&#x7C7B;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E0A;&#x6DFB;&#x52A0;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x5728;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;&#x4E4B;&#x540E;</span></div><div class="line"><span class="keyword">var</span> boy = <span class="keyword">new</span> Boy(<span class="string">&quot;Ping&quot;</span>, <span class="number">22</span>, <span class="literal">true</span>, <span class="number">345234</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">&quot;================ &#x516B;&#x3001; &#x89E3;&#x51B3;&#x6DF7;&#x5408;&#x7EE7;&#x627F;&#x7684;&#x7F3A;&#x70B9;&#xFF0C;&#x5C01;&#x88C5;&#x51FD;&#x6570; ExtJs &#x5E95;&#x5C42; &#x767D;&#x8D3A;&#x7FD4; ===================&quot;</span>);</div><div class="line">boy.sayHello();  <span class="comment">// &#x7236;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E0A;&#x7684;&#x9759;&#x6001;sayHello&#x65B9;&#x6CD5; &#x8FD0;&#x884C;</span></div><div class="line">Boy.prototype.sayHello();  <span class="comment">// &#x5B50;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;sayHello&#x65B9;&#x6CD5;</span></div><div class="line">Boy.superClass.sayHello.call(boy); <span class="comment">// &#x7236;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;sayHello&#x65B9;&#x6CD5;&#xFF1A;name: Ping, age: 22, sex: true, HelloWorld !!!</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将是我最大的鼓励！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ofy7k3v4s.bkt.clouddn.com/wcpayCode.jpg" alt="Hongqin Ma WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ofy7k3v4s.bkt.clouddn.com/apayCode.jpg" alt="Hongqin Ma Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag">#js</a>
+          
+            <a href="/tags/面向对象/" rel="tag">#面向对象</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/06/14/12-原型链/" rel="next" title="原型链">
+                <i class="fa fa-chevron-left"></i> 原型链
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/01/20/Built-Hexo-Blog/" rel="prev" title="Hexo博客搭建">
+                Hexo博客搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2014/07/03/13-实现继承的几种方式/"
+     data-title="实现继承的几种方式"
+     data-content=""
+     data-url="https://hongqinma.github.io/2014/07/03/13-实现继承的几种方式/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2014/07/03/13-实现继承的几种方式/"
+           data-title="实现继承的几种方式" data-url="https://hongqinma.github.io/2014/07/03/13-实现继承的几种方式/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/photo.jpg"
+               alt="Hongqin Ma" />
+          <p class="site-author-name" itemprop="name">Hongqin Ma</p>
+          <p class="site-description motion-element" itemprop="description">Spell at all costs， to rush you in the future. </p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HongqinMa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/HongqinMa" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100006581058735" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/HirakuMa" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-share-alt"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美" target="_blank">司徒正美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/sanshi/" title="三生石上" target="_blank">三生石上</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/TomXu/" title="汤姆大叔" target="_blank">汤姆大叔</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gold.xitu.io/" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/users/1cbb94e5ed4d/latest_articles" title="简书" target="_blank">简书</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.cnblogs.com/" title="博客园" target="_blank">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.awesomes.cn/" title="Awesomes" target="_blank">Awesomes</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展原型对象实现继承"><span class="nav-number">1.</span> <span class="nav-text">扩展原型对象实现继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换原型对象实现继承"><span class="nav-number">2.</span> <span class="nav-text">替换原型对象实现继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#另一种原型继承（动态原型模式）-特点：让代码封装到一起"><span class="nav-number">3.</span> <span class="nav-text">另一种原型继承（动态原型模式） 特点：让代码封装到一起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#混入继承：-已知两个对象，一个对象继承另一个对象的功能，for-in"><span class="nav-number">4.</span> <span class="nav-text">混入继承： 已知两个对象，一个对象继承另一个对象的功能，for..in</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型-混入继承：混入继承的应用"><span class="nav-number">5.</span> <span class="nav-text">原型+混入继承：混入继承的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经典继承：已知一个对象knownObj，需要创建一个新对象，这个新对象继承自已知的对象knownObj"><span class="nav-number">6.</span> <span class="nav-text">经典继承：已知一个对象knownObj，需要创建一个新对象，这个新对象继承自已知的对象knownObj</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#借用构造函数实现继承"><span class="nav-number">7.</span> <span class="nav-text">借用构造函数实现继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#混合继承（经典继承-借用构造函数）"><span class="nav-number">8.</span> <span class="nav-text">混合继承（经典继承+借用构造函数）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决混合继承的缺点"><span class="nav-number">9.</span> <span class="nav-text">解决混合继承的缺点</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hongqin Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Page Views: <span id="busuanzi_value_site_pv"></span> 
+</span>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Hiraku"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = '0 ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+
+  
+</body>
+</html>

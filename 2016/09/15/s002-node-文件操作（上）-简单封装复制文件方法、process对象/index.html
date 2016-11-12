@@ -98,7 +98,7 @@ Node &amp;#x53EA;&amp;#x5728;&amp;#x6587;&amp;#x4EF6; IO &amp;#x64CD;&amp;#x4F5C
 <meta property="og:site_name" content="HongqinMa' Blog">
 <meta property="og:description" content="fs &amp;#x6587;&amp;#x4EF6;&amp;#x64CD;&amp;#x4F5C;&amp;#x6A21;&amp;#x5757;
 Node &amp;#x53EA;&amp;#x5728;&amp;#x6587;&amp;#x4EF6; IO &amp;#x64CD;&amp;#x4F5C;&amp;#x4E2D;&amp;#xFF0C;&amp;#x63D0;&amp;#x4F9B;&amp;#x4E86;&amp;#x540C;&amp;#x6B65;&amp;#x8C03;&amp;#x7528;&amp;#x548C;&amp;#x5F02;&amp;#x">
-<meta property="og:updated_time" content="2016-11-10T08:46:26.685Z">
+<meta property="og:updated_time" content="2016-11-11T23:26:29.982Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node-文件操作（上）-简单封装复制文件方法、process对象">
 <meta name="twitter:description" content="fs &amp;#x6587;&amp;#x4EF6;&amp;#x64CD;&amp;#x4F5C;&amp;#x6A21;&amp;#x5757;
@@ -358,7 +358,7 @@ Node &amp;#x53EA;&amp;#x5728;&amp;#x6587;&amp;#x4EF6; IO &amp;#x64CD;&amp;#x4F5C
 
       
         <p>fs &#x6587;&#x4EF6;&#x64CD;&#x4F5C;&#x6A21;&#x5757;</p>
-<p>Node &#x53EA;&#x5728;&#x6587;&#x4EF6; IO &#x64CD;&#x4F5C;&#x4E2D;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x540C;&#x6B65;&#x8C03;&#x7528;&#x548C;&#x5F02;&#x6B65;&#x8C03;&#x7528;&#x4E24;&#x79CD;&#x5F62;&#x5F0F;&#xFF0C;<br>fs &#x6A21;&#x5757;&#x5BF9;&#x6587;&#x4EF6;&#x7684;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x90FD;&#x6709;&#x540C;&#x6B65;&#x548C;&#x5F02;&#x6B65;&#x4E24;&#x79CD;&#x5F62;&#x5F0F;&#xFF0C;<br>&#x4E24;&#x8005;&#x53EF;&#x4EE5;&#x7ED3;&#x5408;&#x4F7F;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x63A8;&#x8350;&#x80FD;&#x4F7F;&#x7528;&#x5F02;&#x6B65;&#x8C03;&#x7528;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<br>&#x5C11;&#x7528;&#x540C;&#x6B65;&#x8C03;&#x7528;&#x3002;</p>
+<p>Node &#x53EA;&#x5728;&#x6587;&#x4EF6; IO &#x64CD;&#x4F5C;&#x4E2D;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x540C;&#x6B65;&#x8C03;&#x7528;&#x548C;&#x5F02;&#x6B65;&#x8C03;&#x7528;&#x4E24;&#x79CD;&#x5F62;&#x5F0F;&#xFF0C;fs &#x6A21;&#x5757;&#x5BF9;&#x6587;&#x4EF6;&#x7684;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x90FD;&#x6709;&#x540C;&#x6B65;&#x548C;&#x5F02;&#x6B65;&#x4E24;&#x79CD;&#x5F62;&#x5F0F;&#xFF0C;&#x4E24;&#x8005;&#x53EF;&#x4EE5;&#x7ED3;&#x5408;&#x4F7F;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x63A8;&#x8350;&#x80FD;&#x4F7F;&#x7528;&#x5F02;&#x6B65;&#x8C03;&#x7528;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5C11;&#x7528;&#x540C;&#x6B65;&#x8C03;&#x7528;&#x3002;</p>
 <p>&#x4F8B;&#x5982;&#xFF1A;<code>readFile()</code> &#x548C; <code>readFileSync()</code>&#x3002;</p>
 <h2 id="&#x5F15;&#x5165;&#x5305;"><a href="#&#x5F15;&#x5165;&#x5305;" class="headerlink" title="&#x5F15;&#x5165;&#x5305;"></a>&#x5F15;&#x5165;&#x5305;</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&apos;path&apos;</span>);</div></pre></td></tr></table></figure>
 <h2 id="&#x540C;&#x6B65;&#x64CD;&#x4F5C;"><a href="#&#x540C;&#x6B65;&#x64CD;&#x4F5C;" class="headerlink" title="&#x540C;&#x6B65;&#x64CD;&#x4F5C;"></a>&#x540C;&#x6B65;&#x64CD;&#x4F5C;</h2><ul>
@@ -571,7 +571,7 @@ Node &amp;#x53EA;&amp;#x5728;&amp;#x6587;&amp;#x4EF6; IO &amp;#x64CD;&amp;#x4F5C
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -588,7 +588,7 @@ Node &amp;#x53EA;&amp;#x5728;&amp;#x6587;&amp;#x4EF6; IO &amp;#x64CD;&amp;#x4F5C
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
