@@ -1,0 +1,1155 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="js,BOM," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://ofy7k3v4s.bkt.clouddn.com/mylogo.png?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="DOM:&amp;#x4E2D;&amp;#x7684;&amp;#x9876;&amp;#x7EA7;&amp;#x5BF9;&amp;#x8C61;&amp;#x662F;document&amp;#x2014;-&amp;#x592A;&amp;#x76D1;(&amp;#x5927;&amp;#x603B;&amp;#x7BA1;);BOM:&amp;#x4E2D;&amp;#x7684;&amp;#x9876;&amp;#x7EA7;&amp;#x5BF9;&amp;#x8C61;&amp;#x662F;window&amp;#x2014;&amp;#x201">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BOM-浏览器对象模型">
+<meta property="og:url" content="https://hongqinma.github.io/2014/08/15/16-BOM-浏览器对象模型/index.html">
+<meta property="og:site_name" content="HongqinMa' Blog">
+<meta property="og:description" content="DOM:&amp;#x4E2D;&amp;#x7684;&amp;#x9876;&amp;#x7EA7;&amp;#x5BF9;&amp;#x8C61;&amp;#x662F;document&amp;#x2014;-&amp;#x592A;&amp;#x76D1;(&amp;#x5927;&amp;#x603B;&amp;#x7BA1;);BOM:&amp;#x4E2D;&amp;#x7684;&amp;#x9876;&amp;#x7EA7;&amp;#x5BF9;&amp;#x8C61;&amp;#x662F;window&amp;#x2014;&amp;#x201">
+<meta property="og:updated_time" content="2016-11-14T11:37:48.770Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BOM-浏览器对象模型">
+<meta name="twitter:description" content="DOM:&amp;#x4E2D;&amp;#x7684;&amp;#x9876;&amp;#x7EA7;&amp;#x5BF9;&amp;#x8C61;&amp;#x662F;document&amp;#x2014;-&amp;#x592A;&amp;#x76D1;(&amp;#x5927;&amp;#x603B;&amp;#x7BA1;);BOM:&amp;#x4E2D;&amp;#x7684;&amp;#x9876;&amp;#x7EA7;&amp;#x5BF9;&amp;#x8C61;&amp;#x662F;window&amp;#x2014;&amp;#x201">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6347850919329138000',
+      author: 'Hiraku'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://hongqinma.github.io/2014/08/15/16-BOM-浏览器对象模型/"/>
+
+
+  <title> BOM-浏览器对象模型 | HongqinMa' Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?10010323";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="http://ofy7k3v4s.bkt.clouddn.com/photo.jpg"
+             alt="HongqinMa' Blog"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">HongqinMa' Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Spell at all costs， to rush you in the future。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                BOM-浏览器对象模型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2014-08-15T19:26:39+08:00" content="2014-08-15">
+              2014-08-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/08/15/16-BOM-浏览器对象模型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/15/16-BOM-浏览器对象模型/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2014/08/15/16-BOM-浏览器对象模型/" class="leancloud_visitors" data-flag-title="BOM-浏览器对象模型">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+
+          
+          <span id="busuanzi_container_page_pv">  <span id="busuanzi_value_page_pv"></span> Views</span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>DOM:&#x4E2D;&#x7684;&#x9876;&#x7EA7;&#x5BF9;&#x8C61;&#x662F;document&#x2014;-&#x592A;&#x76D1;(&#x5927;&#x603B;&#x7BA1;);BOM:&#x4E2D;&#x7684;&#x9876;&#x7EA7;&#x5BF9;&#x8C61;&#x662F;window&#x2014;&#x2014;&#x7687;&#x4E0A;;&#x6574;&#x4E2A;&#x6D4F;&#x89C8;&#x5668;&#x5C31;&#x662F;window,&#x9875;&#x9762;&#x4E2D;&#x7684;document&#x4E5F;&#x5C5E;&#x4E8E;window</p>
+<ul>
+<li>&#x53D8;&#x91CF;,&#x51FD;&#x6570;,&#x5BF9;&#x8C61;&#x90FD;&#x5C5E;&#x4E8E;window</li>
+<li>&#x4F46;&#x662F;:&#x5199;&#x4EE3;&#x7801;&#x7684;&#x65F6;&#x5019;,window&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7701;&#x7565;</li>
+</ul>
+<h2 id="window-&#x5BF9;&#x8C61;"><a href="#window-&#x5BF9;&#x8C61;" class="headerlink" title="window &#x5BF9;&#x8C61;"></a>window &#x5BF9;&#x8C61;</h2><p>BOM&#xFF0C;&#x5373;&#x6D4F;&#x89C8;&#x5668;&#x5BF9;&#x8C61;&#x6A21;&#x578B;&#xFF0C;&#x6838;&#x5FC3;&#x662F;&#xFF1A;window &#x5BF9;&#x8C61;</p>
+<h3 id="&#x5168;&#x5C40;&#x53D8;&#x91CF;"><a href="#&#x5168;&#x5C40;&#x53D8;&#x91CF;" class="headerlink" title="&#x5168;&#x5C40;&#x53D8;&#x91CF;"></a>&#x5168;&#x5C40;&#x53D8;&#x91CF;</h3><p>&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E0D;&#x80FD;&#x901A;&#x8FC7; delete &#x64CD;&#x4F5C;&#x7B26;&#x5220;&#x9664;&#x3002; </p>
+<h3 id="&#x7A97;&#x53E3;&#x5173;&#x7CFB;&#x53CA;&#x6846;&#x67B6;"><a href="#&#x7A97;&#x53E3;&#x5173;&#x7CFB;&#x53CA;&#x6846;&#x67B6;" class="headerlink" title="&#x7A97;&#x53E3;&#x5173;&#x7CFB;&#x53CA;&#x6846;&#x67B6;"></a>&#x7A97;&#x53E3;&#x5173;&#x7CFB;&#x53CA;&#x6846;&#x67B6;</h3><p>&#x5982;&#x679C;&#x9875;&#x9762;&#x4E2D;&#x5305;&#x542B;&#x6846;&#x67B6;&#xFF0C;&#x6BCF;&#x4E2A;&#x6846;&#x67B6;&#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684; window &#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x4E14;&#x4FDD;&#x5B58;&#x5728; frames &#x96C6;&#x5408;&#x4E2D;&#x3002;&#x6BCF;&#x4E00;&#x4E2A; window &#x5BF9;&#x8C61;&#x90FD;&#x6709;&#x4E00;&#x4E2A; name &#x5C5E;&#x6027;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x6846;&#x67B6;&#x7684;&#x540D;&#x79F0;&#x3002;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Frameset Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">frameset</span> <span class="attr">rows</span>=<span class="string">&quot;160, *&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">&quot;frame0.html&quot;</span> <span class="attr">name</span> = <span class="string">&quot;topFrame&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">frameset</span> <span class="attr">cols</span>=<span class="string">&quot;50%, 50%&quot;</span>&gt;</span> </div><div class="line">      <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">&quot;frame1.html&quot;</span> <span class="attr">name</span> = <span class="string">&quot;leftFrame&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">&quot;frame2.html&quot;</span> <span class="attr">name</span> = <span class="string">&quot;rightFrame&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">frameset</span>&gt;</span>  </div><div class="line">  <span class="tag">&lt;/<span class="name">frameset</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>window.frames[0]</li>
+<li>window.frames[&#x201C;topFrame&#x201D;]</li>
+<li>top.frames[0]</li>
+<li>top.frames[&#x201C;topFrame&#x201D;]</li>
+<li>frames[0]</li>
+<li>frames[&#x201C;topFrame&#x201D;]</li>
+</ul>
+<h3 id="&#x7A97;&#x53E3;&#x4F4D;&#x7F6E;"><a href="#&#x7A97;&#x53E3;&#x4F4D;&#x7F6E;" class="headerlink" title="&#x7A97;&#x53E3;&#x4F4D;&#x7F6E;"></a>&#x7A97;&#x53E3;&#x4F4D;&#x7F6E;</h3><p>IE&#x3001;Safari&#x3001;Opera&#x3001;Chrome &#x652F;&#x6301;</p>
+<ul>
+<li>screenLeft</li>
+<li>screenTop</li>
+</ul>
+<p>FireFox &#x652F;&#x6301;</p>
+<ul>
+<li>screenX</li>
+<li>screenY</li>
+</ul>
+<p>&#x7A97;&#x53E3;&#x79FB;&#x52A8;&#x65B9;&#x6CD5;</p>
+<ul>
+<li>moveTo()</li>
+<li>moveBy()</li>
+</ul>
+<h3 id="&#x7A97;&#x53E3;&#x5927;&#x5C0F;"><a href="#&#x7A97;&#x53E3;&#x5927;&#x5C0F;" class="headerlink" title="&#x7A97;&#x53E3;&#x5927;&#x5C0F;"></a>&#x7A97;&#x53E3;&#x5927;&#x5C0F;</h3><p>IE9+&#x3001;Safari&#x3001;Opera&#x3001;FireFox&#x3001;Chrome &#x652F;&#x6301;</p>
+<ul>
+<li>innerWidth</li>
+<li>innerHeight</li>
+<li>outerWidth</li>
+<li>outerHeight</li>
+</ul>
+<p>IE9+&#x3001;Safari&#x3001;FireFox &#x4E2D; outer&#x2026; &#x8FD4;&#x56DE;&#x6D4F;&#x89C8;&#x5668;&#x672C;&#x8EAB;&#x7684;&#x5C3A;&#x5BF8;(window &#x548C; &#x6846;&#x67B6;&#x90FD;&#x662F;)&#x3002;Opera &#x4E2D;&#x5219;&#x662F;&#x9875;&#x9762;&#x89C6;&#x56FE;&#x5BB9;&#x5668;&#x5927;&#x5C0F;&#x3002;Chrome &#x4E2D; &#x4E24;&#x4E24;&#x90FD;&#x8FD4;&#x56DE;&#x76F8;&#x540C;&#x7684;&#x503C;&#xFF0C;&#x5373;&#x89C6;&#x53E3;&#x5927;&#x5C0F;&#x800C;&#x975E;&#x6D4F;&#x89C8;&#x5668;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#x3002;</p>
+<p>&#x5728; IE9&#x3001;Safari&#x3001;Opera&#x3001;FireFox&#x3001;Chrome &#x4E2D;&#xFF0C;document.documentElement.clientWidth &#x548C; document.documentElement.clientHeight &#x4FDD;&#x5B58;&#x4E86;&#x9875;&#x9762;&#x89C6;&#x53E3;&#x4FE1;&#x606F;&#x3002;&#x5728; IE &#x7684;&#x6807;&#x51C6;&#x6A21;&#x5F0F;&#x4E0B;&#x751F;&#x6548;&#xFF0C;&#x800C;&#x6DF7;&#x6742;&#x6A21;&#x5F0F;&#x4F7F;&#x7528;&#x7684;&#x662F;&#xFF1A; document.body &#x4E2D;&#x7684; clientHeight &#x548C; clientWidth&#x3002;&#x800C; Chrome &#x901A;&#x8FC7; document.body &#x548C; document.documentElement &#x90FD;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5230;&#x9875;&#x9762;&#x89C6;&#x56FE;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x68C0;&#x67E5; document.compatMode &#x6765;&#x68C0;&#x6D4B;&#x6D4F;&#x89C8;&#x5668;&#x662F;&#x5426;&#x5904;&#x4E8E;&#x6807;&#x51C6;&#x6A21;&#x5F0F;&#x3002;</p>
+<h3 id="&#x5BFC;&#x822A;&#x548C;&#x6253;&#x5F00;&#x7A97;&#x53E3;"><a href="#&#x5BFC;&#x822A;&#x548C;&#x6253;&#x5F00;&#x7A97;&#x53E3;" class="headerlink" title="&#x5BFC;&#x822A;&#x548C;&#x6253;&#x5F00;&#x7A97;&#x53E3;"></a>&#x5BFC;&#x822A;&#x548C;&#x6253;&#x5F00;&#x7A97;&#x53E3;</h3><p>window.open() &#x65B9;&#x6CD5;&#xFF0C;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;&#x8981;&#x52A0;&#x8F7D;&#x7684; URL&#x3001;&#x7A97;&#x53E3;&#x76EE;&#x6807;&#x3001;&#x4E00;&#x4E2A;&#x7279;&#x6027;&#x5B57;&#x7B26;&#x4E32;&#x4EE5;&#x53CA;&#x4E00;&#x4E2A;&#x8868;&#x793A;&#x65B0;&#x9875;&#x9762;&#x662F;&#x5426;&#x53D6;&#x4EE3;&#x6D4F;&#x89C8;&#x5668;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x4E2D;&#x5F53;&#x524D;&#x52A0;&#x8F7D;&#x9875;&#x9762;&#x7684;&#x5E03;&#x5C14;&#x503C;&#x3002;&#x548C; a &#x6807;&#x7B7E;&#x7684; herf &#x5C5E;&#x6027;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x3002;&#x4E0D;&#x600E;&#x4E48;&#x7528;&#x3002;</p>
+<h3 id="&#x95F4;&#x6B47;&#x8C03;&#x7528;&#x548C;&#x8D85;&#x65F6;&#x8C03;&#x7528;"><a href="#&#x95F4;&#x6B47;&#x8C03;&#x7528;&#x548C;&#x8D85;&#x65F6;&#x8C03;&#x7528;" class="headerlink" title="&#x95F4;&#x6B47;&#x8C03;&#x7528;&#x548C;&#x8D85;&#x65F6;&#x8C03;&#x7528;"></a>&#x95F4;&#x6B47;&#x8C03;&#x7528;&#x548C;&#x8D85;&#x65F6;&#x8C03;&#x7528;</h3><blockquote>
+<p>&#x8D85;&#x65F6;&#x8C03;&#x7528;</p>
+</blockquote>
+<ul>
+<li>setTimeout() &#x65B9;&#x6CD5;<ul>
+<li>&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;</li>
+<li>&#x4E00;&#x662F;&#x8981;&#x6267;&#x884C;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x6216;&#x4E00;&#x4E2A;&#x5305;&#x542B; JavaScript &#x4EE3;&#x7801;&#x7684;&#x5B57;&#x7B26;&#x4E32;</li>
+<li>&#x800C;&#x662F;&#x4EE5;&#x6BEB;&#x79D2;&#x503C;&#x8868;&#x793A;&#x7684;&#x65F6;&#x95F4;&#x3002;&#x5373;&#x5728;&#x6267;&#x884C;&#x524D;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x7684;&#x65F6;&#x95F4;&#x3002;</li>
+<li>&#x4F20;&#x9012;&#x5B57;&#x7B26;&#x4E32;&#x6D88;&#x8017;&#x6027;&#x80FD;&#x3002;</li>
+<li>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; ID</li>
+<li>&#x5728;&#x975E;&#x4E25;&#x683C;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;this &#x6307;&#x5411; window&#xFF0C;&#x4E25;&#x683C;&#x6A21;&#x5F0F;&#x4E0B;&#x662F; undefined&#x3002;</li>
+</ul>
+</li>
+<li>clearTimeout() &#x6E05;&#x9664;&#x8D85;&#x65F6;&#x8C03;&#x7528;</li>
+</ul>
+<blockquote>
+<p>&#x95F4;&#x6B47;&#x8C03;&#x7528;</p>
+</blockquote>
+<ul>
+<li>setInterval() &#x65B9;&#x6CD5;<ul>
+<li>&#x53C2;&#x6570;&#x540C; setTimeout() &#x65B9;&#x6CD5;&#x76F8;&#x540C;</li>
+<li>&#x8FD4;&#x56DE;&#x4E5F;&#x662F;&#x4E00;&#x4E2A; ID </li>
+<li>&#x95F4;&#x6B47;&#x8C03;&#x7528;&#x4E00;&#x76F4;&#x6267;&#x884C;&#x5230;&#x9875;&#x9762;&#x5378;&#x8F7D;</li>
+</ul>
+</li>
+<li>clearInterval()<ul>
+<li>&#x6E05;&#x9664;&#x95F4;&#x6B47;&#x8C03;&#x7528;</li>
+</ul>
+</li>
+</ul>
+<h3 id="&#x7CFB;&#x7EDF;&#x5BF9;&#x8BDD;&#x6846;"><a href="#&#x7CFB;&#x7EDF;&#x5BF9;&#x8BDD;&#x6846;" class="headerlink" title="&#x7CFB;&#x7EDF;&#x5BF9;&#x8BDD;&#x6846;"></a>&#x7CFB;&#x7EDF;&#x5BF9;&#x8BDD;&#x6846;</h3><ul>
+<li>alert()</li>
+<li>confirm()</li>
+<li>prompt()</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="built_in">window</span>.confirm(<span class="string">&quot;&#x4F60;&#x786E;&#x5B9A;&#x8981;&#x9000;&#x51FA;&#x5417;?&quot;</span>)) {</div><div class="line">    <span class="comment">//&#x6267;&#x884C;&#x5230;&#x8FD9;&#x91CC;,&#x8BC1;&#x660E;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x4E86;&#x786E;&#x5B9A;&#x6309;&#x94AE;</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;&#x70B9;&#x51FB;&#x4E86;&#x786E;&#x5B9A;&quot;</span>);</div><div class="line">} <span class="keyword">else</span> {</div><div class="line">    <span class="comment">//&#x8BC1;&#x660E;&#x4E86;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x4E86;&#x53D6;&#x6D88;&#x7684;&#x6309;&#x94AE;</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;&#x70B9;&#x51FB;&#x4E86;&#x53D6;&#x6D88;&quot;</span>);</div><div class="line">}</div><div class="line"><span class="built_in">window</span>.prompt(<span class="string">&quot;&#x8BF7;&#x8F93;&#x5165;&#x7528;&#x6237;&#x540D;&quot;</span>);</div></pre></td></tr></table></figure>
+<h2 id="location-&#x5BF9;&#x8C61;"><a href="#location-&#x5BF9;&#x8C61;" class="headerlink" title="location &#x5BF9;&#x8C61;"></a>location &#x5BF9;&#x8C61;</h2><p>&#x5C5E;&#x6027;&#x6709;&#xFF1A;</p>
+<ul>
+<li>hash &#x8FD4;&#x56DE; URL &#x4E2D;&#x7684;&#x54C8;&#x5E0C;&#x503C;</li>
+<li>hostname &#x8FD4;&#x56DE;&#x670D;&#x52A1;&#x5668;&#x540D;&#x79F0;&#x548C;&#x7AEF;&#x53E3;&#x53F7;</li>
+<li>herf &#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x7684;&#x5B8C;&#x6574;&#x7684; URL&#x3002; location &#x5BF9;&#x8C61;&#x7684; toString() &#x65B9;&#x6CD5;&#x4E5F;&#x8FD4;&#x56DE;&#x8FD9;&#x4E2A;&#x503C;&#x3002;</li>
+<li>pathname &#x8FD4;&#x56DE; URL &#x4E2D;&#x7684;&#x76EE;&#x5F55;&#xFF08;&#x6216;&#xFF09;&#x6587;&#x4EF6;&#x540D;</li>
+<li>port &#x8FD4;&#x56DE; URL &#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x7AEF;&#x53E3;&#x53F7;</li>
+<li>protocol &#x8FD4;&#x56DE;&#x9875;&#x9762;&#x4F7F;&#x7528;&#x7684;&#x534F;&#x8BAE;</li>
+<li>search &#x8FD4;&#x56DE; URL &#x7684;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;</li>
+</ul>
+<p>&#x65B9;&#x6CD5;&#x6709;&#xFF1A;</p>
+<ul>
+<li>location.assign(&#x201C;<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>&#x201C;); <ul>
+<li>&#x6539;&#x53D8;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x4F4D;&#x7F6E;</li>
+</ul>
+</li>
+<li>location.replace(&#x201C;<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>&#x201C;);<ul>
+<li>&#x5730;&#x5740;&#x4E0D;&#x4F1A;&#x8BB0;&#x5F55;&#x5230;&#x5386;&#x65F6;&#x4E2D;&#x2014;-&#x540E;&#x9000;&#x70B9;&#x4E0D;&#x4E86;</li>
+</ul>
+</li>
+<li>location.reload();<ul>
+<li>&#x5237;&#x65B0;&#x2014;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x5728;&#x9875;&#x9762;&#x4E2D;&#x7528;&#x4E00;&#x4E2A;&#x6309;&#x94AE;&#x70B9;&#x51FB;&#x5237;&#x65B0;</li>
+</ul>
+</li>
+</ul>
+<h2 id="BOM&#x7684;&#x4E00;&#x4E9B;&#x65B9;&#x6CD5;"><a href="#BOM&#x7684;&#x4E00;&#x4E9B;&#x65B9;&#x6CD5;" class="headerlink" title="BOM&#x7684;&#x4E00;&#x4E9B;&#x65B9;&#x6CD5;"></a>BOM&#x7684;&#x4E00;&#x4E9B;&#x65B9;&#x6CD5;</h2><ul>
+<li>win = window.open(&#x201C;09test.html&#x201D;,&#x201D;_blank&#x201D;,&#x201D;width=200,height=200,top=100,left=100,resizable=no&#x201D;);</li>
+<li>win.close();//&#x6B64;&#x65F6;close&#x65B9;&#x6CD5; &#x65E0;&#x8BBA;open&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x4E0D;&#x662F;&#x5730;&#x5740;&#x90FD;&#x53EF;&#x4EE5;&#x5173;&#x95ED;&#x7A97;&#x53E3;</li>
+<li>win.moveTo(300,300);//&#x628A;&#x65B0;&#x6253;&#x5F00;&#x7684;&#x7A97;&#x53E3;&#x79FB;&#x52A8;&#x5230;&#x8DDD;&#x79BB;&#x5DE6;&#x4FA7;&#x548C;&#x4E0A;&#x9762;300px</li>
+<li>win.moveBy(20,20);//&#x6BCF;&#x6B21;&#x79FB;&#x52A8;20px</li>
+<li>win.resizeTo(400,400);//&#x7A97;&#x53E3;&#x7684;&#x5927;&#x5C0F;&#x53D1;&#x751F;&#x4E86;&#x6539;&#x53D8;</li>
+<li>win.resizeBy(40,40);</li>
+</ul>
+<h2 id="navigator&#x5BF9;&#x8C61;"><a href="#navigator&#x5BF9;&#x8C61;" class="headerlink" title="navigator&#x5BF9;&#x8C61;"></a>navigator&#x5BF9;&#x8C61;</h2><p>&#x5C5E;&#x6027;&#x6216;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>appCodeName &#x6D4F;&#x89C8;&#x5668;&#x540D;&#x79F0;</li>
+<li>appMinorVersion &#x6B64;&#x7248;&#x672C;&#x4FE1;&#x606F;</li>
+<li>appName &#x5B8C;&#x6574;&#x6D4F;&#x89C8;&#x5668;&#x540D;&#x79F0;</li>
+<li>appVersion &#x6D4F;&#x89C8;&#x5668;&#x7248;&#x672C;</li>
+<li>buildID</li>
+<li>cookieEnabled</li>
+<li>cpuClass</li>
+<li>javaEnabled()</li>
+<li>language</li>
+<li>mimeType</li>
+<li>onLine</li>
+<li>opsProfile</li>
+<li>oscpu</li>
+<li>platform</li>
+<li>plugins</li>
+<li>preference()</li>
+<li>product</li>
+<li>productSub</li>
+<li>register-ContentHandler()</li>
+<li>register-ProtocalHandler()</li>
+<li>securifyPolicy</li>
+<li>systemLanguage</li>
+<li>taintEnabled()</li>
+<li>userAgent</li>
+<li>userLanguage</li>
+<li>userProfile</li>
+<li>vendor</li>
+<li>vendorSub</li>
+</ul>
+<h2 id="screen-&#x5BF9;&#x8C61;"><a href="#screen-&#x5BF9;&#x8C61;" class="headerlink" title="screen &#x5BF9;&#x8C61;"></a>screen &#x5BF9;&#x8C61;</h2><p>&#x7528;&#x5904;&#x4E0D;&#x5927;&#xFF0C;&#x6B64;&#x5904;&#x4E0D;&#x518D;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#x3002;</p>
+<h2 id="history&#x5BF9;&#x8C61;"><a href="#history&#x5BF9;&#x8C61;" class="headerlink" title="history&#x5BF9;&#x8C61;"></a>history&#x5BF9;&#x8C61;</h2><ul>
+<li>window.history.forward();</li>
+<li>window.history.back();//&#x540E;&#x9000;</li>
+<li>window.history.go();</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将是我最大的鼓励！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ofy7k3v4s.bkt.clouddn.com/wcpayCode.jpg" alt="Hongqin Ma WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ofy7k3v4s.bkt.clouddn.com/apayCode.jpg" alt="Hongqin Ma Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag">#js</a>
+          
+            <a href="/tags/BOM/" rel="tag">#BOM</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/07/12/14-js-的正则表达式/" rel="next" title="js-的正则表达式">
+                <i class="fa fa-chevron-left"></i> js-的正则表达式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/09/22/17-DOM-文档对象模型/" rel="prev" title="DOM-文档对象模型">
+                DOM-文档对象模型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2014/08/15/16-BOM-浏览器对象模型/"
+     data-title="BOM-浏览器对象模型"
+     data-content=""
+     data-url="https://hongqinma.github.io/2014/08/15/16-BOM-浏览器对象模型/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2014/08/15/16-BOM-浏览器对象模型/"
+           data-title="BOM-浏览器对象模型" data-url="https://hongqinma.github.io/2014/08/15/16-BOM-浏览器对象模型/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/photo.jpg"
+               alt="Hongqin Ma" />
+          <p class="site-author-name" itemprop="name">Hongqin Ma</p>
+          <p class="site-description motion-element" itemprop="description">Spell at all costs， to rush you in the future. </p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HongqinMa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/HongqinMa" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100006581058735" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/HirakuMa" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-share-alt"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美" target="_blank">司徒正美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/sanshi/" title="三生石上" target="_blank">三生石上</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/TomXu/" title="汤姆大叔" target="_blank">汤姆大叔</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gold.xitu.io/" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/users/1cbb94e5ed4d/latest_articles" title="简书" target="_blank">简书</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.cnblogs.com/" title="博客园" target="_blank">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.awesomes.cn/" title="Awesomes" target="_blank">Awesomes</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#window-对象"><span class="nav-number">1.</span> <span class="nav-text">window 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局变量"><span class="nav-number">1.1.</span> <span class="nav-text">全局变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口关系及框架"><span class="nav-number">1.2.</span> <span class="nav-text">窗口关系及框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口位置"><span class="nav-number">1.3.</span> <span class="nav-text">窗口位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口大小"><span class="nav-number">1.4.</span> <span class="nav-text">窗口大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导航和打开窗口"><span class="nav-number">1.5.</span> <span class="nav-text">导航和打开窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#间歇调用和超时调用"><span class="nav-number">1.6.</span> <span class="nav-text">间歇调用和超时调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统对话框"><span class="nav-number">1.7.</span> <span class="nav-text">系统对话框</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#location-对象"><span class="nav-number">2.</span> <span class="nav-text">location 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BOM的一些方法"><span class="nav-number">3.</span> <span class="nav-text">BOM的一些方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#navigator对象"><span class="nav-number">4.</span> <span class="nav-text">navigator对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#screen-对象"><span class="nav-number">5.</span> <span class="nav-text">screen 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#history对象"><span class="nav-number">6.</span> <span class="nav-text">history对象</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hongqin Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Page Views: <span id="busuanzi_value_site_pv"></span> 
+</span>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Hiraku"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = '0 ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+
+  
+</body>
+</html>

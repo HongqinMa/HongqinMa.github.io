@@ -90,19 +90,16 @@
 
 
 
-<meta name="description" content="&amp;#x6269;&amp;#x5C55;&amp;#x539F;&amp;#x578B;&amp;#x5BF9;&amp;#x8C61;&amp;#x5B9E;&amp;#x73B0;&amp;#x7EE7;&amp;#x627F;
-&amp;#x63CF;&amp;#x8FF0;&amp;#xFF1A;&amp;#x76F4;&amp;#x63A5;&amp;#x5728;&amp;#x6784;&amp;#x9020;&amp;#x51FD;&amp;#x6570;&amp;#x7684;prototype&amp;#x5C5E;&amp;#x6027;&amp;#x4E0">
+<meta name="description" content="ECMAScript &amp;#x4E2D;&amp;#x53EA;&amp;#x652F;&amp;#x6301;&amp;#x5B9E;&amp;#x73B0;&amp;#x7EE7;&amp;#x627F;&amp;#xFF0C;&amp;#x800C;&amp;#x4E14;&amp;#x4E3B;&amp;#x8981;&amp;#x4F9D;&amp;#x9760;&amp;#x7684;&amp;#x662F;&amp;#x539F;&amp;#x578B;&amp;#x94FE;&amp;#x6765;&amp;#x5B9E;&amp;#x73B0;&amp;#x30">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实现继承的几种方式">
 <meta property="og:url" content="https://hongqinma.github.io/2014/07/03/13-实现继承的几种方式/index.html">
 <meta property="og:site_name" content="HongqinMa' Blog">
-<meta property="og:description" content="&amp;#x6269;&amp;#x5C55;&amp;#x539F;&amp;#x578B;&amp;#x5BF9;&amp;#x8C61;&amp;#x5B9E;&amp;#x73B0;&amp;#x7EE7;&amp;#x627F;
-&amp;#x63CF;&amp;#x8FF0;&amp;#xFF1A;&amp;#x76F4;&amp;#x63A5;&amp;#x5728;&amp;#x6784;&amp;#x9020;&amp;#x51FD;&amp;#x6570;&amp;#x7684;prototype&amp;#x5C5E;&amp;#x6027;&amp;#x4E0">
-<meta property="og:updated_time" content="2016-11-12T06:21:03.232Z">
+<meta property="og:description" content="ECMAScript &amp;#x4E2D;&amp;#x53EA;&amp;#x652F;&amp;#x6301;&amp;#x5B9E;&amp;#x73B0;&amp;#x7EE7;&amp;#x627F;&amp;#xFF0C;&amp;#x800C;&amp;#x4E14;&amp;#x4E3B;&amp;#x8981;&amp;#x4F9D;&amp;#x9760;&amp;#x7684;&amp;#x662F;&amp;#x539F;&amp;#x578B;&amp;#x94FE;&amp;#x6765;&amp;#x5B9E;&amp;#x73B0;&amp;#x30">
+<meta property="og:updated_time" content="2016-11-12T07:30:08.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实现继承的几种方式">
-<meta name="twitter:description" content="&amp;#x6269;&amp;#x5C55;&amp;#x539F;&amp;#x578B;&amp;#x5BF9;&amp;#x8C61;&amp;#x5B9E;&amp;#x73B0;&amp;#x7EE7;&amp;#x627F;
-&amp;#x63CF;&amp;#x8FF0;&amp;#xFF1A;&amp;#x76F4;&amp;#x63A5;&amp;#x5728;&amp;#x6784;&amp;#x9020;&amp;#x51FD;&amp;#x6570;&amp;#x7684;prototype&amp;#x5C5E;&amp;#x6027;&amp;#x4E0">
+<meta name="twitter:description" content="ECMAScript &amp;#x4E2D;&amp;#x53EA;&amp;#x652F;&amp;#x6301;&amp;#x5B9E;&amp;#x73B0;&amp;#x7EE7;&amp;#x627F;&amp;#xFF0C;&amp;#x800C;&amp;#x4E14;&amp;#x4E3B;&amp;#x8981;&amp;#x4F9D;&amp;#x9760;&amp;#x7684;&amp;#x662F;&amp;#x539F;&amp;#x578B;&amp;#x94FE;&amp;#x6765;&amp;#x5B9E;&amp;#x73B0;&amp;#x30">
 
 
 
@@ -357,7 +354,8 @@
       
 
       
-        <h2 id="&#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;"><a href="#&#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;" class="headerlink" title="&#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;"></a>&#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;</h2><ul>
+        <p>ECMAScript &#x4E2D;&#x53EA;&#x652F;&#x6301;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;&#xFF0C;&#x800C;&#x4E14;&#x4E3B;&#x8981;&#x4F9D;&#x9760;&#x7684;&#x662F;&#x539F;&#x578B;&#x94FE;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<h2 id="&#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;"><a href="#&#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;" class="headerlink" title="&#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;"></a>&#x6269;&#x5C55;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;</h2><ul>
 <li>&#x63CF;&#x8FF0;&#xFF1A;&#x76F4;&#x63A5;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;prototype&#x5C5E;&#x6027;&#x4E0A;&#x6DFB;&#x52A0;&#x65B9;&#x6CD5;</li>
 <li>&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#xFF1A;&#x89E3;&#x51B3;&#x4E86;&#x76F4;&#x63A5;&#x5C06;&#x65B9;&#x6CD5;&#x8BBE;&#x7F6E;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E0A;&#x65F6;&#xFF0C;&#x5B9E;&#x4F8B;&#x5316;&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x5F00;&#x8F9F;&#x65B0;&#x7A7A;&#x95F4;&#xFF0C;&#x9020;&#x6210;&#x5185;&#x5B58;&#x4E25;&#x91CD;&#x6D6A;&#x8D39;&#x7684;&#x95EE;&#x9898;</li>
 <li>&#x7F3A;&#x70B9;&#xFF1A;&#x5982;&#x679C;&#x5C06;&#x6240;&#x6709;&#x7684;&#x65B9;&#x6CD5;&#x90FD;&#x76F4;&#x63A5;&#x8BBE;&#x7F6E;&#x5230;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E0A;&#xFF0C;&#x4EE3;&#x7801;&#x5197;&#x4F59;</li>
@@ -456,8 +454,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/01/20/Built-Hexo-Blog/" rel="prev" title="Hexo博客搭建">
-                Hexo博客搭建 <i class="fa fa-chevron-right"></i>
+              <a href="/2014/07/12/14-js-的正则表达式/" rel="prev" title="js-的正则表达式">
+                js-的正则表达式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -549,7 +547,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -557,7 +555,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -566,7 +564,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
