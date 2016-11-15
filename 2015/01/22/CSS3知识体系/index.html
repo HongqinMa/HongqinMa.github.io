@@ -104,7 +104,7 @@
 
 
 -w">
-<meta property="og:updated_time" content="2016-11-14T11:50:23.875Z">
+<meta property="og:updated_time" content="2016-11-15T15:12:10.211Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS3知识体系">
 <meta name="twitter:description" content="&amp;#x79C1;&amp;#x6709;&amp;#x524D;&amp;#x7F00;
@@ -370,40 +370,94 @@
 <p><em>&#x5728;pc&#x7AEF;&#x5F00;&#x53D1;&#x7684;&#x65F6;&#x5019;  &#x4F7F;&#x7528;css3&#x5C5E;&#x6027;  &#x6700;&#x597D;&#x52A0;&#x4E0A;&#x79C1;&#x6709;&#x524D;&#x7F00;</em></p>
 </blockquote>
 <ul>
-<li><code>-webkit-border-radius: 50%;/*&#x8C37;&#x6B4C;*/</code></li>
-<li><code>-moz-border-radius: 50%; /*&#x706B;&#x72D0;*/</code></li>
-<li><code>-o-border-radius: 50%; /*&#x6B27;&#x9E4F;*/</code></li>
-<li><code>-ms-border-radius:50%;/*IE*/</code></li>
+<li><code>-webkit-border-radius: 50%;</code><ul>
+<li><em>&#x8C37;&#x6B4C;</em></li>
+</ul>
+</li>
+<li><code>-moz-border-radius: 50%;</code><ul>
+<li><em>&#x706B;&#x72D0;</em></li>
+</ul>
+</li>
+<li><code>-o-border-radius: 50%;</code><ul>
+<li><em>&#x6B27;&#x9E4F;</em></li>
+</ul>
+</li>
+<li><code>-ms-border-radius:50%;</code><ul>
+<li><em>IE</em></li>
+</ul>
+</li>
 </ul>
 <hr>
 <h2 id="&#x9009;&#x62E9;&#x5668;"><a href="#&#x9009;&#x62E9;&#x5668;" class="headerlink" title="&#x9009;&#x62E9;&#x5668;"></a>&#x9009;&#x62E9;&#x5668;</h2><h3 id="&#x5C5E;&#x6027;&#x9009;&#x62E9;&#x5668;"><a href="#&#x5C5E;&#x6027;&#x9009;&#x62E9;&#x5668;" class="headerlink" title="&#x5C5E;&#x6027;&#x9009;&#x62E9;&#x5668;"></a>&#x5C5E;&#x6027;&#x9009;&#x62E9;&#x5668;</h3><ul>
-<li><code>[attribute]/*&#x9009;&#x62E9;&#x5230;&#x6240;&#x6709;&#x5305;&#x542B; attribute &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5143;&#x7D20;*/</code></li>
-<li><code>[attribute=value] /*&#x9009;&#x62E9;&#x5230;&#x6240;&#x6709;&#x5305;&#x542B; attribute &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x5C5E;&#x6027;&#x503C; &#x53EA;&#x80FD;&#x7B49;&#x4E8E;value */</code></li>
-<li><code>[attribute!=value] /*jquery&#x624D;&#x6709;&#xFF0C;css &#x662F;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x9009;&#x62E9;&#x5668; &#x9009;&#x62E9;&#x5230;&#x6240;&#x6709;&#x5305;&#x542B; attribute &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x5C5E;&#x6027;&#x503C; &#x53EA;&#x80FD;&#x4E0D;&#x7B49;&#x4E8E;value*/</code></li>
-<li><code>[attribute^=value] /*&#x9009;&#x62E9;&#x5230;&#x6240;&#x6709;&#x5305;&#x542B; attribute &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x5C5E;&#x6027;&#x503C; &#x4EE5;value&#x5F00;&#x5934; */</code></li>
-<li><code>[attribute$=value] /*&#x9009;&#x62E9;&#x5230;&#x6240;&#x6709;&#x5305;&#x542B; attribute &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x5C5E;&#x6027;&#x503C; &#x4EE5;value&#x7ED3;&#x5C3E; */</code></li>
-<li><code>[attribute*=value] /*&#x9009;&#x62E9;&#x5230;&#x6240;&#x6709;&#x5305;&#x542B; attribute &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x5C5E;&#x6027;&#x503C; &#x5305;&#x542B;value&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;*/</code></li>
+<li><code>[attribute]</code><ul>
+<li><em>&#x9009;&#x62E9;&#x5230;&#x6240;&#x6709;&#x5305;&#x542B; attribute &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5143;&#x7D20;</em></li>
+</ul>
+</li>
+<li><code>[attribute=value]</code> <ul>
+<li><em>&#x9009;&#x62E9;&#x5230;&#x6240;&#x6709;&#x5305;&#x542B; attribute &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x5C5E;&#x6027;&#x503C; &#x53EA;&#x80FD;&#x7B49;&#x4E8E;value</em></li>
+</ul>
+</li>
+<li><code>[attribute!=value]</code> <ul>
+<li><em>jquery&#x624D;&#x6709;&#xFF0C;css &#x662F;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x9009;&#x62E9;&#x5668; &#x9009;&#x62E9;&#x5230;&#x6240;&#x6709;&#x5305;&#x542B; attribute &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x5C5E;&#x6027;&#x503C; &#x53EA;&#x80FD;&#x4E0D;&#x7B49;&#x4E8E;value</em></li>
+</ul>
+</li>
+<li><code>[attribute^=value]</code> <ul>
+<li><em>&#x9009;&#x62E9;&#x5230;&#x6240;&#x6709;&#x5305;&#x542B; attribute &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x5C5E;&#x6027;&#x503C; &#x4EE5;value&#x5F00;&#x5934;</em></li>
+</ul>
+</li>
+<li><code>[attribute$=value]</code> <ul>
+<li><em>&#x9009;&#x62E9;&#x5230;&#x6240;&#x6709;&#x5305;&#x542B; attribute &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x5C5E;&#x6027;&#x503C; &#x4EE5;value&#x7ED3;&#x5C3E;</em></li>
+</ul>
+</li>
+<li><code>[attribute*=value]</code> <ul>
+<li><em>&#x9009;&#x62E9;&#x5230;&#x6240;&#x6709;&#x5305;&#x542B; attribute &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x5C5E;&#x6027;&#x503C; &#x5305;&#x542B;value&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;</em></li>
+</ul>
+</li>
 <li><code>[attribute1][attribute2]</code></li>
 </ul>
 <hr>
 <h3 id="&#x4F2A;&#x7C7B;&#x9009;&#x62E9;&#x5668;"><a href="#&#x4F2A;&#x7C7B;&#x9009;&#x62E9;&#x5668;" class="headerlink" title="&#x4F2A;&#x7C7B;&#x9009;&#x62E9;&#x5668;"></a>&#x4F2A;&#x7C7B;&#x9009;&#x62E9;&#x5668;</h3><h4 id="&#x5E8F;&#x4F2A;&#x7C7B;&#x9009;&#x62E9;&#x5668;"><a href="#&#x5E8F;&#x4F2A;&#x7C7B;&#x9009;&#x62E9;&#x5668;" class="headerlink" title="&#x5E8F;&#x4F2A;&#x7C7B;&#x9009;&#x62E9;&#x5668;"></a>&#x5E8F;&#x4F2A;&#x7C7B;&#x9009;&#x62E9;&#x5668;</h4><ul>
-<li><code>E:first-child /*&#x4EE5;E&#x4E3A;&#x5B50;&#x5143;&#x7D20;  &#x786E;&#x5B9A;&#x7236;&#x7EA7;&#x5143;&#x7D20;  &#x627E;&#x5B83;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5B50;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x8FD8;&#x8981;&#x662F;E*/</code></li>
-<li><code>E:last-child /*&#x4EE5;E&#x4E3A;&#x5B50;&#x5143;&#x7D20;  &#x786E;&#x5B9A;&#x7236;&#x7EA7;&#x5143;&#x7D20;  &#x627E;&#x5B83;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B50;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x8FD8;&#x8981;&#x662F;E*/</code></li>
-<li><code>E:nth-child(n) /*&#x4EE5;E&#x4E3A;&#x5B50;&#x5143;&#x7D20;  &#x786E;&#x5B9A;&#x7236;&#x7EA7;&#x5143;&#x7D20;  &#x627E;&#x5B83;&#x7684;&#x7B2C;n&#x4E2A;&#x5B50;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x8FD8;&#x8981;&#x662F;E(&#x6709;&#x6548; 1-&#x65E0;&#x7A77;)*/</code><ul>
+<li><code>E:first-child</code><ul>
+<li><em>&#x4EE5;E&#x4E3A;&#x5B50;&#x5143;&#x7D20;  &#x786E;&#x5B9A;&#x7236;&#x7EA7;&#x5143;&#x7D20;  &#x627E;&#x5B83;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5B50;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x8FD8;&#x8981;&#x662F;E</em></li>
+</ul>
+</li>
+<li><code>E:last-child</code><ul>
+<li><em>&#x4EE5;E&#x4E3A;&#x5B50;&#x5143;&#x7D20;  &#x786E;&#x5B9A;&#x7236;&#x7EA7;&#x5143;&#x7D20;  &#x627E;&#x5B83;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B50;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x8FD8;&#x8981;&#x662F;E</em></li>
+</ul>
+</li>
+<li><code>E:nth-child(n)</code> <ul>
+<li><em>&#x4EE5;E&#x4E3A;&#x5B50;&#x5143;&#x7D20;  &#x786E;&#x5B9A;&#x7236;&#x7EA7;&#x5143;&#x7D20;  &#x627E;&#x5B83;&#x7684;&#x7B2C;n&#x4E2A;&#x5B50;&#x5143;&#x7D20; &#x5E76;&#x4E14;&#x8FD8;&#x8981;&#x662F;E(&#x6709;&#x6548; 1-&#x65E0;&#x7A77;)</em><ul>
 <li>n&#x9075;&#x5FAA;&#x7EBF;&#x6027;&#x53D8;&#x5316;&#xFF0C;&#x5176;&#x53D6;&#x503C;0&#x3001;1&#x3001;2&#x3001;3&#x3001;4&#x3001;&#x2026; &#x4F46;&#x662F;&#x5F53;n&lt;=0&#x65F6;&#xFF0C;&#x9009;&#x53D6;&#x65E0;&#x6548;&#x3002;</li>
 <li>n&#x53EF;&#x662F;&#x591A;&#x79CD;&#x5F62;&#x5F0F;&#xFF1A;nth-child(2n)&#x3001;nth-child(2n+1)&#x3001;nth-child(-1n+5)&#x7B49;;</li>
 <li>n&#x6CE8;&#x610F;:&#x4F4D;&#x7F6E;&#x7684;&#x5173;&#x7CFB;(n&#x4E00;&#x5B9A;&#x8981;&#x653E;&#x5728;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x524D;&#x9762;)</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><code>:empty</code> &#x5143;&#x7D20;&#x4E3A;&#x7A7A;&#x65F6;&#x9009;&#x4E2D;</li>
 <li><code>:target</code> &#x76EE;&#x6807;&#x4F2A;&#x7C7B;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x5B83;&#x9009;&#x4E2D;&#x7684;&#x5F53;&#x524D;&#x951A;&#x70B9;</li>
 </ul>
 <h4 id="&#x4F2A;&#x5143;&#x7D20;&#x9009;&#x62E9;&#x5668;"><a href="#&#x4F2A;&#x5143;&#x7D20;&#x9009;&#x62E9;&#x5668;" class="headerlink" title="&#x4F2A;&#x5143;&#x7D20;&#x9009;&#x62E9;&#x5668;"></a>&#x4F2A;&#x5143;&#x7D20;&#x9009;&#x62E9;&#x5668;</h4><ul>
-<li><code>:not([name=&quot;special&quot;])</code> &#x4E0D;&#x5305;&#x542B;&#x8BE5;&#x5C5E;&#x6027;&#x7684;&#x9009;&#x4E2D;</li>
-<li><code>::before ::after</code> &#x4F2A;&#x5143;&#x7D20;&#x9009;&#x62E9;&#x5668; (&#x77E5;&#x8BC6;&#x91CD;&#x70B9;)</li>
-<li><code>::first-letter</code> &#x9996;&#x4E2A;&#x6587;&#x5B57;&#x7684;&#x9009;&#x7740;&#x5668;  &#x5FC5;&#x987B;&#x662F;&#x4E00;&#x4E2A;&#x5757;&#x7EA7;&#x5143;&#x7D20;</li>
-<li><code>::first-line</code></li>
-<li><code>::selection</code> &#x6587;&#x672C;&#x9009;&#x62E9;&#x4E2D;&#x7684;&#x53D8;&#x6837;&#x5F0F;&#xFF1A;&#x80CC;&#x666F;&#x8272;&#xFF0C;&#x989C;&#x8272;&#x7B49;</li>
+<li><code>:not([name=&quot;special&quot;])</code> <ul>
+<li><em>&#x4E0D;&#x5305;&#x542B;&#x8BE5;&#x5C5E;&#x6027;&#x7684;&#x9009;&#x4E2D;</em></li>
+</ul>
+</li>
+<li><code>::before ::after</code> <ul>
+<li><em>&#x4F2A;&#x5143;&#x7D20;&#x9009;&#x62E9;&#x5668; (&#x77E5;&#x8BC6;&#x91CD;&#x70B9;)</em></li>
+</ul>
+</li>
+<li><code>::first-letter</code> <ul>
+<li><em>&#x9996;&#x4E2A;&#x6587;&#x5B57;&#x7684;&#x9009;&#x7740;&#x5668;  &#x5FC5;&#x987B;&#x662F;&#x4E00;&#x4E2A;&#x5757;&#x7EA7;&#x5143;&#x7D20;</em></li>
+</ul>
+</li>
+<li><code>::first-line</code><ul>
+<li><em>&#x9996;&#x884C;</em> </li>
+</ul>
+</li>
+<li><code>::selection</code> <ul>
+<li><em>&#x6587;&#x672C;&#x9009;&#x62E9;&#x4E2D;&#x7684;&#x53D8;&#x6837;&#x5F0F;&#xFF1A;&#x80CC;&#x666F;&#x8272;&#xFF0C;&#x989C;&#x8272;&#x7B49;</em></li>
+</ul>
+</li>
 </ul>
 <hr>
 <h2 id="&#x989C;&#x8272;&#xFF08;&#x6848;&#x4F8B;&#xFF1A;&#x906E;&#x7F69;&#x3001;&#x60AC;&#x505C;&#xFF09;"><a href="#&#x989C;&#x8272;&#xFF08;&#x6848;&#x4F8B;&#xFF1A;&#x906E;&#x7F69;&#x3001;&#x60AC;&#x505C;&#xFF09;" class="headerlink" title="&#x989C;&#x8272;&#xFF08;&#x6848;&#x4F8B;&#xFF1A;&#x906E;&#x7F69;&#x3001;&#x60AC;&#x505C;&#xFF09;"></a>&#x989C;&#x8272;&#xFF08;&#x6848;&#x4F8B;&#xFF1A;&#x906E;&#x7F69;&#x3001;&#x60AC;&#x505C;&#xFF09;</h2><h3 id="opacity"><a href="#opacity" class="headerlink" title="opacity"></a>opacity</h3><p>&#x53EA;&#x80FD;&#x9488;&#x5BF9;&#x6574;&#x4E2A;&#x76D2;&#x5B50;&#x8BBE;&#x7F6E;&#x900F;&#x660E;&#x5EA6;&#xFF0C;&#x5B50;&#x76D2;&#x5B50;&#x53CA;&#x5185;&#x5BB9;&#x4F1A;&#x7EE7;&#x627F;&#x7236;&#x76D2;&#x5B50;&#x7684;&#x900F;&#x660E;&#x5EA6;</p>
@@ -423,11 +477,17 @@
 <p>CSS3&#x4E2D;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;box-sizing &#x6765;&#x6307;&#x5B9A;&#x76D2;&#x6A21;&#x578B;&#xFF0C;&#x5373;&#x53EF;&#x6307;&#x5B9A;&#x4E3A;content-box&#x3001;border-box&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x8BA1;&#x7B97;&#x76D2;&#x5B50;&#x5927;&#x5C0F;&#x7684;&#x65B9;&#x5F0F;&#x5C31;&#x53D1;&#x751F;&#x4E86;&#x6539;&#x53D8;&#x3002;</p>
 <p>&#x53EF;&#x4EE5;&#x5206;&#x6210;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;</p>
 <ol>
-<li>box-sizing: border-box  &#x8BA1;&#x7B97;&#x65B9;&#x5F0F;&#x4E3A;width = border + padding + content</li>
-<li>box-sizing: content-box  &#x8BA1;&#x7B97;&#x65B9;&#x5F0F;&#x4E3A;width = content</li>
+<li><code>box-sizing: border-box</code> <ul>
+<li>&#x8BA1;&#x7B97;&#x65B9;&#x5F0F;&#x4E3A; <code>width = border + padding + content</code></li>
+</ul>
+</li>
+<li><code>box-sizing: content-box</code>  <ul>
+<li>&#x8BA1;&#x7B97;&#x65B9;&#x5F0F;&#x4E3A; <code>width = content</code></li>
+</ul>
+</li>
 </ol>
 <p>&#x517C;&#x5BB9;&#x6027;&#x6BD4;&#x8F83;&#x597D;</p>
-<p><code>display:block;</code> &#x56FE;&#x7247;&#x4E0B;&#x95F4;&#x9699;</p>
+<p><code>display:block;</code> &#x89E3;&#x51B3;&#x56FE;&#x7247;&#x4E0B;&#x95F4;&#x9699;</p>
 <h2 id="&#x8FB9;&#x6846;"><a href="#&#x8FB9;&#x6846;" class="headerlink" title="&#x8FB9;&#x6846;"></a>&#x8FB9;&#x6846;</h2><h3 id="&#x8FB9;&#x6846;&#x5706;&#x89D2;-border-radius"><a href="#&#x8FB9;&#x6846;&#x5706;&#x89D2;-border-radius" class="headerlink" title="&#x8FB9;&#x6846;&#x5706;&#x89D2; border-radius"></a>&#x8FB9;&#x6846;&#x5706;&#x89D2; <code>border-radius</code></h3><ul>
 <li><code>border-radius: 50px 10px 50px 10px;</code></li>
 <li><code>border-radius: 100px 100px 100px 100px / 100px 100px 100px 100px;</code></li>
@@ -746,7 +806,7 @@
       
         
   <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-    <div>坚持原创技术分享，您的支持将是我最大的鼓励！</div>
+    <div>感谢您的支持！</div>
     <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
       <span>赏</span>
     </button>
@@ -884,7 +944,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -901,7 +961,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

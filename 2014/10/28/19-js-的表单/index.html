@@ -96,7 +96,7 @@
 <meta property="og:url" content="https://hongqinma.github.io/2014/10/28/19-js-的表单/index.html">
 <meta property="og:site_name" content="HongqinMa' Blog">
 <meta property="og:description" content="JavaScript &amp;#x6700;&amp;#x521D;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x5E94;&amp;#x7528;&amp;#x5C31;&amp;#x662F;&amp;#x5206;&amp;#x62C5;&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x5904;&amp;#x7406;&amp;#x8868;&amp;#x5355;&amp;#x7684;&amp;#x8D23;&amp;#x4EFB;&amp;#xFF0C;&amp;#x6253;&amp;#x78">
-<meta property="og:updated_time" content="2016-11-14T11:44:39.833Z">
+<meta property="og:updated_time" content="2016-11-15T07:48:00.328Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js-的表单">
 <meta name="twitter:description" content="JavaScript &amp;#x6700;&amp;#x521D;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x5E94;&amp;#x7528;&amp;#x5C31;&amp;#x662F;&amp;#x5206;&amp;#x62C5;&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x5904;&amp;#x7406;&amp;#x8868;&amp;#x5355;&amp;#x7684;&amp;#x8D23;&amp;#x4EFB;&amp;#xFF0C;&amp;#x6253;&amp;#x78">
@@ -385,7 +385,10 @@
 <li>focus</li>
 <li>blur</li>
 <li>change&#xFF1A;&#x5BF9;&#x4E8E; <code>&lt;input&gt;</code> &#x548C; <code>&lt;textaera&gt;</code> &#x5143;&#x7D20;&#xFF0C;&#x5F53;&#x5B83;&#x4EEC;&#x5931;&#x53BB;&#x7126;&#x70B9;&#x800C;&#x4E14; value &#x503C;&#x6539;&#x53D8;&#x65F6;&#x8BE5;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x3002;</li>
+<li>submit </li>
 </ul>
+<p>&#x963B;&#x6B62;&#x8868;&#x5355;&#x9ED8;&#x8BA4;&#x7684;&#x540C;&#x6B65;&#x63D0;&#x4EA4;&#x7684;&#x65B9;&#x5F0F;&#x3002;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">&quot;#form&quot;</span>).on(<span class="string">&quot;submit&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>{</div><div class="line">  e.preventDefault();</div><div class="line">  $.ajax({</div><div class="line">    <span class="comment">// &#x4EE3;&#x7801;&#x6BB5;</span></div><div class="line">  });</div><div class="line">});</div></pre></td></tr></table></figure>
 <h2 id="&#x6587;&#x672C;&#x6846;&#x811A;&#x672C;"><a href="#&#x6587;&#x672C;&#x6846;&#x811A;&#x672C;" class="headerlink" title="&#x6587;&#x672C;&#x6846;&#x811A;&#x672C;"></a>&#x6587;&#x672C;&#x6846;&#x811A;&#x672C;</h2><ul>
 <li>type: text</li>
 </ul>
@@ -556,7 +559,7 @@
       
         
   <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-    <div>坚持原创技术分享，您的支持将是我最大的鼓励！</div>
+    <div>感谢您的支持！</div>
     <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
       <span>赏</span>
     </button>
@@ -696,7 +699,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -713,7 +716,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
