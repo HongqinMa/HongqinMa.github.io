@@ -1,0 +1,1180 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="nodejs,小项目,Express,EJS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://ofy7k3v4s.bkt.clouddn.com/mylogo.png?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x5C06;&amp;#x76F8;&amp;#x518C;&amp;#x9879;&amp;#x76EE;&amp;#xFF08;&amp;#x4E2D;&amp;#xFF09;&amp;#x7EE7;&amp;#x7EED;&amp;#x5347;&amp;#x7EA7;&amp;#xFF0C;&amp;#x6700;&amp;#x7EC8;&amp;#x4F7F;&amp;#x7528; Express &amp;#x7248;&amp;#x672C;&amp;#x3002;
+&amp;#x5C01;&amp;#x88C5; render &amp;#x6E3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="s010-node-相册小项目（下）">
+<meta property="og:url" content="https://hongqinma.github.io/2016/10/23/s010-node-相册小项目（下）/index.html">
+<meta property="og:site_name" content="HongqinMa' Blog">
+<meta property="og:description" content="&amp;#x5C06;&amp;#x76F8;&amp;#x518C;&amp;#x9879;&amp;#x76EE;&amp;#xFF08;&amp;#x4E2D;&amp;#xFF09;&amp;#x7EE7;&amp;#x7EED;&amp;#x5347;&amp;#x7EA7;&amp;#xFF0C;&amp;#x6700;&amp;#x7EC8;&amp;#x4F7F;&amp;#x7528; Express &amp;#x7248;&amp;#x672C;&amp;#x3002;
+&amp;#x5C01;&amp;#x88C5; render &amp;#x6E3">
+<meta property="og:updated_time" content="2016-11-19T03:23:01.726Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="s010-node-相册小项目（下）">
+<meta name="twitter:description" content="&amp;#x5C06;&amp;#x76F8;&amp;#x518C;&amp;#x9879;&amp;#x76EE;&amp;#xFF08;&amp;#x4E2D;&amp;#xFF09;&amp;#x7EE7;&amp;#x7EED;&amp;#x5347;&amp;#x7EA7;&amp;#xFF0C;&amp;#x6700;&amp;#x7EC8;&amp;#x4F7F;&amp;#x7528; Express &amp;#x7248;&amp;#x672C;&amp;#x3002;
+&amp;#x5C01;&amp;#x88C5; render &amp;#x6E3">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6347850919329138000',
+      author: 'Hiraku'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://hongqinma.github.io/2016/10/23/s010-node-相册小项目（下）/"/>
+
+
+  <title> s010-node-相册小项目（下） | HongqinMa' Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?10010323";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="http://ofy7k3v4s.bkt.clouddn.com/photo.jpg"
+             alt="HongqinMa' Blog"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">HongqinMa' Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Spell at all costs， to rush you in the future。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                s010-node-相册小项目（下）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-10-23T16:29:52+08:00" content="2016-10-23">
+              2016-10-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Node.js</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/23/s010-node-相册小项目（下）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/23/s010-node-相册小项目（下）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/10/23/s010-node-相册小项目（下）/" class="leancloud_visitors" data-flag-title="s010-node-相册小项目（下）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+
+          
+          <span id="busuanzi_container_page_pv">  <span id="busuanzi_value_page_pv"></span> Views</span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x5C06;&#x76F8;&#x518C;&#x9879;&#x76EE;&#xFF08;&#x4E2D;&#xFF09;&#x7EE7;&#x7EED;&#x5347;&#x7EA7;&#xFF0C;&#x6700;&#x7EC8;&#x4F7F;&#x7528; Express &#x7248;&#x672C;&#x3002;</p>
+<h2 id="&#x5C01;&#x88C5;-render-&#x6E32;&#x67D3;&#x51FD;&#x6570;"><a href="#&#x5C01;&#x88C5;-render-&#x6E32;&#x67D3;&#x51FD;&#x6570;" class="headerlink" title="&#x5C01;&#x88C5; render &#x6E32;&#x67D3;&#x51FD;&#x6570;"></a>&#x5C01;&#x88C5; render &#x6E32;&#x67D3;&#x51FD;&#x6570;</h2><ul>
+<li>&#x83B7;&#x53D6;&#x6A21;&#x677F;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x9700;&#x8981;&#x7684;&#x6570;&#x636E;</li>
+<li>&#x83B7;&#x53D6;&#x6A21;&#x677F;&#x5B57;&#x7B26;&#x4E32;<ul>
+<li><code>fs.readFile(&apos;&#x6587;&#x4EF6;&#x540D;&apos;);</code></li>
+</ul>
+</li>
+<li>&#x5C06;&#x6A21;&#x677F;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x7528;&#x5230;&#x7684;&#x6570;&#x636E;&#x548C;&#x6A21;&#x677F;&#x5B57;&#x7B26;&#x4E32;&#x901A;&#x8FC7;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x6574;&#x5408;&#x5230;&#x4E00;&#x8D77;<ul>
+<li><code>_.template(&#x6A21;&#x677F;&#x5B57;&#x7B26;&#x4E32;)({&#x6570;&#x636E;&#x5BF9;&#x8C61;});</code></li>
+</ul>
+</li>
+<li>&#x53D1;&#x9001;&#x54CD;&#x5E94;<ul>
+<li><code>res.end(_.template(&#x6A21;&#x677F;&#x5B57;&#x7B26;&#x4E32;)({&#x6570;&#x636E;&#x5BF9;&#x8C61;}));</code></li>
+</ul>
+</li>
+</ul>
+<p>render(&#x2018;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x2019;, &#x2018;&#x6570;&#x636E;&#x5BF9;&#x8C61;&#x2019;);<br>render(&#x2018;index&#x2019;, &#x2018;&#x6570;&#x636E;&#x5BF9;&#x8C61;&#x2019;);</p>
+<p>&#x7EFC;&#x4E0A;&#x6240;&#x8FF0;&#xFF0C;&#x5C01;&#x88C5;&#x7684;&#x5177;&#x4F53;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">res</span> =&gt;</span> {</div><div class="line">  res.render = <span class="function">(<span class="params">viewName, obj = {}</span>) =&gt;</span> {</div><div class="line">    fs.readFile(<span class="string">`<span class="subst">${path.join(config.viewPath, viewName)}</span>.html`</span>, <span class="string">&apos;utf8&apos;</span>, (err, data) =&gt; {</div><div class="line">      <span class="keyword">if</span> (err) {</div><div class="line">        <span class="keyword">throw</span> err;</div><div class="line">      }</div><div class="line">      res.writeHead(<span class="number">200</span>, {</div><div class="line">        <span class="string">&apos;Content-Type&apos;</span>: <span class="string">&apos;text/html; charset=utf-8&apos;</span></div><div class="line">      })</div><div class="line">      res.end(_.template(data)(obj));</div><div class="line">    });</div><div class="line">  };</div><div class="line">};</div></pre></td></tr></table></figure>
+<h3 id="handler-js"><a href="#handler-js" class="headerlink" title="handler.js"></a>handler.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&apos;fs&apos;</span>);</div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&apos;path&apos;</span>);</div><div class="line"><span class="keyword">const</span> _ = <span class="built_in">require</span>(<span class="string">&apos;underscore&apos;</span>);</div><div class="line"><span class="keyword">const</span> mime = <span class="built_in">require</span>(<span class="string">&apos;mime&apos;</span>);</div><div class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">&apos;./config&apos;</span>);</div><div class="line"><span class="keyword">const</span> qstring = <span class="built_in">require</span>(<span class="string">&apos;querystring&apos;</span>);</div><div class="line"><span class="keyword">const</span> formidable = <span class="built_in">require</span>(<span class="string">&apos;formidable&apos;</span>);</div><div class="line">exports.showIndex = <span class="function">(<span class="params">req, res</span>) =&gt;</span> {</div><div class="line">  fs.readdir(config.uploadDir, (err, files) =&gt; {</div><div class="line">    <span class="keyword">if</span> (err) {</div><div class="line">      <span class="keyword">throw</span> err;</div><div class="line">    }</div><div class="line">    <span class="comment">// &#x8C03;&#x7528; render() &#x51FD;&#x6570;</span></div><div class="line">    res.render(<span class="string">&apos;index&apos;</span>, {</div><div class="line">      <span class="attr">albumNames</span>: files</div><div class="line">    });</div><div class="line">  });</div><div class="line">};</div><div class="line">exports.showPublic = <span class="function">(<span class="params">req, res</span>) =&gt;</span> {</div><div class="line">  <span class="keyword">const</span> url = <span class="built_in">decodeURI</span>(req.url);</div><div class="line">  fs.readFile(<span class="string">`.<span class="subst">${url}</span>`</span>, (err, data) =&gt; {</div><div class="line">    <span class="keyword">if</span> (err) {</div><div class="line">      res.writeHead(<span class="number">404</span>, <span class="string">&apos;Not Found&apos;</span>);</div><div class="line">      res.end();</div><div class="line">    }</div><div class="line">    res.writeHead(<span class="number">200</span>, {</div><div class="line">      <span class="string">&apos;Content-Type&apos;</span>: mime.lookup(req.url)</div><div class="line">    });</div><div class="line">    res.end(data);</div><div class="line">  });</div><div class="line">};</div><div class="line">exports.doAddAlbum = <span class="function">(<span class="params">req, res</span>) =&gt;</span> {</div><div class="line">  <span class="keyword">const</span> albumName = req.query.albumName ? req.query.albumName.trim() : <span class="string">&apos;&apos;</span>;</div><div class="line">  <span class="keyword">if</span> (<span class="regexp">/(\\|\/|\:|\*|\?|&quot;|\&lt;|\&gt;|\|)|^$/</span>.test(albumName)) {</div><div class="line">    <span class="keyword">return</span> res.end(<span class="string">&apos;albumName param invalid error.&apos;</span>);</div><div class="line">  }</div><div class="line">  fs.access(path.join(config.uploadDir, albumName), err =&gt; {</div><div class="line">    <span class="keyword">if</span> (!err) {</div><div class="line">      <span class="keyword">return</span> res.end(<span class="string">&apos;albumName already exists&apos;</span>);</div><div class="line">    }</div><div class="line">    fs.mkdir(path.join(config.uploadDir, albumName), err =&gt; {</div><div class="line">      <span class="keyword">if</span> (err) {</div><div class="line">        <span class="keyword">throw</span> err;</div><div class="line">      }</div><div class="line">      res.redirect(<span class="string">&apos;/&apos;</span>);</div><div class="line">    });</div><div class="line">  });</div><div class="line">};</div><div class="line">exports.showAlbum = <span class="function">(<span class="params">req, res</span>) =&gt;</span> {</div><div class="line">  <span class="keyword">const</span> albumName = req.query.albumName ? req.query.albumName.trim() : <span class="string">&apos;&apos;</span>;</div><div class="line">  fs.access(path.join(config.uploadDir, albumName), err =&gt; {</div><div class="line">    <span class="keyword">if</span> (err) {</div><div class="line">      <span class="keyword">return</span> res.end(<span class="string">&apos;album not exists.&apos;</span>);</div><div class="line">    }</div><div class="line">    fs.readdir(path.join(config.uploadDir, albumName), (err, files) =&gt; {</div><div class="line">      <span class="keyword">if</span> (err) {</div><div class="line">        <span class="keyword">throw</span> err;</div><div class="line">      }</div><div class="line">      res.render(<span class="string">&apos;album&apos;</span>, {</div><div class="line">        <span class="attr">albumName</span>: albumName,</div><div class="line">        <span class="attr">albumPaths</span>: files.map(<span class="function"><span class="params">fileName</span> =&gt;</span> <span class="string">`/uploads/<span class="subst">${albumName}</span>/<span class="subst">${fileName}</span>`</span>)</div><div class="line">      });</div><div class="line">    });</div><div class="line">  });</div><div class="line">};</div><div class="line"><span class="comment">// &#x6D4B;&#x8BD5;&#x767B;&#x5F55;&#x9875;</span></div><div class="line">exports.showLogin = <span class="function">(<span class="params">req, res</span>) =&gt;</span> {</div><div class="line">  res.render(<span class="string">&apos;login&apos;</span>, {</div><div class="line">    <span class="attr">Name</span>: <span class="string">&apos;Jack&apos;</span></div><div class="line">  });</div><div class="line">};</div><div class="line">exports.doUpload = <span class="function">(<span class="params">req, res</span>) =&gt;</span> {</div><div class="line">  <span class="keyword">const</span> albumName = req.query.albumName ? req.query.albumName : <span class="string">&apos;&apos;</span>;</div><div class="line">  fs.access(path.join(config.uploadDir, albumName), err =&gt; {</div><div class="line">    <span class="keyword">if</span> (err) {</div><div class="line">      <span class="keyword">return</span> res.end(<span class="string">&apos;album not exists&apos;</span>);</div><div class="line">    }</div><div class="line">    <span class="keyword">const</span> form = <span class="keyword">new</span> formidable.IncomingForm();</div><div class="line">    form.uploadDir = path.join(config.uploadDir, albumName);</div><div class="line">    form.keepExtensions = <span class="literal">true</span>;</div><div class="line">    form.maxFieldsSize = <span class="number">10</span> * <span class="number">1024</span> * <span class="number">1024</span>;</div><div class="line">    form.parse(req, (err, fields, files) =&gt; {</div><div class="line">      <span class="keyword">if</span> (err) {</div><div class="line">        <span class="keyword">return</span> res.end(<span class="string">&apos;The default size is 10MB.&apos;</span>);</div><div class="line">      }</div><div class="line">      res.redirect(<span class="string">`/album?albumName=<span class="subst">${albumName}</span>`</span>);</div><div class="line">    });</div><div class="line">  });</div><div class="line">};</div><div class="line">exports.showRegister = <span class="function">(<span class="params">req, res</span>) =&gt;</span> {</div><div class="line">  fs.readFile(path.join(config.viewPath, <span class="string">&apos;register.html&apos;</span>), (err, data) =&gt; {</div><div class="line">    <span class="keyword">if</span> (err) {</div><div class="line">      <span class="keyword">throw</span> err;</div><div class="line">    }</div><div class="line">    res.end(data);</div><div class="line">  });</div><div class="line">};</div><div class="line">exports.doRegister = <span class="function">(<span class="params">req, res</span>) =&gt;</span> {</div><div class="line">  <span class="keyword">let</span> buffers = [];</div><div class="line">  req.on(<span class="string">&apos;data&apos;</span>, data =&gt; {</div><div class="line">    buffers.push(data);</div><div class="line">  });</div><div class="line">  req.on(<span class="string">&apos;end&apos;</span>, () =&gt; {</div><div class="line">    <span class="keyword">const</span> file = Buffer.concat(buffers);</div><div class="line">    fs.writeFile(<span class="string">&apos;./a&apos;</span>, file, err =&gt; {</div><div class="line">      <span class="keyword">if</span> (err) {</div><div class="line">        <span class="keyword">throw</span> err;</div><div class="line">      }</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">&apos;writed success&apos;</span>);</div><div class="line">    });</div><div class="line">    <span class="built_in">console</span>.log(file.length);</div><div class="line">      <span class="comment">// console.log(qstring.parse(body))</span></div><div class="line">  });</div><div class="line">};</div></pre></td></tr></table></figure>
+<h3 id="router-js"><a href="#router-js" class="headerlink" title="router.js"></a>router.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">&apos;url&apos;</span>);</div><div class="line"><span class="keyword">const</span> handler = <span class="built_in">require</span>(<span class="string">&apos;./handler&apos;</span>);</div><div class="line"><span class="keyword">const</span> render = <span class="built_in">require</span>(<span class="string">&apos;./common/render&apos;</span>);</div><div class="line"><span class="comment">// http://www.baidu.com:80/a/b/c?key=value&amp;key=value#xxx</span></div><div class="line"><span class="comment">// &#x534F;&#x8BAE;://&#x4E3B;&#x673A;&#x540D;:&#x7AEF;&#x53E3;&#x53F7;:&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;?&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;#&#x5185;&#x90E8;&#x5B9A;&#x4F4D;</span></div><div class="line"><span class="comment">// &#x5355;&#x9875;&#x5E94;&#x7528;&#x4E2D;&#x5C31;&#x662F;&#x5229;&#x7528; hash &#x6765;&#x4F5C;&#x4E3A;&#x7F51;&#x7AD9;&#x7684;&#x8BF7;&#x6C42;&#x6807;&#x8BC6;&#x8DEF;&#x7531;&#x7684;</span></div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>{</div><div class="line">  <span class="keyword">const</span> urlObj = url.parse(req.url, <span class="literal">true</span>);</div><div class="line">  <span class="keyword">const</span> pathname = urlObj.pathname;</div><div class="line">  <span class="keyword">const</span> queryObj = urlObj.query;</div><div class="line">  <span class="keyword">const</span> method = req.method.toLowerCase();</div><div class="line">  req.query = queryObj || {};</div><div class="line">  res.redirect = <span class="function"><span class="params">url</span> =&gt;</span> {</div><div class="line">    res.writeHead(<span class="number">302</span>, {</div><div class="line">      <span class="string">&apos;Location&apos;</span>: <span class="built_in">encodeURI</span>(url);</div><div class="line">    });</div><div class="line">    res.end();</div><div class="line">  };</div><div class="line">  <span class="comment">// &#x53EA;&#x8981;&#x8C03;&#x7528;&#x4E86;&#x8BE5;&#x65B9;&#x6CD5;&#xFF0C;res &#x5BF9;&#x8C61;&#x5C31;&#x62E5;&#x6709;&#x4E86;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x53EB;&#x505A; render</span></div><div class="line">  <span class="comment">// &#x4EE5;&#x540E;&#x53EA;&#x8981;&#x662F;&#x6E32;&#x67D3;&#x6A21;&#x677F;&#xFF0C;&#x90A3;&#x5C31;&#x76F4;&#x63A5;&#x8C03;&#x7528; res.render(&apos;&#x89C6;&#x56FE;&#x540D;&#x79F0;&apos;, &#x6570;&#x636E;&#x5BF9;&#x8C61;)</span></div><div class="line">  render(res);</div><div class="line">  <span class="keyword">if</span> (pathname === <span class="string">&apos;/&apos;</span>) {</div><div class="line">    handler.showIndex(req, res);</div><div class="line">  } <span class="keyword">else</span> <span class="keyword">if</span> (method === <span class="string">&apos;get&apos;</span> &amp;&amp; (pathname.startsWith(<span class="string">&apos;/public/&apos;</span>) || pathname.startsWith(<span class="string">&apos;/uploads/&apos;</span>) || pathname.startsWith(<span class="string">&apos;/node_modules/&apos;</span>))) {</div><div class="line">    handler.showPublic(req, res);</div><div class="line">  } <span class="keyword">else</span> <span class="keyword">if</span> (method === <span class="string">&apos;get&apos;</span> &amp;&amp; pathname === <span class="string">&apos;/album/add&apos;</span>) {</div><div class="line">    handler.doAddAlbum(req, res);</div><div class="line">  } <span class="keyword">else</span> <span class="keyword">if</span> (method === <span class="string">&apos;get&apos;</span> &amp;&amp; pathname === <span class="string">&apos;/album&apos;</span>) {</div><div class="line">    handler.showAlbum(req, res);</div><div class="line">  } <span class="keyword">else</span> <span class="keyword">if</span> (method === <span class="string">&apos;post&apos;</span> &amp;&amp; pathname === <span class="string">&apos;/upload&apos;</span>) {</div><div class="line">    handler.doUpload(req, res);</div><div class="line">  } <span class="keyword">else</span> <span class="keyword">if</span> (method === <span class="string">&apos;get&apos;</span> &amp;&amp; pathname === <span class="string">&apos;/register&apos;</span>) {</div><div class="line">    handler.showRegister(req, res);</div><div class="line">  } <span class="keyword">else</span> <span class="keyword">if</span> (method === <span class="string">&apos;post&apos;</span> &amp;&amp; pathname === <span class="string">&apos;/register&apos;</span>) {</div><div class="line">    handler.doRegister(req, res);</div><div class="line">  } <span class="keyword">else</span> <span class="keyword">if</span> (method === <span class="string">&apos;get&apos;</span> &amp;&amp; pathname === <span class="string">&apos;/login&apos;</span>) {</div><div class="line">    handler.showLogin(req, res);</div><div class="line">  }</div><div class="line">}</div></pre></td></tr></table></figure>
+<h2 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h2><p>Express &#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E; Node.js &#x5F00;&#x53D1;&#x7684;&#x5FEB;&#x901F;&#x3001;&#x5F00;&#x653E;&#x3001;&#x6781;&#x7B80;&#x7684; Web &#x5F00;&#x53D1;&#x6846;&#x67B6;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5FEB;&#x901F;&#x6784;&#x5EFA;&#x7F51;&#x7AD9;&#x540E;&#x53F0;&#xFF0C;&#x4F7F;&#x7528; Express &#x53EF;&#x4EE5;&#x8BA9;&#x4F60;&#x66F4;&#x52A0;&#x4E13;&#x6CE8;&#x4E8E;&#x4E1A;&#x52A1;&#x7684;&#x5904;&#x7406;&#x3002;</p>
+<ul>
+<li>Koa</li>
+<li>Sails</li>
+<li>ThinkJS</li>
+</ul>
+<h3 id="&#x7279;&#x6027;"><a href="#&#x7279;&#x6027;" class="headerlink" title="&#x7279;&#x6027;"></a>&#x7279;&#x6027;</h3><ul>
+<li>Express&#x6846;&#x67B6;&#x5EFA;&#x7ACB;&#x5728;node.js&#x5185;&#x7F6E;&#x7684;http&#x6A21;&#x5757;&#x4E0A;<ul>
+<li>&#x4E0D;&#x5BF9; Node.js &#x5DF2;&#x6709;&#x7684;&#x7279;&#x6027;&#x8FDB;&#x884C;&#x4E8C;&#x6B21;&#x62BD;&#x8C61;</li>
+<li>&#x5728; HTTP &#x6A21;&#x5757;&#x4E4B;&#x4E0A;&#x6269;&#x5C55;&#x4E86; Web &#x5E94;&#x7528;&#x6240;&#x9700;&#x7684;&#x57FA;&#x672C;&#x529F;&#x80FD;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;<code>req.query</code>&#x3001;<code>res.send</code>&#x3001;<code>res.json</code>&#x3001;<code>res.render</code> &#x7B49;API</li>
+<li>&#x539F;&#x6765;&#x7684; HTTP &#x6A21;&#x5757;&#x7684; <code>req.url</code>&#x3001;<code>req.method</code>&#xFF0C;<code>res.write</code>&#xFF0C;<code>res.end</code> &#x7B49; API &#x4F9D;&#x7136;&#x5B58;&#x5728;</li>
+</ul>
+</li>
+<li>&#x8F7B;&#x91CF;&#x3001;API&#x7B80;&#x5355;&#x53CB;&#x597D;</li>
+<li>&#x7B80;&#x5355;&#x8BED;&#x4E49;&#x5316;&#x7684;&#x8DEF;&#x7531;&#x7CFB;&#x7EDF;</li>
+<li>&#x5F3A;&#x5927;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x5904;&#x7406;&#x7CFB;&#x7EDF;</li>
+</ul>
+<h3 id="Geting-Started"><a href="#Geting-Started" class="headerlink" title="Geting Started"></a>Geting Started</h3><ol>
+<li>&#x5B89;&#x88C5;</li>
+<li>hello world</li>
+<li>&#x8DEF;&#x7531;</li>
+<li>&#x5904;&#x7406;&#x9759;&#x6001;&#x8D44;&#x6E90;</li>
+</ol>
+<p>&#x5B89;&#x88C5;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save express</div></pre></td></tr></table></figure>
+<p>&#x57FA;&#x672C;&#x8DEF;&#x7531;&#x53CA;&#x57FA;&#x672C;&#x4F7F;&#x7528;&#xFF1A;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&apos;express&apos;</span>);</div><div class="line"><span class="comment">// 1. &#x8C03;&#x7528; express &#x5F97;&#x5230;&#x4E00;&#x4E2A; app &#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;</span></div><div class="line"><span class="comment">// &#x8FD9;&#x91CC;&#x5C31;&#x597D;&#x6BD4;&#x662F; http.createServer</span></div><div class="line"><span class="comment">// &#x5F97;&#x5230;&#x7684; app &#x5C31;&#x662F; server</span></div><div class="line"><span class="keyword">const</span> app = express();</div><div class="line"><span class="comment">// 2. &#x6DFB;&#x52A0;&#x8DEF;&#x7531;&#xFF0C;&#x8BBE;&#x7F6E;&#x5904;&#x7406;&#x51FD;&#x6570;</span></div><div class="line"><span class="comment">// &#x5F53;&#x7528;&#x6237;&#x4EE5; GET &#x8BF7;&#x6C42; / &#x8DEF;&#x5F84;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6267;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x56DE;&#x8C03;&#x5904;&#x7406;&#x51FD;&#x6570;</span></div><div class="line">app.get(<span class="string">&apos;/&apos;</span>, (req, res) =&gt; {</div><div class="line">  res.send(<span class="string">&apos;Index Page&apos;</span>);;</div><div class="line">});</div><div class="line"><span class="comment">// &#x5F53;&#x7528;&#x6237;&#x4EE5; GET &#x8BF7;&#x6C42; /login &#x8DEF;&#x5F84;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6267;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x56DE;&#x8C03;&#x5904;&#x7406;&#x51FD;&#x6570;</span></div><div class="line">app.get(<span class="string">&apos;/login&apos;</span>, (req, res) =&gt; {</div><div class="line">  res.send(<span class="string">&apos;Login Page&apos;</span>);</div><div class="line">});</div><div class="line"><span class="comment">// &#x5904;&#x7406;&#x4EE5; POST &#x8BF7;&#x6C42; /upload</span></div><div class="line">app.post(<span class="string">&apos;/upload&apos;</span>, (req, res) { </div><div class="line">  res.send(<span class="string">&apos;Upload&apos;</span>);</div><div class="line">});</div><div class="line"><span class="comment">// 3. &#x7ED1;&#x5B9A;&#x7AEF;&#x53E3;&#xFF0C;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x5668;</span></div><div class="line">app.listen(<span class="number">3000</span>, () =&gt; {</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">&apos;server is listenning at port 3000.&apos;</span>);</div><div class="line">});</div></pre></td></tr></table></figure>
+<p>&#x5904;&#x7406;&#x9759;&#x6001;&#x8D44;&#x6E90;&#xFF1A;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &#x5C06; node_modules&#x3001;public&#x3001;uploads &#x76EE;&#x5F55;&#x5F00;&#x653E;&#x7ED9;&#x7528;&#x6237;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x7684;&#x5F62;&#x5F0F;&#x8BBF;&#x95EE;&#x8BE5;&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x8D44;&#x6E90;</span></div><div class="line"><span class="comment">// &#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x8868;&#x793A;&#x4EE5;&#x4EC0;&#x4E48;&#x6807;&#x8BC6;&#x5F00;&#x5934;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x8C03;&#x7528; express.static(&apos;&#x8DEF;&#x5F84;&apos;) &#x8981;&#x66B4;&#x529B;&#x7684;&#x76EE;&#x5F55;&#x7684;&#x8DEF;&#x5F84;</span></div><div class="line"><span class="comment">// &#x6CE8;&#x610F;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x8BF7;&#x6C42;&#x6807;&#x8BC6;&#xFF0C;&#x6240;&#x6709;&#x8BF7;&#x6C42;&#x6807;&#x8BC6;&#x90FD;&#x662F;&#x4EE5; / &#x5F00;&#x5934;&#x7684;</span></div><div class="line">app.use(<span class="string">&apos;/node_modules&apos;</span>, express.static(<span class="string">&apos;./node_modules/&apos;</span>));</div><div class="line">app.use(<span class="string">&apos;/public&apos;</span>, express.static(<span class="string">&apos;./public/&apos;</span>));</div><div class="line">app.use(<span class="string">&apos;/uploads&apos;</span>, express.static(<span class="string">&apos;./uploads/&apos;</span>));</div></pre></td></tr></table></figure>
+<h2 id="express-&#x7248;&#x7684;-&#x76F8;&#x518C;"><a href="#express-&#x7248;&#x7684;-&#x76F8;&#x518C;" class="headerlink" title="express &#x7248;&#x7684; &#x76F8;&#x518C;"></a>express &#x7248;&#x7684; &#x76F8;&#x518C;</h2><h3 id="views-&#x76EE;&#x5F55;&#x4E0B;"><a href="#views-&#x76EE;&#x5F55;&#x4E0B;" class="headerlink" title="views &#x76EE;&#x5F55;&#x4E0B;"></a>views &#x76EE;&#x5F55;&#x4E0B;</h3><p>views &#x76EE;&#x5F55;&#x4E0B; index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!doctype html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>&#x6211;&#x7684;&#x76F8;&#x518C; - <span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;node_modules/bootstrap/dist/css/bootstrap.css&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;public/css/main.css&quot;</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container-fluid&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">&quot;navbar navbar-default&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container-fluid&quot;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;navbar-header&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;navbar-toggle collapsed&quot;</span> <span class="attr">data-toggle</span>=<span class="string">&quot;collapse&quot;</span> <span class="attr">data-target</span>=<span class="string">&quot;#bs-example-navbar-collapse-1&quot;</span> <span class="attr">aria-expanded</span>=<span class="string">&quot;false&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;sr-only&quot;</span>&gt;</span>Toggle navigation<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;icon-bar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;icon-bar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;icon-bar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;navbar-brand&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/&quot;</span>&gt;</span>&#x6211;&#x7684;&#x76F8;&#x518C;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;collapse navbar-collapse&quot;</span> <span class="attr">id</span>=<span class="string">&quot;bs-example-navbar-collapse-1&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;nav navbar-nav&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;active&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/&quot;</span>&gt;</span>&#x9996;&#x9875; <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;sr-only&quot;</span>&gt;</span>(current)<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;nav navbar-nav navbar-right&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">              <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span> <span class="attr">data-toggle</span>=<span class="string">&quot;modal&quot;</span> <span class="attr">data-target</span>=<span class="string">&quot;#exampleModal&quot;</span> <span class="attr">data-whatever</span>=<span class="string">&quot;@mdo&quot;</span>&gt;</span>&#x65B0;&#x5EFA;&#x76F8;&#x518C;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">%</span> <span class="attr">albumNames.forEach</span>(<span class="attr">function</span>(<span class="attr">albumName</span>){ %&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-xs-6 col-md-3&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/album?albumName=&lt;%= albumName %&gt;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;thumbnail&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;public/img/icon.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;caption&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">h3</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">albumName</span> %&gt;</span><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">%</span> }) %&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal fade&quot;</span> <span class="attr">id</span>=<span class="string">&quot;exampleModal&quot;</span> <span class="attr">tabindex</span>=<span class="string">&quot;-1&quot;</span> <span class="attr">role</span>=<span class="string">&quot;dialog&quot;</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;exampleModalLabel&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-dialog&quot;</span> <span class="attr">role</span>=<span class="string">&quot;document&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-content&quot;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/album/add&quot;</span> <span class="attr">method</span>=<span class="string">&quot;get&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-header&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;close&quot;</span> <span class="attr">data-dismiss</span>=<span class="string">&quot;modal&quot;</span> <span class="attr">aria-label</span>=<span class="string">&quot;Close&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">aria-hidden</span>=<span class="string">&quot;true&quot;</span>&gt;</span>&amp;times;<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">h4</span> <span class="attr">class</span>=<span class="string">&quot;modal-title&quot;</span> <span class="attr">id</span>=<span class="string">&quot;exampleModalLabel&quot;</span>&gt;</span>&#x65B0;&#x5EFA;&#x76F8;&#x518C;<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-body&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></div><div class="line">              <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;recipient-name&quot;</span> <span class="attr">class</span>=<span class="string">&quot;control-label&quot;</span>&gt;</span>&#x76F8;&#x518C;&#x540D;&#x79F0;:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">              <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">name</span>=<span class="string">&quot;albumName&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;&#x8BF7;&#x8F93;&#x5165;&#x76F8;&#x518C;&#x540D;&#x79F0;&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-footer&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-default&quot;</span> <span class="attr">data-dismiss</span>=<span class="string">&quot;modal&quot;</span>&gt;</span>&#x5173;&#x95ED;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-success&quot;</span>&gt;</span>&#x70B9;&#x51FB;&#x6DFB;&#x52A0;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;node_modules/jquery/dist/jquery.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;node_modules/bootstrap/dist/js/bootstrap.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>views &#x76EE;&#x5F55;&#x4E0B; album.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!doctype html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>&#x6211;&#x7684;&#x76F8;&#x518C; -<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;node_modules/bootstrap/dist/css/bootstrap.css&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;public/css/main.css&quot;</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container-fluid&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">&quot;navbar navbar-default&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container-fluid&quot;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;navbar-header&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;navbar-toggle collapsed&quot;</span> <span class="attr">data-toggle</span>=<span class="string">&quot;collapse&quot;</span> <span class="attr">data-target</span>=<span class="string">&quot;#bs-example-navbar-collapse-1&quot;</span> <span class="attr">aria-expanded</span>=<span class="string">&quot;false&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;sr-only&quot;</span>&gt;</span>Toggle navigation<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;icon-bar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;icon-bar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;icon-bar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;navbar-brand&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/&quot;</span>&gt;</span>&#x6211;&#x7684;&#x76F8;&#x518C;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;collapse navbar-collapse&quot;</span> <span class="attr">id</span>=<span class="string">&quot;bs-example-navbar-collapse-1&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;nav navbar-nav&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;active&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/&quot;</span>&gt;</span>&#x9996;&#x9875; <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;sr-only&quot;</span>&gt;</span>(current)<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;nav navbar-nav navbar-right&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span> <span class="attr">data-toggle</span>=<span class="string">&quot;modal&quot;</span> <span class="attr">data-target</span>=<span class="string">&quot;#exampleModal&quot;</span> <span class="attr">data-whatever</span>=<span class="string">&quot;@mdo&quot;</span>&gt;</span>&#x7167;&#x7247;&#x4E0A;&#x4F20;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">%</span> <span class="attr">albumPaths.forEach</span>(<span class="attr">function</span> (<span class="attr">imgSrc</span>) { %&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-xs-6 col-md-3&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;thumbnail&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;&lt;%= imgSrc %&gt;&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">%</span> }) %&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal fade&quot;</span> <span class="attr">id</span>=<span class="string">&quot;exampleModal&quot;</span> <span class="attr">tabindex</span>=<span class="string">&quot;-1&quot;</span> <span class="attr">role</span>=<span class="string">&quot;dialog&quot;</span> <span class="attr">aria-labelledby</span>=<span class="string">&quot;exampleModalLabel&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-dialog&quot;</span> <span class="attr">role</span>=<span class="string">&quot;document&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-content&quot;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/upload?albumName=&lt;%= albumName %&gt;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">enctype</span>=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-header&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;close&quot;</span> <span class="attr">data-dismiss</span>=<span class="string">&quot;modal&quot;</span> <span class="attr">aria-label</span>=<span class="string">&quot;Close&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">aria-hidden</span>=<span class="string">&quot;true&quot;</span>&gt;</span>&amp;times;<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">h4</span> <span class="attr">class</span>=<span class="string">&quot;modal-title&quot;</span> <span class="attr">id</span>=<span class="string">&quot;exampleModalLabel&quot;</span>&gt;</span>&#x7167;&#x7247;&#x4E0A;&#x4F20;<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-body&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></div><div class="line">              <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;recipient-name&quot;</span> <span class="attr">class</span>=<span class="string">&quot;control-label&quot;</span>&gt;</span>&#x8BF7;&#x9009;&#x62E9;&#x6587;&#x4EF6;:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">              <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">name</span>=<span class="string">&quot;pic&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modal-footer&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-default&quot;</span> <span class="attr">data-dismiss</span>=<span class="string">&quot;modal&quot;</span>&gt;</span>&#x5173;&#x95ED;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-success&quot;</span>&gt;</span>&#x70B9;&#x51FB;&#x4E0A;&#x4F20;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;node_modules/jquery/dist/jquery.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;node_modules/bootstrap/dist/js/bootstrap.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="&#x6839;&#x76EE;&#x5F55;"><a href="#&#x6839;&#x76EE;&#x5F55;" class="headerlink" title="&#x6839;&#x76EE;&#x5F55;"></a>&#x6839;&#x76EE;&#x5F55;</h3><p>config.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&apos;path&apos;</span>);</div><div class="line"><span class="built_in">module</span>.exports = {</div><div class="line">  <span class="attr">uploadDir</span>: path.join(__dirname, <span class="string">&apos;uploads&apos;</span>),</div><div class="line">  <span class="attr">viewPath</span> : path.join(__dirname, <span class="string">&apos;views&apos;</span>);</div><div class="line">};</div></pre></td></tr></table></figure>
+<p>app.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&apos;express&apos;</span>);</div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&apos;path&apos;</span>);</div><div class="line"><span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">&apos;./router&apos;</span>);</div><div class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">&apos;./config&apos;</span>);</div><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&apos;fs&apos;</span>);</div><div class="line"></div><div class="line"><span class="comment">// 1. &#x521B;&#x5EFA; app &#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;</span></div><div class="line"><span class="keyword">const</span> app = express();</div><div class="line"></div><div class="line"><span class="comment">// 2. &#x5904;&#x7406;&#x516C;&#x5171;&#x8BF7;&#x6C42;</span></div><div class="line">app</div><div class="line">  .use(<span class="string">&apos;/node_modules&apos;</span>,express.static(path.join(__dirname, <span class="string">&apos;node_modules&apos;</span>)))</div><div class="line">  .use(<span class="string">&apos;/public&apos;</span>,express.static(path.join(__dirname, <span class="string">&apos;public&apos;</span>)))</div><div class="line">  .use(<span class="string">&apos;/uploads&apos;</span>,express.static(path.join(__dirname, <span class="string">&apos;uploads&apos;</span>)));</div><div class="line"></div><div class="line"><span class="comment">// &#x4F7F;&#x7528; ejs &#x6A21;&#x677F;&#x5F15;&#x64CE;&#xFF0C;&#x914D;&#x7F6E; html &#x540E;&#x7F00;&#x540D;</span></div><div class="line"><span class="comment">// &#x914D;&#x7F6E;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x5B58;&#x653E;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x8BBE;&#x7F6E;&#xFF0C;&#x9ED8;&#x8BA4;&#x5C31;&#x662F;&#x53BB;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;&#x627E; view &#x76EE;&#x5F55;</span></div><div class="line">app.set(<span class="string">&apos;views&apos;</span>, config.viewPath);</div><div class="line">app.engine(<span class="string">&apos;.html&apos;</span>, <span class="built_in">require</span>(<span class="string">&apos;ejs&apos;</span>).__express);</div><div class="line">app.set(<span class="string">&apos;view engine&apos;</span>, <span class="string">&apos;html&apos;</span>);</div><div class="line"></div><div class="line"><span class="comment">// 3. &#x52A0;&#x8F7D;&#x8DEF;&#x7531;</span></div><div class="line">app.use(router);</div><div class="line"></div><div class="line"><span class="comment">// Express &#x5168;&#x5C40;&#x5904;&#x7406;&#x9519;&#x8BEF;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x628A;&#x8BE5;&#x4E2D;&#x95F4;&#x4EF6;&#x653E;&#x5230;&#x6700;&#x540E;</span></div><div class="line"><span class="comment">// &#x5728;&#x4E4B;&#x524D;&#x7684;&#x4EFB;&#x4F55;&#x4E2D;&#x95F4;&#x4EF6;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x9519;&#x8BEF;&#x53D1;&#x751F;&#xFF0C;&#x5C31;&#x8C03;&#x7528; next &#xFF0C;&#x5C06;&#x9519;&#x8BEF;&#x5BF9;&#x8C61;&#x4F20;&#x9012;&#x7ED9; next </span></div><div class="line"><span class="comment">// &#x53EA;&#x8981; next &#x6709;&#x9519;&#x8BEF;&#x5BF9;&#x8C61;&#x53C2;&#x6570;&#xFF0C;&#x8BE5;&#x4E2D;&#x95F4;&#x4EF6;&#x5C31;&#x4F1A;&#x88AB;&#x5339;&#x914D;&#x5230;&#x5E76;&#x6267;&#x884C;</span></div><div class="line">app.use(<span class="function">(<span class="params">err, req, res, next</span>) =&gt;</span> {</div><div class="line">  fs.appendFile(<span class="string">&apos;./log.txt&apos;</span>, err.message, err =&gt; {</div><div class="line">    <span class="keyword">if</span> (err) {</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">&apos;&#x5199;&#x5165;&#x65E5;&#x5FD7;&#x5931;&#x8D25;&apos;</span>);</div><div class="line">    }</div><div class="line">    <span class="comment">// &#x6709;&#x9519;&#x8BEF;&#x53D1;&#x751F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BB0;&#x5F55;&#x9519;&#x8BEF;&#x3001;&#x901A;&#x77E5;&#x7F51;&#x7AD9;&#x7BA1;&#x7406;&#x5458;&#xFF08;&#x53D1;&#x90AE;&#x4EF6;&#x3001;&#x53D1;&#x77ED;&#x4FE1;&#xFF09;</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">&apos;&#x8BB0;&#x5F55;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x6210;&#x529F;&apos;</span>);</div><div class="line">    res.render(<span class="string">&apos;500&apos;</span>);</div><div class="line">  });</div><div class="line">});</div><div class="line"></div><div class="line"><span class="comment">// 4. &#x542F;&#x52A8;&#x76D1;&#x542C;</span></div><div class="line">app.listen(<span class="number">3000</span>, () =&gt; {</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">&apos;Server is running at port 3000.&apos;</span>);</div><div class="line">});</div></pre></td></tr></table></figure>
+<p>router.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&apos;express&apos;</span>);</div><div class="line"><span class="keyword">const</span> handler = <span class="built_in">require</span>(<span class="string">&apos;./handler&apos;</span>);</div><div class="line"><span class="comment">// 1. &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5B9E;&#x4F8B;</span></div><div class="line"><span class="keyword">const</span> router = express.Router();</div><div class="line"><span class="comment">// 2. &#x7ED9;&#x8DEF;&#x7531;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x6302;&#x8F7D;&#x8DEF;&#x7531;</span></div><div class="line">router</div><div class="line">  .get(<span class="string">&apos;/&apos;</span>, handler.showIndex)</div><div class="line">  .get(<span class="string">&apos;/album/add&apos;</span>, handler.doAddAlbum)</div><div class="line">  .get(<span class="string">&apos;/album&apos;</span>, handler.showAlbum)</div><div class="line">  .post(<span class="string">&apos;/upload&apos;</span>, handler.doUpload);</div><div class="line"><span class="comment">// 3. &#x66B4;&#x9732;&#x8DEF;&#x7531;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;</span></div><div class="line"><span class="built_in">module</span>.exports = router;</div></pre></td></tr></table></figure>
+<p>handler.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&apos;fs&apos;</span>);</div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&apos;path&apos;</span>);</div><div class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">&apos;./config&apos;</span>);</div><div class="line"><span class="keyword">const</span> formidable = <span class="built_in">require</span>(<span class="string">&apos;formidable&apos;</span>);</div><div class="line">exports.showIndex = <span class="function">(<span class="params">req, res, next</span>) =&gt;</span> {</div><div class="line">  <span class="comment">// 1. &#x5C06;&#x6240;&#x6709;&#x7684;&#x76F8;&#x518C;&#x540D;&#x79F0;&#x8BFB;&#x53D6;&#x51FA;&#x6765;</span></div><div class="line">  <span class="comment">// 2. &#x628A;&#x76F8;&#x518C;&#x540D;&#x79F0;&#x6570;&#x636E;&#x548C;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x6A21;&#x677F;&#x5B57;&#x7B26;&#x4E32;&#x7F16;&#x8BD1;&#x66FF;&#x6362;</span></div><div class="line">  <span class="comment">// 3. &#x53D1;&#x9001;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x6D4F;&#x89C8;&#x5668;</span></div><div class="line">  fs.readdir(config.uploadDir, (err, files) =&gt; {</div><div class="line">    <span class="keyword">if</span> (err) {</div><div class="line">      <span class="keyword">return</span> next(err);</div><div class="line">    }</div><div class="line">    res.render(<span class="string">&apos;index&apos;</span>, {</div><div class="line">      <span class="attr">albumNames</span>: files</div><div class="line">    });</div><div class="line">  });</div><div class="line">};</div><div class="line">exports.doAddAlbum = <span class="function">(<span class="params">req, res, next</span>) =&gt;</span> {</div><div class="line">  <span class="keyword">const</span> albumName = req.query.albumName ? req.query.albumName.trim() : <span class="string">&apos;&apos;</span>;</div><div class="line">  <span class="keyword">if</span> (<span class="regexp">/(\\|\/|\:|\*|\?|&quot;|\&lt;|\&gt;|\|)|^$/</span>.test(albumName)) {</div><div class="line">    <span class="keyword">return</span> res.end(<span class="string">&apos;albumName param invalid error.&apos;</span>);</div><div class="line">  }</div><div class="line">  fs.access(path.join(config.uploadDir, albumName), err =&gt; {</div><div class="line">    <span class="keyword">if</span> (!err) {</div><div class="line">      <span class="keyword">return</span> res.end(<span class="string">&apos;albumName already exists&apos;</span>);</div><div class="line">    }</div><div class="line">    fs.mkdir(path.join(config.uploadDir, albumName), err =&gt; {</div><div class="line">      <span class="keyword">if</span> (err) {</div><div class="line">        <span class="keyword">return</span> next(err);</div><div class="line">      }</div><div class="line">      res.redirect(<span class="string">&apos;/&apos;</span>);</div><div class="line">    });</div><div class="line">  });</div><div class="line">};</div><div class="line">exports.showAlbum = <span class="function">(<span class="params">req, res, next</span>) =&gt;</span> {</div><div class="line">  <span class="keyword">const</span> albumName = req.query.albumName ? req.query.albumName.trim() : <span class="string">&apos;&apos;</span>;</div><div class="line">  fs.access(path.join(config.uploadDir, albumName), err =&gt; {</div><div class="line">    <span class="keyword">if</span> (err) {</div><div class="line">      <span class="keyword">return</span> res.end(<span class="string">&apos;album not exists.&apos;</span>);</div><div class="line">    }</div><div class="line">    fs.readdir(path.join(config.uploadDir, albumName), (err, files) =&gt; {</div><div class="line">      <span class="keyword">if</span> (err) {</div><div class="line">        <span class="keyword">return</span> next(err);</div><div class="line">      }</div><div class="line">      res.render(<span class="string">&apos;album&apos;</span>, {</div><div class="line">        <span class="attr">albumName</span>: albumName,</div><div class="line">        <span class="attr">albumPaths</span>: files.map(<span class="function"><span class="params">fileName</span> =&gt;</span> <span class="string">`/uploads/<span class="subst">${albumName}</span>/<span class="subst">${fileName}</span>`</span>)</div><div class="line">      });</div><div class="line">    });</div><div class="line">  });</div><div class="line">};</div><div class="line">exports.doUpload = <span class="function">(<span class="params">req, res, next</span>) =&gt;</span> {</div><div class="line">  <span class="keyword">const</span> albumName = req.query.albumName ? req.query.albumName : <span class="string">&apos;&apos;</span>;</div><div class="line">  fs.access(path.join(config.uploadDir, albumName), err =&gt; {</div><div class="line">    <span class="keyword">if</span> (err) {</div><div class="line">      <span class="keyword">return</span> res.end(<span class="string">&apos;album not exists&apos;</span>);</div><div class="line">    }</div><div class="line">    <span class="keyword">const</span> form = <span class="keyword">new</span> formidable.IncomingForm();</div><div class="line">    form.uploadDir = path.join(config.uploadDir, albumName);</div><div class="line">    form.keepExtensions = <span class="literal">true</span>;</div><div class="line">    form.maxFieldsSize = <span class="number">10</span> * <span class="number">1024</span> * <span class="number">1024</span>;</div><div class="line">    form.parse(req, (err, fields, files) =&gt; {</div><div class="line">      <span class="keyword">if</span> (err) {</div><div class="line">        <span class="keyword">return</span> res.end(<span class="string">&apos;The default size is 10MB.&apos;</span>);</div><div class="line">      }</div><div class="line">      res.redirect(<span class="string">`/album?albumName=<span class="subst">${albumName}</span>`</span>);</div><div class="line">    });</div><div class="line">  });</div><div class="line">};</div></pre></td></tr></table></figure>
+<h3 id="&#x5728;-Express-&#x4E2D;&#x4F7F;&#x7528;-ejs-&#x6A21;&#x677F;&#x5F15;&#x64CE;"><a href="#&#x5728;-Express-&#x4E2D;&#x4F7F;&#x7528;-ejs-&#x6A21;&#x677F;&#x5F15;&#x64CE;" class="headerlink" title="&#x5728; Express &#x4E2D;&#x4F7F;&#x7528; ejs &#x6A21;&#x677F;&#x5F15;&#x64CE;"></a>&#x5728; Express &#x4E2D;&#x4F7F;&#x7528; ejs &#x6A21;&#x677F;&#x5F15;&#x64CE;</h3><p>&#x5B89;&#x88C5;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save ejs</div></pre></td></tr></table></figure>
+<p>&#x914D;&#x7F6E; Express &#x4F7F;&#x7528; ejs &#x6A21;&#x677F;</p>
+<ul>
+<li><code>app.set(&apos;views&apos;, config.viewPath);</code><ul>
+<li>&#x914D;&#x7F6E;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x5B58;&#x653E;&#x7684;&#x8DEF;&#x5F84;</li>
+</ul>
+</li>
+<li><code>app.set(&apos;view engine&apos;, &apos;ejs&apos;);</code><ul>
+<li>&#x914D;&#x7F6E;&#x8C03;&#x7528; res.render &#x7684;&#x65F6;&#x5019;&#x4F7F;&#x7528;&#x7684;&#x6A21;&#x677F;&#x5F15;&#x64CE;</li>
+<li>&#x627E;&#x5230; <code>view</code> &#x76EE;&#x5F55;&#x4E0B;&#x7684; <code>.ejs</code> &#x540E;&#x7F00;&#x7684;&#x6587;&#x4EF6;</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">app.set(<span class="string">&apos;views&apos;</span>, <span class="string">&apos;&#x89C6;&#x56FE;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x5B58;&#x653E;&#x8DEF;&#x5F84;&apos;</span>)</div><div class="line">app.set(<span class="string">&apos;view engine&apos;</span>, <span class="string">&apos;&#x5B89;&#x88C5;&#x7684;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;ejs&apos;</span>)</div></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x4F7F;&#x7528;&#x4E0A;&#x9762;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x5219;&#x89C6;&#x56FE;&#x7684;&#x540E;&#x7F00;&#x540D;&#x5FC5;&#x987B;&#x4E3A; <code>.ejs</code>&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x8981;&#x4FEE;&#x6539;&#x89C6;&#x56FE;&#x7684;&#x540E;&#x7F00;&#x540D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x914D;&#x7F6E;&#x5F62;&#x5F0F;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">app.engine(<span class="string">&apos;.html&apos;</span>, <span class="built_in">require</span>(<span class="string">&apos;ejs&apos;</span>).__express)</div><div class="line">app.set(<span class="string">&apos;view engine&apos;</span>, <span class="string">&apos;html&apos;</span>)</div></pre></td></tr></table></figure>
+<p>&#x4F7F;&#x7528;&#xFF1A;</p>
+<p>&#x53EA;&#x8981;&#x6267;&#x884C;&#x4E86;&#x4E0A;&#x9762;&#x4E24;&#x53E5;&#x4EE3;&#x7801;&#xFF1A;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x540E;&#x9762;&#x7684;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E2D;&#x4F7F;&#x7528; <code>res.render(&#x89C6;&#x56FE;&#x540D;&#x79F0;&#xFF0C;&#x8981;&#x6CE8;&#x5165;&#x7684;&#x6570;&#x636E;&#x5BF9;&#x8C61;)</code>&#xFF0C;&#x7136;&#x540E;express&#x4F1A;&#x81EA;&#x52A8;&#x5E2E;&#x4F60;&#x53BB;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x7136;&#x540E;&#x6CE8;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x89E3;&#x6790;&#x66FF;&#x6362;&#xFF0C;&#x6700;&#x540E;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684; html &#x9875;&#x9762;&#xFF0C;&#x7136;&#x540E;&#x53D1;&#x9001;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x3002;</p>
+<p>&#x5982; <code>views/index.html</code> &#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello <span class="tag">&lt;<span class="name">%=</span> <span class="attr">name</span> %&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><code>app.js</code> &#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">app.get(<span class="string">&apos;/&apos;</span>, (req, res) =&gt; {</div><div class="line">  res.render(<span class="string">&apos;index&apos;</span>, {</div><div class="line">    <span class="attr">name</span>: <span class="string">&apos;World&apos;</span></div><div class="line">  })</div><div class="line">})</div></pre></td></tr></table></figure>
+<p>&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x770B;&#x5230;&#x7684;&#x6700;&#x7EC8;&#x6E32;&#x67D3;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="&#x8DEF;&#x7531;&#x7CFB;&#x7EDF;&#x6A21;&#x5757;"><a href="#&#x8DEF;&#x7531;&#x7CFB;&#x7EDF;&#x6A21;&#x5757;" class="headerlink" title="&#x8DEF;&#x7531;&#x7CFB;&#x7EDF;&#x6A21;&#x5757;"></a>&#x8DEF;&#x7531;&#x7CFB;&#x7EDF;&#x6A21;&#x5757;</h3><p>Express &#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x8DEF;&#x7531;&#x6A21;&#x5757;&#x5316;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x5F62;&#x5F0F;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x5C06;&#x8DEF;&#x7531;&#x5355;&#x72EC;&#x7684;&#x653E;&#x5230;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7; <code>app.use</code> &#x7684;&#x5F62;&#x5F0F;&#x52A0;&#x8F7D;&#x8DEF;&#x7531;&#x7CFB;&#x7EDF;&#x3002;</p>
+<h3 id="&#x4E2D;&#x95F4;&#x4EF6;"><a href="#&#x4E2D;&#x95F4;&#x4EF6;" class="headerlink" title="&#x4E2D;&#x95F4;&#x4EF6;"></a>&#x4E2D;&#x95F4;&#x4EF6;</h3><p>&#x5982;&#x679C;&#x628A;&#x4E00;&#x4E2A; <code>http</code> &#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x6BD4;&#x4F5C;&#x662F;&#x6C61;&#x6C34;&#x5904;&#x7406;&#xFF0C;&#x4E2D;&#x95F4;&#x4EF6;&#x5C31;&#x50CF;&#x662F;&#x4E00;&#x5C42;&#x5C42;&#x7684;&#x8FC7;&#x6EE4;&#x7F51;&#xFF08;&#x8FC7;&#x6EE4;&#x5668;&#xFF09;&#x3002;&#x6BCF;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x5728; <code>http</code> &#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x4E2D;&#x901A;&#x8FC7;&#x6539;&#x5199; <code>request</code> &#x6216;&#xFF08;&#x548C;&#xFF09;<code>response</code> &#x7684;&#x6570;&#x636E;&#x3001;&#x72B6;&#x6001;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;&#x7279;&#x5B9A;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x7B80;&#x5355;&#x8BF4;&#xFF0C;&#x4E2D;&#x95F4;&#x4EF6;&#xFF08;middleware&#xFF09;&#x5C31;&#x662F;&#x5904;&#x7406;HTTP&#x8BF7;&#x6C42;&#x7684;&#x51FD;&#x6570;&#x3002;&#x5B83;&#x6700;&#x5927;&#x7684;&#x7279;&#x70B9;&#x5C31;&#x662F;&#xFF0C;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x5904;&#x7406;&#x5B8C;&#xFF0C;&#x518D;&#x4F20;&#x9012;&#x7ED9;&#x4E0B;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x3002;App &#x5B9E;&#x4F8B;&#x5728;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x3002;</p>
+<p>&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x529F;&#x80FD;&#x5305;&#x62EC;&#xFF1A;</p>
+<ul>
+<li>&#x6267;&#x884C;&#x4EFB;&#x4F55;&#x4EE3;&#x7801;&#x3002;</li>
+<li>&#x4FEE;&#x6539;&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;&#x5BF9;&#x8C61;&#x3002;</li>
+<li>&#x7EC8;&#x7ED3;&#x8BF7;&#x6C42;-&#x54CD;&#x5E94;&#x5FAA;&#x73AF;&#x3002;</li>
+<li>&#x8C03;&#x7528;&#x5806;&#x6808;&#x4E2D;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x3002;</li>
+</ul>
+<h4 id="&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;"><a href="#&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;" class="headerlink" title="&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;"></a>&#x4E2D;&#x95F4;&#x4EF6;&#x51FD;&#x6570;</h4><p>&#x6BCF;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x53EF;&#x4EE5;&#x4ECE;App&#x5B9E;&#x4F8B;&#xFF0C;&#x63A5;&#x6536;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x4F9D;&#x6B21;&#x4E3A;&#xFF1A;</p>
+<ul>
+<li>request&#x5BF9;&#x8C61;&#xFF08;&#x4EE3;&#x8868;HTTP&#x8BF7;&#x6C42;&#xFF09;</li>
+<li>response&#x5BF9;&#x8C61;&#xFF08;&#x4EE3;&#x8868;HTTP&#x56DE;&#x5E94;&#xFF09;</li>
+<li>next&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF08;&#x4EE3;&#x8868;&#x4E0B;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#xFF09;</li>
+</ul>
+<p>&#x6BCF;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x90FD;&#x53EF;&#x4EE5;&#x5BF9;HTTP&#x8BF7;&#x6C42;&#xFF08;request&#x5BF9;&#x8C61;&#xFF09;&#x8FDB;&#x884C;&#x52A0;&#x5DE5;&#xFF0C;&#x5E76;&#x4E14;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x8C03;&#x7528;next&#x65B9;&#x6CD5;&#xFF0C;&#x5C06;request&#x5BF9;&#x8C61;&#x518D;&#x4F20;&#x7ED9;&#x4E0B;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x3002;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">exampleMiddware</span>(<span class="params">req, res, next</span>) </span>{</div><div class="line">  <span class="comment">// handle req</span></div><div class="line">  <span class="comment">// or end res</span></div><div class="line">  <span class="comment">// or next()</span></div><div class="line">  <span class="comment">// or next(err)</span></div><div class="line">}</div></pre></td></tr></table></figure>
+<h4 id="&#x4E2D;&#x95F4;&#x4EF6;&#x5E38;&#x7528;-API"><a href="#&#x4E2D;&#x95F4;&#x4EF6;&#x5E38;&#x7528;-API" class="headerlink" title="&#x4E2D;&#x95F4;&#x4EF6;&#x5E38;&#x7528; API"></a>&#x4E2D;&#x95F4;&#x4EF6;&#x5E38;&#x7528; API</h4><ul>
+<li><code>app.use(handler)</code><ul>
+<li>&#x4EFB;&#x4F55;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x3001;&#x8DEF;&#x5F84;&#x90FD;&#x4F1A;&#x8FDB;&#x5165;&#x8BE5;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C;&#x91CC;&#x9762;&#x7684;&#x4EE3;&#x7801;</li>
+</ul>
+</li>
+<li><code>app.use([path], handler)</code><ul>
+<li>&#x53EA;&#x6709;&#x6307;&#x5B9A;&#x7684;&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF0C;&#x624D;&#x4F1A;&#x8FDB;&#x5165;&#x8BE5;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C;&#x91CC;&#x9762;&#x7684;&#x4EE3;&#x7801;</li>
+</ul>
+</li>
+<li><code>app.get(path, handler)</code><ul>
+<li>&#x53EA;&#x6709; get &#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x4E14;&#x662F;&#x6307;&#x5B9A;&#x7684;&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF0C;&#x624D;&#x4F1A;&#x6267;&#x884C;&#x8BE5;&#x4E2D;&#x95F4;&#x4EF6;</li>
+</ul>
+</li>
+<li><code>app.post(path, handler)</code><ul>
+<li>&#x53EA;&#x6709; post &#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x4E14;&#x662F;&#x6307;&#x5B9A;&#x7684;&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF0C;&#x624D;&#x4F1A;&#x6267;&#x884C;&#x8BE5;&#x4E2D;&#x95F4;&#x4EF6;</li>
+</ul>
+</li>
+</ul>
+<h4 id="&#x5E38;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x4E2D;&#x95F4;&#x4EF6;"><a href="#&#x5E38;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x4E2D;&#x95F4;&#x4EF6;" class="headerlink" title="&#x5E38;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x4E2D;&#x95F4;&#x4EF6;"></a>&#x5E38;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x4E2D;&#x95F4;&#x4EF6;</h4><p><a href="http://expressjs.com/en/resources/middleware.html" target="_blank" rel="external">Express middleware</a></p>
+<p>&#x4F7F;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x6B65;&#x9AA4;&#x4E00;&#x822C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>&#x7B2C;&#x4E00;&#x6B65; <code>npm install --save &#x4E2D;&#x95F4;&#x4EF6;&#x540D;&#x79F0;</code></p>
+<p>&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x770B;&#x6587;&#x6863;&#xFF0C;&#x627E;&#x5230; <code>example</code>&#xFF0C;&#x7136;&#x540E; <code>try-try-see</code></p>
+<h4 id="Express-&#x4E2D;&#x7684;&#x9519;&#x8BEF;&#x5904;&#x7406;"><a href="#Express-&#x4E2D;&#x7684;&#x9519;&#x8BEF;&#x5904;&#x7406;" class="headerlink" title="Express &#x4E2D;&#x7684;&#x9519;&#x8BEF;&#x5904;&#x7406;"></a>Express &#x4E2D;&#x7684;&#x9519;&#x8BEF;&#x5904;&#x7406;</h4><h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><h4 id="express"><a href="#express" class="headerlink" title="express()"></a>express()</h4><ul>
+<li>express() &#x7C7B;&#x4F3C;&#x4E8E; http.createServer&#xFF0C;&#x5F97;&#x5230;&#x4E00;&#x4E2A; Server &#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;</li>
+<li>express.static(&#x2018;&#x516C;&#x5171;&#x8D44;&#x6E90;&#x76EE;&#x5F55;&#x8DEF;&#x5F84;&#x2019;) &#x5904;&#x7406;&#x9759;&#x6001;&#x8D44;&#x6E90;</li>
+<li>express.Router([options])&#xFF1A;&#x521B;&#x5EFA;&#x8DEF;&#x7531;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;<ul>
+<li>&#x5F97;&#x5230;&#x4E00;&#x4E2A; router &#x5B9E;&#x4F8B;</li>
+<li>&#x7ED9; router &#x6302;&#x8F7D;&#x8DEF;&#x7531;&#x5904;&#x7406;&#x51FD;&#x6570; get&#x3001;post&#x3001;</li>
+<li>&#x7136;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>app.use</code> &#x7684;&#x5F62;&#x5F0F;&#x52A0;&#x8F7D;&#x8FD9;&#x4E2A; router &#x5B9E;&#x4F8B;</li>
+</ul>
+</li>
+</ul>
+<h4 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h4><ul>
+<li>app.locals</li>
+<li>res.download(path [, filename] [, fn])</li>
+<li>res.end([data] [, encoding])</li>
+<li>res.json([body])</li>
+<li>res.jsonp([body])</li>
+<li>res.redirect([status,] path)</li>
+<li>res.render(view [, locals] [, callback])</li>
+<li>res.send([body])</li>
+<li>res.sendFile(path [, options] [, fn])</li>
+<li>res.sendStatus(statusCode)</li>
+<li>res.set(field [, value])</li>
+<li>res.status(code)</li>
+<li>res.type(type)<ul>
+<li>&#x2018;Content-Type&#x2019;</li>
+</ul>
+</li>
+</ul>
+<h4 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h4><ul>
+<li>router.all(path, [callback, &#x2026;] callback)</li>
+<li>router.METHOD(path, [callback, &#x2026;] callback)<ul>
+<li>get</li>
+<li>post</li>
+</ul>
+</li>
+<li>router.param([name,] callback)</li>
+<li>router.route(path)</li>
+<li>router.use([path], [function, &#x2026;] function)</li>
+</ul>
+<h3 id="&#x4E2D;&#x95F4;&#x4EF6;&#x63D2;&#x4EF6;-API"><a href="#&#x4E2D;&#x95F4;&#x4EF6;&#x63D2;&#x4EF6;-API" class="headerlink" title="&#x4E2D;&#x95F4;&#x4EF6;&#x63D2;&#x4EF6; API"></a>&#x4E2D;&#x95F4;&#x4EF6;&#x63D2;&#x4EF6; API</h3><ul>
+<li>&#x5B89;&#x88C5;&#x63D2;&#x4EF6;</li>
+<li>&#x52A0;&#x8F7D;&#x63D2;&#x4EF6;</li>
+<li>&#x4F7F;&#x7528;&#x63D2;&#x4EF6; API</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>感谢您的支持！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ofy7k3v4s.bkt.clouddn.com/wcpayCode.jpg" alt="Hongqin Ma WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ofy7k3v4s.bkt.clouddn.com/apayCode.jpg" alt="Hongqin Ma Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+            <a href="/tags/小项目/" rel="tag">#小项目</a>
+          
+            <a href="/tags/Express/" rel="tag">#Express</a>
+          
+            <a href="/tags/EJS/" rel="tag">#EJS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/18/s009-node-相册小项目（中）/" rel="next" title="Node-相册小项目（中）">
+                <i class="fa fa-chevron-left"></i> Node-相册小项目（中）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/10/23/s010-node-相册小项目（下）/"
+     data-title="s010-node-相册小项目（下）"
+     data-content=""
+     data-url="https://hongqinma.github.io/2016/10/23/s010-node-相册小项目（下）/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/23/s010-node-相册小项目（下）/"
+           data-title="s010-node-相册小项目（下）" data-url="https://hongqinma.github.io/2016/10/23/s010-node-相册小项目（下）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/photo.jpg"
+               alt="Hongqin Ma" />
+          <p class="site-author-name" itemprop="name">Hongqin Ma</p>
+          <p class="site-description motion-element" itemprop="description">Spell at all costs， to rush you in the future. </p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HongqinMa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/HongqinMa" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100006581058735" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/HirakuMa" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-share-alt"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美" target="_blank">司徒正美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/sanshi/" title="三生石上" target="_blank">三生石上</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/TomXu/" title="汤姆大叔" target="_blank">汤姆大叔</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gold.xitu.io/" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/users/1cbb94e5ed4d/latest_articles" title="简书" target="_blank">简书</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.cnblogs.com/" title="博客园" target="_blank">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.awesomes.cn/" title="Awesomes" target="_blank">Awesomes</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#封装-render-渲染函数"><span class="nav-number">1.</span> <span class="nav-text">封装 render 渲染函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#handler-js"><span class="nav-number">1.1.</span> <span class="nav-text">handler.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#router-js"><span class="nav-number">1.2.</span> <span class="nav-text">router.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Express"><span class="nav-number">2.</span> <span class="nav-text">Express</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特性"><span class="nav-number">2.1.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Geting-Started"><span class="nav-number">2.2.</span> <span class="nav-text">Geting Started</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#express-版的-相册"><span class="nav-number">3.</span> <span class="nav-text">express 版的 相册</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#views-目录下"><span class="nav-number">3.1.</span> <span class="nav-text">views 目录下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根目录"><span class="nav-number">3.2.</span> <span class="nav-text">根目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-Express-中使用-ejs-模板引擎"><span class="nav-number">3.3.</span> <span class="nav-text">在 Express 中使用 ejs 模板引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由系统模块"><span class="nav-number">3.4.</span> <span class="nav-text">路由系统模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中间件"><span class="nav-number">3.5.</span> <span class="nav-text">中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中间件函数"><span class="nav-number">3.5.1.</span> <span class="nav-text">中间件函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中间件常用-API"><span class="nav-number">3.5.2.</span> <span class="nav-text">中间件常用 API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用第三方中间件"><span class="nav-number">3.5.3.</span> <span class="nav-text">常用第三方中间件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Express-中的错误处理"><span class="nav-number">3.5.4.</span> <span class="nav-text">Express 中的错误处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API"><span class="nav-number">3.6.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#express"><span class="nav-number">3.6.1.</span> <span class="nav-text">express()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Application"><span class="nav-number">3.6.2.</span> <span class="nav-text">Application</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Request"><span class="nav-number">3.6.3.</span> <span class="nav-text">Request</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中间件插件-API"><span class="nav-number">3.7.</span> <span class="nav-text">中间件插件 API</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hongqin Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Page Views: <span id="busuanzi_value_site_pv"></span> 
+</span>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Hiraku"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = '0 ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+
+  
+</body>
+</html>
