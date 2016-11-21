@@ -1,0 +1,1169 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Node,Cookie,Seesion," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://ofy7k3v4s.bkt.clouddn.com/mylogo.png?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Cookie&amp;#x4FDD;&amp;#x5B58;&amp;#x7528;&amp;#x6237;&amp;#x548C;&amp;#x7F51;&amp;#x7AD9;&amp;#x4E4B;&amp;#x95F4;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x72B6;&amp;#x6001;&amp;#x3002;
+
+Cookie&amp;#xFF08;&amp;#x590D;&amp;#x6570;&amp;#x5F62;&amp;#x6001;Cookies&amp;#xFF09;&amp;#xFF0C;&amp;#x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cookie、Session 存储技术">
+<meta property="og:url" content="https://hongqinma.github.io/2016/11/01/s012-Cookie、Session-存储/index.html">
+<meta property="og:site_name" content="HongqinMa' Blog">
+<meta property="og:description" content="Cookie&amp;#x4FDD;&amp;#x5B58;&amp;#x7528;&amp;#x6237;&amp;#x548C;&amp;#x7F51;&amp;#x7AD9;&amp;#x4E4B;&amp;#x95F4;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x72B6;&amp;#x6001;&amp;#x3002;
+
+Cookie&amp;#xFF08;&amp;#x590D;&amp;#x6570;&amp;#x5F62;&amp;#x6001;Cookies&amp;#xFF09;&amp;#xFF0C;&amp;#x">
+<meta property="og:image" content="https://hongqinma.github.io/2016/11/01/s012-Cookie、Session-存储/imgages/Session.png">
+<meta property="og:updated_time" content="2016-11-21T04:03:16.077Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cookie、Session 存储技术">
+<meta name="twitter:description" content="Cookie&amp;#x4FDD;&amp;#x5B58;&amp;#x7528;&amp;#x6237;&amp;#x548C;&amp;#x7F51;&amp;#x7AD9;&amp;#x4E4B;&amp;#x95F4;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x72B6;&amp;#x6001;&amp;#x3002;
+
+Cookie&amp;#xFF08;&amp;#x590D;&amp;#x6570;&amp;#x5F62;&amp;#x6001;Cookies&amp;#xFF09;&amp;#xFF0C;&amp;#x">
+<meta name="twitter:image" content="https://hongqinma.github.io/2016/11/01/s012-Cookie、Session-存储/imgages/Session.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6347850919329138000',
+      author: 'Hiraku'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://hongqinma.github.io/2016/11/01/s012-Cookie、Session-存储/"/>
+
+
+  <title> Cookie、Session 存储技术 | HongqinMa' Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?10010323";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="http://ofy7k3v4s.bkt.clouddn.com/photo.jpg"
+             alt="HongqinMa' Blog"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">HongqinMa' Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Spell at all costs， to rush you in the future。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Cookie、Session 存储技术
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-11-01T19:25:56+08:00" content="2016-11-01">
+              2016-11-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Storage/" itemprop="url" rel="index">
+                    <span itemprop="name">Storage</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/01/s012-Cookie、Session-存储/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/01/s012-Cookie、Session-存储/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+
+          
+            <span id="busuanzi_container_page_pv">  <span id="busuanzi_value_page_pv"></span> Views</span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><p>&#x4FDD;&#x5B58;&#x7528;&#x6237;&#x548C;&#x7F51;&#x7AD9;&#x4E4B;&#x95F4;&#x7684;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x3002;</p>
+<ul>
+<li>Cookie&#xFF08;&#x590D;&#x6570;&#x5F62;&#x6001;Cookies&#xFF09;&#xFF0C;&#x4E2D;&#x6587;&#x540D;&#x79F0;&#x4E3A;&#x201C;&#x5C0F;&#x578B;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x201D;&#x6216;&#x201C;&#x5C0F;&#x751C;&#x997C;&#x201D;</li>
+<li>&#x6307;&#x67D0;&#x4E9B;&#x7F51;&#x7AD9;&#x4E3A;&#x4E86;&#x8FA8;&#x522B;&#x7528;&#x6237;&#x8EAB;&#x4EFD;&#x800C;&#x50A8;&#x5B58;&#x5728;&#x7528;&#x6237;&#x672C;&#x5730;&#x7EC8;&#x7AEF;&#xFF08;Client Side&#xFF09;&#x4E0A;&#x7684;&#x6570;&#x636E;&#xFF08;&#x901A;&#x5E38;&#x7ECF;&#x8FC7;&#x52A0;&#x5BC6;&#xFF09;&#x3002;</li>
+<li>&#x662F;&#x7F51;&#x666F;&#x516C;&#x53F8;&#x7684;&#x524D;&#x96C7;&#x5458;&#x5362;&#xB7;&#x8499;&#x7279;&#x5229;&#x5728;1993&#x5E74;3&#x6708;&#x7684;&#x53D1;&#x660E;</li>
+<li>&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#x662F;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x4E00;&#x4E2A;&#x7279;&#x6027;&#xFF0C;cookie &#x4F7F;&#x7528;&#x4E86;&#x4FDD;&#x6301;&#x72B6;&#x6001;&#x7684;&#x4E00;&#x79CD;&#x624B;&#x6BB5;</li>
+<li>&#x6D4F;&#x89C8;&#x5668;&#x7F13;&#x5B58;&#x5206;&#x4E3A;&#x597D;&#x51E0;&#x79CD;<ul>
+<li>&#x4E00;&#x822C;&#x6240;&#x6307;&#x7F13;&#x5B58;&#x6709;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x7F13;&#x5B58;&#xFF1A;<ul>
+<li>css&#x3001;img&#x3001;JavaScript</li>
+<li>&#x4E0D;&#x662F;&#x7ECF;&#x5E38;&#x53D8;&#x6362;&#x7684;&#x8D44;&#x6E90;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x73AF;&#x5883;</li>
+<li>&#x4E5F;&#x4E0D;&#x662F;&#x6D4F;&#x89C8;&#x5668;&#x80FD;&#x505A;&#x5230;&#x7684;</li>
+<li>304 &#x670D;&#x52A1;&#x5668;&#x505A;&#x7684;</li>
+</ul>
+</li>
+<li>&#x52A8;&#x6001;&#x8D44;&#x6E90;&#x7F13;&#x5B58;<ul>
+<li>&#x6D4F;&#x89C8;&#x5668;&#x53EF;&#x4EE5;&#x505A;&#x5230;</li>
+<li>&#x4F8B;&#x5982;&#x4E0D;&#x5E38;&#x53D8;&#x5316;&#x7684;&#x63A5;&#x53E3;&#x8D44;&#x6E90;</li>
+<li>&#x4F8B;&#x5982;&#x5546;&#x54C1;&#x5206;&#x7C7B;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP-&#x65E0;&#x72B6;&#x6001;"><a href="#HTTP-&#x65E0;&#x72B6;&#x6001;" class="headerlink" title="HTTP &#x65E0;&#x72B6;&#x6001;"></a>HTTP &#x65E0;&#x72B6;&#x6001;</h3><ul>
+<li><p>&#x8DDF;&#x5BA2;&#x6237;&#x7AEF;&#x4EA4;&#x4E92;&#xFF0C;&#x5230;&#x5E95;&#x505A;&#x4E86;&#x4EC0;&#x4E48;&#x4E8B;&#x60C5;&#xFF0C;&#x5BF9;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#x6765;&#x8BF4;&#x6839;&#x672C;&#x5C31;&#x4E0D;&#x77E5;&#x9053;</p>
+</li>
+<li><p>&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x8BB0;&#x4F4F;&#x5BA2;&#x6237;&#x7AEF;&#x8DDF;&#x6211;&#x505A;&#x4E86;&#x4EC0;&#x4E48;&#x4E8B;&#x60C5;&#xFF1F;</p>
+<ul>
+<li>&#x5BA2;&#x6237;&#x7AEF;&#x7B2C;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#x8FC7;&#x6765;</li>
+<li>&#x670D;&#x52A1;&#x5668;&#x6821;&#x9A8C;&#x4E00;&#x4E0B;&#x5BA2;&#x6237;&#x7AEF;&#x6709;&#x6CA1;&#x6709;&#x90A3;&#x4E2A;&#x6807;&#x8BB0;&#xFF08;Cookie&#x7EB8;&#x6761;&#xFF09;<ul>
+<li>&#x5982;&#x679C;&#x53D1;&#x73B0;&#x6709;&#xFF0C;&#x5219;&#x4E0D;&#x53D1;</li>
+<li>&#x5982;&#x679C;&#x53D1;&#x73B0;&#x6CA1;&#x6709;&#xFF1A;&#x53D1;&#x82F9;&#x679C;&#xFF0C;&#x5199;Cookie&#xFF08;&#x8D34;&#x7EB8;&#x6761;&#xFF09;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="&#x4EC0;&#x4E48;&#x662F;-Cookie"><a href="#&#x4EC0;&#x4E48;&#x662F;-Cookie" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F; Cookie"></a>&#x4EC0;&#x4E48;&#x662F; Cookie</h3><p>&#x6240;&#x8C13;&#x7684; Cookie &#x5176;&#x5B9E;&#x5C31;&#x662F;&#x670D;&#x52A1;&#x5668;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x6D4F;&#x89C8;&#x5668;&#x7EA6;&#x5B9A;&#x597D;&#x7684;&#x4E00;&#x79CD;&#x89C4;&#x5219;&#x3002;<br>&#x53EA;&#x8981;&#x670D;&#x52A1;&#x5668;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x6D4F;&#x89C8;&#x5668;&#x53D1;&#x9001;&#x4E86;&#x4E00;&#x4E2A; Cookie&#xFF0C;&#x5219;&#x6D4F;&#x89C8;&#x5668;&#x4EE5;&#x540E;&#x7684;&#x6BCF;&#x6B21;&#x8BF7;&#x6C42;&#x4E2D;&#x90FD;&#x4F1A;&#x81EA;&#x52A8;&#x5E26;&#x7740;&#x8FD9;&#x4E2A; Cookie &#x4E0A;&#x6765;&#x3002;</p>
+<p>Cookie &#x5C31;&#x662F;&#x901A;&#x8FC7; HTTP &#x8BF7;&#x6C42;&#x62A5;&#x6587;&#x548C;&#x54CD;&#x5E94;&#x62A5;&#x6587;&#x914D;&#x5408;&#x5B8C;&#x6210;&#x3002;</p>
+<h3 id="&#x5982;&#x4F55;&#x4F7F;&#x7528;"><a href="#&#x5982;&#x4F55;&#x4F7F;&#x7528;" class="headerlink" title="&#x5982;&#x4F55;&#x4F7F;&#x7528;"></a>&#x5982;&#x4F55;&#x4F7F;&#x7528;</h3><p>&#x5229;&#x7528;&#x54CD;&#x5E94;&#x5934;&#xFF1A;<code>Set-Cookie</code> &#x6765;&#x5199; Cookie&#xFF0C;<br>&#x7136;&#x540E;&#x89E3;&#x6790;&#x8BF7;&#x6C42;&#x5934;&#x4E2D;&#x7684; <code>cookie</code> &#x6765;&#x8BFB;&#x53D6;&#x3002;</p>
+<h4 id="&#x5229;&#x7528;-http-&#x6A21;&#x5757;&#x6765;&#x5199;&#x5165;-Cookie"><a href="#&#x5229;&#x7528;-http-&#x6A21;&#x5757;&#x6765;&#x5199;&#x5165;-Cookie" class="headerlink" title="&#x5229;&#x7528; http &#x6A21;&#x5757;&#x6765;&#x5199;&#x5165; Cookie"></a>&#x5229;&#x7528; http &#x6A21;&#x5757;&#x6765;&#x5199;&#x5165; Cookie</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&apos;http&apos;</span>);</div><div class="line"></div><div class="line"><span class="comment">// &#x662F;&#x4E0D;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x8BBF;&#x95EE;&#x7F51;&#x7AD9;</span></div><div class="line"><span class="comment">// &#x5982;&#x679C;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x8BBF;&#x95EE;&#xFF1A;&#x544A;&#x8BC9;&#x7528;&#x6237;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x8BBF;&#x95EE;&#x8BE5;&#x7F51;&#x7AD9;</span></div><div class="line"><span class="comment">// &#x5982;&#x679C;&#x4E0D;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x8BBF;&#x95EE;&#xFF1A;&#x544A;&#x8BC9;&#x7528;&#x6237;&#x6B22;&#x8FCE;&#x518D;&#x6B21;&#x8BBF;&#x95EE;</span></div><div class="line">http.createServer()</div><div class="line">  .on(<span class="string">&apos;request&apos;</span>, (req, res) =&gt; {</div><div class="line">    <span class="comment">// &#x5982;&#x679C;&#x4F60;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x8FC7;&#x8FD9;&#x4E2A; Cookie &#x4E86;</span></div><div class="line">    <span class="comment">// &#x5219;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x81EA;&#x52A8;&#x5E26;&#x8FC7;&#x6765;</span></div><div class="line">    <span class="comment">// &#x7136;&#x540E;&#x5C06; Cookie &#x653E;&#x5230;&#x8BF7;&#x6C42;&#x62A5;&#x6587;&#x4E2D;</span></div><div class="line">    <span class="keyword">const</span> cookies = req.headers[<span class="string">&apos;cookie&apos;</span>];</div><div class="line"></div><div class="line">    req.cookie = {};</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (cookies) {</div><div class="line">      cookies.split(<span class="string">&apos;;&apos;</span>).forEach(<span class="function"><span class="params">cookie</span> =&gt;</span> {</div><div class="line">        <span class="keyword">const</span> tmp = cookie.split(<span class="string">&apos;=&apos;</span>);</div><div class="line">        req.cookie[tmp[<span class="number">0</span>]] = tmp[<span class="number">1</span>];</div><div class="line">      });</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (req.cookie.isFirst) {</div><div class="line">      res.writeHead(<span class="number">200</span>, {</div><div class="line">        <span class="string">&apos;Content-Type&apos;</span>: <span class="string">&apos;text/plain; charset=utf-8&apos;</span>,</div><div class="line">      });</div><div class="line">      res.end(<span class="string">&apos;&#x6B22;&#x8FCE;&#x518D;&#x6B21;&#x5149;&#x4E34;...&apos;</span>);</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">      res.writeHead(<span class="number">200</span>, {</div><div class="line">        <span class="string">&apos;Content-Type&apos;</span>: <span class="string">&apos;text/plain; charset=utf-8&apos;</span>,</div><div class="line">        <span class="string">&apos;Set-Cookie&apos;</span>: <span class="string">&apos;isFirst=true; Max-Age=20;&apos;</span>,</div><div class="line">      });</div><div class="line">      res.end(<span class="string">&apos;&#x6B22;&#x8FCE;&#x7B2C;&#x4E00;&#x6B21;&#x8BBF;&#x95EE;&apos;</span>);</div><div class="line">    }</div><div class="line">  });</div><div class="line">  .listen(<span class="number">4000</span>, () =&gt; {</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">&apos;runnning...&apos;</span>);</div><div class="line">  });</div></pre></td></tr></table></figure>
+<h4 id="&#x5229;&#x7528;&#x524D;&#x53F0;-js-&#x4EE3;&#x7801;&#x5199;&#x5165;-Cookie"><a href="#&#x5229;&#x7528;&#x524D;&#x53F0;-js-&#x4EE3;&#x7801;&#x5199;&#x5165;-Cookie" class="headerlink" title="&#x5229;&#x7528;&#x524D;&#x53F0; js &#x4EE3;&#x7801;&#x5199;&#x5165; Cookie"></a>&#x5229;&#x7528;&#x524D;&#x53F0; js &#x4EE3;&#x7801;&#x5199;&#x5165; Cookie</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/node_modules/jquery/dist/jquery.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/node_modules/js-cookie/src/js.cookie.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">var</span> username = Cookies.get(<span class="string">&apos;username&apos;</span>);</div><div class="line">  <span class="keyword">if</span> (username) {</div><div class="line">    <span class="built_in">document</span>.querySelector(<span class="string">&apos;#username&apos;</span>).value = username;</div><div class="line">  }</div><div class="line">  $(<span class="string">&apos;form&apos;</span>).on(<span class="string">&apos;submit&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>{</div><div class="line">    e.preventDefault();</div><div class="line">    Cookies.set(<span class="string">&apos;username&apos;</span>, $(<span class="string">&apos;#username&apos;</span>).val());</div><div class="line">  });</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="&#x5728;-Express-&#x4E2D;&#x4F7F;&#x7528;-cookie-parser-&#x4E2D;&#x95F4;&#x4EF6;&#x89E3;&#x6790;-cookie"><a href="#&#x5728;-Express-&#x4E2D;&#x4F7F;&#x7528;-cookie-parser-&#x4E2D;&#x95F4;&#x4EF6;&#x89E3;&#x6790;-cookie" class="headerlink" title="&#x5728; Express &#x4E2D;&#x4F7F;&#x7528; cookie-parser &#x4E2D;&#x95F4;&#x4EF6;&#x89E3;&#x6790; cookie"></a>&#x5728; Express &#x4E2D;&#x4F7F;&#x7528; <code>cookie-parser</code> &#x4E2D;&#x95F4;&#x4EF6;&#x89E3;&#x6790; cookie</h4><p>&#x5B89;&#x88C5;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save cookie-parser</div></pre></td></tr></table></figure>
+<p>&#x914D;&#x7F6E;&#xFF1A;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&apos;express&apos;</span>);</div><div class="line"><span class="keyword">const</span> cookieParser = <span class="built_in">require</span>(<span class="string">&apos;cookie-parser&apos;</span>);</div><div class="line"><span class="keyword">const</span> app = express();</div><div class="line"><span class="comment">// &#x914D;&#x7F6E;&#x4E2D;&#x95F4;&#x4EF6;</span></div><div class="line">app.use(cookieParser());</div></pre></td></tr></table></figure>
+<p>&#x4F7F;&#x7528;&#xFF1A;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&apos;express&apos;</span>);</div><div class="line"><span class="keyword">const</span> cookieParser = <span class="built_in">require</span>(<span class="string">&apos;cookie-parser&apos;</span>);</div><div class="line"><span class="keyword">const</span> app = express();</div><div class="line"><span class="comment">// &#x53EA;&#x8981;&#x5728; Express &#x4E2D;&#x914D;&#x7F6E;&#x4E86;&#x8FD9;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x4F7F;&#x7528; Cookie &#x89E3;&#x6790;&#x4E2D;&#x95F4;&#x4EF6;&#x3002;</span></div><div class="line">app.use(cookieParser());</div><div class="line">app.get(<span class="string">&apos;/&apos;</span>, (req, res) =&gt; {</div><div class="line">  <span class="comment">// req.cookies &#x7528;&#x6765;&#x83B7;&#x53D6;&#x8BF7;&#x6C42;&#x4E2D;&#x7684; Cookie</span></div><div class="line">  <span class="keyword">if</span> (req.cookies.isFirst) {</div><div class="line">    res.send(<span class="string">&apos;&#x6B22;&#x8FCE;&#x518D;&#x6B21;&#x8BBF;&#x95EE;&#x672C;&#x7F51;&#x7AD9;&apos;</span>);</div><div class="line">  } <span class="keyword">else</span> {</div><div class="line">    <span class="comment">// &#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;</span></div><div class="line">    res.cookie(<span class="string">&apos;isFirst&apos;</span>, <span class="string">&apos;true&apos;</span>, {</div><div class="line">      <span class="attr">maxAge</span>: <span class="number">10</span> * <span class="number">1000</span></div><div class="line">    });</div><div class="line">    res.send(<span class="string">&apos;&#x6B22;&#x8FCE;&#x7B2C;&#x4E00;&#x6B21;&#x8BBF;&#x95EE;&apos;</span>);</div><div class="line">  }</div><div class="line">});</div><div class="line">app.listen(<span class="number">3000</span>, () =&gt; {</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">&apos;running...&apos;</span>);</div><div class="line">});</div></pre></td></tr></table></figure>
+<h3 id="Cookie-&#x7684;&#x5206;&#x7C7B;"><a href="#Cookie-&#x7684;&#x5206;&#x7C7B;" class="headerlink" title="Cookie &#x7684;&#x5206;&#x7C7B;"></a>Cookie &#x7684;&#x5206;&#x7C7B;</h3><ul>
+<li><p>&#x4F1A;&#x8BDD; Cookie&#xFF0C;&#x4E5F;&#x53EB; &#x5185;&#x5B58; Cookie&#xFF0C;&#x5B58;&#x5728;&#x4E8E;&#x6D4F;&#x89C8;&#x5668;&#x8FD0;&#x884C;&#x7684;&#x8FDB;&#x7A0B;&#x4E2D;</p>
+<ul>
+<li>&#x53EA;&#x8981;&#x6D4F;&#x89C8;&#x5668;&#x4E00;&#x5173;&#x95ED;&#xFF0C;Cookie &#x5C31;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;</li>
+</ul>
+</li>
+<li><p>&#x6301;&#x4E45;&#x5316; Cookie</p>
+<ul>
+<li>&#x6301;&#x4E45;&#x5316; Cookie &#x4F1A;&#x4FDD;&#x5B58;&#x5728;&#x78C1;&#x76D8;&#x4E0A;</li>
+<li>&#x901A;&#x8FC7;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x6765;&#x8BBE;&#x5B9A;&#x6301;&#x4E45; Cookie &#x7684;&#x4FDD;&#x5B58;&#x65F6;&#x95F4;</li>
+</ul>
+</li>
+</ul>
+<h3 id="Cookie-&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;"><a href="#Cookie-&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;" class="headerlink" title="Cookie &#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;"></a>Cookie &#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;</h3><ul>
+<li>&#x8D2D;&#x7269;&#x8F66;<ul>
+<li>&#x6CA1;&#x6709;&#x767B;&#x9646;&#x4E4B;&#x524D;&#x5546;&#x54C1;&#x6570;&#x636E;&#x662F;&#x4FDD;&#x5B58;&#x5230; Cookie &#x4E2D;&#x4E86;</li>
+</ul>
+</li>
+<li>&#x8BB0;&#x4F4F;&#x7528;&#x6237;&#x540D;<ul>
+<li>&#x5229;&#x7528; Cookie &#x4FDD;&#x5B58;&#x7528;&#x6237;&#x540D;</li>
+</ul>
+</li>
+<li>&#x8BB0;&#x4F4F;&#x6211;<ul>
+<li>&#x5229;&#x7528; Cookie &#x6765;&#x4FDD;&#x5B58;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;&#xFF08;&#x52A0;&#x5BC6;&#x4E4B;&#x540E;&#x4FDD;&#x5B58;&#x7684;&#xFF09;</li>
+</ul>
+</li>
+</ul>
+<p>Cookie &#x4E00;&#x822C;&#x9002;&#x7528;&#x4E8E;&#x5B89;&#x5168;&#x6027;&#x8981;&#x6C42;&#x4E0D;&#x9AD8;&#x7684;&#x573A;&#x666F;&#x3002;</p>
+<h3 id="Cookie-&#x7684;&#x7F3A;&#x9677;"><a href="#Cookie-&#x7684;&#x7F3A;&#x9677;" class="headerlink" title="Cookie &#x7684;&#x7F3A;&#x9677;"></a>Cookie &#x7684;&#x7F3A;&#x9677;</h3><ul>
+<li>Cookie&#x4F53;&#x79EF;&#x8FC7;&#x5927;&#x4F1A;&#x9020;&#x6210;&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;&#x901F;&#x5EA6;&#x53D8;&#x6162;<ul>
+<li>&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x518D;Cookie&#x4E2D;&#x5B58;&#x50A8;&#x5927;&#x91CF;&#x6570;&#x636E;</li>
+</ul>
+</li>
+<li>&#x9ED8;&#x8BA4;&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x5BF9;&#x4EFB;&#x4F55;&#x8BF7;&#x6C42;&#x628A; Cookie &#x5E26;&#x4E0A;&#x53BB;<ul>
+<li>&#x54EA;&#x6015;&#x662F;&#x9759;&#x6001;&#x8D44;&#x6E90;&#xFF1A;/public/css/main.css</li>
+<li>&#x6240;&#x4EE5;&#x8BF4;&#x5728;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x8BF7;&#x6C42;&#x4E2D;&#x5E26;&#x7740; Cookie &#x4E0A;&#x53BB;&#xFF0C;&#x6CA1;&#x6709;&#x610F;&#x4E49;&#xFF0C;&#x5F71;&#x54CD;&#x6027;&#x80FD;</li>
+<li>&#x4E00;&#x822C;&#x5927;&#x578B;&#x7F51;&#x7AD9;&#x4F1A;&#x4E13;&#x95E8;&#x628A;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x5B58;&#x50A8;&#x5230;&#x5355;&#x72EC;&#x7684;&#x57DF;&#x540D;&#x670D;&#x52A1;&#x5668;&#x4E0A;</li>
+</ul>
+</li>
+<li>Cookie&#x53EF;&#x4EE5;&#x5728;&#x524D;&#x540E;&#x7AEF;&#x4FEE;&#x6539;&#xFF0C;&#x6570;&#x636E;&#x5BB9;&#x6613;&#x88AB;&#x7BE1;&#x6539;&#x548C;&#x4F2A;&#x9020;</li>
+<li>Cookie&#x5BF9;&#x4E8E;&#x654F;&#x611F;&#x6570;&#x636E;&#x7684;&#x4FDD;&#x62A4;&#x57FA;&#x672C;&#x662F;&#x65E0;&#x6548;&#x7684;</li>
+<li>Cookie &#x5C31;&#x662F;&#x4FDD;&#x5B58;&#x72B6;&#x6001;&#x6570;&#x636E;&#x7684;&#x3002;</li>
+</ul>
+<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>Session &#x662F;&#x57FA;&#x4E8E; Cookie &#x7684;&#x3002;Cookie &#x662F; session &#x7684;&#x51ED;&#x8BC1;&#x3002;</p>
+<h2 id="&#x5728;-Express-&#x4E2D;&#x4F7F;&#x7528;-express-session-&#x4E2D;&#x95F4;&#x4EF6;"><a href="#&#x5728;-Express-&#x4E2D;&#x4F7F;&#x7528;-express-session-&#x4E2D;&#x95F4;&#x4EF6;" class="headerlink" title="&#x5728; Express &#x4E2D;&#x4F7F;&#x7528; express-session &#x4E2D;&#x95F4;&#x4EF6;"></a>&#x5728; Express &#x4E2D;&#x4F7F;&#x7528; <code>express-session</code> &#x4E2D;&#x95F4;&#x4EF6;</h2><p><img src="/2016/11/01/s012-Cookie&#x3001;Session-&#x5B58;&#x50A8;/imgages/Session.png" alt="session&#x539F;&#x7406;"></p>
+<p>&#x5B89;&#x88C5;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save express-session</div></pre></td></tr></table></figure>
+<p>&#x914D;&#x7F6E;&#xFF1A;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> session = <span class="built_in">require</span>(<span class="string">&apos;express-session&apos;</span>);</div><div class="line"></div><div class="line"><span class="comment">// secret &#x5C31;&#x662F;&#x79C1;&#x94A5;&#xFF0C;&#x751F;&#x6210;&#x94A5;&#x5319;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x79C1;&#x6709;&#x52A0;&#x5BC6;&#xFF0C;&#x7528;&#x6765;&#x8BBF;&#x95EE;&#x522B;&#x4EBA;&#x4F2A;&#x9020;&#x94A5;&#x5319;</span></div><div class="line">app.use(session({</div><div class="line">  <span class="attr">secret</span>: <span class="string">&apos;hq&apos;</span>,</div><div class="line">  <span class="attr">resave</span>: <span class="literal">false</span>,</div><div class="line">  <span class="attr">saveUninitialized</span>: <span class="literal">true</span></div><div class="line">}));</div></pre></td></tr></table></figure>
+<p>&#x57FA;&#x672C;&#x4F7F;&#x7528;&#xFF1A;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&apos;express&apos;</span>)</div><div class="line"><span class="keyword">const</span> session = <span class="built_in">require</span>(<span class="string">&apos;express-session&apos;</span>)</div><div class="line"><span class="keyword">const</span> app = express();</div><div class="line"><span class="comment">// secret &#x8868;&#x793A;&#x751F;&#x6210;&#x94A5;&#x5319;&#x7684;&#x65F6;&#x5019;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x751F;&#x6210;</span></div><div class="line"><span class="comment">// &#x8FD9;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x4E00;&#x822C;&#x88AB;&#x79F0;&#x4E3A;&#x79C1;&#x94A5;</span></div><div class="line">app.use(session({</div><div class="line">  <span class="attr">secret</span>: <span class="string">&apos;itcast&apos;</span>,</div><div class="line">  <span class="attr">resave</span>: <span class="literal">false</span>,</div><div class="line">  <span class="attr">saveUninitialized</span>: <span class="literal">true</span></div><div class="line">}));</div><div class="line"></div><div class="line">app.get(<span class="string">&apos;/&apos;</span>, (req, res) =&gt; {</div><div class="line">  <span class="comment">// &#x53EA;&#x8981;&#x914D;&#x7F6E;&#x4E86; Session &#x4E2D;&#x95F4;&#x4EF6;</span></div><div class="line">  <span class="comment">// &#x90A3;&#x4E48;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x8FC7;&#x6765;&#x5C31;&#x4F1A;&#x76F4;&#x63A5;&#x7ED9;&#x5176;&#x5206;&#x914D;&#x4E00;&#x628A;&#x94A5;&#x5319;&#xFF0C;&#x5728;&#x672C;&#x6B21;&#x8BF7;&#x6C42;&#x4F1A;&#x8BDD;&#x8FC7;&#x7A0B;&#x4E2D;&#x90FD;&#x662F;&#x540C;&#x4E00;&#x4E2A;</span></div><div class="line">  <span class="comment">//        Session &#x4E5F;&#x5206;&#x4E3A;&#x4F1A;&#x8BDD; Session &#x548C; &#x6301;&#x4E45; Session</span></div><div class="line">  <span class="comment">// &#x6CA1;&#x6709;&#x914D;&#x7F6E; Session &#x4E2D;&#x95F4;&#x4EF6;&#x4E4B;&#x524D; req &#x5BF9;&#x8C61;&#x662F;&#x6CA1;&#x6709; session &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;</span></div><div class="line">  <span class="comment">// &#x914D;&#x7F6E;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#xFF0C;req &#x8BF7;&#x6C42;&#x5BF9;&#x8C61;&#x4F1A;&#x591A;&#x51FA;&#x4E00;&#x4E2A; Session &#x5C5E;&#x6027;&#x51FA;&#x6765;</span></div><div class="line">  <span class="comment">// req.session &#x5C31;&#x662F;&#x6839;&#x636E;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x51ED;&#x8BC1;&#x627E;&#x5230;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;</span></div><div class="line">  <span class="comment">// console.log(req.session);</span></div><div class="line">  <span class="comment">// session &#x6570;&#x636E;&#x662F;&#x4FDD;&#x5B58;&#x5728;&#x5F53;&#x524D;&#x8FD0;&#x884C;&#x7684; node &#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4FDD;&#x5B58;&#x5728;&#x5185;&#x5B58;&#x4E2D;</span></div><div class="line">  <span class="comment">// &#x53EA;&#x8981;&#x670D;&#x52A1;&#x5668;&#x91CD;&#x542F;&#xFF0C;&#x6216;&#x8005;&#x670D;&#x52A1;&#x5668;&#x5B95;&#x673A;&#x4E86;&#xFF0C;&#x5219; Session &#x6570;&#x636E;&#x4E22;&#x5931;</span></div><div class="line">  <span class="keyword">if</span> (req.session.isLogin) {</div><div class="line">    res.send(<span class="string">&apos;&#x6B22;&#x8FCE;&#x518D;&#x6B21;&#x8BBF;&#x95EE;&apos;</span>);</div><div class="line">  } <span class="keyword">else</span> {</div><div class="line">    <span class="comment">// &#x901A;&#x8FC7;&#x5BA2;&#x6237;&#x7AEF;&#x7684; Cookie &#x94A5;&#x5319;&#x51ED;&#x8BC1;&#xFF0C;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x683C;&#x5B50;</span></div><div class="line">    <span class="comment">// &#x627E;&#x5230;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x4E4B;&#x540E;&#xFF0C;&#x5F80;&#x91CC;&#x9762;&#x52A0;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF1A;isLogin</span></div><div class="line">    req.session.isLogin = <span class="literal">true</span>;</div><div class="line">    res.send(<span class="string">&apos;&#x6B22;&#x8FCE;&#x7B2C;&#x4E00;&#x6B21;&#x8BBF;&#x95EE;&apos;</span>);</div><div class="line">  }</div><div class="line">});</div><div class="line"></div><div class="line">app.get(<span class="string">&apos;/logout&apos;</span>, (req, res) =&gt; {</div><div class="line">  <span class="comment">// &#x6E05;&#x9664; Session &#x4E2D;&#x7684;&#x6570;&#x636E;</span></div><div class="line">  req.session.isLogin = <span class="literal">null</span>;</div><div class="line">  res.send(<span class="string">&apos;&#x7528;&#x6237;&#x9000;&#x51FA;&#x4E86;&apos;</span>);</div><div class="line">});</div><div class="line">app.listen(<span class="number">3000</span>, () =&gt; {</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">&apos;running...&apos;</span>)&#xFF1B;</div><div class="line">});</div></pre></td></tr></table></figure>
+<h2 id="&#x603B;&#x7ED3;"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</h2><h3 id="cookie-&#x548C;-session"><a href="#cookie-&#x548C;-session" class="headerlink" title="cookie &#x548C; session"></a>cookie &#x548C; session</h3><p><strong>Cookie&#x867D;&#x5728;&#x6301;&#x4E45;&#x4FDD;&#x5B58;&#x5BA2;&#x6237;&#x7AEF;&#x6570;&#x636E;&#x63D0;&#x4F9B;&#x65B9;&#x4FBF;&#x5E76;&#x5206;&#x62C5;&#x670D;&#x52A1;&#x5668;&#x5B58;&#x50A8;&#x8D1F;&#x62C5;&#xFF0C;&#x4F46;&#x6709;&#x5F88;&#x591A;&#x5C40;&#x9650;&#x6027;</strong></p>
+<ul>
+<li>&#x5F0A;&#x7AEF;<ul>
+<li>IE6 &#x6216;&#x66F4;&#x4F4E;&#x7684;&#x7248;&#x672C;&#x6700;&#x591A; 202 &#x4E2A; cookie</li>
+<li>IE7 &#x548C;&#x4E4B;&#x540E;&#x7684;&#x7248;&#x672C;&#x6700;&#x540E;&#x53EF;&#x4EE5;&#x6709; 50 cookie</li>
+<li>FireFox &#x6700;&#x591A; 5 &#x4E2A; cookie</li>
+<li>chrome &#x548C; Safari &#x6CA1;&#x6709;&#x505A;&#x786C;&#x6027;&#x9650;&#x5236;</li>
+</ul>
+</li>
+</ul>
+<p>IE &#x548C; opera &#x4F1A;&#x6E05;&#x7406;&#x8FD1;&#x671F;&#x6700;&#x5C11;&#x4F7F;&#x7528;&#x7684; cookie&#xFF0C;FireFox &#x4F1A;&#x968F;&#x65F6;&#x6E05;&#x7406; cookie&#xFF0C;cookie &#x7684;&#x6700;&#x5927;&#x5BB9;&#x91CF;&#x4E3A; 4096 &#x5B57;&#x8282;&#xFF0C;&#x4E3A;&#x4E86;&#x517C;&#x5BB9;&#x6027;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7; 4095</p>
+<p>IE &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x5B58;&#x50A8;&#x53EF;&#x4EE5;&#x652F;&#x6301;&#x6301;&#x4E45;&#x5316;&#x7528;&#x6237;&#x6570;&#x636E;&#xFF0C;&#x53EB;&#x505A; userdata ,&#x4ECE; IE5.0 &#x5C31;&#x5F00;&#x59CB;&#x652F;&#x6301;&#x3002;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x6700;&#x591A; 128k ,&#x6BCF;&#x4E2A;&#x57DF;&#x540D;&#x4E0B;&#x6700;&#x591A; 1M&#x3002;&#x8FD9;&#x4E2A;&#x6301;&#x4E45;&#x5316;&#x6570;&#x636E;&#x653E;&#x5728;&#x7F13;&#x5B58;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x7F13;&#x5B58;&#x6CA1;&#x6709;&#x6E05;&#x7406;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x4E00;&#x76F4;&#x5B58;&#x5728;&#x3002;</p>
+<ul>
+<li>&#x4F18;&#x70B9;&#xFF1A;&#x6781;&#x9AD8;&#x7684;&#x6269;&#x5C55;&#x6027;&#x548C;&#x53EF;&#x7528;&#x6027;<ul>
+<li>&#x901A;&#x8FC7;&#x826F;&#x597D;&#x7684;&#x7F16;&#x7A0B;&#xFF0C;&#x63A7;&#x5236;&#x4FDD;&#x5B58;&#x5728; cookie &#x4E2D;&#x7684; sessio n&#x5BF9;&#x8C61;&#x7684;&#x5927;&#x5C0F;</li>
+<li>&#x901A;&#x8FC7;&#x52A0;&#x5BC6;&#x548C;&#x5B89;&#x5168;&#x4F20;&#x8F93;&#x6280;&#x672F;&#xFF08;SSL&#xFF09;&#xFF0C;&#x51CF;&#x5C11; cookie &#x88AB;&#x7834;&#x89E3;&#x7684;&#x53EF;&#x80FD;&#x6027;</li>
+<li>&#x53EA;&#x6709;&#x5728; cookie &#x4E2D;&#x5B58;&#x653E;&#x4E0D;&#x654F;&#x611F;&#x6570;&#x636E;&#xFF0C;&#x5373;&#x4F7F;&#x88AB;&#x76D7;&#x4E5F;&#x4E0D;&#x4F1A;&#x6709;&#x91CD;&#x5927;&#x635F;&#x5931;</li>
+<li>&#x63A7;&#x5236; cookie &#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x4F7F;&#x4E4B;&#x4E0D;&#x4F1A;&#x6C38;&#x8FDC;&#x6709;&#x6548;&#x3002;&#x5077;&#x76D7;&#x8005;&#x5F88;&#x53EF;&#x80FD;&#x62FF;&#x5230;&#x4E00;&#x4E2A;&#x8FC7;&#x53BB;&#x7684; cookie</li>
+</ul>
+</li>
+<li>&#x7F3A;&#x70B9;<ul>
+<li>cookie &#x6570;&#x91CF;&#x548C;&#x957F;&#x5EA6;&#x7684;&#x9650;&#x5236;&#x3002;&#x6BCF;&#x4E2A; domain &#x6700;&#x591A;&#x53EA;&#x80FD;&#x6709; 20 &#x6761; cookie &#xFF0C;&#x6BCF;&#x4E2A; cookie &#x7684;&#x957F;&#x5EA6;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7; 4kb&#xFF0C;&#x5426;&#x5219;&#x88AB;&#x622A;&#x6389;&#xFF1B;</li>
+<li>&#x5B89;&#x5168;&#x6027;&#x95EE;&#x9898;&#x3002;&#x5982;&#x679C; cookie &#x88AB;&#x62E6;&#x622A;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x62E6;&#x622A;&#x8005;&#x5C31;&#x53EF;&#x4EE5;&#x53D6;&#x5F97;&#x6240;&#x6709;&#x7684; session &#x4FE1;&#x606F;&#x3002;&#x5373;&#x4F7F;&#x5BC6;&#x7801;&#x52A0;&#x5BC6;&#x4E5F;&#x4E8E;&#x4E8B;&#x65E0;&#x8865;&#xFF0C;&#x56E0;&#x4E3A;&#x62E6;&#x622A;&#x8005;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x77E5;&#x9053; cookie &#x7684;&#x610F;&#x4E49;&#xFF0C;&#x4ED6;&#x53EA;&#x8981;&#x539F;&#x6837;&#x8F6C;&#x53D1; cookie &#x5C31;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x76EE;&#x7684;&#x4E86;&#xFF1B;</li>
+<li>&#x6709;&#x4E9B;&#x72B6;&#x6001;&#x4E0D;&#x53EF;&#x80FD;&#x4FDD;&#x5B58;&#x5BA2;&#x6237;&#x7AEF;&#x3002;&#x4F8B;&#x5982;&#xFF1A;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x91CD;&#x590D;&#x63D0;&#x4EA4;&#x8868;&#x5355;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x4FDD;&#x5B58;&#x4E00;&#x4E2A;&#x8BA1;&#x6570;&#x5668;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x628A;&#x8FD9;&#x4E2A;&#x8BA1;&#x6570;&#x5668;&#x4FDD;&#x5B58;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x8D77;&#x4E0D;&#x5230;&#x4EFB;&#x4F55;&#x4F5C;&#x7528;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<p>&#x6D4F;&#x89C8;&#x5668;&#x672C;&#x5730;&#x5B58;&#x50A8; </p>
+<p><strong>&#x5728;&#x8F83;&#x9AD8;&#x7248;&#x672C;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#xFF0C;jJvaScript  &#x4F9B;&#x4E86; sessionStorage &#x548C; globalStorage ,&#x5728; HTML5 &#x4E2D;&#x63D0;&#x4F9B;&#x4E86; localStorage &#x6765;&#x53D6;&#x4EE3; lobalStorage</strong></p>
+<p>H5 &#x4E2D;&#x7684; web Storage &#x4E2D;&#x5305;&#x62EC;&#x4E24;&#x79CD;&#x5B58;&#x50A8;&#x65B9;&#x5F0F;&#xFF1A;sessionStorage &#x548C; localStorage</p>
+<h3 id="sessionStorage&#x548C;localStorage&#x533A;&#x522B;"><a href="#sessionStorage&#x548C;localStorage&#x533A;&#x522B;" class="headerlink" title="sessionStorage&#x548C;localStorage&#x533A;&#x522B;"></a>sessionStorage&#x548C;localStorage&#x533A;&#x522B;</h3><p>sessionStorage &#x548C;localStorage &#x90FD;&#x6709;&#x76F8;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;setItem, getItem, removeItem, clear</p>
+<p>sessionStorage &#x7528;&#x4E8E;&#x672C;&#x5730;&#x5B58;&#x50A8;&#x4E00;&#x4E2A;&#x4F1A;&#x8BDD;&#xFF08;session&#xFF09;&#x4E2D;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x53EA;&#x6709;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x4F1A;&#x8BDD;&#x4E2D;&#x7684;&#x9875;&#x9762;&#x624D;&#x80FD;&#x8BBF;&#x95EE;&#x5E76;&#x4E14;&#x5F53;&#x4F1A;&#x8BDD;&#x7ED3;&#x675F;&#x540E;&#x6570;&#x636E;&#x4E5F;&#x4F1A;&#x968F;&#x4E4B;&#x6D88;&#x5931;&#x3002;&#x56E0;&#x6B64;&#xFF0C;sessionStorage &#x4E0D;&#x662F;&#x4E00;&#x79CD;&#x6301;&#x4E45;&#x5316;&#x7684;&#x672C;&#x5730;&#x5B58;&#x50A8;&#xFF0C;&#x4EC5;&#x4EC5;&#x662F;&#x4F1A;&#x8BDD;&#x7EA7;&#x522B;&#x7684;&#x5B58;&#x50A8;</p>
+<p>localStorage &#x7528;&#x4E8E;&#x6301;&#x4E45;&#x5316;&#x7684;&#x672C;&#x5730;&#x5B58;&#x50A8;&#xFF0C;&#x9664;&#x975E;&#x4E3B;&#x52A8;&#x5220;&#x9664;&#x6570;&#x636E;&#xFF0C;&#x5426;&#x5219;&#x6570;&#x636E;&#x662F;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x8FC7;&#x671F;&#x7684;&#x3002;   </p>
+<h3 id="web-Storage-&#x548C;-cookie"><a href="#web-Storage-&#x548C;-cookie" class="headerlink" title="web Storage &#x548C; cookie"></a>web Storage &#x548C; cookie</h3><p>web Storage &#x548C; cookie &#x76F8;&#x4F3C;&#xFF0C;web Storage &#x7684;&#x5B58;&#x50A8;&#x66F4;&#x5927;&#xFF1B;</p>
+<p>cookie &#x5927;&#x5C0F;&#x53D7;&#x9650;&#xFF0C;&#x5E76;&#x4E14;&#x6BCF;&#x6B21;&#x65B0;&#x8BF7;&#x6C42;&#x4E00;&#x4E2A;&#x9875;&#x9762; cookie &#x90FD;&#x4F1A;&#x53D1;&#x9001;&#x8FC7;&#x53BB;&#xFF0C;&#x6D6A;&#x8D39;&#x4E86;&#x5E26;&#x5BBD;</p>
+<p>cookie &#x8FD8;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x4E0D;&#x53EF;&#x4EE5;&#x8DE8;&#x57DF;&#x8C03;&#x7528;</p>
+<p>cookie &#x662F;&#x4E0D;&#x53EF;&#x7F3A;&#x7684;&#xFF1A;&#x5176;&#x4F5C;&#x7528;&#x662F;&#x4E0E;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#xFF0C;&#x4F5C;&#x4E3A; HTTP &#x89C4;&#x8303;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x4E8C;&#x5B58;&#x5728;&#xFF0C;&#x800C; Web Storage &#x4EC5;&#x4EC5;&#x662F;&#x4E3A;&#x4E86;&#x5728;&#x672C;&#x5730;&#x201C;&#x5B58;&#x50A8;&#x201D;&#x6570;&#x636E;&#x800C;&#x751F;</p>
+<h3 id="web-Storage&#x65B9;&#x6CD5;&#xFF1A;"><a href="#web-Storage&#x65B9;&#x6CD5;&#xFF1A;" class="headerlink" title="web Storage&#x65B9;&#x6CD5;&#xFF1A;"></a>web Storage&#x65B9;&#x6CD5;&#xFF1A;</h3><p>setItem, getItem, removeItem, clear&#x7B49;&#x65B9;&#x6CD5;&#xFF0C;&#x800C; cookie &#x9700;&#x8981;&#x5F00;&#x53D1;&#x8005;&#x81EA;&#x5DF1;&#x5C01;&#x88C5; setCookie&#xFF0C; getCookie&#x3002;</p>
+<h3 id="&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x652F;&#x6301;"><a href="#&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x652F;&#x6301;" class="headerlink" title="&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x652F;&#x6301;"></a>&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x652F;&#x6301;</h3><p>&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x652F;&#x6301;&#x9664;&#x4E86;IE7&#x4EE5;&#x4E0B;&#x4E0D;&#x652F;&#x6301;&#x5916;&#xFF0C;&#x5176;&#x4ED6;&#x6807;&#x51C6;&#x6D4F;&#x89C8;&#x5668;&#x90FD;&#x5B8C;&#x5168;&#x652F;&#x6301;&#xFF08;IE&#x53CA;FF&#x9700;&#x8981;&#x5728;web&#x670D;&#x52A1;&#x5668;&#x91CC;&#x8FD0;&#x884C;&#xFF09;&#x3002;</p>
+<p>IE6,7&#x4E2D;&#x7684; userDat a&#x5176;&#x5B9E;&#x5C31;&#x662F; javascript &#x672C;&#x5730;&#x5B58;&#x50A8;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;&#x901A;&#x8FC7;&#x7B80;&#x5355;&#x5C01;&#x88C5;&#x4EE3;&#x7801;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x6240;&#x6709;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x90FD;&#x652F;&#x6301; Web Storage&#x3002;</p>
+<h3 id="session-&#x548C;-cookie-&#x533A;&#x522B;"><a href="#session-&#x548C;-cookie-&#x533A;&#x522B;" class="headerlink" title="session &#x548C; cookie &#x533A;&#x522B;"></a>session &#x548C; cookie &#x533A;&#x522B;</h3><p> cookie &#x6570;&#x636E;&#x5B58;&#x50A8;&#x5728;&#x5BA2;&#x6237;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x4E0A;&#xFF0C;session &#x6570;&#x636E;&#x653E;&#x5728;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF1B;</p>
+<p> cookie &#x6570;&#x636E;&#x4E0D;&#x5B89;&#x5168;&#xFF0C;&#x522B;&#x4EBA;&#x53EF;&#x4EE5;&#x5206;&#x4EAB;&#x5B58;&#x653E;&#x5728;&#x672C;&#x5730;&#x7684; cookie &#x5E76;&#x8FDB;&#x884C; cookie &#x6B3A;&#x9A97;&#xFF0C;&#x8003;&#x8651;&#x5230;&#x5B89;&#x5168;&#x6027;&#x5E94;&#x5F53;&#x4F7F;&#x7528; session&#xFF1B;</p>
+<p> session &#x4E00;&#x822C;&#x4F1A;&#x5728;&#x4E00;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x5185;&#x4FDD;&#x5B58;&#x5728;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x3002;&#x5F53;&#x8BBF;&#x95EE;&#x589E;&#x591A;&#xFF0C;&#x4F1A;&#x6BD4;&#x8F83;&#x5360;&#x7528;&#x670D;&#x52A1;&#x5668;&#x7684;&#x6027;&#x80FD;&#xFF1B;</p>
+<p> &#x5355;&#x4E2A; cookie &#x4FDD;&#x5B58;&#x7684;&#x6570;&#x636E;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7; 4k&#xFF0C;&#x5F88;&#x591A;&#x6D4F;&#x89C8;&#x5668;&#x90FD;&#x9650;&#x5236;&#x4E00;&#x4E2A;&#x7AD9;&#x70B9;&#x6700;&#x591A;&#x4FDD;&#x5B58; 20 &#x4E2A; cookie&#xFF1B;</p>
+<p> &#x4E2A;&#x4EBA;&#x7B49;&#x6570;&#x636E;&#x5B58;&#x653E;&#x4E3A; session &#x7A33;&#x59A5;&#xFF1B;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x5B58;&#x653E;&#x5230; cookie &#x4E2D;&#x3002;</p>
+<p>&#x603B;&#x7684;&#x6765;&#x8BF4;&#xFF1A;</p>
+<p>cookies &#x517C;&#x5BB9;&#x6240;&#x6709;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;Html5 &#x63D0;&#x4F9B;&#x7684;storage &#x5B58;&#x50A8;&#x65B9;&#x5F0F;&#x3002;</p>
+<ul>
+<li>Document.cookie</li>
+<li>Window.localstorage</li>
+<li>Window.sessionstorage</li>
+</ul>
+<ol>
+<li>cookie &#x6570;&#x636E;&#x59CB;&#x7EC8;&#x5728;&#x540C;&#x6E90;&#x7684; http &#x8BF7;&#x6C42;&#x4E2D;&#x643A;&#x5E26;&#xFF08;&#x5373;&#x4F7F;&#x4E0D;&#x9700;&#x8981;&#xFF09;&#xFF0C;&#x5373; cookie &#x5728;&#x6D4F;&#x89C8;&#x5668;&#x548C;&#x670D;&#x52A1;&#x5668;&#x95F4;&#x6765;&#x56DE;&#x4F20;&#x9012;&#x3002;&#x800C; sessionStorage &#x548C; localStorage &#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x628A;&#x6570;&#x636E;&#x53D1;&#x7ED9;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4EC5;&#x5728;&#x672C;&#x5730;&#x4FDD;&#x5B58;&#x3002;</li>
+<li>&#x5B58;&#x50A8;&#x5927;&#x5C0F;&#x9650;&#x5236;&#x4E5F;&#x4E0D;&#x540C;&#xFF0C;cookie &#x6570;&#x636E;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7; 4k&#xFF0C;&#x540C;&#x65F6;&#x56E0;&#x4E3A;&#x6BCF;&#x6B21;http&#x8BF7;&#x6C42;&#x90FD;&#x4F1A;&#x643A;&#x5E26; cookie &#xFF0C;&#x6240;&#x4EE5; cookie &#x53EA;&#x9002;&#x5408;&#x4FDD;&#x5B58;&#x5F88;&#x5C0F;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x4F1A;&#x8BDD;&#x6807;&#x8BC6;&#x3002;sessionStorage &#x548C; localStorage &#x867D;&#x7136;&#x4E5F;&#x6709;&#x5B58;&#x50A8;&#x5927;&#x5C0F;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x4F46;&#x6BD4;cookie&#x5927;&#x5F97;&#x591A;&#xFF0C;&#x53EF;&#x4EE5;&#x8FBE;&#x5230; 5M &#x6216;&#x66F4;&#x5927;&#x3002;</li>
+<li>&#x6570;&#x636E;&#x6709;&#x6548;&#x671F;&#x4E0D;&#x540C;&#xFF0C;sessionStorage&#xFF1A;&#x4EC5;&#x5728;&#x5F53;&#x524D;&#x6D4F;&#x89C8;&#x5668;&#x7A97;&#x53E3;&#x5173;&#x95ED;&#x524D;&#x6709;&#x6548;&#xFF0C;&#x81EA;&#x7136;&#x4E5F;&#x5C31;&#x4E0D;&#x53EF;&#x80FD;&#x6301;&#x4E45;&#x4FDD;&#x6301;&#xFF1B;localStorage&#xFF1A;&#x59CB;&#x7EC8;&#x6709;&#x6548;&#xFF0C;&#x7A97;&#x53E3;&#x6216;&#x6D4F;&#x89C8;&#x5668;&#x5173;&#x95ED;&#x4E5F;&#x4E00;&#x76F4;&#x4FDD;&#x5B58;&#xFF0C;&#x56E0;&#x6B64;&#x7528;&#x4F5C;&#x6301;&#x4E45;&#x6570;&#x636E;&#xFF1B;cookie &#x53EA;&#x5728;&#x8BBE;&#x7F6E;&#x7684; cookie &#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x4E4B;&#x524D;&#x4E00;&#x76F4;&#x6709;&#x6548;&#xFF0C;&#x5373;&#x4F7F;&#x7A97;&#x53E3;&#x6216;&#x6D4F;&#x89C8;&#x5668;&#x5173;&#x95ED;&#x3002;</li>
+<li>&#x4F5C;&#x7528;&#x57DF;&#x4E0D;&#x540C;&#xFF0C;sessionStorage &#x4E0D;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x7A97;&#x53E3;&#x4E2D;&#x5171;&#x4EAB;&#xFF0C;&#x5373;&#x4F7F;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#xFF1B;localStorage &#x5728;&#x6240;&#x6709;&#x540C;&#x6E90;&#x7A97;&#x53E3;&#x4E2D;&#x90FD;&#x662F;&#x5171;&#x4EAB;&#x7684;&#xFF1B;cookie &#x4E5F;&#x662F;&#x5728;&#x6240;&#x6709;&#x540C;&#x6E90;&#x7A97;&#x53E3;&#x4E2D;&#x90FD;&#x662F;&#x5171;&#x4EAB;&#x7684;&#x3002;</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>感谢您的支持！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>打 赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ofy7k3v4s.bkt.clouddn.com/wcpayCode.jpg" alt="Hongqin Ma WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ofy7k3v4s.bkt.clouddn.com/apayCode.jpg" alt="Hongqin Ma Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Node/" rel="tag">#Node</a>
+          
+            <a href="/tags/Cookie/" rel="tag">#Cookie</a>
+          
+            <a href="/tags/Seesion/" rel="tag">#Seesion</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/27/s011-数据库-MySQL/" rel="next" title="数据库-MySQL基础 以及 Node 操作方法">
+                <i class="fa fa-chevron-left"></i> 数据库-MySQL基础 以及 Node 操作方法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/11/01/s012-Cookie、Session-存储/"
+     data-title="Cookie、Session 存储技术"
+     data-content=""
+     data-url="https://hongqinma.github.io/2016/11/01/s012-Cookie、Session-存储/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/01/s012-Cookie、Session-存储/"
+           data-title="Cookie、Session 存储技术" data-url="https://hongqinma.github.io/2016/11/01/s012-Cookie、Session-存储/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/photo.jpg"
+               alt="Hongqin Ma" />
+          <p class="site-author-name" itemprop="name">Hongqin Ma</p>
+          <p class="site-description motion-element" itemprop="description">Spell at all costs， to rush you in the future. </p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HongqinMa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/HongqinMa" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100006581058735" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/HirakuMa" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-share-alt"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美" target="_blank">司徒正美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/sanshi/" title="三生石上" target="_blank">三生石上</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/TomXu/" title="汤姆大叔" target="_blank">汤姆大叔</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gold.xitu.io/" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/users/1cbb94e5ed4d/latest_articles" title="简书" target="_blank">简书</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.cnblogs.com/" title="博客园" target="_blank">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.awesomes.cn/" title="Awesomes" target="_blank">Awesomes</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie"><span class="nav-number">1.</span> <span class="nav-text">Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-无状态"><span class="nav-number">1.1.</span> <span class="nav-text">HTTP 无状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-Cookie"><span class="nav-number">1.2.</span> <span class="nav-text">什么是 Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用"><span class="nav-number">1.3.</span> <span class="nav-text">如何使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#利用-http-模块来写入-Cookie"><span class="nav-number">1.3.1.</span> <span class="nav-text">利用 http 模块来写入 Cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用前台-js-代码写入-Cookie"><span class="nav-number">1.3.2.</span> <span class="nav-text">利用前台 js 代码写入 Cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在-Express-中使用-cookie-parser-中间件解析-cookie"><span class="nav-number">1.3.3.</span> <span class="nav-text">在 Express 中使用 cookie-parser 中间件解析 cookie</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie-的分类"><span class="nav-number">1.4.</span> <span class="nav-text">Cookie 的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie-的使用场景"><span class="nav-number">1.5.</span> <span class="nav-text">Cookie 的使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie-的缺陷"><span class="nav-number">1.6.</span> <span class="nav-text">Cookie 的缺陷</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session"><span class="nav-number">2.</span> <span class="nav-text">session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-Express-中使用-express-session-中间件"><span class="nav-number">3.</span> <span class="nav-text">在 Express 中使用 express-session 中间件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie-和-session"><span class="nav-number">4.1.</span> <span class="nav-text">cookie 和 session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sessionStorage和localStorage区别"><span class="nav-number">4.2.</span> <span class="nav-text">sessionStorage和localStorage区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-Storage-和-cookie"><span class="nav-number">4.3.</span> <span class="nav-text">web Storage 和 cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-Storage方法："><span class="nav-number">4.4.</span> <span class="nav-text">web Storage方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器的支持"><span class="nav-number">4.5.</span> <span class="nav-text">浏览器的支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#session-和-cookie-区别"><span class="nav-number">4.6.</span> <span class="nav-text">session 和 cookie 区别</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hongqin Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Page Views: <span id="busuanzi_value_site_pv"></span> 
+</span>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Hiraku"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = '0 ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+
+  
+</body>
+</html>
