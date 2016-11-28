@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Node,Cookie,Seesion," />
+  <meta name="keywords" content="Cookie,Seesion,Node," />
 
 
 
@@ -101,7 +101,7 @@ Cookie&amp;#xFF08;&amp;#x590D;&amp;#x6570;&amp;#x5F62;&amp;#x6001;Cookies&amp;#x
 
 Cookie&amp;#xFF08;&amp;#x590D;&amp;#x6570;&amp;#x5F62;&amp;#x6001;Cookies&amp;#xFF09;&amp;#xFF0C;&amp;#x">
 <meta property="og:image" content="https://hongqinma.github.io/2016/11/01/s012-Cookie、Session-存储/Session.png">
-<meta property="og:updated_time" content="2016-11-23T08:45:17.706Z">
+<meta property="og:updated_time" content="2016-11-24T03:08:57.915Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cookie、Session 存储技术">
 <meta name="twitter:description" content="Cookie&amp;#x4FDD;&amp;#x5B58;&amp;#x7528;&amp;#x6237;&amp;#x548C;&amp;#x7F51;&amp;#x7AD9;&amp;#x4E4B;&amp;#x95F4;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x72B6;&amp;#x6001;&amp;#x3002;
@@ -464,9 +464,9 @@ Cookie&amp;#xFF08;&amp;#x590D;&amp;#x6570;&amp;#x5F62;&amp;#x6001;Cookies&amp;#x
 <h2 id="&#x603B;&#x7ED3;"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</h2><h3 id="cookie-&#x548C;-session"><a href="#cookie-&#x548C;-session" class="headerlink" title="cookie &#x548C; session"></a>cookie &#x548C; session</h3><p><strong>Cookie&#x867D;&#x5728;&#x6301;&#x4E45;&#x4FDD;&#x5B58;&#x5BA2;&#x6237;&#x7AEF;&#x6570;&#x636E;&#x63D0;&#x4F9B;&#x65B9;&#x4FBF;&#x5E76;&#x5206;&#x62C5;&#x670D;&#x52A1;&#x5668;&#x5B58;&#x50A8;&#x8D1F;&#x62C5;&#xFF0C;&#x4F46;&#x6709;&#x5F88;&#x591A;&#x5C40;&#x9650;&#x6027;</strong></p>
 <ul>
 <li>&#x5F0A;&#x7AEF;<ul>
-<li>IE6 &#x6216;&#x66F4;&#x4F4E;&#x7684;&#x7248;&#x672C;&#x6700;&#x591A; 202 &#x4E2A; cookie</li>
+<li>IE6 &#x6216;&#x66F4;&#x4F4E;&#x7684;&#x7248;&#x672C;&#x6700;&#x591A; 20 &#x4E2A; cookie</li>
 <li>IE7 &#x548C;&#x4E4B;&#x540E;&#x7684;&#x7248;&#x672C;&#x6700;&#x540E;&#x53EF;&#x4EE5;&#x6709; 50 cookie</li>
-<li>FireFox &#x6700;&#x591A; 5 &#x4E2A; cookie</li>
+<li>FireFox &#x6700;&#x591A; 50 &#x4E2A; cookie</li>
 <li>chrome &#x548C; Safari &#x6CA1;&#x6709;&#x505A;&#x786C;&#x6027;&#x9650;&#x5236;</li>
 </ul>
 </li>
@@ -475,9 +475,9 @@ Cookie&amp;#xFF08;&amp;#x590D;&amp;#x6570;&amp;#x5F62;&amp;#x6001;Cookies&amp;#x
 <p>IE &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x5B58;&#x50A8;&#x53EF;&#x4EE5;&#x652F;&#x6301;&#x6301;&#x4E45;&#x5316;&#x7528;&#x6237;&#x6570;&#x636E;&#xFF0C;&#x53EB;&#x505A; userdata ,&#x4ECE; IE5.0 &#x5C31;&#x5F00;&#x59CB;&#x652F;&#x6301;&#x3002;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x6700;&#x591A; 128k ,&#x6BCF;&#x4E2A;&#x57DF;&#x540D;&#x4E0B;&#x6700;&#x591A; 1M&#x3002;&#x8FD9;&#x4E2A;&#x6301;&#x4E45;&#x5316;&#x6570;&#x636E;&#x653E;&#x5728;&#x7F13;&#x5B58;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x7F13;&#x5B58;&#x6CA1;&#x6709;&#x6E05;&#x7406;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x4E00;&#x76F4;&#x5B58;&#x5728;&#x3002;</p>
 <ul>
 <li>&#x4F18;&#x70B9;&#xFF1A;&#x6781;&#x9AD8;&#x7684;&#x6269;&#x5C55;&#x6027;&#x548C;&#x53EF;&#x7528;&#x6027;<ul>
-<li>&#x901A;&#x8FC7;&#x826F;&#x597D;&#x7684;&#x7F16;&#x7A0B;&#xFF0C;&#x63A7;&#x5236;&#x4FDD;&#x5B58;&#x5728; cookie &#x4E2D;&#x7684; sessio n&#x5BF9;&#x8C61;&#x7684;&#x5927;&#x5C0F;</li>
+<li>&#x901A;&#x8FC7;&#x826F;&#x597D;&#x7684;&#x7F16;&#x7A0B;&#xFF0C;&#x63A7;&#x5236;&#x4FDD;&#x5B58;&#x5728; cookie &#x4E2D;&#x7684; session &#x5BF9;&#x8C61;&#x7684;&#x5927;&#x5C0F;</li>
 <li>&#x901A;&#x8FC7;&#x52A0;&#x5BC6;&#x548C;&#x5B89;&#x5168;&#x4F20;&#x8F93;&#x6280;&#x672F;&#xFF08;SSL&#xFF09;&#xFF0C;&#x51CF;&#x5C11; cookie &#x88AB;&#x7834;&#x89E3;&#x7684;&#x53EF;&#x80FD;&#x6027;</li>
-<li>&#x53EA;&#x6709;&#x5728; cookie &#x4E2D;&#x5B58;&#x653E;&#x4E0D;&#x654F;&#x611F;&#x6570;&#x636E;&#xFF0C;&#x5373;&#x4F7F;&#x88AB;&#x76D7;&#x4E5F;&#x4E0D;&#x4F1A;&#x6709;&#x91CD;&#x5927;&#x635F;&#x5931;</li>
+<li>&#x53EA;&#x8981;&#x5728; cookie &#x4E2D;&#x5B58;&#x653E;&#x4E0D;&#x654F;&#x611F;&#x6570;&#x636E;&#xFF0C;&#x5373;&#x4F7F;&#x88AB;&#x76D7;&#x4E5F;&#x4E0D;&#x4F1A;&#x6709;&#x91CD;&#x5927;&#x635F;&#x5931;</li>
 <li>&#x63A7;&#x5236; cookie &#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x4F7F;&#x4E4B;&#x4E0D;&#x4F1A;&#x6C38;&#x8FDC;&#x6709;&#x6548;&#x3002;&#x5077;&#x76D7;&#x8005;&#x5F88;&#x53EF;&#x80FD;&#x62FF;&#x5230;&#x4E00;&#x4E2A;&#x8FC7;&#x53BB;&#x7684; cookie</li>
 </ul>
 </li>
@@ -489,7 +489,7 @@ Cookie&amp;#xFF08;&amp;#x590D;&amp;#x6570;&amp;#x5F62;&amp;#x6001;Cookies&amp;#x
 </li>
 </ul>
 <p>&#x6D4F;&#x89C8;&#x5668;&#x672C;&#x5730;&#x5B58;&#x50A8; </p>
-<p><strong>&#x5728;&#x8F83;&#x9AD8;&#x7248;&#x672C;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#xFF0C;jJvaScript  &#x4F9B;&#x4E86; sessionStorage &#x548C; globalStorage ,&#x5728; HTML5 &#x4E2D;&#x63D0;&#x4F9B;&#x4E86; localStorage &#x6765;&#x53D6;&#x4EE3; lobalStorage</strong></p>
+<p><strong>&#x5728;&#x8F83;&#x9AD8;&#x7248;&#x672C;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#xFF0C;JavaScript  &#x4F9B;&#x4E86; sessionStorage &#x548C; globalStorage ,&#x5728; HTML5 &#x4E2D;&#x63D0;&#x4F9B;&#x4E86; localStorage &#x6765;&#x53D6;&#x4EE3; lobalStorage</strong></p>
 <p>H5 &#x4E2D;&#x7684; web Storage &#x4E2D;&#x5305;&#x62EC;&#x4E24;&#x79CD;&#x5B58;&#x50A8;&#x65B9;&#x5F0F;&#xFF1A;sessionStorage &#x548C; localStorage</p>
 <h3 id="sessionStorage&#x548C;localStorage&#x533A;&#x522B;"><a href="#sessionStorage&#x548C;localStorage&#x533A;&#x522B;" class="headerlink" title="sessionStorage&#x548C;localStorage&#x533A;&#x522B;"></a>sessionStorage&#x548C;localStorage&#x533A;&#x522B;</h3><p>sessionStorage &#x548C;localStorage &#x90FD;&#x6709;&#x76F8;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;setItem, getItem, removeItem, clear</p>
 <p>sessionStorage &#x7528;&#x4E8E;&#x672C;&#x5730;&#x5B58;&#x50A8;&#x4E00;&#x4E2A;&#x4F1A;&#x8BDD;&#xFF08;session&#xFF09;&#x4E2D;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x53EA;&#x6709;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x4F1A;&#x8BDD;&#x4E2D;&#x7684;&#x9875;&#x9762;&#x624D;&#x80FD;&#x8BBF;&#x95EE;&#x5E76;&#x4E14;&#x5F53;&#x4F1A;&#x8BDD;&#x7ED3;&#x675F;&#x540E;&#x6570;&#x636E;&#x4E5F;&#x4F1A;&#x968F;&#x4E4B;&#x6D88;&#x5931;&#x3002;&#x56E0;&#x6B64;&#xFF0C;sessionStorage &#x4E0D;&#x662F;&#x4E00;&#x79CD;&#x6301;&#x4E45;&#x5316;&#x7684;&#x672C;&#x5730;&#x5B58;&#x50A8;&#xFF0C;&#x4EC5;&#x4EC5;&#x662F;&#x4F1A;&#x8BDD;&#x7EA7;&#x522B;&#x7684;&#x5B58;&#x50A8;&#x3002;</p>
@@ -562,11 +562,11 @@ Cookie&amp;#xFF08;&amp;#x590D;&amp;#x6570;&amp;#x5F62;&amp;#x6001;Cookies&amp;#x
       
         <div class="post-tags">
           
-            <a href="/tags/Node/" rel="tag">#Node</a>
-          
             <a href="/tags/Cookie/" rel="tag">#Cookie</a>
           
             <a href="/tags/Seesion/" rel="tag">#Seesion</a>
+          
+            <a href="/tags/Node/" rel="tag">#Node</a>
           
         </div>
       
@@ -672,7 +672,7 @@ Cookie&amp;#xFF08;&amp;#x590D;&amp;#x6570;&amp;#x5F62;&amp;#x6001;Cookies&amp;#x
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -680,7 +680,7 @@ Cookie&amp;#xFF08;&amp;#x590D;&amp;#x6570;&amp;#x5F62;&amp;#x6001;Cookies&amp;#x
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -689,7 +689,7 @@ Cookie&amp;#xFF08;&amp;#x590D;&amp;#x6570;&amp;#x5F62;&amp;#x6001;Cookies&amp;#x
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

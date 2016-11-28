@@ -1,0 +1,1145 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="tools,性能优化," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://ofy7k3v4s.bkt.clouddn.com/mylogo.png?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x9879;&amp;#x76EE;&amp;#x6784;&amp;#x5EFA;&amp;#x662F;&amp;#x6307;&amp;#x9879;&amp;#x76EE;&amp;#x4E0A;&amp;#x7EBF;&amp;#x4E4B;&amp;#x524D;&amp;#x5BF9;&amp;#x9879;&amp;#x76EE;&amp;#x6E90;&amp;#x4EE3;&amp;#x7801;&amp;#x8FDB;&amp;#x884C;&amp;#x4E00;&amp;#x7CFB;&amp;#x5217;&amp;#x5904;&amp;#x7406;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gulp 构建工具">
+<meta property="og:url" content="https://hongqinma.github.io/2015/04/03/t10-gulp-构建工具/index.html">
+<meta property="og:site_name" content="HongqinMa' Blog">
+<meta property="og:description" content="&amp;#x9879;&amp;#x76EE;&amp;#x6784;&amp;#x5EFA;&amp;#x662F;&amp;#x6307;&amp;#x9879;&amp;#x76EE;&amp;#x4E0A;&amp;#x7EBF;&amp;#x4E4B;&amp;#x524D;&amp;#x5BF9;&amp;#x9879;&amp;#x76EE;&amp;#x6E90;&amp;#x4EE3;&amp;#x7801;&amp;#x8FDB;&amp;#x884C;&amp;#x4E00;&amp;#x7CFB;&amp;#x5217;&amp;#x5904;&amp;#x7406;">
+<meta property="og:updated_time" content="2016-11-28T12:20:20.422Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gulp 构建工具">
+<meta name="twitter:description" content="&amp;#x9879;&amp;#x76EE;&amp;#x6784;&amp;#x5EFA;&amp;#x662F;&amp;#x6307;&amp;#x9879;&amp;#x76EE;&amp;#x4E0A;&amp;#x7EBF;&amp;#x4E4B;&amp;#x524D;&amp;#x5BF9;&amp;#x9879;&amp;#x76EE;&amp;#x6E90;&amp;#x4EE3;&amp;#x7801;&amp;#x8FDB;&amp;#x884C;&amp;#x4E00;&amp;#x7CFB;&amp;#x5217;&amp;#x5904;&amp;#x7406;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6347850919329138000',
+      author: 'Hiraku'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://hongqinma.github.io/2015/04/03/t10-gulp-构建工具/"/>
+
+
+  <title> Gulp 构建工具 | HongqinMa' Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?10010323";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="http://ofy7k3v4s.bkt.clouddn.com/photo.jpg"
+             alt="HongqinMa' Blog"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">HongqinMa' Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Spell at all costs， to rush you in the future。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Gulp 构建工具
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-04-03T21:41:51+08:00" content="2015-04-03">
+              2015-04-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Gulp/" itemprop="url" rel="index">
+                    <span itemprop="name">Gulp</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/04/03/t10-gulp-构建工具/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/03/t10-gulp-构建工具/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+
+          
+            <span id="busuanzi_container_page_pv">  <span id="busuanzi_value_page_pv"></span> Views</span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x9879;&#x76EE;&#x6784;&#x5EFA;&#x662F;&#x6307;&#x9879;&#x76EE;&#x4E0A;&#x7EBF;&#x4E4B;&#x524D;&#x5BF9;&#x9879;&#x76EE;&#x6E90;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x4E00;&#x7CFB;&#x5217;&#x5904;&#x7406;&#xFF0C;&#x4F7F;&#x5176;&#x4EE5;&#x6700;&#x4F73;&#x7684;&#x5F62;&#x5F0F;&#x8FD0;&#x884C;&#x4E8E;&#x7EBF;&#x4E0A;&#x670D;&#x52A1;&#x5668;&#x3002;&#x5E38;&#x89C1;&#x5904;&#x7406;&#x4EFB;&#x5305;&#x62EC;&#x4EE5;&#x4E0B;&#x51E0;&#x65B9;&#x9762;&#xFF1A;</p>
+<p>1&#x3001;&#x6A21;&#x5757;&#x5316;&#x5F00;&#x53D1;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x529F;&#x80FD;&#x7684;&#x590D;&#x7528;&#x5E76;&#x89E3;&#x51B3;&#x6A21;&#x5757;&#x95F4;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#xFF0C;&#x4F46;&#x5E26;&#x6765;&#x597D;&#x5904;&#x7684;&#x540C;&#x65F6;&#x4E5F;&#x4F7F;&#x5F97;&#x529F;&#x80FD;&#x4EE3;&#x7801;&#x7684;&#x788E;&#x7247;&#x5316;&#xFF08;&#x82E5;&#x5E72;&#x6587;&#x4EF6;&#xFF09;&#x7A0B;&#x5EA6;&#x589E;&#x52A0;&#x3002;</p>
+<p>2&#x3001;&#x4F7F;&#x7528;less&#x3001;sass&#x7B49;&#x9884;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x964D;&#x4F4E;CSS&#x7684;&#x7EF4;&#x62A4;&#x6210;&#x672C;&#xFF0C;&#x6700;&#x7EC8;&#x9700;&#x8981;&#x5C06;&#x8FD9;&#x4E9B;&#x9884;&#x5904;&#x7406;&#x5668;&#x7F16;&#x8BD1;&#x6210;css&#x6587;&#x4EF6;&#xFF1B;</p>
+<p>3&#x3001;&#x5BF9;&#x9759;&#x6001;&#x8D44;&#x6E90;&#xFF08;css&#x3001;js&#x3001;html&#x3001;images&#xFF09;&#x538B;&#x7F29;&#x5408;&#x5E76;&#x53EF;&#x4EE5;&#x63D0;&#x5347;&#x7F51;&#x9875;&#x6253;&#x5F00;&#x901F;&#x5EA6;&#xFF0C;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#xFF1B;</p>
+<p>&#x4EE5;&#x4E0A;&#x4EFB;&#x52A1;&#x5B8C;&#x5982;&#x679C;&#x5B8C;&#x5168;&#x9760;&#x624B;&#x52A8;&#x6765;&#x5B8C;&#x6210;&#x662F;&#x975E;&#x5E38;&#x8017;&#x65F6;&#x8017;&#x529B;&#x7684;&#x4E14;&#x5BB9;&#x6613;&#x51FA;&#x9519;&#xFF0C;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x901A;&#x5E38;&#x501F;&#x52A9;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x6240;&#x8C13;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#x662F;&#x6307;&#x901A;&#x8FC7;&#x4E00;&#x7CFB;&#x7B80;&#x5355;&#x914D;&#x7F6E;&#x5C31;&#x53EF;&#x4EE5;&#x5E2E;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x5408;&#x5E76;&#x3001;&#x538B;&#x7F29;&#x3001;&#x6821;&#x9A8C;&#x3001;&#x9884;&#x5904;&#x7406;&#x7B49;&#x4E00;&#x7CFB;&#x5217;&#x4EFB;&#x52A1;&#x7684;&#x8F6F;&#x4EF6;&#x5DE5;&#x5177;&#x3002;</p>
+<p>&#x5E38;&#x89C1;&#x7684;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#x5305;&#x62EC;&#xFF1A;Grunt&#x3001;Gulp&#x3001;F.I.S&#xFF08;&#x767E;&#x5EA6;&#x51FA;&#x54C1;&#xFF09;&#x3001;webpack&#x7B49;&#x3002;</p>
+<blockquote>
+<p>Gulp&#x662F;&#x57FA;&#x4E8E; Nodejs &#x5F00;&#x53D1;&#x7684;&#x4E00;&#x4E2A;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#xFF0C;&#x501F;&#x52A9; gulp &#x63D2;&#x4EF6;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x4E0D;&#x540C;&#x7684;&#x6784;&#x5EFA;&#x4EFB;&#x52A1;&#xFF0C;&#x5176;&#x4EE5;&#x7B80;&#x6D01;&#x7684;&#x914D;&#x7F6E;&#x548C;&#x5353;&#x8D8A;&#x7684;&#x6027;&#x80FD;&#x6210;&#x4E3A;&#x76EE;&#x524D;&#x4E3B;&#x6D41;&#x7684;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#x3002;</p>
+</blockquote>
+<p>&#x5168;&#x5C40;&#x5B89;&#x88C5; </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g gulp</div></pre></td></tr></table></figure>
+<h2 id="Gulp&#x57FA;&#x7840;"><a href="#Gulp&#x57FA;&#x7840;" class="headerlink" title="Gulp&#x57FA;&#x7840;"></a>Gulp&#x57FA;&#x7840;</h2><p>1&#x3001;&#x672C;&#x5730;&#x5B89;&#x88C5; gulp </p>
+<p>&#x8FDB;&#x5165;&#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;&#x6267;&#x884C;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp --save-dev</div></pre></td></tr></table></figure>
+<p>2&#x3001;&#x5168;&#x5C40;&#x5B89;&#x88C5;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g gulp</div></pre></td></tr></table></figure>
+<p>&#x6DFB;&#x52A0;&#x2013;save-dev&#x4F1A;&#x5728;package.json&#x8BB0;&#x5F55;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;.</p>
+<p>3&#x3001;&#x4EFB;&#x52A1;&#x6E05;&#x5355;</p>
+<p>&#x5728;&#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;&#x4E2D;&#x521B;&#x5EFA; gulpfile.js&#xFF0C;gulp&#x4F1A;&#x53C2;&#x8003;&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6267;&#x884C;&#x6784;&#x5EFA;&#x4EFB;&#x52A1;&#x3002;</p>
+<p>4&#x3001;&#x5B9A;&#x4E49;&#x4EFB;&#x52A1;</p>
+<p>&#x5728; <code>gulpfile.js</code> &#x5B9A;&#x4E49;&#x6784;&#x5EFA;&#x4EFB;&#x52A1;&#xFF0C;&#x5982;&#x538B;&#x7F29;&#x3001;&#x5408;&#x5E76;&#x7B49;&#x3002;</p>
+<p>gulp &#x662F;&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x63D2;&#x4EF6;&#x6765;&#x5B8C;&#x6210;&#x5177;&#x4F53;&#x6784;&#x5EFA;&#x4EFB;&#x52A1;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E9B;&#x63D2;&#x4EF6;&#x4E5F;&#x90FD;&#x57FA;&#x4E8E; Nodejs.</p>
+<p>&#x4EE5;&#x7F16;&#x8BD1; LESS &#x4E3A;&#x4F8B;&#xFF0C;&#x5B89;&#x88C5;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp-less</div></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x4F7F;&#x7528; gulp, &#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#x4E3A; less &#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x7528;&#x6765;&#x5B8C;&#x6210; less &#x7F16;&#x8BD1;&#x6210; css &#x7684;&#x4EFB;&#x52A1;&#x3002;</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">&apos;gulp&apos;</span>);</div><div class="line"><span class="keyword">var</span> less = <span class="built_in">require</span>(<span class="string">&apos;gulp-less&apos;</span>);</div><div class="line"><span class="comment">// &#x5B9A;&#x4E49;&#x4EFB;&#x52A1; &#x53C2;&#x6570;[&#x540D;&#x79F0;&#xFF0C;&#x56DE;&#x8C03;&#x51FD;&#x6570;]</span></div><div class="line">gulp.task(<span class="string">&apos;less&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="comment">// &#x83B7;&#x53D6;&#x60F3;&#x8981;&#x8F6C;&#x6362;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;</span></div><div class="line">  <span class="comment">// &#x7528;&#x6765;&#x627E;&#x5230;&#x8981;&#x6784;&#x5EFA;&#x7684;&#x8D44;&#x6E90; &#x53C2;&#x6570;[&#x8D44;&#x6E90;&#x8DEF;&#x5F84;]</span></div><div class="line">  gulp.src(<span class="string">&apos;./public/less/*.less&apos;</span>)</div><div class="line">      <span class="comment">// &#x5C06;&#x8D44;&#x6E90;&#x4F20;&#x7ED9;&#x63D2;&#x4EF6; &#x53C2;&#x6570;[&#x63D2;&#x4EF6;&#x8C03;&#x7528;]</span></div><div class="line">      .pipe(less())</div><div class="line">      <span class="comment">// &#x5B58;&#x653E;&#x8DEF;&#x5F84; &#x5C06;&#x6784;&#x5EFA;&#x7684;&#x597D;&#x7684;&#x8D44;&#x6E90;&#x91CD;&#x65B0;&#x5B58;&#x50A8; &#x53C2;&#x6570;[&#x8DEF;&#x5F84;]</span></div><div class="line">      .pipe(gulp.dest(<span class="string">&apos;./release/css&apos;</span>));</div><div class="line">    ;</div><div class="line">});</div></pre></td></tr></table></figure>
+<p>5&#x3001;&#x6267;&#x884C;&#x4EFB;&#x52A1;</p>
+<p>&#x6253;&#x5F00;&#x547D;&#x4EE4;&#x884C;&#x7A97;&#x53E3;&#x5E76;&#x5207;&#x6362;&#x5230;&#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x6267;&#x884C;&#x547D;&#x4EE4; <code>gulp less</code>&#xFF0C;&#x8FD9;&#x65F6;&#x5168;&#x5C40;&#x5B89;&#x88C5;&#x7684; gulp &#x4FBF;&#x4EE5;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x597D;&#x7684; <code>gulpfile.js</code> &#x6267;&#x884C;&#x6784;&#x5EFA;&#x4EFB;&#x52A1;&#x4E86;&#x3002;</p>
+<p>&#x8FD9;&#x6837;LESS&#x6587;&#x4EF6;&#x4FBF;&#x4F1A;&#x7F16;&#x8BD1;&#x6210;CSS&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x4FDD;&#x5B58;&#x5728;&#x4E86;./public/css&#x76EE;&#x5F55;&#x4E0B;&#x3002;</p>
+<p>&#x5404;&#x79CD;&#x63D2;&#x4EF6;&#x7684;&#x4F7F;&#x7528;&#xFF1A;</p>
+<h2 id="Gulp&#x5DE5;&#x4F5C;&#x539F;&#x7406;"><a href="#Gulp&#x5DE5;&#x4F5C;&#x539F;&#x7406;" class="headerlink" title="Gulp&#x5DE5;&#x4F5C;&#x539F;&#x7406;"></a>Gulp&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h2><p>&#x901A;&#x8FC7;&#x4E0D;&#x540C;&#x7684;&#x63D2;&#x4EF6;&#x5B9E;&#x73B0;&#x6784;&#x5EFA;&#x4EFB;&#x52A1;&#xFF0C;Gulp&#x53EA;&#x662F;&#x6309;&#x7740;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8C03;&#x7528;&#x6267;&#x884C;&#x4E86;&#x8FD9;&#x4E9B;&#x63D2;&#x4EF6;&#x3002;</p>
+<p><strong>Gulp API</strong></p>
+<p>Gulp&#x662F;&#x57FA;&#x4E8E;NodeJS&#x7684;&#xFF0C;&#x901A;&#x8FC7;require&#x53EF;&#x4EE5;&#x5F15;&#x5165;&#x4E00;&#x4E2A;NodeJS&#x7684;&#x5305;&#xFF08;&#x6A21;&#x5757;&#xFF09;&#xFF0C;&#x5176;&#x4F5C;&#x7528;&#x7C7B;&#x4F3C;&#x4E8E;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x7684;script&#x6807;&#x7B7E;&#x5F15;&#x5165;&#x8D44;&#x6E90;&#xFF0C;&#x88AB;&#x5F15;&#x5165;&#x7684;&#x5305;&#x5B58;&#x653E;&#x5728;node_modules&#x76EE;&#x5F55;&#x4E0B;&#x3002;</p>
+<p>&#x5F15;&#x5165;gulp&#x5305;&#xFF08;&#x6A21;&#x5757;&#xFF09;&#x540E;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF08;&#x4E60;&#x60EF;&#x8D4B;&#x503C;&#x7ED9;&#x53D8;&#x91CF;gulp&#xFF09;&#xFF0C;&#x901A;&#x8FC7;&#x8BE5;&#x5BF9;&#x8C61;&#x63D0;&#x4F9B;&#x7684;&#x65B9;&#x6CD5;&#xFF08;API&#xFF09;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#x7684;&#x914D;&#x7F6E;&#x3002;</p>
+<p>1&#x3001;gulp.task() </p>
+<p>&#x5B9A;&#x4E49;&#x5404;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x4E0D;&#x540C;&#x4EFB;&#x52A1;&#x95F4;&#x5B58;&#x5728;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4F9D;&#x8D56;&#x3002;</p>
+<p>2&#x3001;gulp.src() </p>
+<p>&#x9700;&#x8981;&#x6784;&#x5EFA;&#x8D44;&#x6E90;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x6216;&#x6570;&#x7EC4;&#xFF08;&#x53EF;&#x4EE5;&#x6B63;&#x5219;&#x65B9;&#x5F0F;&#x4E66;&#x5199;&#xFF09;</p>
+<p>2&#x3001;gulp.pipe() </p>
+<p>&#x7BA1;&#x9053;&#xFF0C;&#x5C06;&#x9700;&#x8981;&#x6784;&#x5EFA;&#x7684;&#x8D44;&#x6E90;&#x201C;&#x8F93;&#x9001;&#x201D;&#x7ED9;&#x63D2;&#x4EF6;&#x3002;</p>
+<p>3&#x3001;gulp.dest() </p>
+<p>&#x6784;&#x5EFA;&#x4EFB;&#x52A1;&#x5B8C;&#x6210;&#x540E;&#x8D44;&#x6E90;&#x5B58;&#x653E;&#x7684;&#x8DEF;&#x5F84;&#xFF08;&#x4F1A;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#xFF09;</p>
+<p>4&#x3001;gulp.watch()</p>
+<p>&#x901A;&#x8FC7;&#x76D1;&#x89C6;&#x67D0;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x7136;&#x540E;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x76F8;&#x5E94;&#x4EFB;&#x52A1;&#x3002;</p>
+<h2 id="&#x5E38;&#x7528;Gulp&#x63D2;&#x4EF6;"><a href="#&#x5E38;&#x7528;Gulp&#x63D2;&#x4EF6;" class="headerlink" title="&#x5E38;&#x7528;Gulp&#x63D2;&#x4EF6;"></a>&#x5E38;&#x7528;Gulp&#x63D2;&#x4EF6;</h2><ul>
+<li><code>gulp-less</code><ul>
+<li>&#x7F16;&#x8BD1;LESS&#x6587;&#x4EF6;</li>
+</ul>
+</li>
+<li><code>gulp-autoprefixer</code><ul>
+<li>&#x6DFB;&#x52A0;CSS&#x79C1;&#x6709;&#x524D;&#x7F00;</li>
+</ul>
+</li>
+<li><code>gulp-cssmin</code><ul>
+<li>&#x538B;&#x7F29;CSS</li>
+</ul>
+</li>
+<li><code>gulp-rname</code><ul>
+<li>&#x91CD;&#x547D;&#x540D;</li>
+</ul>
+</li>
+<li><code>gulp-imagemin</code><ul>
+<li>&#x56FE;&#x7247;&#x538B;&#x7F29;</li>
+</ul>
+</li>
+<li><code>gulp-uglify</code><ul>
+<li>&#x538B;&#x7F29;Javascript</li>
+</ul>
+</li>
+<li><code>gulp-concat</code><ul>
+<li>&#x5408;&#x5E76;</li>
+</ul>
+</li>
+<li><code>gulp-htmlmin</code><ul>
+<li>&#x538B;&#x7F29;HTML</li>
+</ul>
+</li>
+<li><code>gulp-rev</code><ul>
+<li>&#x6DFB;&#x52A0;&#x7248;&#x672C;&#x53F7;</li>
+</ul>
+</li>
+<li><code>gulp-rev-collector</code><ul>
+<li>&#x5185;&#x5BB9;&#x66FF;&#x6362;</li>
+</ul>
+</li>
+<li><code>gulp-useref</code></li>
+<li><code>gulp-if</code></li>
+</ul>
+<h2 id="&#x4F8B;&#x5B50;"><a href="#&#x4F8B;&#x5B50;" class="headerlink" title="&#x4F8B;&#x5B50;"></a>&#x4F8B;&#x5B50;</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &#x5F15;&#x5305;</span></div><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">&apos;gulp&apos;</span>),</div><div class="line">  less = <span class="built_in">require</span>(<span class="string">&apos;gulp-less&apos;</span>),</div><div class="line">  cssmin = <span class="built_in">require</span>(<span class="string">&apos;gulp-cssmin&apos;</span>),</div><div class="line">  autoprefixer = <span class="built_in">require</span>(<span class="string">&apos;gulp-autoprefixer&apos;</span>),</div><div class="line">  imagemin = <span class="built_in">require</span>(<span class="string">&apos;gulp-imagemin&apos;</span>),</div><div class="line">  uglify = <span class="built_in">require</span>(<span class="string">&apos;gulp-uglify&apos;</span>),</div><div class="line">  concat = <span class="built_in">require</span>(<span class="string">&apos;gulp-concat&apos;</span>),</div><div class="line">  htmlmin = <span class="built_in">require</span>(<span class="string">&apos;gulp-htmlmin&apos;</span>),</div><div class="line">  rev = <span class="built_in">require</span>(<span class="string">&apos;gulp-rev&apos;</span>),</div><div class="line">  revCollector = <span class="built_in">require</span>(<span class="string">&apos;gulp-rev-collector&apos;</span>),</div><div class="line">  useref = <span class="built_in">require</span>(<span class="string">&apos;gulp-useref&apos;</span>),</div><div class="line">  gulpif = <span class="built_in">require</span>(<span class="string">&apos;gulp-if&apos;</span>),</div><div class="line">  rename = <span class="built_in">require</span>(<span class="string">&apos;gulp-rename&apos;</span>);</div><div class="line"> </div><div class="line"><span class="comment">// css &#x4EFB;&#x52A1;</span></div><div class="line">gulp.task(<span class="string">&apos;less2css&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">&apos;./public/less/*.less&apos;</span>)</div><div class="line">    .pipe(less())</div><div class="line">    .pipe(cssmin())</div><div class="line">    .pipe(autoprefixer())</div><div class="line">    <span class="comment">// &#x8D44;&#x6E90;&#x540E;&#x7F00;&#x6539;&#x4E86;&#xFF0C;&#x6587;&#x4EF6;&#x91CC;&#x7684;&#x8DEF;&#x5F84;&#x4E5F;&#x9700;&#x8981;&#x6539;&#x53D8;&#xFF0C;&#x5229;&#x7528; gulp-rev-collector</span></div><div class="line">    <span class="comment">// &#x5148;&#x6539;&#x540D;&#x5E76;&#x5B58;&#x50A8;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x66FF;&#x6362;</span></div><div class="line">    .pipe(rev())</div><div class="line">    .pipe(gulp.dest(<span class="string">&apos;./release/css&apos;</span>))</div><div class="line">    .pipe(rev.manifest())</div><div class="line">    .pipe(rename(<span class="string">&apos;css-mainfest.json&apos;</span>))</div><div class="line">    <span class="comment">// &#x6536;&#x96C6;&#x66FF;&#x6362;&#x524D;&#x540E;&#x7684;&#x5173;&#x7CFB;</span></div><div class="line">    .pipe(gulp.dest(<span class="string">&apos;./release/rev&apos;</span>));</div><div class="line">});</div><div class="line"></div><div class="line"><span class="comment">// &#x56FE;&#x7247;&#x4EFB;&#x52A1;</span></div><div class="line"><span class="comment">// &#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x4E2D;&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#x56FE;&#x7247;&#x8DEF;&#x662F;&#x4E0D;&#x53D8;&#x7684;</span></div><div class="line"><span class="comment">// src &#x6709;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;</span></div><div class="line"><span class="comment">// &#x5728; images &#x4E0B;&#x9762;&#x8FD8;&#x6709;&#x76EE;&#x5F55;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x6837;&#x8FD8;&#x6709;&#x95EE;&#x9898;</span></div><div class="line"><span class="comment">// &#x5728;&#x52A0;&#x4E00;&#x4E2A;*&#xFF0C;&#x8868;&#x793A;&#x6709;&#x591A;&#x5C11;&#x5C42;&#x76EE;&#x5F55;&#xFF0C;&#x90FD;&#x7ED9;&#x6211;&#x80FD;&#x627E;&#x5230;</span></div><div class="line">gulp.task(<span class="string">&apos;image&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="keyword">return</span> gulp.src([<span class="string">&apos;./images/**/*&apos;</span>, <span class="string">&apos;./uploads/**/*&apos;</span>], {<span class="attr">base</span>: <span class="string">&apos;./&apos;</span>})</div><div class="line">    .pipe(imagemin())</div><div class="line">    .pipe(rev())</div><div class="line">    .pipe(gulp.dest(<span class="string">&apos;./release&apos;</span>))</div><div class="line">    .pipe(rev.manifest())</div><div class="line">    .pipe(rename(<span class="string">&apos;image-mainfest.json&apos;</span>))</div><div class="line">    .pipe(gulp.dest(<span class="string">&apos;./release/images&apos;</span>));</div><div class="line">});</div><div class="line"></div><div class="line"><span class="comment">// js &#x8D44;&#x6E90;</span></div><div class="line">gulp.task(<span class="string">&apos;js&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">  gulp.src(<span class="string">&apos;./libs/*.js&apos;</span>)</div><div class="line">    .pipe(uglify())</div><div class="line">    <span class="comment">// &#x5408;&#x5E76;&#xFF0C;&#x9700;&#x8981;&#x4F20;&#x53C2;&#x6570;&#xFF0C;&#x5408;&#x5E76;&#x540E;&#x7684;&#x540D;&#x79F0;</span></div><div class="line">    .pipe(concat(<span class="string">&apos;all.js&apos;</span>))</div><div class="line">    .pipe(gulp.dest(<span class="string">&apos;./release/libs&apos;</span>));</div><div class="line">});</div><div class="line"></div><div class="line"><span class="comment">// html &#x8D44;&#x6E90;</span></div><div class="line">gulp.task(<span class="string">&apos;html&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">  gulp.src(<span class="string">&apos;./view/*.html&apos;</span>)</div><div class="line">    <span class="comment">// &#x9700;&#x8981;&#x53C2;&#x6570;&#xFF0C;&#x53BB;&#x6389;&#x7A7A;&#x95F4;&#xFF0C;&#x6CE8;&#x91CA;&#xFF0C;&#x538B;&#x7F29; js &#x4EE3;&#x7801;</span></div><div class="line">    .pipe(htmlmin({</div><div class="line">      <span class="attr">collapseWhitespace</span>:<span class="literal">true</span>,</div><div class="line">      <span class="attr">removeComments</span>:<span class="literal">true</span>,</div><div class="line">      <span class="attr">minifyJs</span>: <span class="literal">true</span></div><div class="line">    }))</div><div class="line">    .pipe(gulp.dest(<span class="string">&apos;./release/views&apos;</span>));</div><div class="line">});</div><div class="line"></div><div class="line"><span class="comment">// &#x66FF;&#x6362;&#x4EFB;&#x52A1;</span></div><div class="line">gulp.task(<span class="string">&apos;revCollector&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="comment">// &#x6309;&#x7167;&#x54EA;&#x4E2A;&#x6807;&#x51C6;&#x53BB;&#x66FF;&#x6362; &#x4E24;&#x4E2A;&#x53C2;&#x6570;</span></div><div class="line">  <span class="comment">// &#x6587;&#x4EF6;</span></div><div class="line">  <span class="comment">// &#x66FF;&#x6362;&#x54EA;&#x4E2A;&#x6587;&#x4EF6;</span></div><div class="line">  gulp.src([<span class="string">&apos;./release/rev/*.json&apos;</span>, <span class="string">&apos;./release/*.html&apos;</span>])</div><div class="line">    .pipe(revCollector())</div><div class="line">    .pipe(gulp.dest(<span class="string">&apos;./release&apos;</span>));</div><div class="line">});</div><div class="line"></div><div class="line"><span class="comment">// &#x9875;&#x9762;&#x4E2D;&#x8FD8;&#x5F15;&#x5165;&#x4E86; jQuery&#xFF0C;&#x60F3;&#x8981;&#x8BA9;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x505A;&#x4E00;&#x4E2A;&#x5408;&#x5E76;&#xFF0C;&#x524D;&#x9762;&#x7684; gulp-concat &#x63D2;&#x4EF6;&#x4F18;&#x70B9;&#x95EE;&#x9898;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x4FEE;&#x6539;&#x8DEF;&#x5F84;&#x3002;</span></div><div class="line"><span class="comment">// &#x538B;&#x7F29;&#x5408;&#x5E76;&#x5904;&#x7406;&#x8DEF;&#x5F84;&#x4EFB;&#x52A1;&#xFF0C;md5</span></div><div class="line">gulp.task(<span class="string">&apos;useref&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">&apos;./index.html&apos;</span>)</div><div class="line">    .pipe(useref())</div><div class="line">    <span class="comment">// &#x5047;&#x5982;&#x662F;&#x4EE5; js &#x7ED3;&#x5C3E;&#x7684;&#xFF0C;&#x5408;&#x5E76;&#x5E76;&#x538B;&#x7F29;&#xFF0C;&#x90A3;&#x4E48;&#x518D;&#x8C03;&#x7528;&#x4E0B;&#x4E00;&#x4E2A;&#x63D2;&#x4EF6;</span></div><div class="line">    <span class="comment">// uglify &#x53EA;&#x80FD;&#x538B;&#x7F29; js &#x6587;&#x4EF6;&#xFF0C;&#x4F7F;&#x7528; gulp-if &#x63D2;&#x4EF6;&#x8FC7;&#x6EE4; js &#x6587;&#x4EF6;</span></div><div class="line">    .pipe(gulpif(<span class="string">&apos;*.js&apos;</span>, uglify()))</div><div class="line">    <span class="comment">// &#x9759;&#x6001;&#x8D44;&#x6E90;&#x6539;&#x540D;&#x5B57;</span></div><div class="line">    .pipe(gulpif(<span class="string">&apos;*.js&apos;</span>, rev()))</div><div class="line">    .pipe(gulp.dest(<span class="string">&apos;./release&apos;</span>))</div><div class="line">    <span class="comment">// &#x505A;&#x4E00;&#x4E2A;&#x6536;&#x96C6;</span></div><div class="line">    .pipe(rev.manifest())</div><div class="line">    <span class="comment">// &#x4E3A;&#x4E86;&#x907F;&#x514D;&#x66FF;&#x6362;</span></div><div class="line">    .pipe(rename(<span class="string">&apos;js-manifest.json&apos;</span>))</div><div class="line">    .pipe(gulp.dest(<span class="string">&apos;./release/rev&apos;</span>));</div><div class="line">});</div><div class="line"></div><div class="line"><span class="comment">// &#x5176;&#x5B83;&#x5185;&#x5BB9;</span></div><div class="line">gulp.task(<span class="string">&apos;other&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">  gulp.src([<span class="string">&apos;./api/*&apos;</span>, <span class="string">&apos;./public/font/*&apos;</span>], {<span class="attr">base</span>: <span class="string">&apos;./&apos;</span>})</div><div class="line">    .pipe(gulp.dest(<span class="string">&apos;./release&apos;</span>));</div><div class="line">});</div><div class="line"></div><div class="line"><span class="comment">// &#x8DEF;&#x5F84;&#x66FF;&#x6362;</span></div><div class="line">gulp.task(<span class="string">&apos;rev&apos;</span>, [<span class="string">&apos;css&apos;</span>, <span class="string">&apos;image&apos;</span>, <span class="string">&apos;useref&apos;</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">  gulp.src([<span class="string">&apos;./release/rev/*.json&apos;</span>, <span class="string">&apos;./release/index.html&apos;</span>])</div><div class="line">    .pipe(revCollector())</div><div class="line">    .pipe(gulp.dest(<span class="string">&apos;./release&apos;</span>));</div><div class="line">});</div><div class="line"></div><div class="line">gulp.task(<span class="string">&apos;default&apos;</span>, [<span class="string">&apos;rev&apos;</span>, <span class="string">&apos;other&apos;</span>, <span class="string">&apos;html&apos;</span>]);</div></pre></td></tr></table></figure>
+<h2 id="&#x7F13;&#x5B58;&#x3001;&#x6027;&#x80FD;&#x4F18;&#x5316;"><a href="#&#x7F13;&#x5B58;&#x3001;&#x6027;&#x80FD;&#x4F18;&#x5316;" class="headerlink" title="&#x7F13;&#x5B58;&#x3001;&#x6027;&#x80FD;&#x4F18;&#x5316;"></a>&#x7F13;&#x5B58;&#x3001;&#x6027;&#x80FD;&#x4F18;&#x5316;</h2><p><code>&lt;link href=&quot;base.css?v=1&quot;&gt;</code> &#x540E;&#x9762;&#x7684;&#x53C2;&#x6570;&#x7528;&#x6765;&#x89E3;&#x51B3;&#x6D4F;&#x89C8;&#x5668;&#x7F13;&#x5B58;</p>
+<p>&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x5C06;&#x9759;&#x6001;&#x8D44;&#x6E90;&#xFF08;CSS&#x3001;images&#x3001;js&#xFF09;&#x7F13;&#x5B58;&#x5230;&#x672C;&#x5730;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#xFF0C;&#x4E0B;&#x6B21;&#x8BF7;&#x6C42;&#x65F6;&#x5C31;&#x8BFB;&#x53D6;&#x672C;&#x5730;&#x8D44;&#x6E90;&#x6765;&#x663E;&#x793A;&#xFF0C;&#x7F13;&#x5B58;&#x53EF;&#x4EE5;&#x5E26;&#x6765;&#x6027;&#x80FD;&#x7684;&#x63D0;&#x5347;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x4F1A;&#x7ED9;&#x524D;&#x7AEF;&#x5F00;&#x53D1;&#x8005;&#x5E26;&#x6765;&#x95EE;&#x9898;&#x3002;&#x5F80;&#x5F80;&#x8FD9;&#x79CD;&#x95EE;&#x9898;&#x662F;&#x7531;&#x7F13;&#x5B58;&#x6784;&#x6210;&#x7684;&#x3002;</p>
+<p>&#x600E;&#x4E48;&#x89E3;&#x51B3;&#x5462;&#xFF1F;&#x5206;&#x6790;&#x6D4F;&#x89C8;&#x5668;&#x7F13;&#x5B58;&#x673A;&#x5236;&#x95EE;&#x9898;&#x3002;&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#x4E0B;&#x4E0D;&#x9700;&#x8981;&#x6D4F;&#x89C8;&#x5668;&#x7F13;&#x5B58;&#xFF1F;</p>
+<p>&#x6D4F;&#x89C8;&#x5668;&#x9ED8;&#x8BA4;&#x7F13;&#x5B58;&#x6309;&#x8D44;&#x6E90;&#x8DEF;&#x5F84;&#x8FDB;&#x884C;&#x7684;&#x7F13;&#x5B58; ./css/base.css&#xFF0C;&#x56E0;&#x6B64;&#x6BCF;&#x6B21;&#x5F00;&#x53D1;&#x52A0;&#x4E2A;&#x53C2;&#x6570; ./css/base.css?v=1 &#x6216;&#x8005; ./css/base.css?v=20141123 &#x52A0;&#x4E86;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x6233;&#xFF1B;</p>
+<p>&#x524D;&#x7AEF;&#x6027;&#x80FD;&#x4F18;&#x5316;&#xFF1A;<code>&#x534F;&#x5546;&#x7F13;&#x5B58;&#xFF0C;&#x96C5;&#x864E; 13 &#x6761;</code></p>
+<p>&#x5F53;&#x5185;&#x5BB9;&#x7684;&#x786E;&#x6539;&#x53D8;&#x540E;&#x624D;&#x9700;&#x8981;&#xFF0C;&#x5C31;&#x610F;&#x5473;&#x7740;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x77E5;&#x9053;&#x5185;&#x5BB9;&#x662F;&#x5426;&#x6539;&#x53D8;&#x4E86;&#xFF0C;&#x5229;&#x7528; md5 &#x53EF;&#x4EE5;&#x5904;&#x7406;&#x3002;&#x5F53;&#x66F4;&#x6539;&#x540E;&#x4F1A;&#x5F62;&#x6210;&#x65B0;&#x7684;<code>&#x503C;</code>&#xFF0C;&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x503C;&#x5145;&#x5F53;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#x3002;&#x628A;&#x6587;&#x4EF6;&#x52A0;&#x5BC6;&#x6210; md5 &#x4E32;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x6307;&#x7EB9;</p>
+<h2 id="&#x4E0D;&#x540C;-js-&#x6587;&#x4EF6;&#x5408;&#x5E76;"><a href="#&#x4E0D;&#x540C;-js-&#x6587;&#x4EF6;&#x5408;&#x5E76;" class="headerlink" title="&#x4E0D;&#x540C; js &#x6587;&#x4EF6;&#x5408;&#x5E76;"></a>&#x4E0D;&#x540C; js &#x6587;&#x4EF6;&#x5408;&#x5E76;</h2><p>&#x9700;&#x8981;&#x6CE8;&#x91CA;: <code>./libs/all.js</code> &#x5C31;&#x662F;&#x5408;&#x5E76;&#x4E4B;&#x540E;&#x7684;&#x540D;&#x79F0;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- build:js ./libs/all.js --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&apos;./libs/jquery.min.js&apos;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&apos;./libs/toggle.js&apos;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- endbuild --&gt;</span></div></pre></td></tr></table></figure>
+<p>&#x79FB;&#x9664;&#x4E00;&#x4E9B;&#x4E0A;&#x7EBF;&#x4E0D;&#x9700;&#x8981;&#x7684;&#x6587;&#x4EF6;&#x3002;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- &#x5E76;&#x6CA1;&#x6709;&#x5B9E;&#x9645;&#x5408;&#x5E76;&#xFF0C;&#x800C;&#x662F;&#x5229;&#x7528; build:css &#x6765;&#x6539;&#x540D;&#x79F0; --&gt;</span></div><div class="line"><span class="comment">&lt;!-- build:css ./public/css/main.css --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;./public/less/main.less&quot;</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- endbuild --&gt;</span></div><div class="line"><span class="comment">&lt;!-- build:remove --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./public/less/less.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- endbuild --&gt;</span></div><div class="line"><span class="comment">&lt;!-- build:remove --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&apos;./libs/less.js&apos;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- endbuild --&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="&#x5408;&#x5E76;&#x4E4B;&#x540E;&#x538B;&#x7F29;"><a href="#&#x5408;&#x5E76;&#x4E4B;&#x540E;&#x538B;&#x7F29;" class="headerlink" title="&#x5408;&#x5E76;&#x4E4B;&#x540E;&#x538B;&#x7F29;"></a>&#x5408;&#x5E76;&#x4E4B;&#x540E;&#x538B;&#x7F29;</h2><p><code>.pipe(gulpif(&apos;*.js&apos;, uglify()))</code></p>
+<h2 id="gulp-&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x603B;&#x7ED3;"><a href="#gulp-&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x603B;&#x7ED3;" class="headerlink" title="gulp &#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x603B;&#x7ED3;"></a>gulp &#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x603B;&#x7ED3;</h2><ul>
+<li>touch gulpfile.js</li>
+<li>&#x5168;&#x5C40;&#x5B89;&#x88C5; gulp </li>
+<li>&#x672C;&#x5730;&#x5B89;&#x88C5; gulp</li>
+<li>&#x5904;&#x7406; css<ul>
+<li>gulp-less</li>
+<li>gup-cssmin</li>
+<li>gup-autoprefixer</li>
+<li>gulp-rev</li>
+<li>rev.minifest() &#x6539;&#x540D;&#x79F0;&#x4E86;</li>
+<li>gulp-rename</li>
+</ul>
+</li>
+<li>&#x56FE;&#x7247;&#x5904;&#x7406;<ul>
+<li>gulp-imagemin</li>
+<li>gulp-rename</li>
+</ul>
+</li>
+<li>&#x6539;&#x540D;<ul>
+<li>gulp-useref</li>
+<li>gulp-manifest</li>
+<li>gulp-uglify</li>
+<li>gulp-if</li>
+</ul>
+</li>
+<li>&#x8DEF;&#x5F84;&#x66FF;&#x6362;<ul>
+<li>gulp-rev-collector</li>
+</ul>
+</li>
+<li>&#x538B;&#x7F29; html<ul>
+<li>gulp-htmlmin</li>
+</ul>
+</li>
+<li>&#x5904;&#x7406;&#x4E00;&#x4E9B;&#x5176;&#x5B83;&#x5185;&#x5BB9;</li>
+</ul>
+<h2 id="&#x76D1;&#x89C6;&#x6587;&#x4EF6;&#x53D8;&#x5316;"><a href="#&#x76D1;&#x89C6;&#x6587;&#x4EF6;&#x53D8;&#x5316;" class="headerlink" title="&#x76D1;&#x89C6;&#x6587;&#x4EF6;&#x53D8;&#x5316;"></a>&#x76D1;&#x89C6;&#x6587;&#x4EF6;&#x53D8;&#x5316;</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">&apos;watch&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">  <span class="comment">// &#x53EF;&#x4EE5;&#x7528;&#x8FD9;&#x4E2A; watch &#x6765;&#x5B9E;&#x73B0;&#x5B9E;&#x65F6;&#x7F16;&#x8BD1;&#x7684;&#x529F;&#x80FD;</span></div><div class="line">  gulp.watch(<span class="string">&apos;./index.html&apos;</span>,[<span class="string">&apos;default&apos;</span>], <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>{</div><div class="line"></div><div class="line">  });</div><div class="line">});</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>感谢您的支持！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>打 赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ofy7k3v4s.bkt.clouddn.com/wcpayCode.jpg" alt="Hongqin Ma WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ofy7k3v4s.bkt.clouddn.com/apayCode.jpg" alt="Hongqin Ma Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tools/" rel="tag">#tools</a>
+          
+            <a href="/tags/性能优化/" rel="tag">#性能优化</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/03/22/23-PHP-基础/" rel="next" title="PHP-基础">
+                <i class="fa fa-chevron-left"></i> PHP-基础
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/03/t1-markdown/" rel="prev" title="markdown">
+                markdown <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/04/03/t10-gulp-构建工具/"
+     data-title="Gulp 构建工具"
+     data-content=""
+     data-url="https://hongqinma.github.io/2015/04/03/t10-gulp-构建工具/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/04/03/t10-gulp-构建工具/"
+           data-title="Gulp 构建工具" data-url="https://hongqinma.github.io/2015/04/03/t10-gulp-构建工具/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/photo.jpg"
+               alt="Hongqin Ma" />
+          <p class="site-author-name" itemprop="name">Hongqin Ma</p>
+          <p class="site-description motion-element" itemprop="description">Spell at all costs， to rush you in the future. </p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HongqinMa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/HongqinMa" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100006581058735" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/HirakuMa" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-share-alt"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美" target="_blank">司徒正美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/sanshi/" title="三生石上" target="_blank">三生石上</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/TomXu/" title="汤姆大叔" target="_blank">汤姆大叔</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gold.xitu.io/" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/users/1cbb94e5ed4d/latest_articles" title="简书" target="_blank">简书</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.cnblogs.com/" title="博客园" target="_blank">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.awesomes.cn/" title="Awesomes" target="_blank">Awesomes</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gulp基础"><span class="nav-number">1.</span> <span class="nav-text">Gulp基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gulp工作原理"><span class="nav-number">2.</span> <span class="nav-text">Gulp工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用Gulp插件"><span class="nav-number">3.</span> <span class="nav-text">常用Gulp插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">4.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存、性能优化"><span class="nav-number">5.</span> <span class="nav-text">缓存、性能优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不同-js-文件合并"><span class="nav-number">6.</span> <span class="nav-text">不同 js 文件合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并之后压缩"><span class="nav-number">7.</span> <span class="nav-text">合并之后压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gulp-构建过程总结"><span class="nav-number">8.</span> <span class="nav-text">gulp 构建过程总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监视文件变化"><span class="nav-number">9.</span> <span class="nav-text">监视文件变化</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hongqin Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Page Views: <span id="busuanzi_value_site_pv"></span> 
+</span>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Hiraku"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = '0 ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+
+  
+</body>
+</html>
