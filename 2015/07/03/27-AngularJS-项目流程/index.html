@@ -1,0 +1,1171 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="AngularJs,Node.js,小项目," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://ofy7k3v4s.bkt.clouddn.com/mylogo.png?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x8C46;&amp;#x74E3;&amp;#x7535;&amp;#x5F71;&amp;#x5217;&amp;#x8868;&amp;#x9879;&amp;#x76EE;&amp;#x8BF4;&amp;#x660E;
+&amp;#x4F7F;&amp;#x7528; AngularJS + Bootstrap + Node.js &amp;#x6784;&amp;#x5EFA;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x7535;&amp;#x5F71;&amp;#x5217;&amp;#x88">
+<meta property="og:type" content="article">
+<meta property="og:title" content="27-AngularJS 项目流程">
+<meta property="og:url" content="https://hongqinma.github.io/2015/07/03/27-AngularJS-项目流程/index.html">
+<meta property="og:site_name" content="HongqinMa' Blog">
+<meta property="og:description" content="&amp;#x8C46;&amp;#x74E3;&amp;#x7535;&amp;#x5F71;&amp;#x5217;&amp;#x8868;&amp;#x9879;&amp;#x76EE;&amp;#x8BF4;&amp;#x660E;
+&amp;#x4F7F;&amp;#x7528; AngularJS + Bootstrap + Node.js &amp;#x6784;&amp;#x5EFA;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x7535;&amp;#x5F71;&amp;#x5217;&amp;#x88">
+<meta property="og:image" content="https://hongqinma.github.io/2015/07/03/27-AngularJS-项目流程/豆瓣电影列表.png">
+<meta property="og:image" content="https://hongqinma.github.io/2015/07/03/27-AngularJS-项目流程/前后端分离开发模型.png">
+<meta property="og:updated_time" content="2016-11-30T11:54:04.562Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="27-AngularJS 项目流程">
+<meta name="twitter:description" content="&amp;#x8C46;&amp;#x74E3;&amp;#x7535;&amp;#x5F71;&amp;#x5217;&amp;#x8868;&amp;#x9879;&amp;#x76EE;&amp;#x8BF4;&amp;#x660E;
+&amp;#x4F7F;&amp;#x7528; AngularJS + Bootstrap + Node.js &amp;#x6784;&amp;#x5EFA;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x7535;&amp;#x5F71;&amp;#x5217;&amp;#x88">
+<meta name="twitter:image" content="https://hongqinma.github.io/2015/07/03/27-AngularJS-项目流程/豆瓣电影列表.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6347850919329138000',
+      author: 'Hiraku'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://hongqinma.github.io/2015/07/03/27-AngularJS-项目流程/"/>
+
+
+  <title> 27-AngularJS 项目流程 | HongqinMa' Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?10010323";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="http://ofy7k3v4s.bkt.clouddn.com/photo.jpg"
+             alt="HongqinMa' Blog"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">HongqinMa' Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Spell at all costs， to rush you in the future。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                27-AngularJS 项目流程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-07-03T19:50:50+08:00" content="2015-07-03">
+              2015-07-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/07/03/27-AngularJS-项目流程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/03/27-AngularJS-项目流程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+
+          
+            <span id="busuanzi_container_page_pv">  <span id="busuanzi_value_page_pv"></span> Views</span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/2015/07/03/27-AngularJS-&#x9879;&#x76EE;&#x6D41;&#x7A0B;/&#x8C46;&#x74E3;&#x7535;&#x5F71;&#x5217;&#x8868;.png" alt="&#x8C46;&#x74E3;&#x7535;&#x5F71;&#x5217;&#x8868;"></p>
+<h2 id="&#x8C46;&#x74E3;&#x7535;&#x5F71;&#x5217;&#x8868;&#x9879;&#x76EE;&#x8BF4;&#x660E;"><a href="#&#x8C46;&#x74E3;&#x7535;&#x5F71;&#x5217;&#x8868;&#x9879;&#x76EE;&#x8BF4;&#x660E;" class="headerlink" title="&#x8C46;&#x74E3;&#x7535;&#x5F71;&#x5217;&#x8868;&#x9879;&#x76EE;&#x8BF4;&#x660E;"></a>&#x8C46;&#x74E3;&#x7535;&#x5F71;&#x5217;&#x8868;&#x9879;&#x76EE;&#x8BF4;&#x660E;</h2><blockquote>
+<p>&#x4F7F;&#x7528; AngularJS + Bootstrap + Node.js &#x6784;&#x5EFA;&#x7684;&#x4E00;&#x4E2A;&#x7535;&#x5F71;&#x5217;&#x8868;&#x5C55;&#x793A;&#x5355;&#x9875;&#x5E94;&#x7528;</p>
+</blockquote>
+<h2 id="&#x542F;&#x52A8;&#x9879;&#x76EE;"><a href="#&#x542F;&#x52A8;&#x9879;&#x76EE;" class="headerlink" title="&#x542F;&#x52A8;&#x9879;&#x76EE;"></a>&#x542F;&#x52A8;&#x9879;&#x76EE;</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nodemon add.js</div></pre></td></tr></table></figure>
+<p>&#x6216;&#x8005;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node add.js</div></pre></td></tr></table></figure>
+<h2 id="&#x8C46;&#x74E3;&#x5F00;&#x53D1;&#x63A5;&#x53E3;-API"><a href="#&#x8C46;&#x74E3;&#x5F00;&#x53D1;&#x63A5;&#x53E3;-API" class="headerlink" title="&#x8C46;&#x74E3;&#x5F00;&#x53D1;&#x63A5;&#x53E3; API"></a>&#x8C46;&#x74E3;&#x5F00;&#x53D1;&#x63A5;&#x53E3; API</h2><ul>
+<li>&#x6240;&#x6709;&#x7684;&#x63A5;&#x53E3;&#x5730;&#x5740;&#x90FD;&#x662F;&#x4EE5;&#xFF1A;<a href="http://api.douban.com/v2" target="_blank" rel="external">http://api.douban.com/v2</a> &#x5F00;&#x5934;&#x7684;</li>
+<li>&#x6B63;&#x5728;&#x70ED;&#x6620; <a href="http://api.douban.com/v2/movie/in_theaters" target="_blank" rel="external">http://api.douban.com/v2/movie/in_theaters</a></li>
+<li>&#x5373;&#x5C06;&#x4E0A;&#x6620; <a href="http://api.douban.com/v2/movie/coming_soon" target="_blank" rel="external">http://api.douban.com/v2/movie/coming_soon</a></li>
+<li>top250 <a href="http://api.douban.com/v2/movie/top250" target="_blank" rel="external">http://api.douban.com/v2/movie/top250</a></li>
+<li>search <a href="http://api.douban.com/v2/movie/search?q={text}" target="_blank" rel="external">http://api.douban.com/v2/movie/search?q={text}</a></li>
+<li>&#x7535;&#x5F71;&#x6761;&#x76EE;&#x63A5;&#x53E3;: <a href="http://api.douban.com/v2/movie/subject/:id" target="_blank" rel="external">http://api.douban.com/v2/movie/subject/:id</a></li>
+</ul>
+<h2 id="&#x9879;&#x76EE;&#x9AA8;&#x67B6;"><a href="#&#x9879;&#x76EE;&#x9AA8;&#x67B6;" class="headerlink" title="&#x9879;&#x76EE;&#x9AA8;&#x67B6;"></a>&#x9879;&#x76EE;&#x9AA8;&#x67B6;</h2><ul>
+<li>app<ul>
+<li>app.js</li>
+<li>app.css</li>
+<li>index.html</li>
+<li>in_theaters<ul>
+<li>view.html</li>
+<li>module.js</li>
+</ul>
+</li>
+<li>coming_soon<ul>
+<li>view.html</li>
+<li>module.js</li>
+</ul>
+</li>
+<li>top250<ul>
+<li>view.html</li>
+<li>module.js</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>READMO.md</li>
+<li>.gitignore</li>
+<li>.editorconfig</li>
+<li>bower.json</li>
+<li>.bowerrc</li>
+</ul>
+<h2 id="&#x9875;&#x9762;&#x5F00;&#x53D1;&#x6D41;&#x7A0B;&#xFF1A;"><a href="#&#x9875;&#x9762;&#x5F00;&#x53D1;&#x6D41;&#x7A0B;&#xFF1A;" class="headerlink" title="&#x9875;&#x9762;&#x5F00;&#x53D1;&#x6D41;&#x7A0B;&#xFF1A;"></a>&#x9875;&#x9762;&#x5F00;&#x53D1;&#x6D41;&#x7A0B;&#xFF1A;</h2><h3 id="&#x4E00;-&#x3001;&#x6784;&#x5EFA;&#x9875;&#x9762;&#xFF08;bootstrap&#xFF09;"><a href="#&#x4E00;-&#x3001;&#x6784;&#x5EFA;&#x9875;&#x9762;&#xFF08;bootstrap&#xFF09;" class="headerlink" title="(&#x4E00;)&#x3001;&#x6784;&#x5EFA;&#x9875;&#x9762;&#xFF08;bootstrap&#xFF09;"></a>(&#x4E00;)&#x3001;&#x6784;&#x5EFA;&#x9875;&#x9762;&#xFF08;bootstrap&#xFF09;</h3><p>&#x9009;&#x62E9;&#x6A21;&#x677F; &#x2013;&gt; &#x5217;&#x8868;&#x7EC4; &#x2013;&gt; &#x5A92;&#x4F53;&#x7EC4;&#x4EF6;</p>
+<p>&#x6A21;&#x677F;&#x9875;&#x9762;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>&#x8C46;&#x74E3;&#x7535;&#x5F71;&#x5217;&#x8868;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;node_modules/bootstrap/dist/css/bootstrap.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;css/main.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">&quot;navbar navbar-inverse navbar-fixed-top&quot;</span> <span class="attr">role</span>=<span class="string">&quot;navigation&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container-fluid&quot;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;navbar-header&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;navbar-toggle collapsed&quot;</span> <span class="attr">data-toggle</span>=<span class="string">&quot;collapse&quot;</span> <span class="attr">data-target</span>=<span class="string">&quot;#navbar&quot;</span> <span class="attr">aria-expanded</span>=<span class="string">&quot;false&quot;</span> <span class="attr">aria-controls</span>=<span class="string">&quot;navbar&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;sr-only&quot;</span>&gt;</span>Toggle navigation<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;icon-bar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;icon-bar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;icon-bar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;navbar-brand&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>&#x8C46;&#x74E3;&#x7535;&#x5F71;&#x5217;&#x8868;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;navbar&quot;</span> <span class="attr">class</span>=<span class="string">&quot;navbar-collapse collapse&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;nav navbar-nav navbar-right&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>&#x5173;&#x4E8E;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">&quot;navbar-form navbar-right&quot;</span> &gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;Search...&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container-fluid&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-3 col-md-2 sidebar&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;nav nav-sidebar&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;active&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>&#x6B63;&#x5728;&#x70ED;&#x6620;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>&#x5373;&#x5C06;&#x4E0A;&#x6620;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>Top250<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main&quot;</span>&gt;</span></div><div class="line">          <span class="comment">&lt;!-- &#x6BCF;&#x4E00;&#x9875;&#x4E0D;&#x540C;&#x7684;&#x90E8;&#x5206; --&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="&#x4E8C;-&#x3001;&#x6A21;&#x5757;&#x5212;&#x5206;"><a href="#&#x4E8C;-&#x3001;&#x6A21;&#x5757;&#x5212;&#x5206;" class="headerlink" title="(&#x4E8C;)&#x3001;&#x6A21;&#x5757;&#x5212;&#x5206;"></a>(&#x4E8C;)&#x3001;&#x6A21;&#x5757;&#x5212;&#x5206;</h3><blockquote>
+<p>&#x4E2D;&#x95F4;&#x53D8;&#x5316;&#x90E8;&#x5206;&#x6BCF;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x89C6;&#x56FE;&#xFF1A; view.html &#x548C; &#x6A21;&#x5757; module.js</p>
+</blockquote>
+<p>in-theaters &#x6B63;&#x5728;&#x70ED;&#x6620;&#x89C6;&#x56FE;&#x3001;&#x6B63;&#x5728;&#x70ED;&#x6620;&#x63A7;&#x5236;&#x5668;&#x3001;&#x6B63;&#x5728;&#x70ED;&#x6620;&#x5BF9;&#x5E94;&#x7684;&#x6A21;&#x578B;&#x4EE3;&#x7801;</p>
+<p>coming-soon &#x5373;&#x5C06;&#x4E0A;&#x6620;&#x89C6;&#x56FE;&#x3001;&#x5373;&#x5C06;&#x4E0A;&#x6620;&#x63A7;&#x5236;&#x5668;&#x3001;&#x5373;&#x5C06;&#x4E0A;&#x6620;&#x5BF9;&#x5E94;&#x7684;&#x6A21;&#x578B;&#x4EE3;&#x7801;</p>
+<p>top250 top250&#x89C6;&#x56FE;&#x3001;top250&#x63A7;&#x5236;&#x5668;&#x3001;top250&#x6A21;&#x578B;&#x4EE3;&#x7801;</p>
+<p>&#x5C40;&#x90E8; HTML &#x53D1;&#x751F;&#x53D8;&#x5316;&#x3002;</p>
+<blockquote>
+<p>&#x8DEF;&#x7531;&#xFF1A;</p>
+</blockquote>
+<ul>
+<li>Node &#x4E2D;&#x7684;&#x8DEF;&#x7531;&#xFF1A;&#x540E;&#x53F0;&#x63A5;&#x6536;&#x8BF7;&#x6C42;&#xFF0C;&#x6E32;&#x67D3;&#x4E86;&#x4E86;&#x4E0D;&#x540C;&#x7684;&#x9875;&#x9762;&#x3002;</li>
+<li>&#x524D;&#x7AEF;&#x8DEF;&#x7531;&#xFF0C;&#x5F53;&#x70B9;&#x51FB;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x663E;&#x793A;&#x4E0D;&#x540C;&#x7684;&#x9875;&#x9762;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x540E;&#x53F0;&#xFF0C;&#x524D;&#x7AEF;&#x4E5F;&#x53EF;&#x4EE5;&#x6E32;&#x67D3;&#xFF0C;&#x65E0;&#x975E;&#x524D;&#x7AEF;&#x7684;&#x8DEF;&#x7531;&#x53D8;&#x6210;&#x4E86;&#x54C8;&#x5E0C;&#x503C;&#x4E86;&#x3002;</li>
+</ul>
+<p>&#x4E3B;&#x6A21;&#x5757;&#xFF1A;&#x2013;&gt; view &#x91CC;&#x653E;&#x53D8;&#x5316;&#x7684;&#x4E2D;&#x95F4;&#x7684;&#x5185;&#x5BB9;&#xFF1A;&#x600E;&#x4E48;&#x653E;&#xFF1F;&#x600E;&#x4E48;&#x52A0;&#x8F7D;&#xFF1F;&#x70B9;&#x51FB;&#x5373;&#x5C06;&#x4E0A;&#x6620;&#xFF0C;&#x5C40;&#x90E8; HTML &#x53D1;&#x751F;&#x53D8;&#x5316;&#x3002;&#x2013;&gt; &#x524D;&#x7AEF;&#x8DEF;&#x7531;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-view</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main&quot;</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- &#x6BCF;&#x4E00;&#x9875;&#x4E0D;&#x540C;&#x7684;&#x90E8;&#x5206; --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>&#x8FD9;&#x56DE;&#x662F;&#x524D;&#x7AEF;&#x8DEF;&#x7531;&#xFF0C;&#x524D;&#x7AEF;&#x7684;&#x8DEF;&#x7531;&#x53D8;&#x6210;&#x4E86; hash &#x503C;&#x3002;</strong></p>
+<blockquote>
+<p><code>view.html</code> &#x4E2D;&#x653E;&#x4E2D;&#x95F4;&#x53D8;&#x5316;&#x7684;&#x5185;&#x5BB9;</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- &#x6BCF;&#x9875;&#x4E0D;&#x540C;&#x90E8;&#x5206; --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;page-header&quot;</span>&gt;</span>header<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- &#x5217;&#x8868;&#x7EC4; --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;list-group&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#/subject/{{movie.id}}&quot;</span> <span class="attr">class</span>=<span class="string">&quot;list-group-item&quot;</span> &gt;</span></div><div class="line">    <span class="comment">&lt;!-- &#x5A92;&#x4F53;&#x7EC4;&#x4EF6; --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;media&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;media-left&quot;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;...&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;...&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;media-body&quot;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h4</span> <span class="attr">class</span>=<span class="string">&quot;media-heading&quot;</span>&gt;</span>{{ movie.title }}<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#x7C7B;&#x578B;&#xFF1A;&#x5267;&#x60C5;&#x3001;&#x7231;&#x60C5;&#x3001;&#x540C;&#x6027; <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#x5BFC;&#x6F14;&#xFF1A;<span class="tag">&lt;<span class="name">span</span>&gt;</span>&#x9648;&#x51EF;&#x6B4C;<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#x4E3B;&#x6F14;&#xFF1A;<span class="tag">&lt;<span class="name">span</span>&gt;</span>&#x5F20;&#x56FD;&#x8363;<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#x603B;&#x5171;&#xFF1A;1&#x6761;&#x8BB0;&#x5F55;&#xFF0C;&#x7B2C;1/8&#x9875;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;pager&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>&#x4E0A;&#x4E00;&#x9875;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>&#x4E0B;&#x4E00;&#x9875;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</strong></p>
+<blockquote>
+<p>&#x5728; angular &#x4E2D;&#x4F7F;&#x7528;&#x8DEF;&#x7531;&#xFF0C;ng &#x5B98;&#x65B9;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A; ngRoute &#x6A21;&#x5757;&#x3002;</p>
+</blockquote>
+<p>(1)&#x3001;&#x89C6;&#x56FE;(v)-&#x9875;&#x9762;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- ... --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-app</span>=<span class="string">&quot;DemoApp&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>ng &#x4E2D;&#x7684;&#x8DEF;&#x7531;&#x6A21;&#x5757; ngRoute &#x7684;&#x4F7F;&#x7528;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">article</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &#x8FD9;&#x91CC;&#x662F;&#x4E3B;&#x9875;&#x9762;&#x4E2D;&#x9700;&#x8981;&#x6539;&#x53D8;&#x7684;&#x5185;&#x5BB9; --&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">article</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">footer</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#x8FD9;&#x91CC;&#x662F;&#x9875;&#x9762;&#x811A;&#x90E8;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>(2). &#x5B89;&#x88C5;&#x5305;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install --save angular</div><div class="line">$ npm install --save angular-route</div></pre></td></tr></table></figure>
+<p>(3). &#x5728;&#x89C6;&#x56FE;&#x9875;&#x9762;&#x4E2D;&#x5F15;&#x5305;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;node-modules/angular/angular.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;node-modules/angular-route/angular-route.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>(4). &#x521B;&#x5EFA;&#x6A21;&#x5757;</p>
+<blockquote>
+<p>&#x4F7F;&#x7528; Angular &#x7684;&#x4F9D;&#x8D56;&#x6A21;&#x5757; ngRoute</p>
+</blockquote>
+<p><a href="https://docs.angularjs.org/api/ngRoute" target="_blank" rel="external">ngRoute &#x5B98;&#x65B9;&#x6587;&#x6863;</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &#x52A0;&#x8F7D;&#x4E13;&#x95E8;&#x5904;&#x7406;&#x8DEF;&#x7531;&#x7684; ngRoute &#x6A21;&#x5757;</span></div><div class="line">angular.module(<span class="string">&apos;DemoApp&apos;</span>, [<span class="string">&apos;ngRoute&apos;</span>])</div><div class="line">  .config([<span class="string">&apos;$routeProvider&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$routeProvider</span>) </span>{</div><div class="line">    $routeProvider</div><div class="line">      <span class="comment">// &#x8BF7;&#x6C42;&#x8FD9;&#x4E2A;&#x8DEF;&#x5F84;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BBF;&#x95EE; a.html&#xFF0C;&#x628A;&#x54EA;&#x4E2A;&#x63A7;&#x5236;&#x5668;&#x4F5C;&#x7528;&#x7684;&#x8FD9;&#x4E2A;&#x89C6;&#x56FE;&#x4E0A;</span></div><div class="line">      .when(<span class="string">&apos;/in_theaters:id&apos;</span>, {</div><div class="line">        <span class="comment">// &#x6E32;&#x67D3;&#x54EA;&#x4E2A;&#x9875;&#x9762;</span></div><div class="line">        templateUrl: <span class="string">&apos;a.html&apos;</span>,</div><div class="line">        <span class="comment">// &#x628A;&#x54EA;&#x4E2A;&#x63A7;&#x5236;&#x5668;&#x4F5C;&#x7528;&#x5230;&#x4E86;&#x89C6;&#x56FE;&#x4E0A;</span></div><div class="line">        controller: <span class="string">&apos;DemoAController&apos;</span></div><div class="line">      })</div><div class="line">      .when(<span class="string">&apos;/coming_soon&apos;</span>, {</div><div class="line">        <span class="attr">templateUrl</span>: <span class="string">&apos;b.html&apos;</span>,</div><div class="line">        <span class="attr">controller</span>: <span class="string">&apos;DemoBController&apos;</span></div><div class="line">      })</div><div class="line">      .when(<span class="string">&apos;/top250&apos;</span>, {</div><div class="line">        <span class="attr">templateUrl</span>: <span class="string">&apos;c.html&apos;</span>,</div><div class="line">        <span class="attr">controller</span>: <span class="string">&apos;DemoCController&apos;</span></div><div class="line">      })</div><div class="line">      <span class="comment">// &#x5F53;&#x5339;&#x914D;&#x4E0D;&#x5230;&#x4EE5;&#x4E0A;&#x8DEF;&#x5F84;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BA9;&#x5B83;&#x8DF3;&#x8F6C;</span></div><div class="line">      .otherwise({</div><div class="line">        <span class="attr">redirectTo</span>: <span class="string">&apos;/in_theaters&apos;</span></div><div class="line">      });</div><div class="line">  }])</div><div class="line">  .controller(<span class="string">&apos;DemoAController&apos;</span>, [<span class="string">&apos;$scope&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>{</div><div class="line">    $scope.title = <span class="string">&apos;AAA&apos;</span>;</div><div class="line">  }])</div><div class="line">  .controller(<span class="string">&apos;DemoBController&apos;</span>, [<span class="string">&apos;$scope&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>{</div><div class="line">    $scope.movie = {</div><div class="line">      <span class="attr">src</span>: <span class="string">&apos;https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2392444121.jpg&apos;</span>,</div><div class="line">      <span class="attr">name</span>: <span class="string">&apos;&#x795E;&#x5947;&#x52A8;&#x7269;&#x5728;&#x54EA;&#x91CC;&apos;</span></div><div class="line">    };</div><div class="line">  }])</div><div class="line">  .controller(<span class="string">&apos;DemoCController&apos;</span>, [<span class="string">&apos;$scope&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>{</div><div class="line">    $scope.fruits = [</div><div class="line">      <span class="string">&apos;&#x82F9;&#x679C;&apos;</span>,</div><div class="line">      <span class="string">&apos;&#x9999;&#x8549;&apos;</span>,</div><div class="line">      <span class="string">&apos;&#x6A58;&#x5B50;&apos;</span>,</div><div class="line">      <span class="string">&apos;&#x83E0;&#x841D;&apos;</span></div><div class="line">    ];</div><div class="line">  }]);</div></pre></td></tr></table></figure>
+<p>(5). &#x63A7;&#x5236;&#x5668;&#x4F5C;&#x7528;&#x5230;&#x89C6;&#x56FE;</p>
+<p>a.html &#x9875;&#x9762;&#x9700;&#x8981;&#x4E00;&#x4E2A; title</p>
+<ul>
+<li><code>&lt;h2&gt;27-AngularJS &#x9879;&#x76EE;&#x6D41;&#x7A0B;&lt;/h2&gt;</code></li>
+</ul>
+<p>b.html &#x9875;&#x9762;&#x9700;&#x8981;&#x4E00;&#x4E2A;src</p>
+<ul>
+<li><code>&lt;img ng-src=&quot;&quot; alt=&quot;&quot; /&gt;</code></li>
+<li><code>&lt;h4&gt;&lt;/h4&gt;</code></li>
+</ul>
+<p>c.html &#x9875;&#x9762;&#x9700;&#x8981;&#x5217;&#x8868;</p>
+<ul>
+<li><code>&lt;li ng-repeat=&quot;fruit in fruits track by $index&quot;&gt;&lt;/li&gt;</code></li>
+</ul>
+<p>(6). &#x4F5C;&#x7528;&#x5230;&#x4E3B;&#x9875;&#x9762;&#x89C6;&#x56FE;-<code>ng-view</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-app</span>=<span class="string">&quot;DemoApp&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>ng &#x4E2D;&#x7684;&#x8DEF;&#x7531;&#x6A21;&#x5757; ngRoute &#x7684;&#x4F7F;&#x7528;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">article</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-view</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!-- &#x8FD9;&#x91CC;&#x662F;&#x4E3B;&#x9875;&#x9762;&#x4E2D;&#x9700;&#x8981;&#x6539;&#x53D8;&#x7684;&#x5185;&#x5BB9; --&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">article</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">footer</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#x8FD9;&#x91CC;&#x662F;&#x9875;&#x9762;&#x811A;&#x90E8;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</strong></p>
+<h3 id="&#x4E09;-&#x3001;&#x6A21;&#x5757;&#x5212;&#x5206;-&#x63A7;&#x5236;&#x5668;-&#x8DEF;&#x7531;"><a href="#&#x4E09;-&#x3001;&#x6A21;&#x5757;&#x5212;&#x5206;-&#x63A7;&#x5236;&#x5668;-&#x8DEF;&#x7531;" class="headerlink" title="(&#x4E09;)&#x3001;&#x6A21;&#x5757;&#x5212;&#x5206;-&#x63A7;&#x5236;&#x5668;-&#x8DEF;&#x7531;"></a>(&#x4E09;)&#x3001;&#x6A21;&#x5757;&#x5212;&#x5206;-&#x63A7;&#x5236;&#x5668;-&#x8DEF;&#x7531;</h3><p>&#x901A;&#x8FC7;&#x4E3B;&#x6A21;&#x5757;&#x52A0;&#x8F7D; 3 &#x4E2A;&#x5C0F;&#x6A21;&#x5757;</p>
+<p>&#x4E3B;&#x9875;&#x9762;&#xFF1A; index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- ... --&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- &#x6307;&#x5B9A;&#x5165;&#x53E3;&#x6807;&#x8BC6; --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-app</span>=<span class="string">&quot;movie.main&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">&quot;navbar navbar-inverse navbar-fixed-top&quot;</span> <span class="attr">role</span>=<span class="string">&quot;navigation&quot;</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!-- ... --&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container-fluid&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-3 col-md-2 sidebar&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;nav nav-sidebar&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;active&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#/in_theaters&quot;</span>&gt;</span>&#x6B63;&#x5728;&#x70ED;&#x6620;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#/coming_soon&quot;</span>&gt;</span>&#x5373;&#x5C06;&#x4E0A;&#x6620;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#/top250&quot;</span>&gt;</span>Top250<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- &#x4F5C;&#x7528;&#x5230;&#x5F53;&#x524D;&#x89C6;&#x56FE; --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-view</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main&quot;</span>&gt;</span></div><div class="line">          <span class="comment">&lt;!-- &#x6BCF;&#x4E00;&#x9875;&#x4E0D;&#x540C;&#x7684;&#x90E8;&#x5206; --&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- &#x5F15;&#x5305; --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;node_modules/angular/angular.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;node_modules/angular-route/angular-route.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- &#x9875;&#x9762;&#x4E2D;&#x5F15;&#x5165;&#x5305; --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;in_theaters/module.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;coming_soon/module.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;top250/module.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;app.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>&#x4E3B;&#x6A21;&#x5757;&#xFF1A; app.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &#x4E3B;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5176;&#x5B83;&#x6A21;&#x5757;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x522B;&#x7684;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x63A7;&#x5236;&#x5668;&#x4E86;</span></div><div class="line">angular.module(<span class="string">&apos;movie.main&apos;</span>, [<span class="string">&apos;movie.in_theaters&apos;</span>, <span class="string">&apos;movie.comming_soon&apos;</span>, <span class="string">&apos;movie.top250&apos;</span>, <span class="string">&apos;movie.detail&apos;</span>,])</div><div class="line">  <span class="comment">// &#x8BBE;&#x7F6E;&#x8DEF;&#x7531;</span></div><div class="line">  .config([<span class="string">&apos;$routeProvider&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$routeProvider</span>)</span>{</div><div class="line">    $routeProvider</div><div class="line">      .when(<span class="string">&apos;/in_theaters&apos;</span>, {</div><div class="line">        <span class="comment">// &#x6E32;&#x67D3;&#x8FD9;&#x4E2A;&#x89C6;&#x56FE;</span></div><div class="line">        templateUrl: <span class="string">&apos;in_theaters/view.html&apos;</span>,</div><div class="line">        <span class="comment">// &#x8C03;&#x8FD9;&#x4E2A;&#x63A7;&#x5236;&#x5668;</span></div><div class="line">        controller: <span class="string">&apos;InTheaterController&apos;</span></div><div class="line">      })</div><div class="line">      .when(<span class="string">&apos;/coming_soon&apos;</span>,{</div><div class="line">        <span class="attr">templateUrl</span>: <span class="string">&apos;coming_soon/view.html&apos;</span>,</div><div class="line">        <span class="attr">controller</span>: <span class="string">&apos;ComingSoonController&apos;</span></div><div class="line">      })</div><div class="line">      .when(<span class="string">&apos;/top250&apos;</span>,{</div><div class="line">        <span class="attr">templateUrl</span>: <span class="string">&apos;top250/view.html&apos;</span>,</div><div class="line">        <span class="attr">controller</span>: <span class="string">&apos;Top250Controller&apos;</span></div><div class="line">      })</div><div class="line">      <span class="comment">// &#x662F;&#x6307;&#x8DF3;&#x8F6C;&#x5230;&#x5F53;&#x524D;&#x8DEF;&#x7531;&#x4E86;</span></div><div class="line">      .otherwise({</div><div class="line">        <span class="attr">redirectTo</span>: <span class="string">&apos;/in_theaters&apos;</span></div><div class="line">      })</div><div class="line">  }])</div></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x6B63;&#x5728;&#x4E0A;&#x6620;&#x6A21;&#x5757;&#xFF1A;/in_theaters/module.js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">angular</span>) </span>{</div><div class="line">  angular.module(<span class="string">&apos;movie.in_theaters&apos;</span>, [])</div><div class="line">    .controller(<span class="string">&apos;InTheaterController&apos;</span>, [<span class="string">&apos;$scope&apos;</span>,<span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>{</div><div class="line">        $scope.title = <span class="string">&apos;Loading...&apos;</span>;</div><div class="line">      }]);</div><div class="line">})(angular);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x5373;&#x5C06;&#x4E0A;&#x6620;&#x6A21;&#x5757;&#xFF1A;/comming_soon/module.js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">angular</span>) </span>{</div><div class="line">  angular.module(<span class="string">&apos;movie.comming_soon&apos;</span>,[])</div><div class="line">  .controller(<span class="string">&apos;ComingSoonController&apos;</span>, [<span class="string">&apos;$scope&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope</span>)</span>{</div><div class="line">      $scope.title = <span class="string">&apos;&#x5373;&#x5C06;&#x4E0A;&#x6620;&apos;</span>;</div><div class="line">    }]);</div><div class="line">})(angular);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>top250 &#x6A21;&#x5757; /top250/module.js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">angular</span>) </span>{</div><div class="line">  angular.module(<span class="string">&apos;movie.top250&apos;</span>,[])</div><div class="line">  .controller(<span class="string">&apos;Top250Controller&apos;</span>, [<span class="string">&apos;$scope&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope</span>)</span>{</div><div class="line">      $scope.title = <span class="string">&apos;Top250&apos;</span>;</div><div class="line">    }]);</div><div class="line">})(angular);</div></pre></td></tr></table></figure>
+<h3 id="&#x56DB;-&#x3001;&#x7ED1;&#x5B9A;&#x5047;&#x6570;&#x636E;"><a href="#&#x56DB;-&#x3001;&#x7ED1;&#x5B9A;&#x5047;&#x6570;&#x636E;" class="headerlink" title="(&#x56DB;)&#x3001;&#x7ED1;&#x5B9A;&#x5047;&#x6570;&#x636E;"></a>(&#x56DB;)&#x3001;&#x7ED1;&#x5B9A;&#x5047;&#x6570;&#x636E;</h3><p>&#x4E3B;&#x9875;&#x9762;&#x89C6;&#x56FE;&#xFF1A;static/index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- ... --&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-app</span>=<span class="string">&quot;movie.main&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">&quot;navbar navbar-inverse navbar-fixed-top&quot;</span> <span class="attr">role</span>=<span class="string">&quot;navigation&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container-fluid&quot;</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- ... --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;navbar&quot;</span> <span class="attr">class</span>=<span class="string">&quot;navbar-collapse collapse&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;nav navbar-nav navbar-right&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>&#x5173;&#x4E8E;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">          <span class="comment">&lt;!-- &#x641C;&#x7D22;&#x529F;&#x80FD; --&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">form</span> <span class="attr">ng-submit</span>=<span class="string">&quot;search()&quot;</span> <span class="attr">ng-controller</span>=<span class="string">&quot;searchController&quot;</span> <span class="attr">class</span>=<span class="string">&quot;navbar-form navbar-right&quot;</span> &gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">ng-model</span>=<span class="string">&quot;search_text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;Search...&quot;</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container-fluid&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-3 col-md-2 sidebar&quot;</span>&gt;</span></div><div class="line">          <span class="comment">&lt;!-- ng &#x6307;&#x4EE4;&#x662F;&#x7528;&#x6765;&#x64CD;&#x4F5C;&#x8FD9;&#x4E2A; ul &#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5C06;&#x6307;&#x4EE4;&#x52A0;&#x7ED9;&#x5B83;&#x6BD4;&#x8F83;&#x5408;&#x9002;&#xFF0C;&#x6307;&#x4EE4;&#x8FD9;&#x7ED9;&#x4E3B;&#x6A21;&#x5757;&#x5C31;&#x53EF;&#x4EE5;&#x4E86; --&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;nav nav-sidebar&quot;</span> <span class="attr">movie-active</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;active&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#/in_theaters&quot;</span>&gt;</span>&#x6B63;&#x5728;&#x70ED;&#x6620;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#/coming_soon&quot;</span>&gt;</span>&#x5373;&#x5C06;&#x4E0A;&#x6620;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#/top250&quot;</span>&gt;</span>Top250<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-view</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main&quot;</span>&gt;</span></div><div class="line">          <span class="comment">&lt;!-- &#x9700;&#x8981;&#x6539;&#x53D8;&#x7684;&#x5185;&#x5BB9; --&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- &#x9875;&#x9762;&#x4E2D;&#x5F15;&#x5165;&#x5305; --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- ... --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;movie_detail/module.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;app.js&quot;</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x89C6;&#x56FE;&#xFF1A;in_theaters/view.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;page-header&quot;</span>&gt;</span>{{ title }}<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;list-group&quot;</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">ng-repeat</span>=<span class="string">&quot;movie in movie_list.subjects track by $index&quot;</span> <span class="attr">href</span>=<span class="string">&quot;#/subject/{{movie.id}}&quot;</span> <span class="attr">class</span>=<span class="string">&quot;list-group-item&quot;</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;media&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;media-left&quot;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">ng-src</span>=<span class="string">&quot;{{ movie.images.small }}&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;{{ movie.alt }}&quot;</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;media-body&quot;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h4</span> <span class="attr">class</span>=<span class="string">&quot;media-heading&quot;</span>&gt;</span>{{ movie.title }}<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#x7C7B;&#x578B;&#xFF1A;{{ movie.genres.join(&apos;&#x3001;&apos;) }} <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#x5BFC;&#x6F14;&#xFF1A;<span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-repeat</span>=<span class="string">&quot;director in movie.directors track by $index&quot;</span>&gt;</span>{{ director.name }} {{ $last?&quot;&quot;:&quot;&#x3001;&quot; }} <span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#x4E3B;&#x6F14;&#xFF1A;<span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-repeat</span>=<span class="string">&quot;cast in movie.casts track by $index&quot;</span>&gt;</span>{{ cast.name }} {{ $last?&quot;&quot;:&quot;&#x3001;&quot; }} <span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#x603B;&#x5171;&#xFF1A;{{ total }}&#x6761;&#x8BB0;&#x5F55;&#xFF0C;&#x7B2C;{{ page }}/{{ totalPage }}&#x9875;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;pager&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">ng-class</span>=<span class="string">&quot;{disabled:page === 1}&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">ng-click</span>=<span class="string">&quot;go(page-1)&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>&#x4E0A;&#x4E00;&#x9875;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">ng-class</span>=<span class="string">&quot;{disabled:page === totalPage}&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">ng-click</span>=<span class="string">&quot;go(page+1)&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>&#x4E0B;&#x4E00;&#x9875;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="&#x8BF7;&#x6C42;-API&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#x5230;&#x89C6;&#x56FE;&#x9884;&#x5907;&#x77E5;&#x8BC6;"><a href="#&#x8BF7;&#x6C42;-API&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#x5230;&#x89C6;&#x56FE;&#x9884;&#x5907;&#x77E5;&#x8BC6;" class="headerlink" title="&#x8BF7;&#x6C42; API&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#x5230;&#x89C6;&#x56FE;&#x9884;&#x5907;&#x77E5;&#x8BC6;"></a>&#x8BF7;&#x6C42; API&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#x5230;&#x89C6;&#x56FE;&#x9884;&#x5907;&#x77E5;&#x8BC6;</h3><p><strong>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</strong></p>
+<h4 id="ng-&#x4E2D;&#x7684;-http-&#x8BF7;&#x6C42;&#x8D44;&#x6E90;"><a href="#ng-&#x4E2D;&#x7684;-http-&#x8BF7;&#x6C42;&#x8D44;&#x6E90;" class="headerlink" title="ng &#x4E2D;&#x7684; $http &#x8BF7;&#x6C42;&#x8D44;&#x6E90;"></a>ng &#x4E2D;&#x7684; $http &#x8BF7;&#x6C42;&#x8D44;&#x6E90;</h4><p>&#x95EE;&#x9898;&#xFF1A;&#x8C46;&#x74E3; API &#x4E0D;&#x652F;&#x6301;&#xFF1A;<code>$htpp.jsonp(&apos;http://api.douban.com/v2/movie/in_theaters?count=5&amp;callback=JSON_CALLBACK&apos;)</code>&#x3002;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">angular</span>) </span>{</div><div class="line">  angular.module(<span class="string">&apos;movie.in_theaters&apos;</span>, [])</div><div class="line">    .controller(<span class="string">&apos;InTheaterController&apos;</span>, [<span class="string">&apos;$scope&apos;</span>, <span class="string">&apos;$http&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $http</span>) </span>{</div><div class="line">      $scope.title = <span class="string">&apos;Loading...&apos;</span>;</div><div class="line">      $http</div><div class="line">        <span class="comment">// &#x8DE8;&#x57DF;&#x8BF7;&#x6C42;&#xFF0C;&#x76F4;&#x63A5;&#x7528;get &#x62A5;&#x9519;</span></div><div class="line">        <span class="comment">// .get(&apos;http://api.douban.com/v2/movie/in_theaters?count=5&apos;)</span></div><div class="line">        <span class="comment">// ng &#x4E2D;&#x7684; jsonp</span></div><div class="line">        .jsonp(<span class="string">&apos;http://api.douban.com/v2/movie/in_theaters?count=5&amp;callback=JSON_CALLBACK&apos;</span>)</div><div class="line">        <span class="comment">// URL &#x53D8;&#x6210;&#x4E86;&#xFF1A;http://api.douban.com/v2/movie/in_theaters?count=5&amp;callback=angular.callbacks._0</span></div><div class="line">        <span class="comment">// &#x6570;&#x636E;&#x56DE;&#x6765;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x62A5;&#x4E86;&#x5E38;&#x89C1;&#x8BED;&#x6CD5;&#x9519;&#x8BEF;&#xFF0C;</span></div><div class="line">        <span class="comment">// &#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x5E76;&#x6CA1;&#x6709;&#x62FC;&#x63A5;&#x4E0A;&#xFF1A; angular.callbacks._0&#xFF0C;&#x628A;&#x91CC;&#x9762;&#x7684; . &#x6539;&#x6210;&#x4E0B;&#x5212;&#x7EBF; _ &#x5C31;&#x53EF;&#x4EE5;&#x62FC;&#x63A5;&#x5230;&#x6570;&#x636E;&#x524D;&#x9762;&#x4E86;&#x3002;</span></div><div class="line">        <span class="comment">// &#x539F;&#x56E0;&#x662F;&#x8C46;&#x74E3; API &#x4E0D;&#x652F;&#x6301;&#xFF0C;&#x8C46;&#x74E3; API &#x4E2D;&#x53EA;&#x5305;&#x542B;&#x6570;&#x5B57;&#x3001;&#x5B57;&#x6BCD;&#x3001;&#x4E0B;&#x5212;&#x7EBF;&#xFF0C;&#x957F;&#x5EA6;&#x4E0D;&#x5927;&#x4E8E; 50</span></div><div class="line">        <span class="comment">// &#x89E3;&#x51B3;&#xFF1A;&#x81EA;&#x5DF1;&#x5199;&#x4E00;&#x4E2A; jsonp &#x65B9;&#x6CD5;</span></div><div class="line">        <span class="comment">// &#x53E6;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#xFF1A;&#x524D;&#x540E;&#x7AEF;&#x5206;&#x79BB;&#xFF1A;&#x7528; node &#x6765;&#x8BF7;&#x6C42;&#x6570;&#x636E;&#xFF0C;&#x628A;&#x9879;&#x76EE;&#x8DD1;&#x5230; node &#x91CC;&#x9762;&#xFF0C;&#x5B8C;&#x5168;&#x4E0D;&#x7528;&#x8003;&#x8651;&#x8DE8;&#x57DF;&#x3002;</span></div><div class="line">        <span class="comment">// node &#x505A;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x5C42;&#xFF0C;&#x4E13;&#x95E8;&#x6765;&#x505A; UI &#x6E32;&#x67D3;</span></div><div class="line">        .then( <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>{</div><div class="line">          <span class="built_in">console</span>.log(data);</div><div class="line">        });</div><div class="line">    }</div><div class="line">  ]);</div><div class="line">})(angular);</div></pre></td></tr></table></figure>
+<h4 id="&#x524D;&#x540E;&#x7AEF;&#x5206;&#x79BB;"><a href="#&#x524D;&#x540E;&#x7AEF;&#x5206;&#x79BB;" class="headerlink" title="&#x524D;&#x540E;&#x7AEF;&#x5206;&#x79BB;"></a>&#x524D;&#x540E;&#x7AEF;&#x5206;&#x79BB;</h4><p><img src="/2015/07/03/27-AngularJS-&#x9879;&#x76EE;&#x6D41;&#x7A0B;/&#x524D;&#x540E;&#x7AEF;&#x5206;&#x79BB;&#x5F00;&#x53D1;&#x6A21;&#x578B;.png" alt="&#x524D;&#x540E;&#x7AEF;&#x5206;&#x79BB;"></p>
+<blockquote>
+<p>&#x66B4;&#x6F0F;&#x4E86; static &#x9759;&#x6001;&#x8D44;&#x6E90;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x8D44;&#x6E90;&#x90FD;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&apos;express&apos;</span>), path = <span class="built_in">require</span>(<span class="string">&apos;path&apos;</span>);</div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"><span class="comment">// &#x8D70;&#x524D;&#x53F0;&#x4E0D;&#x9700;&#x8981;&#x540E;&#x53F0;&#x8DEF;&#x7531;</span></div><div class="line"><span class="comment">// app.get(&apos;/&apos;, funciton(req, res) {</span></div><div class="line"><span class="comment">//   res.send(&apos;&#x540E;&#x53F0;&#x8DEF;&#x7531;&apos;);</span></div><div class="line"><span class="comment">// });</span></div><div class="line"><span class="comment">// &#x7531;&#x4E8E; static &#x76EE;&#x5F55;&#x4E2D;&#x6709;&#x4E00;&#x4E2A; index.html&#xFF0C;&#x5F53;&#x53BB;&#x8BBF;&#x95EE; &apos;/&apos; &#x7684;&#x65F6;&#x5019;&#xFF0C;express &#x4F1A;&#x81EA;&#x52A8;&#x5C06; static &#x76EE;&#x5F55;&#x4E0B;&#x7684; index.html &#x6E32;&#x67D3;</span></div><div class="line">app.use(experss.static(path.join(__dirname, <span class="keyword">static</span>)));</div><div class="line">app.listen(<span class="number">4000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">&apos;Server is running at port 4000&apos;</span>);</div><div class="line">});</div></pre></td></tr></table></figure>
+<p><strong>node &#x4E0D;&#x4EC5;&#x4EC5;&#x80FD;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x63A5;&#x6536;&#x8BF7;&#x6C42;&#xFF0C;&#x8FD8;&#x80FD;&#x4E3B;&#x52A8;&#x53BB;&#x8BF7;&#x6C42;&#x522B;&#x4EBA;&#x7684;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5B8C;&#x5168;&#x4E0D;&#x53D7;&#x8DE8;&#x57DF;&#x5F71;&#x54CD;&#x3002;&#x8BA9; Node &#x505A;&#x4E00;&#x4E2A;&#x4E2D;&#x8F6C;&#x5C42;&#x3002;</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &#x4F7F;&#x7528; node &#x53D1;&#x9001;&#x8BF7;&#x6C42;</span></div><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&apos;http&apos;</span>);</div><div class="line"><span class="comment">// &#x4E0D;&#x4F7F;&#x7528;&#x539F;&#x751F;&#x7684; http&#xFF0C;&#x6709;&#x66F4;&#x597D;&#x7684;&#x5305; request &#x6765;&#x89E3;&#x51B3;</span></div><div class="line">http.get(<span class="string">&apos;http://api.douban.com/v2/movie/in_theaters?count=5&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>{</div><div class="line">  <span class="keyword">var</span> rawData = <span class="string">&apos;&apos;</span>;</div><div class="line">  res.on(<span class="string">&apos;data&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>) </span>{</div><div class="line">    <span class="keyword">return</span> rawData += chunk</div><div class="line">  });</div><div class="line">  res.on(<span class="string">&apos;end&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(rawData));</div><div class="line">  });</div><div class="line">});</div></pre></td></tr></table></figure>
+<h4 id="request-&#x5305;"><a href="#request-&#x5305;" class="headerlink" title="request &#x5305;"></a>request &#x5305;</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save request</div></pre></td></tr></table></figure>
+<p><strong>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</strong></p>
+<h3 id="&#x4E94;-&#x3001;&#x8BF7;&#x6C42;-API&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#x5230;&#x89C6;&#x56FE;"><a href="#&#x4E94;-&#x3001;&#x8BF7;&#x6C42;-API&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#x5230;&#x89C6;&#x56FE;" class="headerlink" title="(&#x4E94;)&#x3001;&#x8BF7;&#x6C42; API&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#x5230;&#x89C6;&#x56FE;"></a>(&#x4E94;)&#x3001;&#x8BF7;&#x6C42; API&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#x5230;&#x89C6;&#x56FE;</h3><blockquote>
+<p>&#x7528; node &#x6765;&#x8BF7;&#x6C42;&#x6570;&#x636E;&#xFF0C;&#x628A;&#x9879;&#x76EE;&#x8DD1;&#x5230; node &#x91CC;&#x9762;&#xFF0C;&#x5B8C;&#x5168;&#x4E0D;&#x7528;&#x8003;&#x8651;&#x8DE8;&#x57DF;&#xFF0C;node &#x505A;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x5C42;&#xFF0C;&#x4E13;&#x95E8;&#x6765;&#x505A; UI &#x6E32;&#x67D3;&#x3002;</p>
+</blockquote>
+<h4 id="&#x5B89;&#x88C5;-express"><a href="#&#x5B89;&#x88C5;-express" class="headerlink" title="&#x5B89;&#x88C5; express"></a>&#x5B89;&#x88C5; express</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install express request --save</div></pre></td></tr></table></figure>
+<h4 id="Node-&#x4E2D;&#x8F6C;&#x8BF7;&#x6C42;&#x63A5;&#x53E3;-app-js"><a href="#Node-&#x4E2D;&#x8F6C;&#x8BF7;&#x6C42;&#x63A5;&#x53E3;-app-js" class="headerlink" title="Node &#x4E2D;&#x8F6C;&#x8BF7;&#x6C42;&#x63A5;&#x53E3; app.js"></a>Node &#x4E2D;&#x8F6C;&#x8BF7;&#x6C42;&#x63A5;&#x53E3; app.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&apos;express&apos;</span>);</div><div class="line"><span class="keyword">var</span> config = <span class="built_in">require</span>(<span class="string">&apos;./config&apos;</span>);</div><div class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">&apos;request&apos;</span>);</div><div class="line"><span class="comment">// querystring.parse() &#x5C06;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x6210;&#x5BF9;&#x8C61;&#xFF1B;querystring.stringify() &#x5C06;&#x5BF9;&#x8C61;&#x8F6C;&#x6210;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;</span></div><div class="line"><span class="keyword">var</span> qstring = <span class="built_in">require</span>(<span class="string">&apos;querystring&apos;</span>);</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&apos;path&apos;</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"><span class="comment">// &#x66B4;&#x6F0F;&#x9759;&#x6001;&#x8D44;&#x6E90;</span></div><div class="line"><span class="comment">// &#x7531;&#x4E8E; static &#x76EE;&#x5F55;&#x4E2D;&#x6709;&#x4E00;&#x4E2A; index.html&#xFF0C;&#x6240;&#x4EE5;&#x8BBF;&#x95EE; / &#x7684;&#x65F6;&#x5019;&#xFF0C;express &#x4F1A;&#x81EA;&#x52A8;&#x5C06; static &#x76EE;&#x5F55;&#x4E0B;&#x7684; index.html &#x6E32;&#x67D3;</span></div><div class="line">app.use(express.static(config.staticPath));</div><div class="line">app.use(express.static(path.join(__dirname, <span class="string">&apos;node_modules&apos;</span>)));</div><div class="line"></div><div class="line"><span class="comment">// Node&#x4E2D;&#x8F6C;&#x66B4;&#x6F0F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x7ED9;&#x524D;&#x53F0;</span></div><div class="line"><span class="comment">// app.get(&apos;/in_theaters&apos;, function(req, response, next) {</span></div><div class="line"><span class="comment">//   // &#x4ECE;&#x8C46;&#x74E3; API &#x62FF;&#x6570;&#x636E;&#xFF0C;&#x4F7F;&#x7528; request &#x5305;&#xFF0C;&#x4E0D;&#x4F7F;&#x7528;&#x539F;&#x751F;&#x7684; http</span></div><div class="line"><span class="comment">//   request(&apos;https://api.douban.com/v2/movie/in_theaters&apos;, function(err, res, body) {</span></div><div class="line"><span class="comment">//     if (err) {</span></div><div class="line"><span class="comment">//       throw err;</span></div><div class="line"><span class="comment">//     }</span></div><div class="line"><span class="comment">//     // &#x62FF;&#x5230;&#x6570;&#x636E;&#xFF0C;&#x54CD;&#x5E94;&#x7ED9;&#x524D;&#x53F0;&#x8BF7;&#x6C42;</span></div><div class="line"><span class="comment">//     if (res.statusCode === 200) {</span></div><div class="line"><span class="comment">//       response.send(body);</span></div><div class="line"><span class="comment">//     }</span></div><div class="line"><span class="comment">//   });</span></div><div class="line"><span class="comment">// });</span></div><div class="line"></div><div class="line"><span class="comment">// &#x4E0A;&#x9762;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x53D8;&#x6210;&#x4E0B;&#x9762;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;</span></div><div class="line"><span class="comment">// Request &#x8BF7;&#x6C42;&#x5230;&#x7684;&#x6570;&#x636E;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x8BFB;&#x6D41;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; pipe &#x7BA1;&#x9053;&#x987A;&#x7740;&#x53EF;&#x8BFB;&#x6D41;&#x53D1;&#x9001;&#x6570;&#x636E;</span></div><div class="line"><span class="comment">// app.get(&apos;/in_theaters&apos;, function (req, res, next) {</span></div><div class="line"><span class="comment">//   // &#x62FF;&#x5230;&#x4E86;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;</span></div><div class="line"><span class="comment">//   // console.log(req.query);</span></div><div class="line"><span class="comment">//   request(`https://api.douban.com/v2/movie/in_theaters?${qstring.stringify(req.query)}`).pipe(res);</span></div><div class="line"><span class="comment">// });</span></div><div class="line"><span class="comment">// &#x83B7;&#x5F97;&#x6240;&#x6709;&#x9875;&#x9762;&#x7684;&#x6570;&#x636E;</span></div><div class="line">app.get(<span class="string">&apos;/movie/:category&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>{</div><div class="line">  <span class="comment">// &#x62FF;&#x5230;&#x4E86;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;req.query &#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;</span></div><div class="line">  <span class="comment">// console.log(req.query); </span></div><div class="line">  <span class="comment">// qstring.stringify() &#x5C06;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x8F6C;&#x6210;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;</span></div><div class="line">  request(<span class="string">`https://api.douban.com/v2/movie/<span class="subst">${req.params.category}</span>?<span class="subst">${qstring.stringify(req.query)}</span>`</span>).pipe(res);</div><div class="line">});</div><div class="line"></div><div class="line"><span class="comment">// &#x540E;&#x53F0;&#x8BF7;&#x6C42; &#x7535;&#x5F71;&#x6761;&#x76EE; API &#x63A5;&#x53E3;</span></div><div class="line">app.get(<span class="string">&apos;/movie/subject/:id&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>{</div><div class="line">  request(<span class="string">`https://api.douban.com/v2/movie/subject/<span class="subst">${req.params.id}</span>`</span>).pipe(res);</div><div class="line">});</div><div class="line"><span class="comment">// &#x76D1;&#x542C;&#x7AEF;&#x53E3;</span></div><div class="line">app.listen(config.port, config.host, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`Server is running at port <span class="subst">${config.port}</span>`</span>);</div><div class="line">});</div></pre></td></tr></table></figure>
+<h4 id="&#x4E3B;&#x6A21;&#x5757;-app-js"><a href="#&#x4E3B;&#x6A21;&#x5757;-app-js" class="headerlink" title="&#x4E3B;&#x6A21;&#x5757; app.js"></a>&#x4E3B;&#x6A21;&#x5757; app.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &#x4E3B;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5176;&#x5B83;&#x6A21;&#x5757;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x522B;&#x7684;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x63A7;&#x5236;&#x5668;&#x4E86;</span></div><div class="line">angular.module(<span class="string">&apos;movie.main&apos;</span>, [<span class="string">&apos;movie.in_theaters&apos;</span>, <span class="string">&apos;movie.comming_soon&apos;</span>, <span class="string">&apos;movie.top250&apos;</span>, <span class="string">&apos;movie.detail&apos;</span>,<span class="string">&apos;ngRoute&apos;</span> ])</div><div class="line">  <span class="comment">// &#x8BBE;&#x7F6E;&#x8DEF;&#x7531;</span></div><div class="line">  .config([<span class="string">&apos;$routeProvider&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$routeProvider</span>)</span>{</div><div class="line">    $routeProvider</div><div class="line">      <span class="comment">// &#x8BF7;&#x6C42;&#x9996;&#x9875;&#x65F6;</span></div><div class="line">      .when(<span class="string">&apos;/&apos;</span>, {</div><div class="line">        <span class="attr">redirectTo</span>: <span class="string">&apos;/in_theaters/1&apos;</span></div><div class="line">      })</div><div class="line">      <span class="comment">// &#x4E3A;&#x4E86;&#x907F;&#x514D;&#x8DEF;&#x5F84;&#x5339;&#x914D;&#x95EE;&#x9898;&#xFF0C;&#x5C06;&#x8FD9;&#x4E2A;&#x653E;&#x5230;&#x524D;&#x9762;</span></div><div class="line">      .when(<span class="string">&apos;/subject/:id&apos;</span>, {</div><div class="line">        <span class="attr">templateUrl</span>: <span class="string">&apos;movie_detail/view.html&apos;</span>,</div><div class="line">        <span class="attr">controller</span>: <span class="string">&apos;DetailController&apos;</span></div><div class="line">      })</div><div class="line">      <span class="comment">// &#x8DEF;&#x5F84;&#x4E2D;&#x4F20;&#x9875;&#x7801;</span></div><div class="line">      <span class="comment">// ng &#x4E2D;&#x7684;&#x8DEF;&#x7531;&#x652F;&#x6301;&#x8FD9;&#x6837;&#x7684;&#x5F62;&#x5F0F;&#x548C;&#x540E;&#x53F0;&#x4E00;&#x6837;&#x52A8;&#x6001;&#x5904;&#x7406;&#x8DEF;&#x7531;</span></div><div class="line">      <span class="comment">// page &#x662F;&#x5B9A;&#x4E49;&#x8DEF;&#x5F84;&#x7684;&#x65F6;&#x5019;&#x8D77;&#x7684;&#x4E00;&#x4E2A;&#x540D;&#x5B57;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x628A;&#x6A21;&#x7CCA;&#x5339;&#x914D;&#x8DEF;&#x5F84;&#x89E3;&#x6790;&#x51FA;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x6302;&#x8F7D;&#x5230; $routeParams &#x4E2D;</span></div><div class="line">      <span class="comment">// $routeProvider &#x652F;&#x6301; when() &#x65B9;&#x6CD5;&#x4E2D;&#x4F20; ? &#xFF0C;&#x8868;&#x793A; 0 &#x6B21;&#x6216;&#x591A;&#x6B21;</span></div><div class="line">      .when(<span class="string">&apos;/:category/:page?&apos;</span>, {</div><div class="line">        <span class="comment">// &#x6E32;&#x67D3;&#x8FD9;&#x4E2A;&#x89C6;&#x56FE;</span></div><div class="line">        templateUrl: <span class="string">&apos;in_theaters/view.html&apos;</span>,</div><div class="line">        <span class="comment">// &#x8C03;&#x8FD9;&#x4E2A;&#x63A7;&#x5236;&#x5668;</span></div><div class="line">        controller: <span class="string">&apos;InTheaterController&apos;</span></div><div class="line">      })</div><div class="line">      <span class="comment">// &#x662F;&#x6307;&#x8DF3;&#x8F6C;&#x5230;&#x5F53;&#x524D;&#x8DEF;&#x7531;&#x4E86;</span></div><div class="line">      .otherwise({</div><div class="line">        <span class="attr">redirectTo</span>: <span class="string">&apos;/in_theaters&apos;</span></div><div class="line">      })</div><div class="line">  }])</div><div class="line">  <span class="comment">// &#x89E3;&#x51B3;&#x8BE6;&#x60C5;&#x9875;&#x641C;&#x7D22;&#x95EE;&#x9898;</span></div><div class="line">  .controller(<span class="string">&apos;searchController&apos;</span>, [<span class="string">&apos;$scope&apos;</span>, <span class="string">&apos;$route&apos;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">$scope, $route</span>) </span>{</div><div class="line">      $scope.search_text = [];</div><div class="line">      $scope.search = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">        <span class="comment">// console.log($scope.search_text);</span></div><div class="line">        $route.updateParams({</div><div class="line">          <span class="attr">category</span>: <span class="string">&apos;search&apos;</span>,</div><div class="line">          <span class="attr">page</span>:<span class="string">&apos;1&apos;</span>,</div><div class="line">          <span class="comment">// &#x8DEF;&#x7531;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8BE5;&#x8DEF;&#x5F84;&#x53C2;&#x6570;&#xFF0C;&#x5219;&#x66F4;&#x65B0;&#x4E00;&#x4E2A;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x8DEF;&#x7531;&#x53C2;&#x6570;&#xFF0C;&#x8DEF;&#x7531;&#x81EA;&#x52A8;&#x5E2E;&#x4F60;&#x53D8;&#x6210;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;</span></div><div class="line">          q: $scope.search_text</div><div class="line">        });</div><div class="line">      };</div><div class="line">  }])</div><div class="line">  <span class="comment">// &#x5229;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#x89E3;&#x51B3;&#x5BFC;&#x822A;&#x680F;&#x72B6;&#x6001;&#x5207;&#x6362;</span></div><div class="line">  .directive(<span class="string">&apos;movieActive&apos;</span>, [<span class="string">&apos;$location&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$location</span>) </span>{</div><div class="line">    <span class="keyword">return</span> {</div><div class="line">      <span class="attr">link</span>: <span class="function"><span class="keyword">function</span> (<span class="params">$scope, iElm, iAttrs, controller</span>) </span>{</div><div class="line">        <span class="comment">// &#x83B7;&#x53D6;&#x5F53;&#x524D; url &#xFF0C;&#x6839;&#x636E; url &#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684; li &#xFF0C;&#x8BA9; li &#x83B7;&#x5F97; active &#x6837;&#x5F0F;&#xFF0C;&#x5176;&#x5B83; li &#x53BB;&#x9664; active</span></div><div class="line">        $scope.$location = $location;</div><div class="line">        $scope.$watch(<span class="string">&apos;$location.url()&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">newVal, oldVal</span>) </span>{</div><div class="line">          <span class="keyword">var</span> currentUrl = newVal.split(<span class="string">&apos;/&apos;</span>)[<span class="number">1</span>];</div><div class="line">          <span class="comment">// Array.from &#x53EF;&#x4EE5;&#x5C06;&#x4E00;&#x4E2A;&#x4F2A;&#x6570;&#x7EC4;&#x8F6C;&#x6362;&#x6210;&#x4E00;&#x4E2A;&#x771F;&#x7684;&#x6570;&#x7EC4;</span></div><div class="line">          <span class="built_in">Array</span>.from(iElm.find(<span class="string">&apos;a&apos;</span>)).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">a</span>) </span>{</div><div class="line">            angular.element(a).parent().removeClass(<span class="string">&apos;active&apos;</span>);</div><div class="line">            <span class="keyword">if</span> (a.hash.substr(<span class="number">2</span>) === currentUrl) {</div><div class="line">              angular.element(a).parent().addClass(<span class="string">&apos;active&apos;</span>);</div><div class="line">            }</div><div class="line">          });</div><div class="line">        });</div><div class="line">      }</div><div class="line">    };</div><div class="line">  }]);</div></pre></td></tr></table></figure>
+<h4 id="&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF1A;"><a href="#&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF1A;" class="headerlink" title="&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF1A;"></a>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF1A;</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&apos;path&apos;</span>);</div><div class="line"><span class="built_in">module</span>.exports = {</div><div class="line">  <span class="attr">port</span>: <span class="number">4000</span>,</div><div class="line">  <span class="attr">host</span>: <span class="string">&apos;127.0.0.1&apos;</span>,</div><div class="line">  <span class="attr">staticPath</span>: path.join(__dirname, <span class="string">&apos;static&apos;</span>)</div><div class="line">};</div></pre></td></tr></table></figure>
+<h3 id="&#x5176;&#x5B83;&#x6A21;&#x5757;-module-js"><a href="#&#x5176;&#x5B83;&#x6A21;&#x5757;-module-js" class="headerlink" title="&#x5176;&#x5B83;&#x6A21;&#x5757; module.js"></a>&#x5176;&#x5B83;&#x6A21;&#x5757; module.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">angular</span>) </span>{</div><div class="line">  angular.module(<span class="string">&apos;movie.in_theaters&apos;</span>, [])</div><div class="line">    .controller(<span class="string">&apos;InTheaterController&apos;</span>, [</div><div class="line">      <span class="string">&apos;$scope&apos;</span>, </div><div class="line">      <span class="string">&apos;$http&apos;</span>,</div><div class="line">      <span class="comment">// ng &#x4E2D;&#x4E13;&#x95E8;&#x62FF;&#x8DEF;&#x7531;&#x5F53;&#x4E2D;&#x7684;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x7684;</span></div><div class="line">      <span class="string">&apos;$routeParams&apos;</span>,</div><div class="line">      <span class="comment">// ng &#x4E2D;&#x4E13;&#x95E8;&#x5904;&#x7406;&#x8DEF;&#x7531;&#x7684;</span></div><div class="line">      <span class="string">&apos;$route&apos;</span>, </div><div class="line">      <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $http, $routeParams, $route</span>) </span>{</div><div class="line">        <span class="comment">// &#x7ED9;&#x6A21;&#x578B;&#x66B4;&#x9732;&#x6570;&#x636E;</span></div><div class="line">        $scope.title = <span class="string">&apos;Loading...&apos;</span>;</div><div class="line">        $scope.total = <span class="number">0</span>;</div><div class="line">        $scope.movie_list = {};</div><div class="line"></div><div class="line">        <span class="comment">// &#x4E0A;&#x4E00;&#x9875;&#x3001;&#x4E0B;&#x4E00;&#x9875;</span></div><div class="line">        <span class="keyword">var</span> pageSize = <span class="number">10</span>;</div><div class="line">        $scope.totalPage = <span class="number">0</span>;</div><div class="line">        $scope.page = $routeParams.page ? <span class="built_in">parseInt</span>($routeParams.page) : <span class="number">1</span>;</div><div class="line">        <span class="comment">// console.log($routeParams);</span></div><div class="line">        <span class="comment">// $http.get(&apos;/in_theaters&apos;, {</span></div><div class="line">        <span class="comment">//   // &#x9700;&#x8981;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x67E5;&#x8BE2;&#x7B2C;&#x51E0;&#x9875;&#xFF0C;get() &#x65B9;&#x6CD5;&#x4E0D;&#x652F;&#x6301;&#x8FD9;&#x6837;&#x914D;&#x7F6E;</span></div><div class="line">        <span class="comment">//   data: {</span></div><div class="line">        <span class="comment">//     start: ($scope.page -1) * pageSize,</span></div><div class="line">        <span class="comment">//     count: pageSize</span></div><div class="line">        <span class="comment">//   }</span></div><div class="line">        <span class="comment">// })</span></div><div class="line">        <span class="comment">// &#x4EE5;&#x4E0A; $http.get &#x4E0D;&#x652F;&#x6301;&#x914D;&#x7F6E;&#xFF0C;&#x4F7F;&#x7528; $http &#x6765;&#x914D;&#x7F6E;</span></div><div class="line">        $http({</div><div class="line">          <span class="attr">method</span>: <span class="string">&apos;get&apos;</span>,</div><div class="line">          <span class="attr">url</span>:<span class="string">&apos;/movie/&apos;</span> + $routeParams.category,</div><div class="line">          <span class="comment">// get &#x8BF7;&#x6C42;&#x6570;&#x636E;&#x4F7F;&#x7528; params&#xFF1B;post &#x8BF7;&#x6C42;&#x4F7F;&#x7528; data &#x5C5E;&#x6027;</span></div><div class="line">          params: {</div><div class="line">            <span class="comment">// &#x8BF7;&#x6C42;&#x5F00;&#x59CB;&#x7684;&#x6570;&#x636E;</span></div><div class="line">            start: ($scope.page <span class="number">-1</span>) * pageSize,</div><div class="line">            <span class="attr">count</span>: pageSize,</div><div class="line">            <span class="comment">// &#x8FD9;&#x91CC;&#x7684; q &#x53EA;&#x662F;&#x9488;&#x5BF9; search &#x6709;&#x6548;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x662F; search&#xFF0C;&#x8C46;&#x74E3;&#x4F1A;&#x5FFD;&#x7565;</span></div><div class="line">            q: $routeParams.q</div><div class="line">          }</div><div class="line">        })</div><div class="line">          .then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>{</div><div class="line">            <span class="keyword">var</span> result = data.data;</div><div class="line">            $scope.movie_list = result;</div><div class="line">            $scope.title = result.title;</div><div class="line">            $scope.total = result.total;</div><div class="line">            $scope.totalPage = <span class="built_in">Math</span>.ceil(result.total/pageSize);</div><div class="line">          });</div><div class="line">        $scope.go = <span class="function"><span class="keyword">function</span>(<span class="params">page</span>) </span>{</div><div class="line">          <span class="comment">// console.log(page)</span></div><div class="line">          <span class="comment">// &#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x9875;&#x9762;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E; 0 &#x4E86; &#x6216;&#x8005; &gt; &#x6700;&#x5927;&#x9875;&#x9762;&#x65F6;&#x4E0D;&#x53BB;&#x5904;&#x7406;</span></div><div class="line">          <span class="keyword">if</span> (page &lt;= <span class="number">0</span> || page &gt; $scope.totalPage) {</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">          }</div><div class="line">          <span class="comment">// &#x8DEF;&#x5F84;&#x4E2D;&#x4F20;&#x9875;&#x7801;</span></div><div class="line">          <span class="comment">// &#x4F7F;&#x7528;&#x8DEF;&#x7531;&#x63D0;&#x4F9B;&#x7684; API &#x66F4;&#x65B0;&#x5F53;&#x524D;&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#x4E2D;&#x7684;&#x8BF7;&#x6C42;&#x53C2;&#x6570;</span></div><div class="line">          <span class="comment">// &#x53EA;&#x8981;&#x66F4;&#x65B0;&#x4E86;&#x8DEF;&#x7531;&#x4E2D;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5F53;&#x524D;&#x9875;&#x9762;&#x4E2D;&#x7684;&#x8DEF;&#x7531;&#x4F1A;&#x88AB;&#x91CD;&#x8F7D;</span></div><div class="line">          $route.updateParams({</div><div class="line">            <span class="attr">page</span>: page</div><div class="line">          });</div><div class="line">        }</div><div class="line">      }</div><div class="line">    ]);</div><div class="line">})(angular);</div></pre></td></tr></table></figure>
+<h3 id="&#x516D;-&#x3001;&#x901A;&#x8FC7;&#x8DEF;&#x7531;&#x5B9E;&#x73B0;&#x7B80;&#x5355;&#x7684;&#x5206;&#x9875;&#x4F20;&#x53C2;&#x529F;&#x80FD;"><a href="#&#x516D;-&#x3001;&#x901A;&#x8FC7;&#x8DEF;&#x7531;&#x5B9E;&#x73B0;&#x7B80;&#x5355;&#x7684;&#x5206;&#x9875;&#x4F20;&#x53C2;&#x529F;&#x80FD;" class="headerlink" title="(&#x516D;)&#x3001;&#x901A;&#x8FC7;&#x8DEF;&#x7531;&#x5B9E;&#x73B0;&#x7B80;&#x5355;&#x7684;&#x5206;&#x9875;&#x4F20;&#x53C2;&#x529F;&#x80FD;"></a>(&#x516D;)&#x3001;&#x901A;&#x8FC7;&#x8DEF;&#x7531;&#x5B9E;&#x73B0;&#x7B80;&#x5355;&#x7684;&#x5206;&#x9875;&#x4F20;&#x53C2;&#x529F;&#x80FD;</h3><p>&#x8DEF;&#x5F84;&#x4E2D;&#x4F20;&#x9875;&#x7801;&#xFF0C;&#x4F7F;&#x7528;&#x8DEF;&#x7531;&#x63D0;&#x4F9B;&#x7684; API &#x66F4;&#x65B0;&#x5F53;&#x524D;&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#x4E2D;&#x7684;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x3002;</p>
+<h3 id="&#x4E03;-&#x3001;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x8DEF;&#x7531;&#x53C2;&#x6570;&#x5B9E;&#x73B0;&#x591A;&#x6A21;&#x5757;&#x91CD;&#x7528;"><a href="#&#x4E03;-&#x3001;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x8DEF;&#x7531;&#x53C2;&#x6570;&#x5B9E;&#x73B0;&#x591A;&#x6A21;&#x5757;&#x91CD;&#x7528;" class="headerlink" title="(&#x4E03;)&#x3001;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x8DEF;&#x7531;&#x53C2;&#x6570;&#x5B9E;&#x73B0;&#x591A;&#x6A21;&#x5757;&#x91CD;&#x7528;"></a>(&#x4E03;)&#x3001;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x8DEF;&#x7531;&#x53C2;&#x6570;&#x5B9E;&#x73B0;&#x591A;&#x6A21;&#x5757;&#x91CD;&#x7528;</h3><p>ng &#x4E2D;&#x548C;&#x540E;&#x53F0;&#x539F;&#x7406;&#x76F8;&#x4F3C;&#xFF0C;&#x90FD;&#x652F;&#x6301;&#x8DEF;&#x7531;&#x53C2;&#x6570;</p>
+<h3 id="&#x516B;-&#x3001;&#x5229;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#x89E3;&#x51B3;&#x5BFC;&#x822A;&#x680F;&#x72B6;&#x6001;&#x5207;&#x6362;"><a href="#&#x516B;-&#x3001;&#x5229;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#x89E3;&#x51B3;&#x5BFC;&#x822A;&#x680F;&#x72B6;&#x6001;&#x5207;&#x6362;" class="headerlink" title="(&#x516B;)&#x3001;&#x5229;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#x89E3;&#x51B3;&#x5BFC;&#x822A;&#x680F;&#x72B6;&#x6001;&#x5207;&#x6362;"></a>(&#x516B;)&#x3001;&#x5229;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#x89E3;&#x51B3;&#x5BFC;&#x822A;&#x680F;&#x72B6;&#x6001;&#x5207;&#x6362;</h3><blockquote>
+<p>&#x5728;&#x9700;&#x8981;&#x64CD;&#x4F5C; DOM &#x65F6;</p>
+</blockquote>
+<h3 id="&#x4E5D;-&#x3001;&#x89E3;&#x51B3;&#x8BE6;&#x60C5;&#x9875;&#x641C;&#x7D22;&#x95EE;&#x9898;"><a href="#&#x4E5D;-&#x3001;&#x89E3;&#x51B3;&#x8BE6;&#x60C5;&#x9875;&#x641C;&#x7D22;&#x95EE;&#x9898;" class="headerlink" title="(&#x4E5D;)&#x3001;&#x89E3;&#x51B3;&#x8BE6;&#x60C5;&#x9875;&#x641C;&#x7D22;&#x95EE;&#x9898;"></a>(&#x4E5D;)&#x3001;&#x89E3;&#x51B3;&#x8BE6;&#x60C5;&#x9875;&#x641C;&#x7D22;&#x95EE;&#x9898;</h3><h2 id="&#x603B;&#x7ED3;"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</h2><blockquote>
+<p>&#x6574;&#x4E2A;&#x5C0F;&#x9879;&#x76EE;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;</p>
+</blockquote>
+<ul>
+<li>&#x524D;&#x53F0;&#x4E3B;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5176;&#x5B83;&#x6A21;&#x5757;&#x5E76;&#x8BBE;&#x7F6E;&#x8DEF;&#x7531;&#xFF0C;</li>
+<li>&#x524D;&#x53F0;&#x5176;&#x5B83;&#x6A21;&#x5757; module.js &#x4E2D;&#x7684; $http &#x53D1;&#x8D77;&#x8BF7;&#x6C42;</li>
+<li>&#x8BF7;&#x6C42;&#x4E2D;&#x8F6C; app.js</li>
+<li>&#x4E2D;&#x8F6C; app.js &#x5411;&#x540E;&#x53F0;&#xFF08;&#x8C46;&#x74E3; API&#xFF09;&#x53D1;&#x8D77;&#x8BF7;&#x6C42;</li>
+<li>&#x518D;&#x7531;&#x4E2D;&#x8F6C; app.js &#x5C06;&#x6570;&#x636E;&#x54CD;&#x5E94;&#x7ED9;&#x524D;&#x53F0; module.js</li>
+<li>&#x524D;&#x53F0;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#xFF0C;&#x6E32;&#x67D3;&#x89C6;&#x56FE;</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>感谢您的支持！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>打 赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ofy7k3v4s.bkt.clouddn.com/wcpayCode.jpg" alt="Hongqin Ma WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ofy7k3v4s.bkt.clouddn.com/apayCode.jpg" alt="Hongqin Ma Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AngularJs/" rel="tag">#AngularJs</a>
+          
+            <a href="/tags/Node-js/" rel="tag">#Node.js</a>
+          
+            <a href="/tags/小项目/" rel="tag">#小项目</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/05/11/25-js-的模块化/" rel="next" title="js 的模块化">
+                <i class="fa fa-chevron-left"></i> js 的模块化
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/03/t1-markdown/" rel="prev" title="markdown">
+                markdown <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/07/03/27-AngularJS-项目流程/"
+     data-title="27-AngularJS 项目流程"
+     data-content=""
+     data-url="https://hongqinma.github.io/2015/07/03/27-AngularJS-项目流程/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/07/03/27-AngularJS-项目流程/"
+           data-title="27-AngularJS 项目流程" data-url="https://hongqinma.github.io/2015/07/03/27-AngularJS-项目流程/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/photo.jpg"
+               alt="Hongqin Ma" />
+          <p class="site-author-name" itemprop="name">Hongqin Ma</p>
+          <p class="site-description motion-element" itemprop="description">Spell at all costs， to rush you in the future. </p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HongqinMa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/HongqinMa" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100006581058735" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/HirakuMa" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-share-alt"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美" target="_blank">司徒正美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/sanshi/" title="三生石上" target="_blank">三生石上</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/TomXu/" title="汤姆大叔" target="_blank">汤姆大叔</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gold.xitu.io/" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/users/1cbb94e5ed4d/latest_articles" title="简书" target="_blank">简书</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.cnblogs.com/" title="博客园" target="_blank">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.awesomes.cn/" title="Awesomes" target="_blank">Awesomes</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#豆瓣电影列表项目说明"><span class="nav-number">1.</span> <span class="nav-text">豆瓣电影列表项目说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动项目"><span class="nav-number">2.</span> <span class="nav-text">启动项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#豆瓣开发接口-API"><span class="nav-number">3.</span> <span class="nav-text">豆瓣开发接口 API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目骨架"><span class="nav-number">4.</span> <span class="nav-text">项目骨架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#页面开发流程："><span class="nav-number">5.</span> <span class="nav-text">页面开发流程：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-、构建页面（bootstrap）"><span class="nav-number">5.1.</span> <span class="nav-text">(一)、构建页面（bootstrap）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-、模块划分"><span class="nav-number">5.2.</span> <span class="nav-text">(二)、模块划分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-、模块划分-控制器-路由"><span class="nav-number">5.3.</span> <span class="nav-text">(三)、模块划分-控制器-路由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-、绑定假数据"><span class="nav-number">5.4.</span> <span class="nav-text">(四)、绑定假数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求-API，将数据绑定到视图预备知识"><span class="nav-number">5.5.</span> <span class="nav-text">请求 API，将数据绑定到视图预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ng-中的-http-请求资源"><span class="nav-number">5.5.1.</span> <span class="nav-text">ng 中的 $http 请求资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前后端分离"><span class="nav-number">5.5.2.</span> <span class="nav-text">前后端分离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#request-包"><span class="nav-number">5.5.3.</span> <span class="nav-text">request 包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-、请求-API，将数据绑定到视图"><span class="nav-number">5.6.</span> <span class="nav-text">(五)、请求 API，将数据绑定到视图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-express"><span class="nav-number">5.6.1.</span> <span class="nav-text">安装 express</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Node-中转请求接口-app-js"><span class="nav-number">5.6.2.</span> <span class="nav-text">Node 中转请求接口 app.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主模块-app-js"><span class="nav-number">5.6.3.</span> <span class="nav-text">主模块 app.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置文件路径："><span class="nav-number">5.6.4.</span> <span class="nav-text">配置文件路径：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它模块-module-js"><span class="nav-number">5.7.</span> <span class="nav-text">其它模块 module.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六-、通过路由实现简单的分页传参功能"><span class="nav-number">5.8.</span> <span class="nav-text">(六)、通过路由实现简单的分页传参功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七-、通过配置路由参数实现多模块重用"><span class="nav-number">5.9.</span> <span class="nav-text">(七)、通过配置路由参数实现多模块重用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八-、利用自定义指令解决导航栏状态切换"><span class="nav-number">5.10.</span> <span class="nav-text">(八)、利用自定义指令解决导航栏状态切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九-、解决详情页搜索问题"><span class="nav-number">5.11.</span> <span class="nav-text">(九)、解决详情页搜索问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hongqin Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Page Views: <span id="busuanzi_value_site_pv"></span> 
+</span>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Hiraku"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = '0 ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+
+  
+</body>
+</html>
