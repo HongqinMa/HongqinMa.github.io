@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Node.js,数据库,MySQL,MongoDB," />
+  <meta name="keywords" content="Node.js,MySQL,数据库,MongoDB," />
 
 
 
@@ -105,7 +105,7 @@
 &amp;#x5B9E;&amp;#x73B0;&amp;#x6570;&amp;#x636E;&amp;#x5171;&amp;#x4EAB;
 &amp;#x53EF;&amp;#x4">
 <meta property="og:image" content="https://hongqinma.github.io/2016/10/27/s011-数据库-MySQL/连接池.png">
-<meta property="og:updated_time" content="2016-12-01T03:31:06.596Z">
+<meta property="og:updated_time" content="2016-12-01T12:09:30.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库基础 以及 Node 操作方法">
 <meta name="twitter:description" content="&amp;#x6570;&amp;#x636E;&amp;#x5E93;&amp;#xFF1A;&amp;#x5B58;&amp;#x50A8;&amp;#x6570;&amp;#x636E;&amp;#x7684;&amp;#x4ED3;&amp;#x5E93;&amp;#x3002;
@@ -1046,6 +1046,9 @@
 </ul>
 <h2 id="&#x4F7F;&#x7528;-Node-&#x64CD;&#x4F5C;-MySQL-&#x6570;&#x636E;&#x5E93;"><a href="#&#x4F7F;&#x7528;-Node-&#x64CD;&#x4F5C;-MySQL-&#x6570;&#x636E;&#x5E93;" class="headerlink" title="&#x4F7F;&#x7528; Node &#x64CD;&#x4F5C; MySQL &#x6570;&#x636E;&#x5E93;"></a>&#x4F7F;&#x7528; Node &#x64CD;&#x4F5C; MySQL &#x6570;&#x636E;&#x5E93;</h2><p>&#x5B89;&#x88C5;&#xFF1A;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save mysql</div></pre></td></tr></table></figure>
+<p><a href="https://www.npmjs.com/package/mysql" target="_blank" rel="external">&#x4F7F;&#x7528; Node &#x64CD;&#x4F5C;</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">&apos;mysql&apos;</span>);</div><div class="line"><span class="comment">// &#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;</span></div><div class="line"><span class="keyword">var</span> connection = mysql.createConnection({</div><div class="line">  <span class="attr">host</span>: <span class="string">&apos;localhost&apos;</span>,</div><div class="line">  <span class="attr">port</span>: <span class="number">3306</span>,</div><div class="line">  <span class="attr">user</span>: <span class="string">&apos;root&apos;</span>,</div><div class="line">  <span class="attr">password</span>: <span class="string">&apos;*********&apos;</span>,</div><div class="line">  <span class="attr">database</span>: <span class="string">&apos;personal&apos;</span></div><div class="line">});</div><div class="line"><span class="comment">// &#x5F00;&#x59CB;&#x64CD;&#x4F5C;&#x4E4B;&#x524D;&#x5148;&#x8FDE;&#x63A5;&#xFF0C;&#x8FD9;&#x4E00;&#x6B65;&#x53EF;&#x4EE5;&#x7701;&#x7565;</span></div><div class="line"><span class="comment">// &#x5F53;&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x5E93;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x8FDE;&#x63A5;</span></div><div class="line"><span class="comment">// connection.connect();</span></div><div class="line"><span class="comment">// &#x64CD;&#x4F5C;&#x6570;&#x636E;&#x5E93;</span></div><div class="line"><span class="comment">// &#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x4EFB;&#x4F55; SQL &#x8BED;&#x8A00;&#xFF0C;&#x589E;&#x5220;&#x6539;&#x67E5;&#xFF0C;? &#x662F;&#x8981;&#x62FC;&#x63A5;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x6570;&#x636E;</span></div><div class="line"><span class="comment">// &#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x53EF;&#x9009;&#xFF0C;&#x4F20;&#x5165;&#x6570;&#x636E;&#x6570;&#x7EC4;</span></div><div class="line"><span class="comment">// &#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;&#x56DE;&#x8C03;&#x51FD;&#x6570;</span></div><div class="line"><span class="comment">//    &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x5F02;&#x5E38;&#x9519;&#x8BEF;&#x5BF9;&#x8C61;</span></div><div class="line"><span class="comment">//    &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x64CD;&#x4F5C;&#x7ED3;&#x679C;</span></div><div class="line"><span class="comment">//    &#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x7701;&#x7565;&#xFF0C;&#x57FA;&#x672C;&#x4E0D;&#x8003;&#x8651;</span></div><div class="line">connection.query(<span class="string">&apos;SELECT * FROM `users` WHERE `age`&gt;?&apos;</span>, [<span class="number">20</span>], <span class="function"><span class="keyword">function</span>(<span class="params">err, rows, fields</span>) </span>{</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</div><div class="line">  <span class="comment">// &#x5982;&#x679C;&#x662F; SELECT&#xFF0C;&#x7ED3;&#x679C;&#x662F;&#x6570;&#x7EC4;</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">&apos;The solution is: &apos;</span>, rows[<span class="number">0</span>].solution);</div><div class="line">  <span class="comment">// &#x5BF9;&#x8C61;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x5F88;&#x91CD;&#x8981;&#xFF1A;affectedRows</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`&#x53D7;&#x5F71;&#x54CD;&#x7684;&#x884C;&#x6570;&#xFF1A;<span class="subst">${rows.affectedRows}</span>`</span>);</div><div class="line">});</div><div class="line"><span class="comment">// &#x5173;&#x95ED;&#x6570;&#x636E;&#x5E93;</span></div><div class="line"><span class="comment">// &#x4E00;&#x822C;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x64CD;&#x4F5C;&#x4E00;&#x6B21;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x64CD;&#x4F5C;&#x5B8C;&#x6BD5;&#xFF0C;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;</span></div><div class="line">connection.end();</div></pre></td></tr></table></figure>
+<p>&#x4F7F;&#x7528; Node &#x64CD;&#x4F5C;&#xFF1A;</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">&apos;mysql&apos;</span>)</div><div class="line">exports.query = <span class="function">(<span class="params">sql, params = [], callback</span>) =&gt;</span> {</div><div class="line">  <span class="keyword">const</span> connection = mysql.createConnection({</div><div class="line">    <span class="attr">connectionLimit</span> : <span class="number">500</span>,</div><div class="line">    <span class="attr">host</span>: <span class="string">&apos;localhost&apos;</span>,</div><div class="line">    <span class="attr">port</span>: <span class="number">3306</span>,</div><div class="line">    <span class="attr">user</span>: <span class="string">&apos;root&apos;</span>,</div><div class="line">    <span class="attr">password</span>: <span class="string">&apos;*********&apos;</span>,</div><div class="line">    <span class="attr">database</span>: <span class="string">&apos;personal&apos;</span></div><div class="line">  })</div><div class="line">  connection.query(sql, params, (err, rows) =&gt; {</div><div class="line">    <span class="keyword">if</span> (err) {</div><div class="line">      <span class="keyword">return</span> callback(err)</div><div class="line">    }</div><div class="line">    callback(<span class="literal">null</span>, rows)</div><div class="line">    <span class="comment">// &#x64CD;&#x4F5C;&#x5B8C;&#x6BD5;&#xFF0C;&#x7ED3;&#x675F;&#x8FDE;&#x63A5;</span></div><div class="line">    connection.end()</div><div class="line">  })</div><div class="line">}</div></pre></td></tr></table></figure>
 <h3 id="&#x4F7F;&#x7528;&#x8FDE;&#x63A5;&#x6C60;&#x64CD;&#x4F5C;-MySQL-&#x6570;&#x636E;&#x5E93;"><a href="#&#x4F7F;&#x7528;&#x8FDE;&#x63A5;&#x6C60;&#x64CD;&#x4F5C;-MySQL-&#x6570;&#x636E;&#x5E93;" class="headerlink" title="&#x4F7F;&#x7528;&#x8FDE;&#x63A5;&#x6C60;&#x64CD;&#x4F5C; MySQL &#x6570;&#x636E;&#x5E93;"></a>&#x4F7F;&#x7528;&#x8FDE;&#x63A5;&#x6C60;&#x64CD;&#x4F5C; MySQL &#x6570;&#x636E;&#x5E93;</h3><ul>
 <li>&#x4FEE;&#x6539;&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x4E0B; my.ini &#x6587;&#x4EF6;&#x4E2D;&#x7684;: <code>max_connections=1000</code> &#x9ED8;&#x8BA4;&#x662F; <code>max_connections=151</code></li>
@@ -1104,9 +1107,9 @@
           
             <a href="/tags/Node-js/" rel="tag">#Node.js</a>
           
-            <a href="/tags/数据库/" rel="tag">#数据库</a>
-          
             <a href="/tags/MySQL/" rel="tag">#MySQL</a>
+          
+            <a href="/tags/数据库/" rel="tag">#数据库</a>
           
             <a href="/tags/MongoDB/" rel="tag">#MongoDB</a>
           
@@ -1218,7 +1221,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">55</span>
+              <span class="site-state-item-count">56</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1235,7 +1238,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
