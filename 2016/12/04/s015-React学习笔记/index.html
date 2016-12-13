@@ -1,0 +1,1261 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="React," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://ofy7k3v4s.bkt.clouddn.com/mylogo.png?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="React &amp;#x662F; Facebook &amp;#x5F00;&amp;#x6E90;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x7528;&amp;#x4E8E;&amp;#x6784;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;&amp;#x754C;&amp;#x9762;&amp;#x7684; Javascript &amp;#x5E93;&amp;#xFF0C;&amp;#x5DF2;&amp;#x7ECF; &amp;#x5E94;&amp;#x7528;&amp;#x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="s015-React学习笔记">
+<meta property="og:url" content="https://hongqinma.github.io/2016/12/04/s015-React学习笔记/index.html">
+<meta property="og:site_name" content="HongqinMa' Blog">
+<meta property="og:description" content="React &amp;#x662F; Facebook &amp;#x5F00;&amp;#x6E90;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x7528;&amp;#x4E8E;&amp;#x6784;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;&amp;#x754C;&amp;#x9762;&amp;#x7684; Javascript &amp;#x5E93;&amp;#xFF0C;&amp;#x5DF2;&amp;#x7ECF; &amp;#x5E94;&amp;#x7528;&amp;#x">
+<meta property="og:image" content="https://hongqinma.github.io/2016/12/04/s015-React学习笔记/React002.png">
+<meta property="og:image" content="https://hongqinma.github.io/2016/12/04/s015-React学习笔记/React002.png">
+<meta property="og:image" content="https://hongqinma.github.io/2016/12/04/s015-React学习笔记/React003.png">
+<meta property="og:image" content="https://hongqinma.github.io/2016/12/04/s015-React学习笔记/React004.png">
+<meta property="og:image" content="https://hongqinma.github.io/2016/12/04/s015-React学习笔记/React005.png">
+<meta property="og:image" content="https://hongqinma.github.io/2016/12/04/s015-React学习笔记/React006.png">
+<meta property="og:image" content="https://hongqinma.github.io/2016/12/04/s015-React学习笔记/React007.png">
+<meta property="og:updated_time" content="2016-12-13T03:58:40.306Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="s015-React学习笔记">
+<meta name="twitter:description" content="React &amp;#x662F; Facebook &amp;#x5F00;&amp;#x6E90;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;&amp;#x7528;&amp;#x4E8E;&amp;#x6784;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;&amp;#x754C;&amp;#x9762;&amp;#x7684; Javascript &amp;#x5E93;&amp;#xFF0C;&amp;#x5DF2;&amp;#x7ECF; &amp;#x5E94;&amp;#x7528;&amp;#x">
+<meta name="twitter:image" content="https://hongqinma.github.io/2016/12/04/s015-React学习笔记/React002.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6347850919329138000',
+      author: 'Hiraku'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://hongqinma.github.io/2016/12/04/s015-React学习笔记/"/>
+
+
+  <title> s015-React学习笔记 | HongqinMa' Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?10010323";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="http://ofy7k3v4s.bkt.clouddn.com/photo.jpg"
+             alt="HongqinMa' Blog"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">HongqinMa' Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Spell at all costs， to rush you in the future。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                s015-React学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-12-04T21:49:17+08:00" content="2016-12-04">
+              2016-12-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/React-系列/" itemprop="url" rel="index">
+                    <span itemprop="name">React 系列</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/04/s015-React学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/s015-React学习笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+
+          
+            <span id="busuanzi_container_page_pv">  <span id="busuanzi_value_page_pv"></span> Views</span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>React &#x662F; Facebook &#x5F00;&#x6E90;&#x7684;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x6784;&#x5EFA;&#x7528;&#x6237;&#x754C;&#x9762;&#x7684; Javascript &#x5E93;&#xFF0C;&#x5DF2;&#x7ECF; &#x5E94;&#x7528;&#x4E8E; Facebook &#x53CA;&#x65D7;&#x4E0B; Instagram&#x3002;<br>&#x548C;&#x5E9E;&#x5927;&#x7684; AngularJS &#x4E0D;&#x540C;&#xFF0C;React &#x4E13;&#x6CE8;&#x4E8E; MVC &#x67B6;&#x6784;&#x4E2D;&#x7684; V&#xFF0C;&#x5373;&#x89C6;&#x56FE;&#x3002; &#x8FD9;&#x4F7F;&#x5F97; React &#x5F88;&#x5BB9;&#x6613;&#x548C;&#x5F00;&#x53D1;&#x8005;&#x5DF2;&#x6709;&#x7684;&#x5F00;&#x53D1;&#x6808;&#x8FDB;&#x884C;&#x878D;&#x5408;&#x3002;<br>React &#x987A;&#x5E94;&#x4E86; Web &#x5F00;&#x53D1;&#x7EC4;&#x4EF6;&#x5316;&#x7684;&#x8D8B;&#x52BF;&#x3002;&#x5E94;&#x7528; React &#x65F6;&#xFF0C;&#x5E94;&#x8BE5;&#x4ECE; UI &#x51FA;&#x53D1;&#x62BD;&#x8C61;&#x51FA;&#x4E0D;&#x540C;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x50CF;&#x642D;&#x79EF;&#x6728;&#x4E00;&#x6837;&#x628A;&#x5B83;&#x4EEC;&#x62FC;&#x88C5;&#x8D77;&#x6765;&#x3002;</p>
+<h2 id="React&#x7B80;&#x4ECB;"><a href="#React&#x7B80;&#x4ECB;" class="headerlink" title="React&#x7B80;&#x4ECB;"></a>React&#x7B80;&#x4ECB;</h2><p>&#x8FD9;&#x4E2A;&#x9879;&#x76EE;&#x672C;&#x8EAB;&#x4E5F;&#x8D8A;&#x6EDA;&#x8D8A;&#x5927;&#xFF0C;&#x4ECE;&#x6700;&#x65E9;&#x7684; UI &#x5F15;&#x64CE;&#x53D8;&#x6210;&#x4E86;&#x4E00;&#x6574;&#x5957;&#x524D;&#x540E;&#x7AEF;&#x901A;&#x5403;&#x7684; Web App &#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;&#x884D;&#x751F;&#x7684; React Native &#x9879;&#x76EE;&#xFF0C;&#x76EE;&#x6807;&#x66F4;&#x662F;&#x5B8F;&#x4F1F;&#xFF0C;&#x5E0C;&#x671B;&#x7528;&#x5199; Web App &#x7684;&#x65B9;&#x5F0F;&#x53BB;&#x5199; Native App&#x3002;&#x5982;&#x679C;&#x80FD;&#x591F;&#x5B9E;&#x73B0;&#xFF0C;&#x6574;&#x4E2A;&#x4E92;&#x8054;&#x7F51;&#x884C;&#x4E1A;&#x90FD;&#x4F1A;&#x88AB;&#x98A0;&#x8986;&#xFF0C;&#x56E0;&#x4E3A;&#x540C;&#x4E00;&#x7EC4;&#x4EBA;&#x53EA;&#x9700;&#x8981;&#x5199;&#x4E00;&#x6B21; UI &#xFF0C;&#x5C31;&#x80FD;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#x5728;&#x670D;&#x52A1;&#x5668;&#x3001;&#x6D4F;&#x89C8;&#x5668;&#x548C;&#x624B;&#x673A;&#x3002;</p>
+<h3 id="&#x5B98;&#x7F51;&#x5730;&#x5740;"><a href="#&#x5B98;&#x7F51;&#x5730;&#x5740;" class="headerlink" title="&#x5B98;&#x7F51;&#x5730;&#x5740;"></a>&#x5B98;&#x7F51;&#x5730;&#x5740;</h3><p>&#x82F1;&#x6587;&#x7F51;&#xFF1A;<a href="http://facebook.github.io/react/docs/getting-started.html" target="_blank" rel="external">http://facebook.github.io/react/docs/getting-started.html</a></p>
+<p>&#x4E2D;&#x6587;&#x7F51;&#xFF1A;<a href="http://reactjs.cn/react/docs/getting-started.html" target="_blank" rel="external">http://reactjs.cn/react/docs/getting-started.html</a></p>
+<h3 id="&#x5728;&#x7EBF;&#x7F16;&#x8F91;&#x5DE5;&#x5177;-JSFiddle"><a href="#&#x5728;&#x7EBF;&#x7F16;&#x8F91;&#x5DE5;&#x5177;-JSFiddle" class="headerlink" title="&#x5728;&#x7EBF;&#x7F16;&#x8F91;&#x5DE5;&#x5177; JSFiddle"></a>&#x5728;&#x7EBF;&#x7F16;&#x8F91;&#x5DE5;&#x5177; JSFiddle</h3><p>&#x5728;&#x7EBF;&#x7F16;&#x8F91;&#x5DE5;&#x5177;&#xFF0C;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x5FEB;&#x901F;&#x5B66;&#x4E60; react &#x57FA;&#x672C;&#x8BED;&#x6CD5;</p>
+<h3 id="&#x4E3A;&#x4EC0;&#x4E48;&#x4F7F;&#x7528;-React"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x4F7F;&#x7528;-React" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x4F7F;&#x7528; React"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x4F7F;&#x7528; React</h3><p>&#x6211;&#x4EEC;&#x521B;&#x9020; React &#x662F;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;&#x6784;&#x5EFA;&#x968F;&#x7740;&#x65F6;&#x95F4;&#x6570;&#x636E;&#x4E0D;&#x65AD;&#x53D8;&#x5316;&#x7684;&#x5927;&#x89C4;&#x6A21;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x4E3A;&#x4E86;&#x8FBE;&#x5230;&#x8FD9;&#x4E2A;&#x76EE;&#x6807;&#xFF0C;React &#x91C7;&#x7528;&#x4E0B;&#x9762;&#x4E24;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x601D;&#x60F3;&#x3002;</p>
+<p>1&#x3001;&#x7B80;&#x5355;</p>
+<p>&#x4EC5;&#x4EC5;&#x53EA;&#x8981;&#x8868;&#x8FBE;&#x51FA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5728;&#x4EFB;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x70B9;&#x5E94;&#x8BE5;&#x957F;&#x7684;&#x6837;&#x5B50;&#xFF0C;&#x7136;&#x540E;&#x5F53;&#x5E95;&#x5C42;&#x7684;&#x6570;&#x636E;&#x53D8;&#x4E86;&#xFF0C;React &#x4F1A;&#x81EA;&#x52A8;&#x5904;&#x7406;&#x6240;&#x6709;&#x7528;&#x6237;&#x754C;&#x9762;&#x7684;&#x66F4;&#x65B0;&#x3002;</p>
+<p>2&#x3001;&#x58F0;&#x660E;&#x5F0F; (Declarative)</p>
+<p>&#x6570;&#x636E;&#x53D8;&#x5316;&#x540E;&#xFF0C;React &#x6982;&#x5FF5;&#x4E0A;&#x4E0E;&#x70B9;&#x51FB;&#x201C;&#x5237;&#x65B0;&#x201D;&#x6309;&#x94AE;&#x7C7B;&#x4F3C;&#xFF0C;&#x4F46;&#x4EC5;&#x4F1A;&#x66F4;&#x65B0;&#x53D8;&#x5316;&#x7684;&#x90E8;&#x5206;&#x3002;</p>
+<p>3&#x3001;&#x6784;&#x5EFA;&#x53EF;&#x7EC4;&#x5408;&#x7684;&#x7EC4;&#x4EF6;</p>
+<p>React &#x90FD;&#x662F;&#x5173;&#x4E8E;&#x6784;&#x5EFA;&#x53EF;&#x590D;&#x7528;&#x7684;&#x7EC4;&#x4EF6;&#x3002;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x901A;&#x8FC7; React &#x552F;&#x4E00;&#x8981;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#x5C31;&#x662F;&#x6784;&#x5EFA;&#x7EC4;&#x4EF6;&#x3002;&#x5F97;&#x76CA;&#x4E8E;&#x5176;&#x826F;&#x597D;&#x7684;&#x5C01;&#x88C5;&#x6027;&#xFF0C;&#x7EC4;&#x4EF6;&#x4F7F;&#x4EE3;&#x7801;&#x590D;&#x7528;&#x3001;&#x6D4B;&#x8BD5;&#x548C;&#x5173;&#x6CE8;&#x5206;&#x79BB;&#xFF08;separation of concerns&#xFF09;&#x66F4;&#x52A0;&#x7B80;&#x5355;&#x3002;</p>
+<p>&#x66F4;&#x591A;&#x539F;&#x56E0; <a href="http://facebook.github.io/react/blog/2013/06/05/why-react.html" target="_blank" rel="external">http://facebook.github.io/react/blog/2013/06/05/why-react.html</a></p>
+<h3 id="&#x5B9E;&#x6218;&#x6848;&#x4F8B;"><a href="#&#x5B9E;&#x6218;&#x6848;&#x4F8B;" class="headerlink" title="&#x5B9E;&#x6218;&#x6848;&#x4F8B;"></a>&#x5B9E;&#x6218;&#x6848;&#x4F8B;</h3><p><a href="http://info.smartstudy.com/" target="_blank" rel="external">http://info.smartstudy.com/</a><br><a href="http://www.kongkonghu.com/choice" target="_blank" rel="external">http://www.kongkonghu.com/choice</a><br><a href="https://github.com/webpack/react-starter" target="_blank" rel="external">https://github.com/webpack/react-starter</a></p>
+<h3 id="&#x5165;&#x95E8;&#x89C6;&#x9891;"><a href="#&#x5165;&#x95E8;&#x89C6;&#x9891;" class="headerlink" title="&#x5165;&#x95E8;&#x89C6;&#x9891;"></a>&#x5165;&#x95E8;&#x89C6;&#x9891;</h3><p><a href="https://www.youtube.com/watch?v=7eLqKgp0eeY" target="_blank" rel="external">https://www.youtube.com/watch?v=7eLqKgp0eeY</a><br><a href="https://www.youtube.com/watch?v=fZKaq623y38&amp;list=PLQDnxXqV213JJFtDaG0aE9vqvp6Wm7nBg" target="_blank" rel="external">https://www.youtube.com/watch?v=fZKaq623y38&amp;list=PLQDnxXqV213JJFtDaG0aE9vqvp6Wm7nBg</a><br><a href="https://www.youtube.com/watch?v=QQK5hpUuOuA&amp;list=PLUAEXpf1UDMkzPOiNJBrlqsUryn7n2cnK" target="_blank" rel="external">https://www.youtube.com/watch?v=QQK5hpUuOuA&amp;list=PLUAEXpf1UDMkzPOiNJBrlqsUryn7n2cnK</a></p>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;"><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;" class="headerlink" title="&#x53C2;&#x8003;&#x8D44;&#x6599;"></a>&#x53C2;&#x8003;&#x8D44;&#x6599;</h3><p><a href="https://github.com/dingyiming/learn-Js-react/issues/1" target="_blank" rel="external">https://github.com/dingyiming/learn-Js-react/issues/1</a></p>
+<h2 id="React&#x7684;&#x56DB;&#x4E2A;&#x6982;&#x5FF5;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;"><a href="#React&#x7684;&#x56DB;&#x4E2A;&#x6982;&#x5FF5;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;" class="headerlink" title="React&#x7684;&#x56DB;&#x4E2A;&#x6982;&#x5FF5;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;"></a>React&#x7684;&#x56DB;&#x4E2A;&#x6982;&#x5FF5;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;</h2><p>React&#x4E3B;&#x8981;&#x6709;&#x56DB;&#x4E2A;&#x4E3B;&#x8981;&#x6982;&#x5FF5;&#x6784;&#x6210;&#xFF1A;</p>
+<blockquote>
+<p>Virtual DOM<br>React &#x7EC4;&#x4EF6;<br>JSX&#x8BED;&#x6CD5;<br>Data Flow&#xFF08;&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;&#xFF09;</p>
+</blockquote>
+<h3 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h3><h4 id="&#x865A;&#x62DF;DOM&#x662F;React&#x7684;&#x57FA;&#x77F3;"><a href="#&#x865A;&#x62DF;DOM&#x662F;React&#x7684;&#x57FA;&#x77F3;" class="headerlink" title="&#x865A;&#x62DF;DOM&#x662F;React&#x7684;&#x57FA;&#x77F3;"></a>&#x865A;&#x62DF;DOM&#x662F;React&#x7684;&#x57FA;&#x77F3;</h4><p>&#x4E4B;&#x6240;&#x4EE5;&#x5F15;&#x5165;&#x865A;&#x62DF; DOM&#xFF0C;&#x4E00;&#x65B9;&#x9762;&#x662F;&#x6027;&#x80FD;&#x7684;&#x8003;&#x8651;&#x3002;Web &#x5E94;&#x7528;&#x548C;&#x7F51;&#x7AD9;&#x4E0D;&#x540C;&#xFF0C;&#x4E00;&#x4E2A; Web &#x5E94;&#x7528; &#x4E2D;&#x901A;&#x5E38;&#x4F1A;&#x5728;&#x5355;&#x9875;&#x5185;&#x6709;&#x5927;&#x91CF;&#x7684; DOM &#x64CD;&#x4F5C;&#xFF0C;&#x800C;&#x8FD9;&#x4E9B;DOM&#x64CD;&#x4F5C;&#x5F88;&#x6162;&#x3002;</p>
+<p>&#x5728; React &#x4E2D;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5728;&#x865A;&#x62DF; DOM &#x4E0A;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x8BA9; React &#x6709;&#x4E86;&#x4F18;&#x5316;&#x7684;&#x673A;&#x4F1A;&#x3002;&#x7B80;&#x5355;&#x8BF4;&#xFF0C;React &#x5728;&#x6BCF;&#x6B21;&#x9700;&#x8981;&#x6E32;&#x67D3;&#x65F6;&#xFF0C;&#x4F1A;&#x5148;&#x6BD4;&#x8F83;&#x5F53;&#x524D; DOM &#x5185;&#x5BB9;&#x548C;&#x5F85;&#x6E32;&#x67D3;&#x5185;&#x5BB9;&#x7684;&#x5DEE;&#x5F02;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x51B3;&#x5B9A;&#x5982;&#x4F55;&#x6700;&#x4F18;&#x5730;&#x66F4;&#x65B0; DOM&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x88AB;&#x79F0;&#x4E3A; reconciliation&#x3002;</p>
+<p>&#x9664;&#x4E86;&#x6027;&#x80FD;&#x7684;&#x8003;&#x8651;&#xFF0C;React &#x5F15;&#x5165;&#x865A;&#x62DF; DOM &#x66F4;&#x91CD;&#x8981;&#x7684;&#x610F;&#x4E49;&#x662F;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x4E00;&#x81F4;&#x7684;&#x5F00;&#x53D1;&#x65B9;&#x5F0F;&#x6765;&#x5F00;&#x53D1;&#x670D;&#x52A1;&#x7AEF;&#x5E94;&#x7528;&#x3001;Web &#x5E94;&#x7528;&#x548C;&#x624B;&#x673A;&#x7AEF;&#x5E94;&#x7528;&#xFF1A;</p>
+<p><img src="/2016/12/04/s015-React&#x5B66;&#x4E60;&#x7B14;&#x8BB0;/React002.png" alt="&#x865A;&#x62DF;DOM&#x670D;&#x52A1;&#x7AEF;&#x5E94;&#x7528;&#x3001;Web&#x5E94;&#x7528;&#x548C;&#x624B;&#x673A;&#x7AEF;&#x5E94;&#x7528;"></p>
+<p>&#x56E0;&#x4E3A;&#x6709;&#x4E86;&#x865A;&#x62DF; DOM &#x8FD9;&#x4E00;&#x5C42;&#xFF0C;&#x6240;&#x4EE5;&#x901A;&#x8FC7;&#x914D;&#x5907;&#x4E0D;&#x540C;&#x7684;&#x6E32;&#x67D3;&#x5668;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5C06;&#x865A;&#x62DF; DOM &#x7684;&#x5185;&#x5BB9;&#x6E32;&#x67D3;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x5E73;&#x53F0;&#x3002;&#x800C;&#x5E94;&#x7528;&#x5F00;&#x53D1;&#x8005;&#xFF0C;&#x4F7F;&#x7528; JavaScript &#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x5403;&#x5404;&#x4E2A;&#x5E73;&#x53F0;&#x4E86;&#x3002;</p>
+<h4 id="Virtual-DOM&#x901F;&#x5EA6;&#x5FEB;&#x7684;&#x8BF4;&#x660E;"><a href="#Virtual-DOM&#x901F;&#x5EA6;&#x5FEB;&#x7684;&#x8BF4;&#x660E;" class="headerlink" title="Virtual DOM&#x901F;&#x5EA6;&#x5FEB;&#x7684;&#x8BF4;&#x660E;"></a>Virtual DOM&#x901F;&#x5EA6;&#x5FEB;&#x7684;&#x8BF4;&#x660E;</h4><p>&#x5728; Web &#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x603B;&#x9700;&#x8981;&#x5C06;&#x53D8;&#x5316;&#x7684;&#x6570;&#x636E;&#x5B9E;&#x65F6;&#x53CD;&#x5E94;&#x5230; UI &#x4E0A;&#xFF0C;&#x8FD9;&#x65F6;&#x5C31;&#x9700;&#x8981;&#x5BF9; DOM &#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x3002;<br>&#x800C;&#x590D;&#x6742;&#x6216;&#x9891;&#x7E41;&#x7684; DOM &#x64CD;&#x4F5C;&#x901A;&#x5E38;&#x662F;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x4EA7;&#x751F;&#x7684;&#x539F;&#x56E0;&#xFF08;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x9AD8;&#x6027;&#x80FD;&#x7684;&#x590D;&#x6742; DOM &#x64CD;&#x4F5C;&#x901A;&#x5E38;&#x662F;&#x8861;&#x91CF;&#x4E00;&#x4E2A;&#x524D;&#x7AEF;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x6280;&#x80FD;&#x7684;&#x91CD;&#x8981;&#x6307;&#x6807;&#xFF09;&#x3002;<br>React &#x4E3A;&#x6B64;&#x5F15;&#x5165;&#x4E86;&#x865A;&#x62DF; DOM&#xFF08;Virtual DOM&#xFF09;&#x7684;&#x673A;&#x5236;&#xFF1A;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#x7528; Javascript &#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x5957; DOM API&#x3002;<br>&#x57FA;&#x4E8E; React &#x8FDB;&#x884C;&#x5F00;&#x53D1;&#x65F6;&#x6240;&#x6709;&#x7684; DOM &#x6784;&#x9020;&#x90FD;&#x662F;&#x901A;&#x8FC7;&#x865A;&#x62DF; DOM &#x8FDB;&#x884C;&#x3002;<br>&#xFF0C;&#x6BCF;&#x5F53;&#x6570;&#x636E;&#x53D8;&#x5316;&#x65F6;&#xFF0C;React &#x90FD;&#x4F1A;&#x91CD;&#x65B0;&#x6784;&#x5EFA;&#x6574;&#x4E2A; DOM &#x6811;&#xFF0C;&#x7136;&#x540E; React &#x5C06;&#x5F53;&#x524D;&#x6574;&#x4E2A; DOM &#x6811;&#x548C;&#x4E0A;&#x4E00;&#x6B21;&#x7684; DOM &#x6811;&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;&#xFF0C;&#x5F97;&#x5230; DOM &#x7ED3;&#x6784;&#x7684;&#x533A;&#x522B;&#x3002;<br>&#x800C;&#x4E14; React &#x80FD;&#x591F;&#x6279;&#x5904;&#x7406;&#x865A;&#x62DF; DOM &#x7684;&#x5237;&#x65B0;&#xFF0C;&#x5728;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#xFF08;Event Loop&#xFF09;&#x5185;&#x7684;&#x4E24;&#x6B21;&#x6570;&#x636E;&#x53D8;&#x5316;&#x4F1A;&#x88AB;&#x5408;&#x5E76;&#x3002;<br>&#x4F8B;&#x5982;&#x8FDE;&#x7EED;&#x7684;&#x5148;&#x5C06;&#x8282;&#x70B9;&#x5185;&#x5BB9;&#x4ECE; A &#x53D8;&#x6210; B&#xFF0C;&#x7136;&#x540E;&#x53C8;&#x4ECE; B &#x53D8;&#x6210; A&#xFF0C;React &#x4F1A;&#x8BA4;&#x4E3A; UI &#x4E0D;&#x53D1;&#x751F;&#x4EFB;&#x4F55;&#x53D8;&#x5316;&#xFF0C;&#x800C;&#x5982;&#x679C;&#x901A;&#x8FC7;&#x624B;&#x52A8;&#x63A7;&#x5236;&#xFF0C;&#x8FD9;&#x79CD;&#x903B;&#x8F91;&#x901A;&#x5E38;&#x662F;&#x6781;&#x5176;&#x590D;&#x6742;&#x7684;&#x3002;<br>&#x5C3D;&#x7BA1;&#x6BCF;&#x4E00;&#x6B21;&#x90FD;&#x9700;&#x8981;&#x6784;&#x9020;&#x5B8C;&#x6574;&#x7684;&#x865A;&#x62DF; DOM &#x6811;&#xFF0C;&#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x865A;&#x62DF; DOM &#x662F;&#x5185;&#x5B58;&#x6570;&#x636E;&#xFF0C;&#x6027;&#x80FD;&#x662F;&#x6781;&#x9AD8;&#x7684;&#x3002;<br>&#x800C;&#x5BF9;&#x5B9E;&#x9645; DOM &#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x7684;&#x4EC5;&#x4EC5;&#x662F; Diff &#x90E8;&#x5206;&#xFF0C;&#x56E0;&#x800C;&#x80FD;&#x8FBE;&#x5230;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#x7684;&#x76EE;&#x7684;&#x3002;<br>&#x8FD9;&#x6837;&#xFF0C;&#x5728;&#x4FDD;&#x8BC1;&#x6027;&#x80FD;&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x5C06;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x67D0;&#x4E2A;&#x6570;&#x636E;&#x7684;&#x53D8;&#x5316;&#x5982;&#x4F55;&#x66F4;&#x65B0;&#x5230;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5177;&#x4F53;&#x7684; DOM &#x5143;&#x7D20;&#xFF0C;&#x800C;&#x53EA;&#x9700;&#x8981; &#x5173;&#x5FC3;&#x5728;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x72B6;&#x6001;&#x4E0B;&#xFF0C;&#x6574;&#x4E2A;&#x754C;&#x9762;&#x662F;&#x5982;&#x4F55; Render &#x7684;&#x3002;</p>
+<p><a href="http://blog.csdn.net/yczz/article/details/49585313" target="_blank" rel="external">http://blog.csdn.net/yczz/article/details/49585313</a></p>
+<h3 id="React&#x7EC4;&#x4EF6;"><a href="#React&#x7EC4;&#x4EF6;" class="headerlink" title="React&#x7EC4;&#x4EF6;"></a>React&#x7EC4;&#x4EF6;</h3><h4 id="&#x7EC4;&#x4EF6;&#x5316;&#x6982;&#x5FF5;"><a href="#&#x7EC4;&#x4EF6;&#x5316;&#x6982;&#x5FF5;" class="headerlink" title="&#x7EC4;&#x4EF6;&#x5316;&#x6982;&#x5FF5;"></a>&#x7EC4;&#x4EF6;&#x5316;&#x6982;&#x5FF5;</h4><blockquote>
+<p>&#x865A;&#x62DF; DOM(virtual-dom) &#x4E0D;&#x4EC5;&#x5E26;&#x6765;&#x4E86;&#x7B80;&#x5355;&#x7684; UI &#x5F00;&#x53D1;&#x903B;&#x8F91;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x5E26;&#x6765;&#x4E86;&#x7EC4;&#x4EF6;&#x5316;&#x5F00;&#x53D1;&#x7684;&#x601D;&#x60F3;&#x3002;<br>&#x6240;&#x8C13;&#x7EC4;&#x4EF6;&#xFF0C;&#x5373;&#x5C01;&#x88C5;&#x8D77;&#x6765;&#x7684;&#x5177;&#x6709;&#x72EC;&#x7ACB;&#x529F;&#x80FD;&#x7684;UI&#x90E8;&#x4EF6;&#x3002;</p>
+</blockquote>
+<p>React &#x63A8;&#x8350;&#x4EE5;&#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#x53BB;&#x91CD;&#x65B0;&#x601D;&#x8003; UI &#x6784;&#x6210;&#xFF0C;&#x5C06; UI &#x4E0A;&#x6BCF;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x76F8;&#x5BF9;&#x72EC;&#x7ACB;&#x7684;&#x6A21;&#x5757;&#x5B9A;&#x4E49;&#x6210;&#x7EC4;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5C0F;&#x7684;&#x7EC4;&#x4EF6;&#x901A;&#x8FC7;&#x7EC4;&#x5408;&#x6216;&#x8005;&#x5D4C;&#x5957;&#x7684;&#x65B9;&#x5F0F;&#x6784;&#x6210;&#x5927;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x6700;&#x7EC8;&#x5B8C;&#x6210;&#x6574;&#x4F53;UI&#x7684;&#x6784;&#x5EFA;&#x3002;<br>&#x4F8B;&#x5982;&#xFF0C;Facebook &#x7684; instagram.com &#x6574;&#x7AD9;&#x90FD;&#x91C7;&#x7528;&#x4E86; React &#x6765;&#x5F00;&#x53D1;&#xFF0C;&#x6574;&#x4E2A;&#x9875;&#x9762;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5927;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x5D4C;&#x5957;&#x7684;&#x5927;&#x91CF;&#x5176;&#x5B83;&#x7EC4;&#x4EF6;&#x3002;</p>
+<blockquote>
+<p>&#x5982;&#x679C;&#x8BF4; MVC &#x7684;&#x601D;&#x60F3;&#x662F;&#x505A;&#x5230;&#x89C6;&#x56FE;-&#x6570;&#x636E;-&#x63A7;&#x5236;&#x5668;&#x7684;&#x5206;&#x79BB;&#xFF0C;&#x90A3;&#x4E48;&#x7EC4;&#x4EF6;&#x5316;&#x7684;&#x601D;&#x8003;&#x65B9;&#x5F0F;&#x5219;&#x662F;&#x5E26;&#x6765;&#x4E86; UI &#x529F;&#x80FD;&#x6A21;&#x5757;&#x4E4B;&#x95F4;&#x7684;&#x5206;&#x79BB;&#x3002;</p>
+</blockquote>
+<p>&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684; Blog &#x8BC4;&#x8BBA;&#x754C;&#x9762;&#x6765;&#x770B; MVC &#x548C;&#x7EC4;&#x4EF6;&#x5316;&#x5F00;&#x53D1;&#x601D;&#x8DEF;&#x7684;&#x533A;&#x522B;&#xFF1A;</p>
+<p>&#x5BF9;&#x4E8E; MVC &#x5F00;&#x53D1;&#x6A21;&#x5F0F;&#x6765;&#x8BF4;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x5C06;&#x4E09;&#x8005;&#x5B9A;&#x4E49;&#x6210;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;&#x8868;&#x73B0;&#xFF0C;&#x6570;&#x636E;&#xFF0C;&#x63A7;&#x5236;&#x7684;&#x5206;&#x79BB;&#x3002;&#x5F00;&#x53D1;&#x8005;&#x66F4;&#x591A;&#x7684;&#x662F;&#x4ECE;&#x6280;&#x672F;&#x7684;&#x89D2;&#x5EA6;&#x6765;&#x5BF9;UI&#x8FDB;&#x884C;&#x62C6;&#x5206;&#xFF0C;&#x5B9E;&#x73B0;&#x677E;&#x8026;&#x5408;&#x3002;<br>&#x5BF9;&#x4E8E; React &#x800C;&#x8A00;&#xFF0C;&#x5219;&#x5B8C;&#x5168;&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x601D;&#x8DEF;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x4ECE;&#x529F;&#x80FD;&#x7684;&#x89D2;&#x5EA6;&#x51FA;&#x53D1;&#xFF0C;&#x5C06; UI &#x5206;&#x6210;&#x4E0D;&#x540C;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x6BCF;&#x4E2A;&#x7EC4;&#x4EF6;&#x90FD;&#x72EC;&#x7ACB;&#x5C01;&#x88C5;&#x3002;&#x5728; React &#x4E2D;&#xFF0C;&#x6309;&#x7167;&#x754C;&#x9762;&#x6A21;&#x5757;&#x81EA;&#x7136;&#x5212;&#x5206;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x7EC4;&#x7EC7;&#x548C;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#xFF0C;<br>&#x5BF9;&#x4E8E;&#x8BC4;&#x8BBA;&#x754C;&#x9762;&#x800C;&#x8A00;&#xFF0C;&#x6574;&#x4E2A; UI &#x662F;&#x4E00;&#x4E2A;&#x901A;&#x8FC7;&#x5C0F;&#x7EC4;&#x4EF6;&#x6784;&#x6210;&#x7684;&#x5927;&#x7EC4;&#x4EF6;&#xFF0C;&#x6BCF;&#x4E2A;&#x7EC4;&#x4EF6;&#x53EA;&#x5173;&#x5FC3;&#x81EA;&#x5DF1;&#x90E8;&#x5206;&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x5F7C;&#x6B64;&#x72EC;&#x7ACB;&#x3002;</p>
+<p><img src="/2016/12/04/s015-React&#x5B66;&#x4E60;&#x7B14;&#x8BB0;/React002.png" alt="&#x7EC4;&#x4EF6;&#x7684;&#x7279;&#x70B9;"></p>
+<h4 id="&#x7EC4;&#x4EF6;&#x5316;&#x5F00;&#x53D1;&#x7279;&#x6027;"><a href="#&#x7EC4;&#x4EF6;&#x5316;&#x5F00;&#x53D1;&#x7279;&#x6027;" class="headerlink" title="&#x7EC4;&#x4EF6;&#x5316;&#x5F00;&#x53D1;&#x7279;&#x6027;"></a>&#x7EC4;&#x4EF6;&#x5316;&#x5F00;&#x53D1;&#x7279;&#x6027;</h4><p>React&#x8BA4;&#x4E3A;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x5E94;&#x8BE5;&#x5177;&#x6709;&#x5982;&#x4E0B;&#x7279;&#x5F81;&#xFF1A;</p>
+<blockquote>
+<p>(1)&#x3001;&#x53EF;&#x7EC4;&#x5408;&#xFF08;Composeable&#xFF09;&#xFF1A;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x6613;&#x4E8E;&#x548C;&#x5176;&#x5B83;&#x7EC4;&#x4EF6;&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#xFF0C;&#x6216;&#x8005;&#x5D4C;&#x5957;&#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x3002;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x521B;&#x5EFA;&#x4E86;&#x53E6;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#xFF0C;&#x90A3;&#x4E48;&#x8BF4;&#x7236;&#x7EC4;&#x4EF6;&#x62E5;&#x6709;&#xFF08;own&#xFF09;&#x5B83;&#x521B;&#x5EFA;&#x7684;&#x5B50;&#x7EC4;&#x4EF6;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#xFF0C;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x7684;UI&#x53EF;&#x4EE5;&#x62C6;&#x5206;&#x6210;&#x591A;&#x4E2A;&#x7B80;&#x5355;&#x7684;UI&#x7EC4;&#x4EF6;&#xFF1B;<br>(2)&#x3001;&#x53EF;&#x91CD;&#x7528;&#xFF08;Reusable&#xFF09;&#xFF1A;&#x6BCF;&#x4E2A;&#x7EC4;&#x4EF6;&#x90FD;&#x662F;&#x5177;&#x6709;&#x72EC;&#x7ACB;&#x529F;&#x80FD;&#x7684;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x88AB;&#x4F7F;&#x7528;&#x5728;&#x591A;&#x4E2A;UI&#x573A;&#x666F;&#xFF1B;<br>(3)&#x3001;&#x53EF;&#x7EF4;&#x62A4;&#xFF08;Maintainable&#xFF09;&#xFF1A;&#x6BCF;&#x4E2A;&#x5C0F;&#x7684;&#x7EC4;&#x4EF6;&#x4EC5;&#x4EC5;&#x5305;&#x542B;&#x81EA;&#x8EAB;&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x66F4;&#x5BB9;&#x6613;&#x88AB;&#x7406;&#x89E3;&#x548C;&#x7EF4;&#x62A4;&#xFF1B;<br>(4)&#x3001;&#x53EF;&#x6D4B;&#x8BD5;&#xFF08;Testable&#xFF09;&#xFF1A;&#x56E0;&#x4E3A;&#x6BCF;&#x4E2A;&#x7EC4;&#x4EF6;&#x90FD;&#x662F;&#x72EC;&#x7ACB;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x5BF9;&#x4E8E;&#x5404;&#x4E2A;&#x7EC4;&#x4EF6;&#x5206;&#x522B;&#x6D4B;&#x8BD5;&#x663E;&#x7136;&#x8981;&#x6BD4;&#x5BF9;&#x4E8E;&#x6574;&#x4E2A;UI&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#x5BB9;&#x6613;&#x7684;&#x591A;&#x3002;</p>
+</blockquote>
+<h4 id="&#x7EC4;&#x4EF6;&#x5B9A;&#x4E49;"><a href="#&#x7EC4;&#x4EF6;&#x5B9A;&#x4E49;" class="headerlink" title="&#x7EC4;&#x4EF6;&#x5B9A;&#x4E49;"></a>&#x7EC4;&#x4EF6;&#x5B9A;&#x4E49;</h4><p>&#x5728; React &#x4E2D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x4E5F;&#x662F;&#x76F8;&#x5F53;&#x7684;&#x5BB9;&#x6613;&#xFF0C;&#x7EC4;&#x4EF6;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x9884;&#x5B9A;&#x4E49;&#x63A5;&#x53E3;&#x7684; JavaScript &#x7C7B;&#xFF1A;</p>
+<blockquote>
+<p>1&#x3001;&#x7EC4;&#x4EF6;&#x6E32;&#x67D3;</p>
+</blockquote>
+<p>ReactDOM.render &#x662F; React &#x7684;&#x6700;&#x57FA;&#x672C;&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x4E8E;&#x5C06;&#x6A21;&#x677F;&#x8F6C;&#x4E3A; HTML &#x8BED;&#x8A00;&#xFF0C;&#x5E76;&#x63D2;&#x5165;&#x6307;&#x5B9A;&#x7684; DOM &#x8282;&#x70B9;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ReactDOM.render(</div><div class="line">  &lt;h1&gt;Hello, world!&lt;/h1&gt;,</div><div class="line">  document.getElementById(&apos;example&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>&#x800C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C; &#x5FC5;&#x987B;&#x800C;&#x4E14;&#x53EA;&#x80FD;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x7684; React &#x5143;&#x7D20;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684;&#x7EC4;&#x4EF6;&#x662F;&#x7531;&#x591A;&#x4E2A;&#x5143;&#x7D20;&#x6784;&#x6210;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x4F60;&#x5FC5;&#x987B;&#x5728;&#x5916;&#x8FB9;&#x5305;&#x4E00;&#x4E2A;&#x9876;&#x5C42;&#x5143;&#x7D20;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x8FD9;&#x4E2A;&#x9876;&#x5C42;&#x5143;&#x7D20;&#x3002;&#x6BD4;&#x5982;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5E03;&#x5C40;&#x7EC4;&#x4EF6;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">render:function(){</div><div class="line">    return React.createElement(</div><div class="line">        &quot;div&quot;,null,</div><div class="line">        React.createElement(&quot;div&quot;,null,&quot;header&quot;),</div><div class="line">        React.createElement(&quot;div&quot;,null,&quot;content&quot;),</div><div class="line">        React.createElement(&quot;div&quot;,null,&quot;footer&quot;)</div><div class="line">    );</div><div class="line">}</div></pre></td></tr></table></figure>
+<blockquote>
+<p>2&#x3001;ES5&#x65B9;&#x5F0F;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&quot;use strict&quot;;</div><div class="line">var HelloMessage = React.createClass({</div><div class="line">      displayName: &quot;HelloMessage&quot;,</div><div class="line">      render: function render() {</div><div class="line">            return React.createElement(</div><div class="line">                  &quot;div&quot;,</div><div class="line">                  null,</div><div class="line">                  &quot;Hello &quot;,</div><div class="line">                  this.props.name</div><div class="line">            );</div><div class="line">      }</div><div class="line">});</div><div class="line">ReactDOM.render(React.createElement(HelloMessage, { name: &quot;John&quot; }), mountNode);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>3&#x3001;JSX &#x4E2D;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var HelloMessage = React.createClass({</div><div class="line">  render: function() {</div><div class="line">    return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;;</div><div class="line">  }</div><div class="line">});</div><div class="line">ReactDOM.render(&lt;HelloMessage name=&quot;John&quot; /&gt;, mountNode);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>4&#x3001;ES6&#x4E2D;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">import &apos;./Hello.css&apos;;</div><div class="line">import &apos;./Hello.scss&apos;;</div><div class="line">import React, {Component} from &apos;react&apos;;</div><div class="line">// &#x5185;&#x8054;&#x6837;&#x5F0F;</div><div class="line">let style={</div><div class="line">    backgroundColor:&apos;blue&apos;</div><div class="line">}</div><div class="line">export default class Hello extends Component {</div><div class="line">    constructor(props) {</div><div class="line">        super(props);</div><div class="line">        this.state = { count: &apos;es6&apos;};</div><div class="line">    }</div><div class="line">    render() {</div><div class="line">        return (</div><div class="line">            &lt;div&gt;</div><div class="line">                &lt;h1 style={style}&gt;Hello world{this.state.count}&lt;/h1&gt;</div><div class="line">                &lt;br/&gt;</div><div class="line">                &lt;image/&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        )</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<blockquote>
+<p>5&#x3001;&#x6CE8;&#x610F;&#x4E8B;&#x9879;</p>
+<p>&#x7684;React&#x7EC4;&#x4EF6;&#x540D;&#x79F0;&#x7684;&#x9996;&#x5B57;&#x6BCD;&#x5E94;&#x5F53;&#x5927;&#x5199;&#xFF0C;&#x5173;&#x4E8E;&#x5927;&#x5C0F;&#x5199;&#x7684;&#x5DEE;&#x5F02;&#x4F60;&#x4F1A;&#x5728;&#x540E;&#x9762;&#x53D1;&#x73B0;&#x3002;<br>div &#x5143;&#x7D20;&#x7684;&#x6837;&#x5F0F;&#x7C7B;&#x662F;&#x7528; className &#x800C;&#x4E0D;&#x662F; class &#x58F0;&#x660E;&#x7684;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A; class &#x662F; JavaScript &#x7684;&#x4FDD;&#x7559;&#x5B57;&#xFF0C;&#x6E32;&#x67D3;&#x540E;&#xFF0C;&#x771F;&#x5B9E;&#x7684; DOM &#x8FD8;&#x4F1A;&#x662F;&#xFF1A;<code>&lt;div class=&quot;ez-led&quot;&gt;Hello, React!&lt;/div&gt;</code></p>
+</blockquote>
+<h3 id="JSX&#x8BED;&#x6CD5;"><a href="#JSX&#x8BED;&#x6CD5;" class="headerlink" title="JSX&#x8BED;&#x6CD5;"></a>JSX&#x8BED;&#x6CD5;</h3><blockquote>
+<p>&#x4EC0;&#x4E48;&#x662F;JSX</p>
+</blockquote>
+<p>&#x5728;&#x7528; React &#x5199;&#x7EC4;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x7528;&#x5230; JSX &#x8BED;&#x6CD5;&#xFF0C;&#x50CF;&#x662F;&#x5728; Javascript &#x4EE3;&#x7801;&#x91CC;&#x76F4;&#x63A5;&#x5199;&#x8D77;&#x4E86;XML&#x6807;&#x7B7E;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A; XML &#x6807;&#x7B7E;&#x90FD;&#x4F1A;&#x88AB; JSX &#x8F6C;&#x6362;&#x5DE5;&#x5177;&#x8F6C;&#x6362;&#x6210;&#x7EAF; Javascript &#x4EE3;&#x7801;&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x7EAF; Javascript &#x4EE3;&#x7801;&#x5199;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#xFF0C;&#x53EA;&#x662F;&#x5229;&#x7528; JSX&#xFF0C;&#x7EC4;&#x4EF6;&#x7684;&#x7ED3;&#x6784;&#x548C;&#x7EC4;&#x4EF6;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x770B;&#x4E0A;&#x53BB;&#x66F4;&#x52A0;&#x6E05;&#x6670;</p>
+<blockquote>
+<p>JSX&#x8BED;&#x6CD5;&#x4F7F;&#x7528;</p>
+</blockquote>
+<p>HTML &#x8BED;&#x8A00;&#x76F4;&#x63A5;&#x5199;&#x5728; JavaScript &#x8BED;&#x8A00;&#x4E4B;&#x4E2D;&#xFF0C;&#x4E0D;&#x52A0;&#x4EFB;&#x4F55;&#x5F15;&#x53F7;&#xFF0C;&#x8FD9;&#x5C31;&#x662F; JSX &#x7684;&#x8BED;&#x6CD5;&#xFF0C;&#x5B83;&#x5141;&#x8BB8; HTML &#x4E0E; JavaScript &#x7684;&#x6DF7;&#x5199;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var names = [&apos;Alice&apos;, &apos;Emily&apos;, &apos;Kate&apos;];</div><div class="line">ReactDOM.render(</div><div class="line">  &lt;div&gt;</div><div class="line">  {</div><div class="line">    names.map(function (name) {</div><div class="line">      return &lt;div&gt; Hello, {name}! &lt;/div&gt;</div><div class="line">    })</div><div class="line">  }</div><div class="line">  &lt;/div&gt;,</div><div class="line">  document.getElementById(&apos;example&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4F53;&#x73B0;&#x4E86; JSX &#x7684;&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#x89C4;&#x5219;&#xFF1A;&#x9047;&#x5230; HTML &#x6807;&#x7B7E;&#xFF08;&#x4EE5; <code>&lt;</code> &#x5F00;&#x5934;&#xFF09;&#xFF0C;&#x5C31;&#x7528; HTML &#x89C4;&#x5219;&#x89E3;&#x6790;&#xFF1B;&#x9047;&#x5230;&#x4EE3;&#x7801;&#x5757;&#xFF08;&#x4EE5; { &#x5F00;&#x5934;&#xFF09;&#xFF0C;&#x5C31;&#x7528; JavaScript &#x89C4;&#x5219;&#x89E3;&#x6790;&#x3002;</p>
+<p>JSX &#x5141;&#x8BB8;&#x76F4;&#x63A5;&#x5728;&#x6A21;&#x677F;&#x63D2;&#x5165; JavaScript &#x53D8;&#x91CF;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x5219;&#x4F1A;&#x5C55;&#x5F00;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#x7684;&#x6240;&#x6709;&#x6210;&#x5458;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var arr = [</div><div class="line">  &lt;h1&gt;Hello world!&lt;/h1&gt;,</div><div class="line">  &lt;h2&gt;React is awesome&lt;/h2&gt;,</div><div class="line">];</div><div class="line">ReactDOM.render(</div><div class="line">  &lt;div&gt;{arr}&lt;/div&gt;,</div><div class="line">  document.getElementById(&apos;example&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x7684; arr &#x53D8;&#x91CF;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x7ED3;&#x679C; JSX &#x4F1A;&#x628A;&#x5B83;&#x7684;&#x6240;&#x6709;&#x6210;&#x5458;&#xFF0C;&#x6DFB;&#x52A0;&#x5230;&#x6A21;&#x677F;&#xFF0C;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;:</p>
+<p><img src="/2016/12/04/s015-React&#x5B66;&#x4E60;&#x7B14;&#x8BB0;/React003.png" alt="&#x8FD0;&#x884C;&#x7ED3;&#x679C;"></p>
+<h3 id="Data-Flow&#xFF08;&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;&#xFF09;"><a href="#Data-Flow&#xFF08;&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;&#xFF09;" class="headerlink" title="Data Flow&#xFF08;&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;&#xFF09;"></a>Data Flow&#xFF08;&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;&#xFF09;</h3><h4 id="&#x4F20;&#x7EDF;&#x7684;-MVC"><a href="#&#x4F20;&#x7EDF;&#x7684;-MVC" class="headerlink" title="&#x4F20;&#x7EDF;&#x7684; MVC"></a>&#x4F20;&#x7EDF;&#x7684; MVC</h4><p><img src="/2016/12/04/s015-React&#x5B66;&#x4E60;&#x7B14;&#x8BB0;/React004.png" alt="&#x4F20;&#x7EDF;&#x7684;MVC"></p>
+<p>&#x5230;&#x4E86; Flux &#x5F53;&#x4E2D;, &#x9664;&#x4E86;&#x540D;&#x5B57;&#x6539;&#x53D8;&#x4E86;, &#x91CD;&#x8981;&#x7684;&#x662F;&#x5927;&#x91CF;&#x7684; Model &#x5F52;&#x5230;&#x4E86; Store, View &#x4E5F;&#x7EDF;&#x4E00;&#x4E86;,&#x4ECE;&#x800C;&#x5F97;&#x5230;&#x4E86;&#x6240;&#x8C13;&#x5355;&#x5411;&#x7684;&#x6570;&#x636E;&#x6D41;, &#x5C31;&#x662F; Model &#x548C; View &#x4E4B;&#x95F4;&#x5173;&#x7CFB;&#x975E;&#x5E38;&#x6E05;&#x6670;&#x4E86;&#x3002;&#x8FD9;&#x6837;&#x9700;&#x8981;&#x4EBA;&#x4E3A;&#x7BA1;&#x7406;&#x7684;&#x72B6;&#x6001;&#x5C31;&#x4E00;&#x4E0B;&#x5C11;&#x4E86;&#x5F88;&#x591A;, &#x7ED3;&#x679C;&#x4F53;&#x73B0;&#x5728;&#x5F00;&#x53D1;&#x5E94;&#x7528;&#x7684;&#x6548;&#x7387;&#x5F53;&#x4E2D;&#x3002;</p>
+<h4 id="Flux"><a href="#Flux" class="headerlink" title="Flux"></a>Flux</h4><p>1&#x3001;&#x5B66;&#x4E60;&#x5730;&#x5740;&#xFF1A;<a href="https://hulufei.gitbooks.io/react-tutorial/content/flux.html" target="_blank" rel="external">https://hulufei.gitbooks.io/react-tutorial/content/flux.html</a><br>2&#x3001;React &#x6807;&#x699C;&#x81EA;&#x5DF1;&#x662F; MVC &#x91CC;&#x9762; V &#x7684;&#x90E8;&#x5206;&#xFF0C;&#x90A3;&#x4E48; Flux &#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x6DFB;&#x52A0; M &#x548C; C &#x7684;&#x90E8;&#x5206;&#xFF0C;Flux &#x662F; Facebook &#x4F7F;&#x7528;&#x7684;&#x4E00;&#x5957;&#x524D;&#x7AEF;&#x5E94;&#x7528;&#x7684;&#x67B6;&#x6784;&#x6A21;&#x5F0F;&#x3002;<br>3&#x3001;&#x4E00;&#x4E2A; Flux &#x5E94;&#x7528;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x56DB;&#x4E2A;&#x90E8;&#x5206;&#xFF1A;<br>(1)&#x3001;dispatcher &#x5904;&#x7406;&#x52A8;&#x4F5C;&#x5206;&#x53D1;&#xFF0C;&#x7EF4;&#x62A4; Store &#x4E4B;&#x95F4;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;<br>(2)&#x3001;stores  &#x6570;&#x636E;&#x548C;&#x903B;&#x8F91;&#x90E8;&#x5206;<br>(3)&#x3001;views  React &#x7EC4;&#x4EF6;&#xFF0C;&#x8FD9;&#x4E00;&#x5C42;&#x53EF;&#x4EE5;&#x770B;&#x4F5C; controller-views&#xFF0C;&#x4F5C;&#x4E3A;&#x89C6;&#x56FE;&#x540C;&#x65F6;&#x54CD;&#x5E94;&#x7528;&#x6237;&#x4EA4;&#x4E92;<br>(4)&#x3001;actions  &#x63D0;&#x4F9B;&#x7ED9; dispatcher &#x4F20;&#x9012;&#x6570;&#x636E;&#x7ED9; store</p>
+<h4 id="&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;"><a href="#&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;" class="headerlink" title="&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;"></a>&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;</h4><p>Flux &#x7684;&#x6838;&#x5FC3;&#x201C;&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;&#x201C;&#x600E;&#x4E48;&#x8FD0;&#x4F5C;&#x7684;&#xFF1A;</p>
+<p><code>Action -&gt; Dispatcher -&gt; Store -&gt; View</code></p>
+<p>&#x66F4;&#x591A;&#x65F6;&#x5019; View &#x4F1A;&#x901A;&#x8FC7;&#x7528;&#x6237;&#x4EA4;&#x4E92;&#x89E6;&#x53D1; Action&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x5B8C;&#x6574;&#x7684;&#x6570;&#x636E;&#x6D41;&#x7C7B;&#x4F3C;&#x8FD9;&#x6837;&#xFF1A;</p>
+<p><img src="/2016/12/04/s015-React&#x5B66;&#x4E60;&#x7B14;&#x8BB0;/React005.png" alt="&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x5B8C;&#x6574;&#x7684;&#x6570;&#x636E;&#x6D41;"></p>
+<p>&#x6574;&#x4E2A;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<blockquote>
+<p>&#x9996;&#x5148;&#x8981;&#x6709; action&#xFF0C;&#x901A;&#x8FC7;&#x5B9A;&#x4E49;&#x4E00;&#x4E9B; action creator &#x65B9;&#x6CD5;&#x6839;&#x636E;&#x9700;&#x8981;&#x521B;&#x5EFA; Action &#x63D0;&#x4F9B;&#x7ED9; dispatcher<br>View &#x5C42;&#x901A;&#x8FC7;&#x7528;&#x6237;&#x4EA4;&#x4E92;&#xFF08;&#x6BD4;&#x5982; onClick&#xFF09;&#x4F1A;&#x89E6;&#x53D1; Action<br>Dispatcher &#x4F1A;&#x5206;&#x53D1;&#x89E6;&#x53D1;&#x7684; Action &#x7ED9;&#x6240;&#x6709;&#x6CE8;&#x518C;&#x7684; Store &#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;<br>Store &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x6839;&#x636E;&#x63A5;&#x6536;&#x7684; Action &#x66F4;&#x65B0;&#x81EA;&#x8EAB;&#x6570;&#x636E;&#x4E4B;&#x540E;&#x4F1A;&#x89E6;&#x53D1;&#x4E00;&#x4E2A; change &#x4E8B;&#x4EF6;&#x901A;&#x77E5; View &#x6570;&#x636E;&#x66F4;&#x6539;&#x4E86;<br>View &#x4F1A;&#x76D1;&#x542C;&#x8FD9;&#x4E2A; change &#x4E8B;&#x4EF6;&#xFF0C;&#x62FF;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x65B0;&#x6570;&#x636E;&#x5E76;&#x8C03;&#x7528; setState &#x66F4;&#x65B0;&#x7EC4;&#x4EF6; UI</p>
+</blockquote>
+<p>&#x6240;&#x6709;&#x7684;&#x72B6;&#x6001;&#x90FD;&#x7531; Store &#x6765;&#x7EF4;&#x62A4;&#xFF0C;&#x901A;&#x8FC7; Action &#x4F20;&#x9012;&#x6570;&#x636E;&#xFF0C;&#x6784;&#x6210;&#x4E86;&#x5982;&#x4E0A;&#x6240;&#x8FF0;&#x7684;&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;&#x5FAA;&#x73AF;&#xFF0C;&#x6240;&#x4EE5;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x5404;&#x90E8;&#x5206;&#x5206;&#x5DE5;&#x5C31;&#x76F8;&#x5F53;&#x660E;&#x786E;&#xFF0C;&#x9AD8;&#x5EA6;&#x89E3;&#x8026;&#x4E86;&#x3002;&#x8FD9;&#x79CD;&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;&#x4F7F;&#x5F97;&#x6574;&#x4E2A;&#x7CFB;&#x7EDF;&#x90FD;&#x662F;&#x900F;&#x660E;&#x53EF;&#x9884;&#x6D4B;&#x7684;&#x3002;</p>
+<h4 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h4><p>Redux &#x5B98;&#x65B9;&#x4E2D;&#x6587;&#x6587;&#x6863;&#xFF1A;<a href="http://camsong.github.io/redux-in-chinese/index" target="_blank" rel="external">http://camsong.github.io/redux-in-chinese/index</a>.</p>
+<h4 id="&#x5176;&#x4ED6;"><a href="#&#x5176;&#x4ED6;" class="headerlink" title="&#x5176;&#x4ED6;"></a>&#x5176;&#x4ED6;</h4><p>Reflux&#xFF1A;<a href="https://segmentfault.com/a/1190000002793786?utm_source=tuicool" target="_blank" rel="external">https://segmentfault.com/a/1190000002793786?utm_source=tuicool</a></p>
+<h2 id="React&#x5FEB;&#x901F;&#x5F00;&#x59CB;"><a href="#React&#x5FEB;&#x901F;&#x5F00;&#x59CB;" class="headerlink" title="React&#x5FEB;&#x901F;&#x5F00;&#x59CB;"></a>React&#x5FEB;&#x901F;&#x5F00;&#x59CB;</h2><h3 id="&#x521B;&#x5EFA;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x5939;"><a href="#&#x521B;&#x5EFA;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x5939;" class="headerlink" title="&#x521B;&#x5EFA;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x5939;"></a>&#x521B;&#x5EFA;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x5939;</h3><p>&#x521D;&#x59CB;&#x5316;npm&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm init -y</div></pre></td></tr></table></figure>
+<h3 id="&#x4F9D;&#x8D56;&#x73AF;&#x5883;"><a href="#&#x4F9D;&#x8D56;&#x73AF;&#x5883;" class="headerlink" title="&#x4F9D;&#x8D56;&#x73AF;&#x5883;"></a>&#x4F9D;&#x8D56;&#x73AF;&#x5883;</h3><p>&#x5728;&#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x6253;&#x5F00;&#x547D;&#x4EE4;&#x7A97;&#x53E3;&#x4E0B;&#x8F7D; react &#x548C; react-dom &#x4F9D;&#x8D56;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install  react  react-dom --save</div></pre></td></tr></table></figure>
+<h3 id="&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x7ED3;&#x6784;"><a href="#&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x7ED3;&#x6784;" class="headerlink" title="&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x7ED3;&#x6784;"></a>&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x7ED3;&#x6784;</h3><p>Hello World</p>
+<p>&#x82F1;&#x6587;&#x5B98;&#x7F51;&#x7684;&#xFF1A;<a href="http://facebook.github.io/react/index.html" target="_blank" rel="external">http://facebook.github.io/react/index.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Var React = require(&apos;react&apos;);</div><div class="line">Var ReactDOM = require(&apos;react-dom&apos;);</div><div class="line">var HelloMessage = React.createClass({</div><div class="line">    render: function() {</div><div class="line">        return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;;</div><div class="line">    }</div><div class="line">});</div><div class="line">ReactDOM.render(&lt;HelloMessage name=&quot;John&quot; /&gt;, mountNode);</div></pre></td></tr></table></figure>
+<h3 id="&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x65B9;&#x5F0F;&#xFF08;&#x8BED;&#x6CD5;&#x8F6C;&#x6362;&#xFF09;"><a href="#&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x65B9;&#x5F0F;&#xFF08;&#x8BED;&#x6CD5;&#x8F6C;&#x6362;&#xFF09;" class="headerlink" title="&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x65B9;&#x5F0F;&#xFF08;&#x8BED;&#x6CD5;&#x8F6C;&#x6362;&#xFF09;"></a>&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x65B9;&#x5F0F;&#xFF08;&#x8BED;&#x6CD5;&#x8F6C;&#x6362;&#xFF09;</h3><p>&#x56E0;&#x4E3A;&#x73B0;&#x5728;&#x90FD;&#x662F;&#x4F7F;&#x7528; jsx &#x548C; es6&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5BF9; js &#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x3002;</p>
+<p>&#x7F16;&#x8BD1;&#x8F6C;&#x6362;&#x6709;&#x5206;&#x4E3A;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x8F6C;&#x6362;&#x548C;&#x79BB;&#x7EBF;&#x8F6C;&#x6362;&#xFF0C;&#x4F46;&#x662F;&#x57FA;&#x672C;&#x4E0A;&#x4E0D;&#x4F1A;&#x7528;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x5F15;&#x5165;&#x8F6C;&#x6362; js &#x8F6C;&#x6362;&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x4ECB;&#x7ECD;&#x79BB;&#x7EBF;&#x8F6C;&#x6362;&#x3002;</p>
+<h4 id="react-tools&#x8F6C;&#x6362;"><a href="#react-tools&#x8F6C;&#x6362;" class="headerlink" title="react-tools&#x8F6C;&#x6362;"></a>react-tools&#x8F6C;&#x6362;</h4><p>&#x8FD9;&#x662F; react &#x81EA;&#x5DF1;&#x63D0;&#x4F9B;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x662F;&#x8001;&#x7248;&#x672C;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x4E2D;&#x6587;&#x5B98;&#x7F51;&#x8FD8;&#x662F;&#x8001;&#x7248;&#x672C;&#x7684; api&#xFF0C;&#x6240;&#x4EE5;&#x4ECB;&#x7ECD;&#x7684;&#x662F;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x3002;</p>
+<blockquote>
+<p>&#x9996;&#x5148;&#x5B89;&#x88C5;&#x4F9D;&#x8D56;<br>&#x7528;&#x547D;&#x4EE4;&#x8FDB;&#x884C;&#x8F6C;&#x6362;&#xFF0C;&#x6709;&#x5174;&#x8DA3;&#x7684;&#x5927;&#x5BB6;&#x81EA;&#x5DF1;&#x770B;&#x4E00;&#x4E0B;jsx -h</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install -g react-tools</div><div class="line">jsx  --watch  src/  build/</div></pre></td></tr></table></figure>
+<p>&#x53C2;&#x8003;&#x5730;&#x5740;&#xFF1A;<a href="http://reactjs.cn/react/docs/getting-started.html" target="_blank" rel="external">http://reactjs.cn/react/docs/getting-started.html</a></p>
+<h4 id="babel&#x8F6C;&#x6362;"><a href="#babel&#x8F6C;&#x6362;" class="headerlink" title="babel&#x8F6C;&#x6362;"></a>babel&#x8F6C;&#x6362;</h4><p>&#x82F1;&#x6587;&#x5B98;&#x7F51;&#x7684;&#x6587;&#x6863;&#x6BD4;&#x8F83;&#x65B0;&#xFF0C;&#x5DF2;&#x7ECF;&#x63A8;&#x8350;&#x4F7F;&#x7528; babel &#x6765;&#x8FDB;&#x884C;&#x8F6C;&#x6362;</p>
+<blockquote>
+<p>1&#x3001;&#x4E0B;&#x8F7D;&#x4F9D;&#x8D56;</p>
+</blockquote>
+<p>&#x5B89;&#x88C5;babel&#x3001;babel&#x8F6C;&#x6362;jsx&#x7684;&#x5305;&#x3001;babel&#x8F6C;&#x5316;ES6&#x7684;&#x5305;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install --global babel-cli</div><div class="line">npm install babel-preset-react  -dev-save</div><div class="line">npm install babel-preset-es2015 -dev-save</div></pre></td></tr></table></figure>
+<p>&#x6CE8;&#x610F;:&#x52A0;&#x4E86; -dev &#x4E4B;&#x540E;&#xFF0C;&#x8FD0;&#x884C; npm install &#x4E0D;&#x4F1A;&#x4E0B;&#x8F7D;&#x5F00;&#x53D1;&#x4F9D;&#x8D56;&#xFF0C;&#x9700;&#x8981;&#x8FD0;&#x884C; npm install &#x2013;dev</p>
+<blockquote>
+<p>2&#x3001;&#x8FD0;&#x884C;&#x547D;&#x4EE4;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">babel --presets react src --watch --out-dir build</div></pre></td></tr></table></figure>
+<blockquote>
+<p>3&#x3001;&#x5C06;&#x7F16;&#x8BD1;&#x4E4B;&#x540E;&#x7684;js&#x6587;&#x4EF6;&#x5728;index.html&#x6587;&#x4EF6;&#x4E2D;&#x5F15;&#x5165;</p>
+</blockquote>
+<h4 id="Gulp-react"><a href="#Gulp-react" class="headerlink" title="Gulp-react"></a>Gulp-react</h4><p><a href="https://github.com/sindresorhus/gulp-react" target="_blank" rel="external">https://github.com/sindresorhus/gulp-react</a></p>
+<h4 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h4><p>&#x8BF7;&#x67E5;&#x770B; webpack &#x7684;&#x6587;&#x6863;</p>
+<h4 id="&#x5F00;&#x53D1;&#x5DE5;&#x5177;"><a href="#&#x5F00;&#x53D1;&#x5DE5;&#x5177;" class="headerlink" title="&#x5F00;&#x53D1;&#x5DE5;&#x5177;"></a>&#x5F00;&#x53D1;&#x5DE5;&#x5177;</h4><p><img src="/2016/12/04/s015-React&#x5B66;&#x4E60;&#x7B14;&#x8BB0;/React006.png" alt="&#x5F00;&#x53D1;&#x5DE5;&#x5177;"></p>
+<h2 id="&#x4E3B;&#x8981;&#x77E5;&#x8BC6;"><a href="#&#x4E3B;&#x8981;&#x77E5;&#x8BC6;" class="headerlink" title="&#x4E3B;&#x8981;&#x77E5;&#x8BC6;"></a>&#x4E3B;&#x8981;&#x77E5;&#x8BC6;</h2><h3 id="&#x89C6;&#x56FE;&#x76F8;&#x5173;&#x6982;&#x5FF5;"><a href="#&#x89C6;&#x56FE;&#x76F8;&#x5173;&#x6982;&#x5FF5;" class="headerlink" title="&#x89C6;&#x56FE;&#x76F8;&#x5173;&#x6982;&#x5FF5; !!!"></a>&#x89C6;&#x56FE;&#x76F8;&#x5173;&#x6982;&#x5FF5; !!!</h3><blockquote>
+<p>Props&#xFF08;&#x5C5E;&#x6027;&#xFF0C;&#x5C31;&#x662F; element &#x4E0A;&#x7684; attrss&#xFF09;<br>State&#xFF08;&#x5199;&#x8FC7; view &#x7EC4;&#x4EF6;&#x7684;&#x57FA;&#x672C;&#x90FD;&#x4F1A;&#x77E5;&#x9053;&#xFF0C;&#x6309;&#x94AE;&#x6709;&#x4E09;&#x6001;&#xFF0C;Normal&#xFF0C;Highlight&#xFF0C;Selected&#xFF0C;&#x5305;&#x62EC; extjs&#xFF0C;jquery &#x91CC;&#x7684;&#x5927;&#x90E8;&#x5206; ui &#x6846;&#x67B6;&#x90FD;&#x662F;&#x6709;&#x72B6;&#x6001;&#x7684;&#x3002;&#xFF09;<br>Event&#xFF08;&#x5176;&#x5B9E;&#x8FD8;&#x5E94;&#x8BE5;&#x7B97;&#x4E00;&#x4E2A;&#x5C31;&#x662F; dom &#x4E8B;&#x4EF6;&#xFF09;</p>
+</blockquote>
+<p>&#x4E86;&#x89E3;&#x4E86;&#x4E0A;&#x9762;&#x8FD9;&#x4E9B;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5199;&#x4EE3;&#x7801;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;:</p>
+<blockquote>
+<p>&#x5C5E;&#x6027;&#xFF0C;&#x89E3;&#x51B3;&#x4E86;view&#x7684;&#x5B9A;&#x4E49;&#x95EE;&#x9898;&#xFF0C;&#x5373;&#x8BED;&#x4E49;&#x63CF;&#x8FF0;<br>&#x72B6;&#x6001;&#xFF0C;&#x662F;view&#x7684;&#x6709;&#x7A77;&#x72B6;&#x6001;&#x673A;&#xFF0C;&#x6839;&#x636E;&#x72B6;&#x6001;&#x51B3;&#x5B9A;&#x7EC4;&#x4EF6; ui &#x548C;&#x884C;&#x4E3A;<br>&#x4E8B;&#x4EF6;&#xFF0C;&#x662F;view&#x91CC;&#x5143;&#x7D20;&#x7684;&#x884C;&#x4E3A;</p>
+</blockquote>
+<p>&#x6709;&#x7A77;&#x72B6;&#x6001;&#x673A;&#xFF1A;<a href="http://baike.baidu.com/view/115336.htm" target="_blank" rel="external">http://baike.baidu.com/view/115336.htm</a></p>
+<h3 id="jsx&#x8BED;&#x6CD5;&#x8BE6;&#x89E3;"><a href="#jsx&#x8BED;&#x6CD5;&#x8BE6;&#x89E3;" class="headerlink" title="jsx&#x8BED;&#x6CD5;&#x8BE6;&#x89E3;"></a>jsx&#x8BED;&#x6CD5;&#x8BE6;&#x89E3;</h3><h4 id="HTML-&#x8F6C;&#x4E49;"><a href="#HTML-&#x8F6C;&#x4E49;" class="headerlink" title="HTML &#x8F6C;&#x4E49;"></a>HTML &#x8F6C;&#x4E49;</h4><p>React &#x4F1A;&#x5C06;&#x6240;&#x6709;&#x8981;&#x663E;&#x793A;&#x5230; DOM &#x7684;&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x4E49;&#xFF0C;&#x9632;&#x6B62; XSS&#x3002;<br>&#x6240;&#x4EE5;&#x5982;&#x679C; JSX &#x4E2D;&#x542B;&#x6709;&#x8F6C;&#x4E49;&#x540E;&#x7684;&#x5B9E;&#x4F53;&#x5B57;&#x7B26;&#x6BD4;&#x5982; &#xA9; (<code>&#xA9;</code>) &#x6700;&#x540E;&#x663E;&#x793A;&#x5230; DOM &#x4E2D;&#x4E0D;&#x4F1A;&#x6B63;&#x786E;&#x663E;&#x793A;&#xFF0C;&#x56E0;&#x4E3A; React &#x81EA;&#x52A8;&#x628A; &#xA9; &#x4E2D;&#x7684;&#x7279;&#x6B8A;&#x5B57;&#x7B26;&#x8F6C;&#x4E49;&#x4E86;&#x3002;<br>&#x6709;&#x51E0;&#x79CD;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x76F4;&#x63A5;&#x4F7F;&#x7528; UTF-8 &#x5B57;&#x7B26; <code>&#xA9;</code></li>
+<li>&#x4F7F;&#x7528;&#x5BF9;&#x5E94;&#x5B57;&#x7B26;&#x7684; Unicode &#x7F16;&#x7801;</li>
+<li>&#x4F7F;&#x7528;&#x6570;&#x7EC4;&#x7EC4;&#x88C5; <code>&lt;div&gt;{[&apos;cc &apos;, &lt;span&gt;&amp;copy;&lt;/span&gt;, &apos; 2015&apos;]}&lt;/div&gt;</code></li>
+<li>&#x76F4;&#x63A5;&#x63D2;&#x5165;&#x539F;&#x59CB;&#x7684; HTML</li>
+</ul>
+<p><code>&lt;div dangerouslySetInnerHTML=\{\{__html: &apos;cc &amp;copy; 2015&apos;\}\} /&gt;</code></p>
+<p>dangerouslySetInnerHTML &#x53C2;&#x8003;&#x6587;&#x6863;: <a href="http://reactjs.cn/react/tips/dangerously-set-inner-html.html" target="_blank" rel="external">http://reactjs.cn/react/tips/dangerously-set-inner-html.html</a></p>
+<h4 id="&#x81EA;&#x5B9A;&#x4E49;-HTML-&#x5C5E;&#x6027;"><a href="#&#x81EA;&#x5B9A;&#x4E49;-HTML-&#x5C5E;&#x6027;" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49; HTML &#x5C5E;&#x6027;"></a>&#x81EA;&#x5B9A;&#x4E49; HTML &#x5C5E;&#x6027;</h4><p>&#x5982;&#x679C;&#x5728; JSX &#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;&#x4E0D;&#x5B58;&#x5728;&#x4E8E; HTML &#x7684;&#x89C4;&#x8303;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x4F1A;&#x88AB;&#x5FFD;&#x7565;&#x3002;&#x5982;&#x679C;&#x8981;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x7528; data- &#x524D;&#x7F00;&#x3002;&#x53EF;&#x8BBF;&#x95EE;&#x6027;&#x5C5E;&#x6027;&#x7684;&#x524D;&#x7F00; aria- &#x4E5F;&#x662F;&#x652F;&#x6301;&#x7684;&#x3002;</p>
+<p>&#x4E0E;dom&#x7684;&#x533A;&#x522B;&#x6587;&#x6863;&#xFF1A;<a href="http://reactjs.cn/react/docs/dom-differences.html" target="_blank" rel="external">http://reactjs.cn/react/docs/dom-differences.html</a></p>
+<h4 id="&#x652F;&#x6301;&#x7684;&#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;"><a href="#&#x652F;&#x6301;&#x7684;&#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;" class="headerlink" title="&#x652F;&#x6301;&#x7684;&#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;"></a>&#x652F;&#x6301;&#x7684;&#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;</h4><p>&#x5982;&#x679C;&#x4F60;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x67D0;&#x4E9B;&#x6807;&#x7B7E;&#x6216;&#x5C5E;&#x6027;&#x4E0D;&#x5728;&#x8FD9;&#x4E9B;&#x652F;&#x6301;&#x5217;&#x8868;&#x91CC;&#x9762;&#x5C31;&#x53EF;&#x80FD;&#x88AB; React &#x5FFD;&#x7565;&#xFF0C;&#x5FC5;&#x987B;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x8BDD;&#x53EF;&#x4EE5;&#x63D0; issue&#xFF0C;&#x6216;&#x8005;&#x7528;&#x524D;&#x9762;&#x63D0;&#x5230;&#x7684; dangerouslySetInnerHTML&#x3002;</p>
+<p>&#x652F;&#x6301;&#x5217;&#x8868;&#xFF1A;<a href="http://reactjs.cn/react/docs/tags-and-attributes.html" target="_blank" rel="external">http://reactjs.cn/react/docs/tags-and-attributes.html</a></p>
+<p>1&#x3001;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x7684; html &#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;&#x90FD;&#x80FD;&#x5728; jsx &#x8BED;&#x6CD5;&#x4E2D;&#x4F7F;&#x7528;<br>2&#x3001;&#x57FA;&#x672C;&#x4E0A;&#x4F60;&#x80FD;&#x7528;&#x5230;&#x7684;&#x6807;&#x7B7E;&#x7684;&#x5C5E;&#x6027;&#xFF0C;jsx &#x8BED;&#x6CD5;&#x90FD;&#x652F;&#x6301;<br>3&#x3001;&#x6709;&#x4E9B;&#x7279;&#x6B8A;&#x7684;&#x5C5E;&#x6027;&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x5FC5;&#x987B; class &#x5C5E;&#x6027;&#x8981;&#x53D8;&#x4E3A; className &#x5C5E;&#x6027;</p>
+<p>&#x6240;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x90FD;&#x662F;&#x9A7C;&#x5CF0;&#x547D;&#x540D;&#x7684;&#xFF0C;class &#x5C5E;&#x6027;&#x548C; for &#x5C5E;&#x6027;&#x5206;&#x522B;&#x6539;&#x4E3A; className &#x548C; htmlFor&#xFF0C;&#x6765;&#x7B26;&#x5408; DOM API &#x89C4;&#x8303;&#x3002;</p>
+<h4 id="&#x5C5E;&#x6027;&#x6269;&#x6563;"><a href="#&#x5C5E;&#x6027;&#x6269;&#x6563;" class="headerlink" title="&#x5C5E;&#x6027;&#x6269;&#x6563;"></a>&#x5C5E;&#x6027;&#x6269;&#x6563;</h4><p>&#x6709;&#x65F6;&#x5019;&#x4F60;&#x9700;&#x8981;&#x7ED9;&#x7EC4;&#x4EF6;&#x8BBE;&#x7F6E;&#x591A;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x4F60;&#x4E0D;&#x60F3;&#x4E00;&#x4E2A;&#x4E2A;&#x5199;&#x4E0B;&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#xFF0C;&#x6216;&#x8005;&#x6709;&#x65F6;&#x5019;&#x4F60;&#x751A;&#x81F3;&#x4E0D;&#x77E5;&#x9053;&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x8FD9;&#x65F6;&#x5019; spread attributes &#x7684;&#x529F;&#x80FD;&#x5C31;&#x5F88;&#x6709;&#x7528;&#x4E86;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var props = {};</div><div class="line">props.foo = x;</div><div class="line">props.bar = y;</div><div class="line">var component = &lt;Component {...props} /&gt;;</div></pre></td></tr></table></figure>
+<p>&#x5C5E;&#x6027;&#x4E5F;&#x53EF;&#x4EE5;&#x88AB;&#x8986;&#x76D6;&#xFF0C;&#x5199;&#x5728;&#x540E;&#x9762;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x4F1A;&#x8986;&#x76D6;&#x524D;&#x9762;&#x7684;&#x5C5E;&#x6027;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var props = { foo: &apos;default&apos; };</div><div class="line">var component = &lt;Component {...props} foo={&apos;override&apos;} /&gt;;</div><div class="line">console.log(component.props.foo); // &apos;override&apos;</div></pre></td></tr></table></figure>
+<h4 id="&#x81EA;&#x95ED;&#x5408;&#x6807;&#x7B7E;"><a href="#&#x81EA;&#x95ED;&#x5408;&#x6807;&#x7B7E;" class="headerlink" title="&#x81EA;&#x95ED;&#x5408;&#x6807;&#x7B7E;"></a>&#x81EA;&#x95ED;&#x5408;&#x6807;&#x7B7E;</h4><p>&#x5982;&#x679C;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#xFF0C;&#x5C31;&#x7528;&#x5355;&#x95ED;&#x5408;&#x6807;&#x7B7E;&#x5F62;&#x5F0F;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#x7EC4;&#x4EF6;&#x5D4C;&#x5957;&#x5C31;&#x7528;&#x53CC;&#x95ED;&#x5408;&#x6807;&#x7B7E;&#x5F62;&#x5F0F;</p>
+<p><a href="http://reactjs.cn/react/tips/self-closing-tag.html" target="_blank" rel="external">http://reactjs.cn/react/tips/self-closing-tag.html</a></p>
+<h4 id="&#x6CE8;&#x91CA;"><a href="#&#x6CE8;&#x91CA;" class="headerlink" title="&#x6CE8;&#x91CA;"></a>&#x6CE8;&#x91CA;</h4><p>&#x5728; JSX &#x91CC;&#x4F7F;&#x7528;&#x6CE8;&#x91CA;&#x4E5F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x5C31;&#x662F;&#x6CBF;&#x7528; JavaScript&#xFF0C;&#x552F;&#x4E00;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x5728;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x7684;&#x5B50;&#x5143;&#x7D20;&#x4F4D;&#x7F6E;&#x4F7F;&#x7528;&#x6CE8;&#x91CA;&#x8981;&#x7528; <code>{}</code> &#x5305;&#x8D77;&#x6765;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var content = (</div><div class="line">     &lt;Nav&gt;</div><div class="line">          {/* child comment, put {} around */}</div><div class="line">          &lt;Person</div><div class="line">               /* multi</div><div class="line">                   line</div><div class="line">                   comment */</div><div class="line">               name={window.isLoggedIn ? window.name : &apos;&apos;} // end of line comment</div><div class="line">          /&gt;</div><div class="line">     &lt;/Nav&gt;</div><div class="line">);</div></pre></td></tr></table></figure>
+<h2 id="React-&#x7684;-API"><a href="#React-&#x7684;-API" class="headerlink" title="React &#x7684; API"></a>React &#x7684; API</h2><h3 id="&#x9876;&#x5C42;-API"><a href="#&#x9876;&#x5C42;-API" class="headerlink" title="&#x9876;&#x5C42; API"></a>&#x9876;&#x5C42; API</h3><p><a href="http://facebook.github.io/react/docs/top-level-api.html" target="_blank" rel="external">http://facebook.github.io/react/docs/top-level-api.html</a></p>
+<h3 id="&#x7EC4;&#x4EF6;-API"><a href="#&#x7EC4;&#x4EF6;-API" class="headerlink" title="&#x7EC4;&#x4EF6; API"></a>&#x7EC4;&#x4EF6; API</h3><p><a href="http://facebook.github.io/react/docs/component-api.html" target="_blank" rel="external">http://facebook.github.io/react/docs/component-api.html</a></p>
+<h3 id="&#x7EC4;&#x4EF6;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF08;&#x7279;&#x522B;&#x91CD;&#x8981;&#xFF09;"><a href="#&#x7EC4;&#x4EF6;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF08;&#x7279;&#x522B;&#x91CD;&#x8981;&#xFF09;" class="headerlink" title="&#x7EC4;&#x4EF6;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF08;&#x7279;&#x522B;&#x91CD;&#x8981;&#xFF09;"></a>&#x7EC4;&#x4EF6;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF08;&#x7279;&#x522B;&#x91CD;&#x8981;&#xFF09;</h3><p>&#x7EC4;&#x4EF6;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x53E6;&#x5916;&#x7684;&#x540D;&#x5B57;&#x662F;&#x72B6;&#x6001;&#x56DE;&#x8C03;&#xFF0C;&#x548C;&#x4E0A;&#x9762;&#x8BB2;&#x7684;&#x72B6;&#x6001;&#x7684;&#x552F;&#x4E00;&#x5DEE;&#x522B;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x72B6;&#x6001;&#x662F;&#x5B83;&#x91CC;&#x9762;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x800C;&#x7EC4;&#x4EF6;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x662F;&#x5B83;&#x81EA;&#x5DF1;.</p>
+<p><a href="https://hulufei.gitbooks.io/react-tutorial/content/component-lifecycle.html" target="_blank" rel="external">https://hulufei.gitbooks.io/react-tutorial/content/component-lifecycle.html</a></p>
+<h4 id="&#x7EC4;&#x4EF6;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5206;&#x6210;&#x4E09;&#x4E2A;&#x72B6;&#x6001;&#xFF1A;"><a href="#&#x7EC4;&#x4EF6;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5206;&#x6210;&#x4E09;&#x4E2A;&#x72B6;&#x6001;&#xFF1A;" class="headerlink" title="&#x7EC4;&#x4EF6;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5206;&#x6210;&#x4E09;&#x4E2A;&#x72B6;&#x6001;&#xFF1A;"></a>&#x7EC4;&#x4EF6;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5206;&#x6210;&#x4E09;&#x4E2A;&#x72B6;&#x6001;&#xFF1A;</h4><blockquote>
+<p>Mounting&#xFF1A;&#x5DF2;&#x63D2;&#x5165;&#x771F;&#x5B9E; DOM<br>Updating&#xFF1A;&#x6B63;&#x5728;&#x88AB;&#x91CD;&#x65B0;&#x6E32;&#x67D3;<br>Unmounting&#xFF1A;&#x5DF2;&#x79FB;&#x51FA;&#x771F;&#x5B9E; DOM</p>
+</blockquote>
+<h4 id="&#x5904;&#x7406;&#x51FD;&#x6570;"><a href="#&#x5904;&#x7406;&#x51FD;&#x6570;" class="headerlink" title="&#x5904;&#x7406;&#x51FD;&#x6570;"></a>&#x5904;&#x7406;&#x51FD;&#x6570;</h4><p>React &#x4E3A;&#x6BCF;&#x4E2A;&#x72B6;&#x6001;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x79CD;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;will&#x51FD;&#x6570;&#x5728;&#x8FDB;&#x5165;&#x72B6;&#x6001;&#x4E4B;&#x524D;&#x8C03;&#x7528;&#xFF0C;did &#x51FD;&#x6570;&#x5728;&#x8FDB;&#x5165;&#x72B6;&#x6001;&#x4E4B;&#x540E;&#x8C03;&#x7528;&#xFF0C;&#x4E09;&#x79CD;&#x72B6;&#x6001;&#x5171;&#x8BA1;&#x4E94;&#x79CD;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;</p>
+<blockquote>
+<p>componentWillMount()<br>componentDidMount()<br>componentWillUpdate(object nextProps, object nextState)<br>componentDidUpdate(object prevProps, object prevState)<br>componentWillUnmount()</p>
+</blockquote>
+<p>&#x6B64;&#x5916;&#xFF0C;React &#x8FD8;&#x63D0;&#x4F9B;&#x4E24;&#x79CD;&#x7279;&#x6B8A;&#x72B6;&#x6001;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;</p>
+<blockquote>
+<p>componentWillReceiveProps(object nextProps)&#xFF1A;&#x5DF2;&#x52A0;&#x8F7D;&#x7EC4;&#x4EF6;&#x6536;&#x5230;&#x65B0;&#x7684;&#x53C2;&#x6570;&#x65F6;&#x8C03;&#x7528;<br>shouldComponentUpdate(object nextProps, object nextState)&#xFF1A;&#x7EC4;&#x4EF6;&#x5224;&#x65AD;&#x662F;&#x5426;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x65F6;&#x8C03;&#x7528;</p>
+</blockquote>
+<h4 id="&#x51FD;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x56FE;"><a href="#&#x51FD;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x56FE;" class="headerlink" title="&#x51FD;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x56FE;"></a>&#x51FD;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x56FE;</h4><p><img src="/2016/12/04/s015-React&#x5B66;&#x4E60;&#x7B14;&#x8BB0;/React007.png" alt="&#x51FD;&#x6570;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x56FE;"></p>
+<p>&#x4ECE;&#x4E0A;&#x56FE;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x7EC4;&#x4EF6;&#x518D;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x6B21;&#x4E4B;&#x540E;&#x5C31;&#x4E0D;&#x4F1A;&#x518D;&#x8FD0;&#x884C;&#x4E0A;&#x56FE;&#x8FD0;&#x884C;&#x4E2D;&#x6587;&#x5B57;&#x4EE5;&#x4E0A;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x53CD;&#x800C;&#x91CC;&#x9762;&#x4F1A;&#x6709;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#xFF0C;&#x4ECE;&#x800C;&#x6267;&#x884C; shouleComponentUpdate &#x4E8B;&#x4EF6;&#x3002;</p>
+<h4 id="&#x4EE3;&#x7801;&#x4F7F;&#x7528;"><a href="#&#x4EE3;&#x7801;&#x4F7F;&#x7528;" class="headerlink" title="&#x4EE3;&#x7801;&#x4F7F;&#x7528;"></a>&#x4EE3;&#x7801;&#x4F7F;&#x7528;</h4><blockquote>
+<p>ES5&#x5199;&#x6CD5;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var Hello = React.createClass({</div><div class="line">    getInitialState() {</div><div class="line">        return { liked: false };</div><div class="line">    },</div><div class="line">    render: function() {</div><div class="line">        console.log(this.state.liked);</div><div class="line">        return(</div><div class="line">            &lt;div&gt;</div><div class="line">                &lt;h1 style={style}&gt;Hello world&lt;/h1&gt;</div><div class="line">                &lt;br/&gt;</div><div class="line">                &lt;image/&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        )</div><div class="line">    }</div><div class="line">});</div><div class="line">module.exports = Hello;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>ES6&#x5199;&#x6CD5;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">export default class Hello extends Component {</div><div class="line">    constructor(props) {</div><div class="line">        super(props);</div><div class="line"></div><div class="line">        this.state = { count: &apos;es6&apos;};</div><div class="line">    }</div><div class="line">    render() {</div><div class="line">        return (</div><div class="line">            &lt;div&gt;</div><div class="line">                &lt;h1 style={style}&gt;Hello world{this.state.count}&lt;/h1&gt;</div><div class="line">                &lt;br/&gt;</div><div class="line">                &lt;image/&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        )</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<h4 id="&#x53C2;&#x8003;&#x6587;&#x7AE0;"><a href="#&#x53C2;&#x8003;&#x6587;&#x7AE0;" class="headerlink" title="&#x53C2;&#x8003;&#x6587;&#x7AE0;"></a>&#x53C2;&#x8003;&#x6587;&#x7AE0;</h4><p><a href="http://www.cnblogs.com/CHONGCHONG2008/p/5099483.html" target="_blank" rel="external">http://www.cnblogs.com/CHONGCHONG2008/p/5099483.html</a><br><a href="http://pinggod.com/2015/React-%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" target="_blank" rel="external">http://pinggod.com/2015/React-%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</a><br><a href="http://reactjs.cn/react/docs/component-specs.html" target="_blank" rel="external">http://reactjs.cn/react/docs/component-specs.html</a></p>
+<h4 id="&#x6CE8;&#x610F;&#x70B9;"><a href="#&#x6CE8;&#x610F;&#x70B9;" class="headerlink" title="&#x6CE8;&#x610F;&#x70B9;"></a>&#x6CE8;&#x610F;&#x70B9;</h4><p>&#x5728; ES6 &#x4E2D;&#x7528; ES5 &#x7684;&#x5199;&#x6CD5;&#x4F1A;&#x62A5;&#x9519;</p>
+<h3 id="ES5-ES6-&#x6700;&#x65B0;&#x5199;&#x6CD5;&#x5BF9;&#x7167;&#x8868;"><a href="#ES5-ES6-&#x6700;&#x65B0;&#x5199;&#x6CD5;&#x5BF9;&#x7167;&#x8868;" class="headerlink" title="ES5/ES6 &#x6700;&#x65B0;&#x5199;&#x6CD5;&#x5BF9;&#x7167;&#x8868;"></a>ES5/ES6 &#x6700;&#x65B0;&#x5199;&#x6CD5;&#x5BF9;&#x7167;&#x8868;</h3><p>React &#x7684;&#xFF1A;<a href="http://www.tuicool.com/articles/equ2my" target="_blank" rel="external">http://www.tuicool.com/articles/equ2my</a></p>
+<p>ReactNative &#x7684;: <a href="http://bbs.reactnative.cn/topic/15/react-react-native-%E7%9A%84es5-es6%E5%86%99%E6%B3%95%E5%AF%B9%E7%85%A7%E8%A1%A8/2" target="_blank" rel="external">http://bbs.reactnative.cn/topic/15/react-react-native-%E7%9A%84es5-es6%E5%86%99%E6%B3%95%E5%AF%B9%E7%85%A7%E8%A1%A8/2</a></p>
+<h3 id="&#x4E8B;&#x4EF6;&#x5904;&#x7406;"><a href="#&#x4E8B;&#x4EF6;&#x5904;&#x7406;" class="headerlink" title="&#x4E8B;&#x4EF6;&#x5904;&#x7406;"></a>&#x4E8B;&#x4EF6;&#x5904;&#x7406;</h3><h4 id="&#x4F7F;&#x7528;"><a href="#&#x4F7F;&#x7528;" class="headerlink" title="&#x4F7F;&#x7528;"></a>&#x4F7F;&#x7528;</h4><p>onClick&#x8FD9;&#x79CD;&#x8FDB;&#x884C;&#x9A7C;&#x5CF0;&#x547D;&#x540D;ES5&#x548C;ES6&#x7684;&#x5199;&#x6CD5;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x5728;ES6&#x4E2D;&#x8981;&#x7528;bind&#x65B9;&#x6CD5;&#x7ED1;&#x5B9A;this(&#x5177;&#x4F53;&#x53EF;&#x53C2;&#x7167;ES5&#x548C;ES6&#x5199;&#x6CD5;&#x5BF9;&#x7167;&#x8868;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">import React, { Component } from &apos;react&apos;;</div><div class="line">import { render } from &apos;react-dom&apos;;</div><div class="line">export default class LinkButton extends Component {</div><div class="line">    constructor(props) {</div><div class="line">        super(props);</div><div class="line">        this.state = {liked: false};</div><div class="line">    }</div><div class="line">    handleClick(e) {</div><div class="line">        this.setState({ liked: !this.state.liked });</div><div class="line">    }</div><div class="line">    render() {</div><div class="line">        const text = this.state.liked ? &apos;like&apos; : &apos;haven\&apos;t liked&apos;;</div><div class="line">        return (</div><div class="line">            &lt;p onClick={this.handleClick.bind(this)}&gt;</div><div class="line">                You {text} this. Click to toggle.</div><div class="line">            &lt;/p&gt;</div><div class="line">        );</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<h4 id="&#x53C2;&#x6570;&#x4F20;&#x9012;"><a href="#&#x53C2;&#x6570;&#x4F20;&#x9012;" class="headerlink" title="&#x53C2;&#x6570;&#x4F20;&#x9012;"></a>&#x53C2;&#x6570;&#x4F20;&#x9012;</h4><p>ES6 &#x5199;&#x6CD5;&#xFF1A;&#x7ED9;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4F20;&#x9012;&#x989D;&#x5916;&#x53C2;&#x6570;&#x7684;&#x65B9;&#x5F0F;&#xFF1A;bind(this, arg1, arg2, &#x2026;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">render: function() {</div><div class="line">    return &lt;p onClick={this.handleClick.bind(this, param1,param2,param3)}&gt;;</div><div class="line">},</div><div class="line">handleClick: function(param1,param2,param3, event) {</div><div class="line">    // handle click</div><div class="line">}</div></pre></td></tr></table></figure>
+<h4 id="React-&#x652F;&#x6301;&#x7684;&#x4E8B;&#x4EF6;&#x5217;&#x8868;"><a href="#React-&#x652F;&#x6301;&#x7684;&#x4E8B;&#x4EF6;&#x5217;&#x8868;" class="headerlink" title="React &#x652F;&#x6301;&#x7684;&#x4E8B;&#x4EF6;&#x5217;&#x8868;"></a>React &#x652F;&#x6301;&#x7684;&#x4E8B;&#x4EF6;&#x5217;&#x8868;</h4><p><a href="http://reactjs.cn/react/docs/events.html" target="_blank" rel="external">http://reactjs.cn/react/docs/events.html</a></p>
+<h3 id="Dom&#x64CD;&#x4F5C;"><a href="#Dom&#x64CD;&#x4F5C;" class="headerlink" title="Dom&#x64CD;&#x4F5C;"></a>Dom&#x64CD;&#x4F5C;</h3><h4 id="&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;findDOMNode-&#x65B9;&#x6CD5;"><a href="#&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;findDOMNode-&#x65B9;&#x6CD5;" class="headerlink" title="&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;findDOMNode()&#x65B9;&#x6CD5;"></a>&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;findDOMNode()&#x65B9;&#x6CD5;</h4><p>&#x9996;&#x5148;&#x6211;&#x4EEC;&#x8981;&#x4E86;&#x89E3; ReactDOM.render &#x7EC4;&#x4EF6;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x5BF9;&#x7EC4;&#x4EF6;&#x7684;&#x5F15;&#x7528;&#x4E5F;&#x5C31;&#x662F;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#xFF08;&#x5BF9;&#x4E8E;&#x65E0;&#x72B6;&#x6001;&#x72B6;&#x6001;&#x7EC4;&#x4EF6;&#x6765;&#x8BF4;&#x8FD4;&#x56DE; null&#xFF09;&#xFF0C;&#x6CE8;&#x610F; JSX &#x8FD4;&#x56DE;&#x7684;&#x4E0D;&#x662F;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#xFF0C;&#x5B83;&#x53EA;&#x662F;&#x4E00;&#x4E2A; ReactElement &#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x5F53;&#x7EC4;&#x4EF6;&#x52A0;&#x8F7D;&#x5230;&#x9875;&#x9762;&#x4E0A;&#x4E4B;&#x540E;&#xFF08;mounted&#xFF09;&#xFF0C;&#x4F60;&#x90FD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; react-dom &#x63D0;&#x4F9B;&#x7684; findDOMNode() &#x65B9;&#x6CD5;&#x62FF;&#x5230;&#x7EC4;&#x4EF6;&#x5BF9;&#x5E94;&#x7684; DOM &#x5143;&#x7D20;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import { findDOMNode } from &apos;react-dom&apos;;</div><div class="line">// Inside Component class</div><div class="line">componentDidMound() {</div><div class="line">  const el = findDOMNode(this);</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>findDOMNode() &#x4E0D;&#x80FD;&#x7528;&#x5728;&#x65E0;&#x72B6;&#x6001;&#x7EC4;&#x4EF6;&#x4E0A;&#x3002;</p>
+<h4 id="&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;refs&#x5C5E;&#x6027;"><a href="#&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;refs&#x5C5E;&#x6027;" class="headerlink" title="&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;refs&#x5C5E;&#x6027;"></a>&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;refs&#x5C5E;&#x6027;</h4><p>&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x5728;&#x8981;&#x5F15;&#x7528;&#x7684; DOM &#x5143;&#x7D20;&#x4E0A;&#x9762;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A; ref &#x5C5E;&#x6027;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7; this.refs.name &#x6765;&#x8BBF;&#x95EE;&#x5BF9;&#x5E94;&#x7684; DOM &#x5143;&#x7D20;&#x3002;</p>
+<p>&#x5982;&#x679C; ref &#x662F;&#x8BBE;&#x7F6E;&#x5728;&#x539F;&#x751F; HTML &#x5143;&#x7D20;&#x4E0A;&#xFF0C;&#x5B83;&#x62FF;&#x5230;&#x7684;&#x5C31;&#x662F; DOM &#x5143;&#x7D20;&#xFF0C;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x5728;&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#x4E0A;&#xFF0C;&#x5B83;&#x62FF;&#x5230;&#x7684;&#x5C31;&#x662F;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x9700;&#x8981;&#x901A;&#x8FC7; findDOMNode &#x6765;&#x62FF;&#x5230;&#x7EC4;&#x4EF6;&#x7684; DOM &#x5143;&#x7D20;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x65E0;&#x72B6;&#x6001;&#x7EC4;&#x4EF6;&#x6CA1;&#x6709;&#x5B9E;&#x4F8B;&#xFF0C;&#x6240;&#x4EE5; ref &#x4E0D;&#x80FD;&#x8BBE;&#x7F6E;&#x5728;&#x65E0;&#x72B6;&#x6001;&#x7EC4;&#x4EF6;&#x4E0A;&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x8FD9;&#x6CA1;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x65E0;&#x72B6;&#x6001;&#x7EC4;&#x4EF6;&#x6CA1;&#x6709;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0D;&#x9700;&#x8981; ref &#x53BB;&#x62FF;&#x5B9E;&#x4F8B;&#x8C03;&#x7528;&#x76F8;&#x5173;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x60F3;&#x8981;&#x62FF;&#x65E0;&#x72B6;&#x6001;&#x7EC4;&#x4EF6;&#x7684; DOM &#x5143;&#x7D20;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x7528;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x7EC4;&#x4EF6;&#x5C01;&#x88C5;&#x4E00;&#x5C42;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7; ref &#x548C; findDOMNode &#x53BB;&#x83B7;&#x53D6;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">import React, { Component } from &apos;react&apos;;</div><div class="line">export default class MyInputFocus extends Component {</div><div class="line">    constructor(props) {</div><div class="line">        super(props);</div><div class="line">        this.state={ userInput: &apos;&apos; };</div><div class="line">    }</div><div class="line">    handleChange(e) {</div><div class="line">        console.log(this.refs.theInput.value);</div><div class="line">        this.setState({ userInput: e.target.value });</div><div class="line">    }</div><div class="line">    clearAndFocusInput() {</div><div class="line">        this.setState({ userInput: &apos;&apos; }, () =&gt; {</div><div class="line">            this.refs.theInput.focus();</div><div class="line">        });</div><div class="line">    }</div><div class="line">    render() {</div><div class="line">        return (</div><div class="line">            &lt;div&gt;</div><div class="line">                &lt;div onClick={this.clearAndFocusInput.bind(this)}&gt;</div><div class="line">                    Click to Focus and Reset</div><div class="line">                &lt;/div&gt;</div><div class="line">                &lt;input</div><div class="line">                    ref=&quot;theInput&quot;</div><div class="line">                    value={this.state.userInput}</div><div class="line">                    onChange={this.handleChange.bind(this)}</div><div class="line">                /&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        );</div><div class="line">    }</div><div class="line">}</div><div class="line">MyInputFocus.defaultProps={</div><div class="line">    autoPlay:false,</div><div class="line">    maxLoops:10,</div><div class="line">}</div><div class="line">MyInputFocus.propTypes = {</div><div class="line">    autoPlay: React.PropTypes.bool.isRequired,</div><div class="line">    maxLoops: React.PropTypes.number.isRequired,</div><div class="line">}</div></pre></td></tr></table></figure>
+<h3 id="&#x6CE8;&#x610F;&#x4E8B;&#x9879;"><a href="#&#x6CE8;&#x610F;&#x4E8B;&#x9879;" class="headerlink" title="&#x6CE8;&#x610F;&#x4E8B;&#x9879;"></a>&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h3><blockquote>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528; ref &#x5230;&#x7684;&#x7EC4;&#x4EF6;&#x5B9A;&#x4E49;&#x7684;&#x4EFB;&#x4F55;&#x516C;&#x5171;&#x65B9;&#x6CD5;&#xFF0C;&#x6BD4;&#x5982; this.refs.myTypeahead.reset()<br>Refs &#x662F;&#x8BBF;&#x95EE;&#x5230;&#x7EC4;&#x4EF6;&#x5185;&#x90E8; DOM &#x8282;&#x70B9;&#x552F;&#x4E00;&#x53EF;&#x9760;&#x7684;&#x65B9;&#x6CD5;<br>Refs &#x4F1A;&#x81EA;&#x52A8;&#x9500;&#x6BC1;&#x5BF9;&#x5B50;&#x7EC4;&#x4EF6;&#x7684;&#x5F15;&#x7528;&#xFF08;&#x5F53;&#x5B50;&#x7EC4;&#x4EF6;&#x5220;&#x9664;&#x65F6;&#xFF09;<br>&#x4E0D;&#x8981;&#x5728; render &#x6216;&#x8005; render &#x4E4B;&#x524D;&#x8BBF;&#x95EE; refs<br>&#x4E0D;&#x8981;&#x6EE5;&#x7528; refs&#xFF0C;&#x6BD4;&#x5982;&#x53EA;&#x662F;&#x7528;&#x5B83;&#x6765;&#x6309;&#x7167;&#x4F20;&#x7EDF;&#x7684;&#x65B9;&#x5F0F;&#x64CD;&#x4F5C;&#x754C;&#x9762; UI&#xFF1A;&#x627E;&#x5230; DOM -&gt; &#x66F4;&#x65B0; DOM</p>
+</blockquote>
+<h3 id="&#x548C;&#x5176;&#x4ED6;&#x5E93;&#x914D;&#x5408;&#x4F7F;&#x7528;"><a href="#&#x548C;&#x5176;&#x4ED6;&#x5E93;&#x914D;&#x5408;&#x4F7F;&#x7528;" class="headerlink" title="&#x548C;&#x5176;&#x4ED6;&#x5E93;&#x914D;&#x5408;&#x4F7F;&#x7528;"></a>&#x548C;&#x5176;&#x4ED6;&#x5E93;&#x914D;&#x5408;&#x4F7F;&#x7528;</h3><p><a href="http://reactjs.cn/react/tips/use-react-with-other-libraries.html" target="_blank" rel="external">http://reactjs.cn/react/tips/use-react-with-other-libraries.html</a></p>
+<h3 id="&#x7EC4;&#x4EF6;&#x7684;-DOM-&#x4E8B;&#x4EF6;&#x76D1;&#x542C;"><a href="#&#x7EC4;&#x4EF6;&#x7684;-DOM-&#x4E8B;&#x4EF6;&#x76D1;&#x542C;" class="headerlink" title="&#x7EC4;&#x4EF6;&#x7684; DOM &#x4E8B;&#x4EF6;&#x76D1;&#x542C;"></a>&#x7EC4;&#x4EF6;&#x7684; DOM &#x4E8B;&#x4EF6;&#x76D1;&#x542C;</h3><p>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x662F;&#x8BB2;&#x5982;&#x4F55;&#x7ED9; DOM &#x5143;&#x7D20;&#x7ED1;&#x5B9A; React &#x672A;&#x63D0;&#x4F9B;&#x7684;&#x4E8B;&#x4EF6;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var Box = React.createClass({</div><div class="line">      getInitialState: function() {</div><div class="line">        return {windowWidth: window.innerWidth};</div><div class="line">      },</div><div class="line">      handleResize: function(e) {</div><div class="line">        this.setState({windowWidth: window.innerWidth});</div><div class="line">      },</div><div class="line">      componentDidMount: function() {</div><div class="line">        window.addEventListener(&apos;resize&apos;, this.handleResize);</div><div class="line">      },</div><div class="line">      componentWillUnmount: function() {</div><div class="line">        window.removeEventListener(&apos;resize&apos;, this.handleResize);</div><div class="line">      },</div><div class="line">      render: function() {</div><div class="line">        return &lt;div&gt;Current window width: {this.state.windowWidth}&lt;/div&gt;;</div><div class="line">      }</div><div class="line">});</div><div class="line">React.render(&lt;Box /&gt;, mountNode);</div></pre></td></tr></table></figure>
+<p><a href="http://reactjs.cn/react/tips/dom-event-listeners.html" target="_blank" rel="external">http://reactjs.cn/react/tips/dom-event-listeners.html</a></p>
+<p>1&#x3001;&#x6CE8;&#x610F;&#x6DFB;&#x52A0;dom&#x4E8B;&#x4EF6;&#x7684;&#x4F4D;&#x7F6E;<br>2&#x3001;&#x5728;&#x7EC4;&#x4EF6;&#x9000;&#x51FA;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53D6;&#x6D88;&#x76D1;&#x542C;&#x4E8B;&#x4EF6;</p>
+<h3 id="&#x6570;&#x636E;&#x83B7;&#x53D6;"><a href="#&#x6570;&#x636E;&#x83B7;&#x53D6;" class="headerlink" title="&#x6570;&#x636E;&#x83B7;&#x53D6;"></a>&#x6570;&#x636E;&#x83B7;&#x53D6;</h3><p><a href="http://facebook.github.io/react/tips/initial-ajax.html" target="_blank" rel="external">http://facebook.github.io/react/tips/initial-ajax.html</a></p>
+<h3 id="&#x8868;&#x5355;"><a href="#&#x8868;&#x5355;" class="headerlink" title="&#x8868;&#x5355;"></a>&#x8868;&#x5355;</h3><p>&#x8868;&#x5355;&#x4E0D;&#x540C;&#x4E8E;&#x5176;&#x4ED6; HTML &#x5143;&#x7D20;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x8981;&#x54CD;&#x5E94;&#x7528;&#x6237;&#x7684;&#x4EA4;&#x4E92;&#xFF0C;&#x663E;&#x793A;&#x4E0D;&#x540C;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x6240;&#x4EE5;&#x5728; React &#x91CC;&#x9762;&#x4F1A;&#x6709;&#x70B9;&#x7279;&#x6B8A;&#x3002;</p>
+<h4 id="&#x72B6;&#x6001;&#x5C5E;&#x6027;"><a href="#&#x72B6;&#x6001;&#x5C5E;&#x6027;" class="headerlink" title="&#x72B6;&#x6001;&#x5C5E;&#x6027;"></a>&#x72B6;&#x6001;&#x5C5E;&#x6027;</h4><p>&#x8868;&#x5355;&#x5143;&#x7D20;&#x6709;&#x8FD9;&#x4E48;&#x51E0;&#x79CD;&#x5C5E;&#x4E8E;&#x72B6;&#x6001;&#x7684;&#x5C5E;&#x6027;&#xFF1A;</p>
+<blockquote>
+<p>value&#xFF0C;&#x5BF9;&#x5E94; <input> &#x548C; <textarea> &#x6240;&#x6709;<br>checked&#xFF0C;&#x5BF9;&#x5E94;&#x7C7B;&#x578B;&#x4E3A; checkbox &#x548C; radio &#x7684; </textarea><input> &#x6240;&#x6709;<br>selected&#xFF0C;&#x5BF9;&#x5E94; <option> &#x6240;&#x6709;</option></p>
+</blockquote>
+<p>&#x5728; HTML &#x4E2D; <textarea> &#x7684;&#x503C;&#x53EF;&#x4EE5;&#x7531;&#x5B50;&#x8282;&#x70B9;&#xFF08;&#x6587;&#x672C;&#xFF09;&#x8D4B;&#x503C;&#xFF0C;&#x4F46;&#x662F;&#x5728; React &#x4E2D;&#xFF0C;&#x8981;&#x7528; value &#x6765;&#x8BBE;&#x7F6E;&#x3002;<br>&#x8868;&#x5355;&#x5143;&#x7D20;&#x5305;&#x542B;&#x4EE5;&#x4E0A;&#x4EFB;&#x610F;&#x4E00;&#x79CD;&#x72B6;&#x6001;&#x5C5E;&#x6027;&#x90FD;&#x652F;&#x6301; onChange &#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x72B6;&#x6001;&#x503C;&#x7684;&#x66F4;&#x6539;&#x3002;<br>&#x9488;&#x5BF9;&#x8FD9;&#x4E9B;&#x72B6;&#x6001;&#x5C5E;&#x6027;&#x4E0D;&#x540C;&#x7684;&#x5904;&#x7406;&#x7B56;&#x7565;&#xFF0C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x5728; React &#x91CC;&#x9762;&#x6709;&#x4E24;&#x79CD;&#x8868;&#x73B0;&#x5F62;&#x5F0F;&#x3002;</textarea></p>
+<h4 id="&#x53D7;&#x63A7;&#x7EC4;&#x4EF6;"><a href="#&#x53D7;&#x63A7;&#x7EC4;&#x4EF6;" class="headerlink" title="&#x53D7;&#x63A7;&#x7EC4;&#x4EF6;"></a>&#x53D7;&#x63A7;&#x7EC4;&#x4EF6;</h4><p>&#x5BF9;&#x4E8E;&#x8BBE;&#x7F6E;&#x4E86;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x5BF9;&#x5E94;&#x201C;&#x72B6;&#x6001;&#x5C5E;&#x6027;&#x201C;&#x503C;&#x7684;&#x8868;&#x5355;&#x5143;&#x7D20;&#x5C31;&#x662F;&#x53D7;&#x63A7;&#x8868;&#x5355;&#x7EC4;&#x4EF6;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">render: function() {</div><div class="line">    return &lt;input type=&quot;text&quot; value=&quot;hello&quot;/&gt;;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x4E00;&#x4E2A;&#x53D7;&#x63A7;&#x7684;&#x8868;&#x5355;&#x7EC4;&#x4EF6;&#xFF0C;&#x5B83;&#x6240;&#x6709;&#x72B6;&#x6001;&#x5C5E;&#x6027;&#x66F4;&#x6539;&#x6D89;&#x53CA; UI &#x7684;&#x53D8;&#x66F4;&#x90FD;&#x7531; React &#x6765;&#x63A7;&#x5236;&#xFF08;&#x72B6;&#x6001;&#x5C5E;&#x6027;&#x7ED1;&#x5B9A; UI&#xFF09;&#x3002;<br>&#x6BD4;&#x5982;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x91CC;&#x7684; <code>&lt;input&gt;</code> &#x8F93;&#x5165;&#x6846;&#xFF0C;&#x7528;&#x6237;&#x8F93;&#x5165;&#x5185;&#x5BB9;&#xFF0C;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x5185;&#x5BB9;&#x4E0D;&#x4F1A;&#x663E;&#x793A;&#xFF08;&#x8F93;&#x5165;&#x6846;&#x603B;&#x662F;&#x663E;&#x793A;&#x72B6;&#x6001;&#x5C5E;&#x6027; value &#x7684;&#x503C; hello&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x8BF4;&#x8FD9;&#x662F;&#x53D7;&#x63A7;&#x7EC4;&#x4EF6;&#xFF0C;&#x4E0D;&#x662F;&#x539F;&#x6765;&#x9ED8;&#x8BA4;&#x7684;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E86;&#x3002;<br>&#x5982;&#x679C;&#x5E0C;&#x671B;&#x8F93;&#x5165;&#x7684;&#x5185;&#x5BB9;&#x53CD;&#x9988;&#x5230;&#x8F93;&#x5165;&#x6846;&#xFF0C;&#x5C31;&#x8981;&#x7528; onChange &#x4E8B;&#x4EF6;&#x6539;&#x53D8;&#x72B6;&#x6001;&#x5C5E;&#x6027; value &#x7684;&#x503C;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">getInitialState: function() {</div><div class="line">    return {value: &apos;hello&apos;};</div><div class="line">},</div><div class="line">handleChange: function(event) {</div><div class="line">    this.setState({value: event.target.value});</div><div class="line">},</div><div class="line">render: function() {</div><div class="line">    var value = this.state.value;</div><div class="line">    return &lt;input type=&quot;text&quot; value={value} onChange={this.handleChange} /&gt;;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x975E;&#x5E38;&#x5BB9;&#x6613;&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C;&#x5BF9;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x9A8C;&#x8BC1;&#xFF0C;&#x6216;&#x8005;&#x5BF9;&#x7528;&#x6237;&#x4EA4;&#x4E92;&#x505A;&#x989D;&#x5916;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x6BD4;&#x5982;&#x622A;&#x65AD;&#x6700;&#x591A;&#x8F93;&#x5165;140&#x4E2A;&#x5B57;&#x7B26;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">handleChange: function(event) {</div><div class="line">    this.setState({value: event.target.value.substr(0, 140)});</div><div class="line">}</div></pre></td></tr></table></figure>
+<h4 id="&#x975E;&#x53D7;&#x63A7;&#x5C5E;&#x6027;"><a href="#&#x975E;&#x53D7;&#x63A7;&#x5C5E;&#x6027;" class="headerlink" title="&#x975E;&#x53D7;&#x63A7;&#x5C5E;&#x6027;"></a>&#x975E;&#x53D7;&#x63A7;&#x5C5E;&#x6027;</h4><p>&#x548C;&#x53D7;&#x63A7;&#x7EC4;&#x4EF6;&#x76F8;&#x5BF9;&#xFF0C;&#x5982;&#x679C;&#x8868;&#x5355;&#x5143;&#x7D20;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x81EA;&#x5DF1;&#x7684;&#x201C;&#x72B6;&#x6001;&#x5C5E;&#x6027;&#x201D;&#xFF0C;&#x6216;&#x8005;&#x5C5E;&#x6027;&#x503C;&#x8BBE;&#x7F6E;&#x4E3A; null&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x662F;&#x975E;&#x53D7;&#x63A7;&#x7EC4;&#x4EF6;&#x3002;&#x5B83;&#x7684;&#x8868;&#x73B0;&#x5C31;&#x7B26;&#x5408;&#x666E;&#x901A;&#x7684;&#x8868;&#x5355;&#x5143;&#x7D20;&#xFF0C;&#x6B63;&#x5E38;&#x54CD;&#x5E94;&#x7528;&#x6237;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x540C;&#x6837;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x7ED1;&#x5B9A; onChange &#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x4EA4;&#x4E92;&#x3002;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x7ED9;&#x201C;&#x72B6;&#x6001;&#x5C5E;&#x6027;&#x201D;&#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x5C31;&#x8981;&#x7528; React &#x63D0;&#x4F9B;&#x7684;&#x7279;&#x6B8A;&#x5C5E;&#x6027; defaultValue&#xFF0C;&#x5BF9;&#x4E8E; checked &#x4F1A;&#x6709; defaultChecked&#xFF0C;<option> &#x4E5F;&#x662F;&#x4F7F;&#x7528; defaultValue&#x3002;</option></p>
+<h4 id="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x6709;&#x53D7;&#x63A7;&#x7EC4;&#x4EF6;"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x6709;&#x53D7;&#x63A7;&#x7EC4;&#x4EF6;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x6709;&#x53D7;&#x63A7;&#x7EC4;&#x4EF6;"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x6709;&#x53D7;&#x63A7;&#x7EC4;&#x4EF6;</h4><p>&#x5F15;&#x5165;&#x53D7;&#x63A7;&#x7EC4;&#x4EF6;&#x4E0D;&#x662F;&#x8BF4;&#x5B83;&#x6709;&#x4EC0;&#x4E48;&#x597D;&#x5904;&#xFF0C;&#x800C;&#x662F;&#x56E0;&#x4E3A; React &#x7684; UI &#x6E32;&#x67D3;&#x673A;&#x5236;&#xFF0C;&#x5BF9;&#x4E8E;&#x8868;&#x5355;&#x5143;&#x7D20;&#x4E0D;&#x5F97;&#x4E0D;&#x5F15;&#x5165;&#x8FD9;&#x4E00;&#x7279;&#x6B8A;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x3002;</p>
+<p>&#x5728;&#x6D4F;&#x89C8;&#x5668; DOM &#x91CC;&#x9762;&#x662F;&#x6709;&#x533A;&#x5206; attribute &#x548C; property &#x7684;&#x3002;</p>
+<p>attribute &#x662F;&#x5728; HTML &#x91CC;&#x6307;&#x5B9A;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x800C;&#x6BCF;&#x4E2A; HTML &#x5143;&#x7D20;&#x5728; JS &#x5BF9;&#x5E94;&#x662F;&#x4E00;&#x4E2A; DOM &#x8282;&#x70B9;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x62E5;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x5C31;&#x662F; property&#xFF08;&#x53EF;&#x4EE5;&#x5728; console &#x91CC;&#x5C55;&#x5F00;&#x4E00;&#x4E2A; DOM &#x8282;&#x70B9;&#x5BF9;&#x8C61;&#x770B;&#x4E00;&#x4E0B;&#xFF0C;HTML attributes &#x53EA;&#x662F;&#x5BF9;&#x5E94;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x5C5E;&#x6027;&#xFF09;&#xFF0C;attribute &#x5BF9;&#x5E94;&#x7684; property &#x4F1A;&#x4ECE; attribute &#x62FF;&#x5230;&#x521D;&#x59CB;&#x503C;&#xFF0C;&#x6709;&#x4E9B;&#x4F1A;&#x6709;&#x76F8;&#x540C;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x4E9B;&#x540D;&#x79F0;&#x4F1A;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x6BD4;&#x5982; attribute class &#x5BF9;&#x5E94;&#x7684; property &#x5C31;&#x662F; className&#x3002;&#xFF08;&#x8BE6;&#x7EC6;&#x89E3;&#x91CA;&#xFF1A;.prop&#xFF0C;.prop() vs .attr()&#xFF09;&#x3002;&#x56DE;&#x5230; React &#x91CC;&#x7684; <input> &#x8F93;&#x5165;&#x6846;&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x8F93;&#x5165;&#x5185;&#x5BB9;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8F93;&#x5165;&#x6846;&#x7684; value property &#x4F1A;&#x6539;&#x53D8;&#xFF0C;&#x4F46;&#x662F; value attribute &#x4F9D;&#x7136;&#x4F1A;&#x662F; HTML &#x4E0A;&#x6307;&#x5B9A;&#x7684;&#x503C;&#xFF08;attribute &#x8981;&#x7528; setAttribute &#x53BB;&#x66F4;&#x6539;&#xFF09;&#x3002;</p>
+<p>React &#x7EC4;&#x4EF6;&#x5FC5;&#x987B;&#x5448;&#x73B0;&#x8FD9;&#x4E2A;&#x7EC4;&#x4EF6;&#x7684;&#x72B6;&#x6001;&#x89C6;&#x56FE;&#xFF0C;&#x8FD9;&#x4E2A;&#x89C6;&#x56FE; HTML &#x662F;&#x7531; render &#x751F;&#x6210;&#xFF0C;&#x6240;&#x4EE5;&#x5BF9;&#x4E8E;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">render: function() {</div><div class="line">    return &lt;input type=&quot;text&quot; value=&quot;hello&quot;/&gt;;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x5728;&#x4EFB;&#x610F;&#x65F6;&#x523B;&#xFF0C;&#x8FD9;&#x4E2A;&#x89C6;&#x56FE;&#x603B;&#x662F;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x663E;&#x793A; hello &#x7684;&#x8F93;&#x5165;&#x6846;&#x3002;</p>
+<h4 id="lt-select-gt-&#x7684;&#x5904;&#x7406;"><a href="#lt-select-gt-&#x7684;&#x5904;&#x7406;" class="headerlink" title="&lt;select&gt; &#x7684;&#x5904;&#x7406;"></a><code>&lt;select&gt;</code> &#x7684;&#x5904;&#x7406;</h4><p>&#x5728; HTML &#x4E2D; <code>&lt;select&gt;</code> &#x6807;&#x7B7E;&#x6307;&#x5B9A;&#x9009;&#x4E2D;&#x9879;&#x90FD;&#x662F;&#x901A;&#x8FC7;&#x5BF9;&#x5E94; <code>&lt;option&gt;</code> &#x7684; selected &#x5C5E;&#x6027;&#x6765;&#x505A;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5728; React &#x4FEE;&#x6539;&#x6210;&#x7EDF;&#x4E00;&#x4F7F;&#x7528; value&#x3002;<br>&#x6240;&#x4EE5;&#x6CA1;&#x6709;&#x4E00;&#x4E2A; selected &#x7684;&#x72B6;&#x6001;&#x5C5E;&#x6027;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;select value=&quot;B&quot;&gt;</div><div class="line">    &lt;option value=&quot;A&quot;&gt;Apple&lt;/option&gt;</div><div class="line">    &lt;option value=&quot;B&quot;&gt;Banana&lt;/option&gt;</div><div class="line">    &lt;option value=&quot;C&quot;&gt;Cranberry&lt;/option&gt;</div><div class="line">&lt;/select&gt;</div></pre></td></tr></table></figure>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x6307;&#x5B9A;&#x591A;&#x4E2A;&#x9009;&#x4E2D;&#x9879;&#xFF1A;<code>&lt;select multiple={true} value={[&apos;B&apos;, &apos;C&apos;]}&gt;</code></p>
+<h2 id="&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7684;&#x5224;&#x65AD;"><a href="#&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7684;&#x5224;&#x65AD;" class="headerlink" title="&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7684;&#x5224;&#x65AD;"></a>&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7684;&#x5224;&#x65AD;</h2><p><a href="http://facebook.github.io/react/docs/transferring-props.html" target="_blank" rel="external">http://facebook.github.io/react/docs/transferring-props.html</a></p>
+<h3 id="&#x7EC4;&#x5408;&#x7EC4;&#x4EF6;"><a href="#&#x7EC4;&#x5408;&#x7EC4;&#x4EF6;" class="headerlink" title="&#x7EC4;&#x5408;&#x7EC4;&#x4EF6;"></a>&#x7EC4;&#x5408;&#x7EC4;&#x4EF6;</h3><p>&#x4F7F;&#x7528;&#x7EC4;&#x4EF6;&#x7684;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x6784;&#x5EFA;&#x6A21;&#x5757;&#x5316;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x76F8;&#x4E92;&#x7EC4;&#x5408;&#x7EC4;&#x4EF6;&#x6700;&#x540E;&#x7EC4;&#x88C5;&#x6210;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x7684;&#x5E94;&#x7528;&#x3002;</p>
+<p>&#x5728; React &#x7EC4;&#x4EF6;&#x4E2D;&#x8981;&#x5305;&#x542B;&#x5176;&#x4ED6;&#x7EC4;&#x4EF6;&#x4F5C;&#x4E3A;&#x5B50;&#x7EC4;&#x4EF6;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x628A;&#x7EC4;&#x4EF6;&#x5F53;&#x4F5C;&#x4E00;&#x4E2A; DOM &#x5143;&#x7D20;&#x5F15;&#x5165;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</p>
+<p><a href="http://reactjs.cn/react/docs/multiple-components.html" target="_blank" rel="external">http://reactjs.cn/react/docs/multiple-components.html</a></p>
+<h4 id="&#x5FAA;&#x73AF;&#x63D2;&#x5165;&#x5B50;&#x5143;&#x7D20;"><a href="#&#x5FAA;&#x73AF;&#x63D2;&#x5165;&#x5B50;&#x5143;&#x7D20;" class="headerlink" title="&#x5FAA;&#x73AF;&#x63D2;&#x5165;&#x5B50;&#x5143;&#x7D20;"></a>&#x5FAA;&#x73AF;&#x63D2;&#x5165;&#x5B50;&#x5143;&#x7D20;</h4><p>&#x5982;&#x679C;&#x7EC4;&#x4EF6;&#x4E2D;&#x5305;&#x542B;&#x901A;&#x8FC7;&#x5FAA;&#x73AF;&#x63D2;&#x5165;&#x7684;&#x5B50;&#x5143;&#x7D20;&#xFF0C;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x91CD;&#x65B0;&#x6E32;&#x67D3; UI &#x7684;&#x65F6;&#x5019;&#x80FD;&#x591F;&#x6B63;&#x786E;&#x663E;&#x793A;&#x8FD9;&#x4E9B;&#x5B50;&#x5143;&#x7D20;&#xFF0C;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x90FD;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684; key &#x5C5E;&#x6027;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x552F;&#x4E00;&#x503C;&#x3002;&#x4E3A;&#x4E86;&#x5185;&#x90E8; diff &#x7684;&#x6548;&#x7387;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var TodoList = React.createClass({</div><div class="line">    render: function() {</div><div class="line">        var createItem = function(item) {</div><div class="line">            return &lt;li key={item.id}&gt;{item.text}&lt;/li&gt;;</div><div class="line">        };</div><div class="line">        return &lt;ul&gt;{this.props.items.map(createItem)}&lt;/ul&gt;;</div><div class="line">    }</div><div class="line">});</div><div class="line">module.export = TodoList;</div></pre></td></tr></table></figure>
+<p>&#xFF08;1&#xFF09;&#x5F53; React &#x6821;&#x6B63;&#x5E26;&#x6709; key &#x7684;&#x5B50;&#x7EA7;&#x65F6;&#xFF0C;&#x5B83;&#x4F1A;&#x786E;&#x4FDD;&#x5B83;&#x4EEC;&#x88AB;&#x91CD;&#x65B0;&#x6392;&#x5E8F;&#xFF08;&#x800C;&#x4E0D;&#x662F;&#x7834;&#x574F;&#xFF09;&#x6216;&#x8005;&#x5220;&#x9664;&#xFF08;&#x800C;&#x4E0D;&#x662F;&#x91CD;&#x7528;&#xFF09;&#x3002; &#x52A1;&#x5FC5; &#x628A; key &#x6DFB;&#x52A0;&#x5230;&#x5B50;&#x7EA7;&#x6570;&#x7EC4;&#x91CC;&#x7EC4;&#x4EF6;&#x672C;&#x8EAB;&#x4E0A;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6BCF;&#x4E2A;&#x5B50;&#x7EA7;&#x5185;&#x90E8;&#x6700;&#x5916;&#x5C42; HTML &#x4E0A;&#x3002;<br>&#xFF08;2&#xFF09;&#x4E5F;&#x53EF;&#x4EE5;&#x4F20;&#x9012; object &#x6765;&#x505A;&#x6709; key &#x7684;&#x5B50;&#x7EA7;&#x3002;object &#x7684; key &#x4F1A;&#x88AB;&#x5F53;&#x4F5C;&#x6BCF;&#x4E2A;&#x7EC4;&#x4EF6;&#x7684; key&#x3002;&#x4F46;&#x662F;&#x4E00;&#x5B9A;&#x8981;&#x7262;&#x8BB0; JavaScript &#x5E76;&#x4E0D;&#x603B;&#x662F;&#x4FDD;&#x8BC1;&#x5C5E;&#x6027;&#x7684;&#x987A;&#x5E8F;&#x4F1A;&#x88AB;&#x4FDD;&#x7559;&#x3002;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x4E0B;&#x6D4F;&#x89C8;&#x5668;&#x4E00;&#x822C;&#x4F1A;&#x4FDD;&#x7559;&#x5C5E;&#x6027;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x9664;&#x4E86; &#x4F7F;&#x7528; 32&#x4F4D;&#x65E0;&#x7B26;&#x53F7;&#x6570;&#x5B57;&#x505A;&#x4E3A; key &#x7684;&#x5C5E;&#x6027;&#x3002;&#x6570;&#x5B57;&#x578B;&#x5C5E;&#x6027;&#x4F1A;&#x6309;&#x5927;&#x5C0F;&#x6392;&#x5E8F;&#x5E76;&#x4E14;&#x6392;&#x5728;&#x5176;&#x5B83;&#x5C5E;&#x6027;&#x524D;&#x9762;&#x3002;&#x4E00;&#x65E6;&#x53D1;&#x751F;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;React &#x6E32;&#x67D3;&#x7EC4;&#x4EF6;&#x7684;&#x987A;&#x5E8F;&#x5C31;&#x662F;&#x6DF7;&#x4E71;&#x3002;&#x53EF;&#x80FD;&#x5728; key &#x524D;&#x9762;&#x52A0;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x524D;&#x7F00;&#x6765;&#x907F;&#x514D;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">render: function() {</div><div class="line">    var items = {};</div><div class="line"></div><div class="line">    this.props.results.forEach(function(result) {</div><div class="line">         // &#x5982;&#x679C; result.id &#x770B;&#x8D77;&#x6765;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#xFF08;&#x6BD4;&#x5982;&#x77ED;&#x54C8;&#x5E0C;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;</div><div class="line">         // &#x5BF9;&#x8C61;&#x5B57;&#x9762;&#x91CF;&#x7684;&#x987A;&#x5E8F;&#x5C31;&#x5F97;&#x4E0D;&#x5230;&#x4FDD;&#x8BC1;&#x3002;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x524D;&#x7F00;</div><div class="line">         // &#x6765;&#x786E;&#x4FDD; key &#x662F;&#x5B57;&#x7B26;&#x4E32;&#x3002;</div><div class="line">         items[&apos;result-&apos; + result.id] = &lt;li&gt;{result.text}&lt;/li&gt;;</div><div class="line">    });</div><div class="line"></div><div class="line">    return (</div><div class="line">         &lt;ol&gt;</div><div class="line">              {items}</div><div class="line">         &lt;/ol&gt;</div><div class="line">    );</div><div class="line"> }</div></pre></td></tr></table></figure>
+<h4 id="&#x5B50;&#x7EA7;"><a href="#&#x5B50;&#x7EA7;" class="headerlink" title="&#x5B50;&#x7EA7;"></a>&#x5B50;&#x7EA7;</h4><p>&#x7EC4;&#x4EF6;&#x6807;&#x7B7E;&#x91CC;&#x9762;&#x5305;&#x542B;&#x7684;&#x5B50;&#x5143;&#x7D20;&#x4F1A;&#x901A;&#x8FC7;&#x7236;&#x5143;&#x7D20;&#x7684;props.children &#x4F20;&#x9012;&#x8FDB;&#x6765;&#x3002;</p>
+<p>HTML &#x5143;&#x7D20;&#x4F1A;&#x4F5C;&#x4E3A; React &#x7EC4;&#x4EF6;&#x5BF9;&#x8C61;&#x3001;JS &#x8868;&#x8FBE;&#x5F0F;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x5B57;&#x8282;&#x70B9;&#xFF0C;&#x90FD;&#x4F1A;&#x5B58;&#x5165; Parent &#x7EC4;&#x4EF6;&#x7684; props.children&#x3002;</p>
+<p>props.children &#x901A;&#x5E38;&#x662F;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5B50;&#x5143;&#x7D20;&#x7684;&#x65F6;&#x5019;&#xFF0C;props.children &#x5C06;&#x662F;&#x8FD9;&#x4E2A;&#x552F;&#x4E00;&#x7684;&#x5B50;&#x5143;&#x7D20;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6570;&#x7EC4;&#x4E86;.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var NotesList = React.createClass({</div><div class="line">    render: function() {</div><div class="line">        return (</div><div class="line">            &lt;ol&gt;</div><div class="line">            {</div><div class="line">                React.Children.map(this.props.children, function (child) {</div><div class="line">                    return &lt;li&gt;{child}&lt;/li&gt;;</div><div class="line">                })</div><div class="line">            }</div><div class="line">            &lt;/ol&gt;</div><div class="line">        );</div><div class="line">    }</div><div class="line">});</div><div class="line">ReactDOM.render(</div><div class="line">    &lt;NotesList&gt;</div><div class="line">        &lt;span&gt;hello&lt;/span&gt;</div><div class="line">        &lt;span&gt;world&lt;/span&gt;</div><div class="line">    &lt;/NotesList&gt;,</div><div class="line">    document.body</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x7684; NoteList &#x7EC4;&#x4EF6;&#x6709;&#x4E24;&#x4E2A; span &#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; this.props.children &#x8BFB;&#x53D6;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF0C; this.props.children &#x7684;&#x503C;&#x6709;&#x4E09;&#x79CD;&#x53EF;&#x80FD;&#xFF1A;&#x5982;&#x679C;&#x5F53;&#x524D;&#x7EC4;&#x4EF6;&#x6CA1;&#x6709;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x5B83;&#x5C31;&#x662F; undefined ;&#x5982;&#x679C;&#x6709;&#x4E00;&#x4E2A;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x662F; object &#xFF1B;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5C31;&#x662F; array &#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5904;&#x7406; this.props.children &#x7684;&#x65F6;&#x5019;&#x8981;&#x5C0F;&#x5FC3;&#x3002;React &#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#x65B9;&#x6CD5; React.Children &#x6765;&#x5904;&#x7406; this.props.children &#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528; React.Children.map &#x6765;&#x904D;&#x5386;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x62C5;&#x5FC3; this.props.children &#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x662F; undefined &#x8FD8;&#x662F; object&#x3002;&#x66F4;&#x591A;&#x7684; React.Children &#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8BF7;&#x53C2;&#x8003;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x3002;</p>
+<h3 id="propsType"><a href="#propsType" class="headerlink" title="propsType"></a>propsType</h3><p><a href="http://www.reactjs.cn/react/docs/reusable-components.html" target="_blank" rel="external">http://www.reactjs.cn/react/docs/reusable-components.html</a></p>
+<h3 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h3><p><a href="http://facebook.github.io/react/docs/context.html" target="_blank" rel="external">http://facebook.github.io/react/docs/context.html</a></p>
+<h3 id="&#x52A8;&#x753B;"><a href="#&#x52A8;&#x753B;" class="headerlink" title="&#x52A8;&#x753B;"></a>&#x52A8;&#x753B;</h3><p><a href="http://facebook.github.io/react/docs/animation.html" target="_blank" rel="external">http://facebook.github.io/react/docs/animation.html</a><br><a href="http://blog.csdn.net/lihongxun945/article/details/46778723" target="_blank" rel="external">http://blog.csdn.net/lihongxun945/article/details/46778723</a><br><a href="https://zhuanlan.zhihu.com/p/20419592" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/20419592</a></p>
+<h3 id="&#x83B7;&#x53D6;react&#x5E38;&#x7528;&#x63D2;&#x4EF6;&#x7684;&#x7F51;&#x5740;"><a href="#&#x83B7;&#x53D6;react&#x5E38;&#x7528;&#x63D2;&#x4EF6;&#x7684;&#x7F51;&#x5740;" class="headerlink" title="&#x83B7;&#x53D6;react&#x5E38;&#x7528;&#x63D2;&#x4EF6;&#x7684;&#x7F51;&#x5740;"></a>&#x83B7;&#x53D6;react&#x5E38;&#x7528;&#x63D2;&#x4EF6;&#x7684;&#x7F51;&#x5740;</h3><p><a href="https://js.coach/react/react-infinite" target="_blank" rel="external">https://js.coach/react/react-infinite</a><br><a href="https://react.parts/native" target="_blank" rel="external">https://react.parts/native</a></p>
+<h3 id="diff&#x7B97;&#x6CD5;"><a href="#diff&#x7B97;&#x6CD5;" class="headerlink" title="diff&#x7B97;&#x6CD5;"></a>diff&#x7B97;&#x6CD5;</h3><p><a href="http://blog.csdn.net/lihongxun945/article/details/46640503" target="_blank" rel="external">http://blog.csdn.net/lihongxun945/article/details/46640503</a><br><a href="http://reactjs.cn/react/docs/reconciliation.html" target="_blank" rel="external">http://reactjs.cn/react/docs/reconciliation.html</a><br><a href="http://blog.csdn.net/yczz/article/details/49585283" target="_blank" rel="external">http://blog.csdn.net/yczz/article/details/49585283</a><br><a href="http://blog.csdn.net/yczz/article/details/49886061" target="_blank" rel="external">http://blog.csdn.net/yczz/article/details/49886061</a></p>
+<h3 id="Web-Components"><a href="#Web-Components" class="headerlink" title="Web Components"></a>Web Components</h3><p><a href="http://www.oschina.net/p/polymer" target="_blank" rel="external">http://www.oschina.net/p/polymer</a><br><a href="http://facebook.github.io/react/docs/webcomponents.html" target="_blank" rel="external">http://facebook.github.io/react/docs/webcomponents.html</a></p>
+<h3 id="&#x670D;&#x52A1;&#x5668;&#x6E32;&#x67D3;"><a href="#&#x670D;&#x52A1;&#x5668;&#x6E32;&#x67D3;" class="headerlink" title="&#x670D;&#x52A1;&#x5668;&#x6E32;&#x67D3;"></a>&#x670D;&#x52A1;&#x5668;&#x6E32;&#x67D3;</h3><p><a href="http://zhuanlan.zhihu.com/p/20669111?from=groupmessage&amp;isappinstalled=0" target="_blank" rel="external">http://zhuanlan.zhihu.com/p/20669111?from=groupmessage&amp;isappinstalled=0</a></p>
+<h3 id="&#x7EC4;&#x4EF6;&#x95F4;&#x901A;&#x4FE1;"><a href="#&#x7EC4;&#x4EF6;&#x95F4;&#x901A;&#x4FE1;" class="headerlink" title="&#x7EC4;&#x4EF6;&#x95F4;&#x901A;&#x4FE1;"></a>&#x7EC4;&#x4EF6;&#x95F4;&#x901A;&#x4FE1;</h3><h4 id="&#x975E;&#x7236;&#x5B50;&#x7EC4;&#x4EF6;&#x95F4;&#x7684;&#x901A;&#x4FE1;"><a href="#&#x975E;&#x7236;&#x5B50;&#x7EC4;&#x4EF6;&#x95F4;&#x7684;&#x901A;&#x4FE1;" class="headerlink" title="&#x975E;&#x7236;&#x5B50;&#x7EC4;&#x4EF6;&#x95F4;&#x7684;&#x901A;&#x4FE1;"></a>&#x975E;&#x7236;&#x5B50;&#x7EC4;&#x4EF6;&#x95F4;&#x7684;&#x901A;&#x4FE1;</h4><p>&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x4E8B;&#x4EF6; Pub/Sub &#x6A21;&#x5F0F;&#xFF0C;&#x5728; componentDidMount &#x91CC;&#x9762;&#x8BA2;&#x9605;&#x4E8B;&#x4EF6;&#xFF0C;&#x5728; componentWillUnmount &#x91CC;&#x9762;&#x53D6;&#x6D88;&#x8BA2;&#x9605;&#xFF0C;&#x5F53;&#x6536;&#x5230;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528; setState &#x66F4;&#x65B0; UI&#x3002;<br>&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x5728;&#x590D;&#x6742;&#x7684;&#x7CFB;&#x7EDF;&#x91CC;&#x9762;&#x53EF;&#x80FD;&#x4F1A;&#x53D8;&#x5F97;&#x96BE;&#x4EE5;&#x7EF4;&#x62A4;&#xFF0C;&#x6240;&#x4EE5;&#x770B;&#x4E2A;&#x4EBA;&#x6743;&#x8861;&#x662F;&#x5426;&#x5C06;&#x7EC4;&#x4EF6;&#x5C01;&#x88C5;&#x5230;&#x5927;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x751A;&#x81F3;&#x6574;&#x4E2A;&#x9875;&#x9762;&#x6216;&#x8005;&#x5E94;&#x7528;&#x5C31;&#x5C01;&#x88C5;&#x5230;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x3002;<br>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x5BF9;&#x4E8E;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x7C7B;&#x4F3C; Flux &#x8FD9;&#x79CD;&#x5355;&#x9879;&#x6570;&#x636E;&#x6D41;&#x67B6;&#x6784;&#xFF0C;&#x53C2;&#x89C1; Data Flow&#x3002;Flux &#x548C; redux</p>
+<h4 id="&#x6570;&#x636E;&#x6D41;Flux"><a href="#&#x6570;&#x636E;&#x6D41;Flux" class="headerlink" title="&#x6570;&#x636E;&#x6D41;Flux"></a>&#x6570;&#x636E;&#x6D41;Flux</h4><p>Github&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/facebook/flux" target="_blank" rel="external">https://github.com/facebook/flux</a></p>
+<p>React redux react-redux react-router webpack+gulp ES6 babel<br>Mocha+chai node<br>React native Flex fetch &#x539F;&#x751F; &#x63D2;&#x4EF6;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>感谢您的支持！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>打 赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://ofy7k3v4s.bkt.clouddn.com/wcpayCode.jpg" alt="Hongqin Ma WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ofy7k3v4s.bkt.clouddn.com/apayCode.jpg" alt="Hongqin Ma Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React/" rel="tag">#React</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/02/t13-webpack项目构建工具/" rel="next" title="webpack 构建工具">
+                <i class="fa fa-chevron-left"></i> webpack 构建工具
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/12/04/s015-React学习笔记/"
+     data-title="s015-React学习笔记"
+     data-content=""
+     data-url="https://hongqinma.github.io/2016/12/04/s015-React学习笔记/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/04/s015-React学习笔记/"
+           data-title="s015-React学习笔记" data-url="https://hongqinma.github.io/2016/12/04/s015-React学习笔记/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/photo.jpg"
+               alt="Hongqin Ma" />
+          <p class="site-author-name" itemprop="name">Hongqin Ma</p>
+          <p class="site-description motion-element" itemprop="description">Spell at all costs， to rush you in the future. </p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HongqinMa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/HongqinMa" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100006581058735" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/HirakuMa" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-share-alt"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/rubylouvre/" title="司徒正美" target="_blank">司徒正美</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/sanshi/" title="三生石上" target="_blank">三生石上</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/TomXu/" title="汤姆大叔" target="_blank">汤姆大叔</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://gold.xitu.io/" title="掘金" target="_blank">掘金</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://segmentfault.com/" title="segmentfault" target="_blank">segmentfault</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/users/1cbb94e5ed4d/latest_articles" title="简书" target="_blank">简书</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.cnblogs.com/" title="博客园" target="_blank">博客园</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.awesomes.cn/" title="Awesomes" target="_blank">Awesomes</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#React简介"><span class="nav-number">1.</span> <span class="nav-text">React简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官网地址"><span class="nav-number">1.1.</span> <span class="nav-text">官网地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在线编辑工具-JSFiddle"><span class="nav-number">1.2.</span> <span class="nav-text">在线编辑工具 JSFiddle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么使用-React"><span class="nav-number">1.3.</span> <span class="nav-text">为什么使用 React</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战案例"><span class="nav-number">1.4.</span> <span class="nav-text">实战案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入门视频"><span class="nav-number">1.5.</span> <span class="nav-text">入门视频</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">1.6.</span> <span class="nav-text">参考资料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React的四个概念简单介绍"><span class="nav-number">2.</span> <span class="nav-text">React的四个概念简单介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Virtual-DOM"><span class="nav-number">2.1.</span> <span class="nav-text">Virtual DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟DOM是React的基石"><span class="nav-number">2.1.1.</span> <span class="nav-text">虚拟DOM是React的基石</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Virtual-DOM速度快的说明"><span class="nav-number">2.1.2.</span> <span class="nav-text">Virtual DOM速度快的说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React组件"><span class="nav-number">2.2.</span> <span class="nav-text">React组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#组件化概念"><span class="nav-number">2.2.1.</span> <span class="nav-text">组件化概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件化开发特性"><span class="nav-number">2.2.2.</span> <span class="nav-text">组件化开发特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件定义"><span class="nav-number">2.2.3.</span> <span class="nav-text">组件定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX语法"><span class="nav-number">2.3.</span> <span class="nav-text">JSX语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Flow（单向数据流）"><span class="nav-number">2.4.</span> <span class="nav-text">Data Flow（单向数据流）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#传统的-MVC"><span class="nav-number">2.4.1.</span> <span class="nav-text">传统的 MVC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flux"><span class="nav-number">2.4.2.</span> <span class="nav-text">Flux</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单向数据流"><span class="nav-number">2.4.3.</span> <span class="nav-text">单向数据流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Redux"><span class="nav-number">2.4.4.</span> <span class="nav-text">Redux</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">2.4.5.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React快速开始"><span class="nav-number">3.</span> <span class="nav-text">React快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建项目文件夹"><span class="nav-number">3.1.</span> <span class="nav-text">创建项目文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖环境"><span class="nav-number">3.2.</span> <span class="nav-text">依赖环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建目录结构"><span class="nav-number">3.3.</span> <span class="nav-text">创建目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码编译方式（语法转换）"><span class="nav-number">3.4.</span> <span class="nav-text">代码编译方式（语法转换）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#react-tools转换"><span class="nav-number">3.4.1.</span> <span class="nav-text">react-tools转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#babel转换"><span class="nav-number">3.4.2.</span> <span class="nav-text">babel转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gulp-react"><span class="nav-number">3.4.3.</span> <span class="nav-text">Gulp-react</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Webpack"><span class="nav-number">3.4.4.</span> <span class="nav-text">Webpack</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开发工具"><span class="nav-number">3.4.5.</span> <span class="nav-text">开发工具</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要知识"><span class="nav-number">4.</span> <span class="nav-text">主要知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#视图相关概念"><span class="nav-number">4.1.</span> <span class="nav-text">视图相关概念 !!!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsx语法详解"><span class="nav-number">4.2.</span> <span class="nav-text">jsx语法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-转义"><span class="nav-number">4.2.1.</span> <span class="nav-text">HTML 转义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义-HTML-属性"><span class="nav-number">4.2.2.</span> <span class="nav-text">自定义 HTML 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#支持的标签和属性"><span class="nav-number">4.2.3.</span> <span class="nav-text">支持的标签和属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性扩散"><span class="nav-number">4.2.4.</span> <span class="nav-text">属性扩散</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自闭合标签"><span class="nav-number">4.2.5.</span> <span class="nav-text">自闭合标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释"><span class="nav-number">4.2.6.</span> <span class="nav-text">注释</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-的-API"><span class="nav-number">5.</span> <span class="nav-text">React 的 API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#顶层-API"><span class="nav-number">5.1.</span> <span class="nav-text">顶层 API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件-API"><span class="nav-number">5.2.</span> <span class="nav-text">组件 API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件的生命周期（特别重要）"><span class="nav-number">5.3.</span> <span class="nav-text">组件的生命周期（特别重要）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#组件的生命周期分成三个状态："><span class="nav-number">5.3.1.</span> <span class="nav-text">组件的生命周期分成三个状态：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理函数"><span class="nav-number">5.3.2.</span> <span class="nav-text">处理函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数调用顺序图"><span class="nav-number">5.3.3.</span> <span class="nav-text">函数调用顺序图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码使用"><span class="nav-number">5.3.4.</span> <span class="nav-text">代码使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文章"><span class="nav-number">5.3.5.</span> <span class="nav-text">参考文章</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意点"><span class="nav-number">5.3.6.</span> <span class="nav-text">注意点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES5-ES6-最新写法对照表"><span class="nav-number">5.4.</span> <span class="nav-text">ES5/ES6 最新写法对照表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件处理"><span class="nav-number">5.5.</span> <span class="nav-text">事件处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">5.5.1.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数传递"><span class="nav-number">5.5.2.</span> <span class="nav-text">参数传递</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#React-支持的事件列表"><span class="nav-number">5.5.3.</span> <span class="nav-text">React 支持的事件列表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dom操作"><span class="nav-number">5.6.</span> <span class="nav-text">Dom操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一：findDOMNode-方法"><span class="nav-number">5.6.1.</span> <span class="nav-text">方法一：findDOMNode()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二：refs属性"><span class="nav-number">5.6.2.</span> <span class="nav-text">方法二：refs属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">5.7.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和其他库配合使用"><span class="nav-number">5.8.</span> <span class="nav-text">和其他库配合使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件的-DOM-事件监听"><span class="nav-number">5.9.</span> <span class="nav-text">组件的 DOM 事件监听</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据获取"><span class="nav-number">5.10.</span> <span class="nav-text">数据获取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表单"><span class="nav-number">5.11.</span> <span class="nav-text">表单</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#状态属性"><span class="nav-number">5.11.1.</span> <span class="nav-text">状态属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#受控组件"><span class="nav-number">5.11.2.</span> <span class="nav-text">受控组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非受控属性"><span class="nav-number">5.11.3.</span> <span class="nav-text">非受控属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要有受控组件"><span class="nav-number">5.11.4.</span> <span class="nav-text">为什么要有受控组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-select-gt-的处理"><span class="nav-number">5.11.5.</span> <span class="nav-text"><select> 的处理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数传递的判断"><span class="nav-number">6.</span> <span class="nav-text">参数传递的判断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组合组件"><span class="nav-number">6.1.</span> <span class="nav-text">组合组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#循环插入子元素"><span class="nav-number">6.1.1.</span> <span class="nav-text">循环插入子元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子级"><span class="nav-number">6.1.2.</span> <span class="nav-text">子级</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#propsType"><span class="nav-number">6.2.</span> <span class="nav-text">propsType</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Context"><span class="nav-number">6.3.</span> <span class="nav-text">Context</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动画"><span class="nav-number">6.4.</span> <span class="nav-text">动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取react常用插件的网址"><span class="nav-number">6.5.</span> <span class="nav-text">获取react常用插件的网址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#diff算法"><span class="nav-number">6.6.</span> <span class="nav-text">diff算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web-Components"><span class="nav-number">6.7.</span> <span class="nav-text">Web Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器渲染"><span class="nav-number">6.8.</span> <span class="nav-text">服务器渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件间通信"><span class="nav-number">6.9.</span> <span class="nav-text">组件间通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#非父子组件间的通信"><span class="nav-number">6.9.1.</span> <span class="nav-text">非父子组件间的通信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据流Flux"><span class="nav-number">6.9.2.</span> <span class="nav-text">数据流Flux</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hongqin Ma</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">
+    &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Page Views: <span id="busuanzi_value_site_pv"></span> 
+</span>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Hiraku"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("PPmoIQxeu8Sd21h6Tl9TthNx-gzGzoHsz", "rTvbY2H7DvWzRipiBwn72RQ4");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = '0 ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+
+  
+</body>
+</html>
