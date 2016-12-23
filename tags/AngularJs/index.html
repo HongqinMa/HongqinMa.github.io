@@ -295,6 +295,62 @@
 
 
     
+      
+
+  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2015/07/05/27-AngularJS-项目流程/" itemprop="url">
+              
+                <span itemprop="name">AngularJS 项目流程</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-07-05T19:50:50+08:00"
+              content="2015-07-05" >
+          07-05
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2015/06/18/26-AngularJS-框架/" itemprop="url">
+              
+                <span itemprop="name">AngularJS 框架</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2015-06-18T21:59:18+08:00"
+              content="2015-06-18" >
+          06-18
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
   </div>
 
   
@@ -790,33 +846,6 @@ function addCount(Counter) {
           success: function(newcounter) {
               console.log("newcounter.get('time')="+newcounter.get('time'));
             var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
-            $(document.getElementById(url)).text(content);
-          },
-          error: function(newcounter, error) {
-            console.log('Failed to create');
-          }
-        });
-      }
-    },
-    error: function(error) {
-      console.log('Error:' + error.code + " " + error.message);
-    }
-  });
-}
-$(function() {
-  var Counter = AV.Object.extend("Counter");
-  if ($('.leancloud_visitors').length == 1) {
-    addCount(Counter);
-  } else if ($('.post-title-link').length > 1) {
-    showTime(Counter);
-  }
-}); 
-</script>
-
-  
-</body>
-</html>
-+ ' ' + $(document.getElementById(url)).text();
             $(document.getElementById(url)).text(content);
           },
           error: function(newcounter, error) {
